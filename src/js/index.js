@@ -1,4 +1,4 @@
-import "../css/index.scss";
+import "../scss/index.scss";
 
 // import "materialize-css/js/component";
 // import "materialize-css/js/global";
@@ -20,13 +20,6 @@ fontawesome.library.add(faGithub, faLinkedin, faTwitter, faChevron, faQuoteLeft,
 
 import "particles.js/particles";
 import "./particles-config.js";
-//import "../assets/particlesjs-config.json";
-
-/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-// particlesJS.load('particles', 'assets/particlesjs-config.json', function() {
-//   console.log('callback - particles.js config loaded');
-// });
-
 
 // MDC TABS
 
@@ -55,6 +48,13 @@ import {MDCTemporaryDrawer, MDCTemporaryDrawerFoundation, util} from '@material/
 let drawer = new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary'));
 document.querySelector('.menu').addEventListener('click', () => drawer.open = true);
 document.querySelector('.mdc-list-item').addEventListener('click', () => document.querySelector('aside').classList.remove("mdc-drawer--open"));
+
+window.onload = function(){
+  var anchors = document.getElementsByTagName('a');
+  for (var i=0; i<anchors.length; i++){
+    anchors[i].setAttribute('target', '_blank');
+  }
+}
 
 // MDC TOP APP BAR
 import {MDCTopAppBar} from '@material/top-app-bar/index';
@@ -87,11 +87,11 @@ function myFunction() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky");
     navbar.classList.add("mdc-elevation--z4");
-    firstSection.style.paddingTop = "48px";
+    firstSection.style.paddingTop = "96px";
   } else {
     navbar.classList.remove("sticky");
     navbar.classList.remove("mdc-elevation--z4");
-    firstSection.style.paddingTop = "0px";
+    firstSection.style.paddingTop = "48px";
   }
 }
 
@@ -101,4 +101,3 @@ var scroll = new SmoothScroll('[data-scroll]', {
   easing: 'easeInOutQuint',
   speed: 500
 });
-

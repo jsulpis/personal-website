@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  text-align: center;
+  @include mdc-typography-base;
+  @include mdc-theme-prop(color, text-primary-on-background);
+}
+
+a {
+  text-decoration: none;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+  padding: 0px;
+  border: 5px solid white;
+  @include mdc-elevation(8);
+}
+
+section:not(.mdc-top-app-bar__section) {
+  min-height: 300px;
+  max-width: 800px;
+  margin: auto;
+  padding-top: 48px;
+}
+
+.section-title {
+    margin: 1rem auto 3rem auto;
+    @include title-underline;
+}
+
+.title-underline {
+    @include title-underline;
+}

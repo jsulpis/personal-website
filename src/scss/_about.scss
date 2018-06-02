@@ -1,0 +1,75 @@
+// PARTICLES SECTION
+#particles {
+  height: $particles-section-height;
+  background: linear-gradient(
+    to top,
+    $mdc-theme-primary,
+    lighten($mdc-theme-primary, 25)
+  );
+  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+// PROFILE
+#profile {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  background-color: white;
+
+  @include mdc-elevation(4);
+
+  .avatar {
+    height: $avatar-height;
+    width: 100%;
+    position: absolute;
+    top: -$avatar-height / 2;
+
+    img {
+      height: $avatar-height;
+    }
+  }
+
+  .social {
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin: 0 0.5rem 0 0.5rem;
+    }
+
+    a {
+      @include mdc-theme-prop(color, text-secondary-on-background);
+
+      &:hover {
+        @include mdc-theme-prop(color, text-primary-on-background);
+      }
+    }
+  }
+
+  h1 {
+    margin: 0;
+    padding-top: $avatar-height/2 + 2rem;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h3 {
+    line-height: 1.5rem;
+  }
+
+  #description {
+    @include mdc-theme-prop(color, text-secondary-on-background);
+    padding: 1rem 3rem 1.5rem 3rem;
+    margin: auto;
+    max-width: 800px;
+
+    svg {
+      @include mdc-theme-prop(color, text-hint-on-background);
+    }
+  }
+}

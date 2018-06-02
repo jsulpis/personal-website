@@ -1,0 +1,9 @@
+@mixin title-underline {
+  &::after {
+    content: "";
+    margin: 1rem auto;
+    display: block;
+    width: 5rem;
+    border-bottom: 3px solid;
+  }
+}
