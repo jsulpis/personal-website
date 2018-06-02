@@ -24,10 +24,10 @@ section:not(.mdc-top-app-bar__section) {
 }
 
 .section-title {
-    margin: 1rem auto 3rem auto;
-    @include title-underline;
+  margin: 1rem auto 3rem auto;
+  @include title-underline;
 }
 
 .title-underline {
-    @include title-underline;
+  @include title-underline;
 }

@@ -83,12 +83,8 @@ module.exports = {
             template: 'src/index.html',
             chunks: ['index']
         }),
-        new CopyWebpackPlugin([{ 
-            from: 'src/assets',
-            to: "assets" 
-        }])
-        // new BundleAnalyzerPlugin({
-        //     analyzerPort: 9999
-        // })
+        new BundleAnalyzerPlugin({
+            analyzerPort: 9999
+        })
     ]
 };
