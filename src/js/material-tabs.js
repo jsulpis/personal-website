@@ -11,7 +11,7 @@ var dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
 
 // "Debouncer" to freeze the active tab when
 // clicking on a tab
-var tabClickedTime;
+var tabClickedTime = 0;
 var tabs = document.getElementsByClassName("mdc-tab");
 for (var i = 0; i < tabs.length; i++) {
   console.log(tabs[i]);
@@ -44,11 +44,13 @@ window.onscroll = function() {
   if (offsetY >= sticky) {
     navbar.classList.add("sticky");
     navbar.classList.add("mdc-elevation--z4");
-    firstSection.style.paddingTop = "96px";
+    //firstSection.style.paddingTop = "96px";
+    firstSection.classList.add("push");
   } else {
     navbar.classList.remove("sticky");
     navbar.classList.remove("mdc-elevation--z4");
-    firstSection.style.paddingTop = "48px";
+    //firstSection.style.paddingTop = "48px";
+    firstSection.classList.remove("push");
   }
 
   if (new Date().getTime() - tabClickedTime > 1000) {

@@ -35,6 +35,10 @@
 
 // RESPONSIVE
 @media only screen and (min-width: 992px) {
+  .push {
+    padding-top: 96px !important;
+  }
+
   .sticky {
     position: fixed !important;
     top: 0 !important;
