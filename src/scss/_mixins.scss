@@ -7,3 +7,15 @@
     border-bottom: 3px solid;
   }
 }
+
+@mixin school-focus {
+  height: fit-content;
+
+  .school-content {
+    opacity: 1;
+  }
+
+  .dots {
+    display: none;
+  }
+}

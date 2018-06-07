@@ -8,6 +8,7 @@ body {
 a {
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.1s $mdc-animation-standard-curve-timing-function;
   @include mdc-theme-prop(color, text-secondary-on-background);
 
   &:hover {

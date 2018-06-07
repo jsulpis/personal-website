@@ -10,3 +10,4 @@ import "./fontawesome";
 import "./material-tabs";
 import "./menu";
 import "./smooth-scroll";
+import "./studies";

@@ -14,9 +14,7 @@ var dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
 var tabClickedTime = 0;
 var tabs = document.getElementsByClassName("mdc-tab");
 for (var i = 0; i < tabs.length; i++) {
-  console.log(tabs[i]);
   tabs[i].addEventListener("click", function() {
-    console.log("elt clicked");
     tabClickedTime = new Date().getTime();
   });
 }
