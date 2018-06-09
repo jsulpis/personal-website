@@ -25,7 +25,8 @@ var firstSection = document.getElementById("experiences");
 var profile = document.getElementById("profile");
 var studies = document.getElementById("studies");
 var skills = document.getElementById("skills");
-var certifications = document.getElementById("certifications");
+var certifications = document.getElementById("certificates");
+var contact = document.getElementById("contact");
 
 function convertRemToPixels(rem) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -42,12 +43,10 @@ window.onscroll = function() {
   if (offsetY >= sticky) {
     navbar.classList.add("sticky");
     navbar.classList.add("mdc-elevation--z4");
-    //firstSection.style.paddingTop = "96px";
     firstSection.classList.add("push");
   } else {
     navbar.classList.remove("sticky");
     navbar.classList.remove("mdc-elevation--z4");
-    //firstSection.style.paddingTop = "48px";
     firstSection.classList.remove("push");
   }
 
@@ -61,8 +60,10 @@ window.onscroll = function() {
       dynamicTabBar.activeTabIndex = 2;
     } else if (offsetY < certifications.offsetTop) {
       dynamicTabBar.activeTabIndex = 3;
-    } else {
+    } else if (offsetY < contact.offsetTop) {
       dynamicTabBar.activeTabIndex = 4;
+    } else {
+      dynamicTabBar.activeTabIndex = 5;
     }
   }
 };

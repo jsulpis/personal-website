@@ -24,6 +24,7 @@
     "material-components-web": "^0.35.2",
     "materialize-css": "^1.0.0-rc.1",
     "particles.js": "^2.0.0",
+    "scrollreveal": "^3.4.0",
     "smooth-scroll": "^14.2.0"
   },
   "devDependencies": {

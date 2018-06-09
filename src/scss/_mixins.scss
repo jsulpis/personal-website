@@ -19,3 +19,11 @@
     display: none;
   }
 }
+
+@mixin card {
+  @include mdc-elevation(1);
+  border-radius: 2px;
+  border: 1px solid $material-color-grey-200;
+  padding: 1rem;
+  background-color: white;
+}
