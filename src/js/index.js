@@ -12,3 +12,4 @@ import "./menu";
 import "./smooth-scroll";
 import "./studies";
 import "./skills";
+import "./certificates";

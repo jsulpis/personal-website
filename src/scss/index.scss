@@ -8,6 +8,7 @@
 @import "@material/animation/functions";
 @import "variables";
 @import "@material/theme/mdc-theme";
+@import "@material/card/mdc-card";
 
 @import "mixins";
 @import "global";
@@ -16,3 +17,4 @@
 @import "timeline";
 @import "studies";
 @import "skills";
+@import "certificates";
