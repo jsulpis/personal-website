@@ -496,72 +496,15 @@
       <p class="mdc-typography--body2">Gros consommateur de cours en ligne, j'écume régulièrement les sites de cours, principalement Openclassrooms, pour
         y trouver de nouvelles connaissances. Voici quelques uns des certificats que j'ai obtenus (une trentaine au total).</p>
 
-      <div class="card">
-        <div class="certificate-group">
+      <div id="certificates__content" class="card">
+        <div class="certificate-group" v-for="category in categories">
           <button class="collapsible certificate-group-name">
-            Parcours Développeur Android
+            {{ category.name }}
           </button>
           <div class="certificates-cards">
-
             <!-- card -->
-            <div class="mdc-card my-card">
-              <div class="card-title">Concevez votre site web avec PHP et MySQL</div>
-              <div class="my-card__media mdc-card__media--16-9">
-                <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
-              </div>
-              <div class="card-actions mdc-card__actions">
-                <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action">Certificat</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div class="mdc-card my-card">
-              <div class="card-title">Concevez votre site web avec PHP et MySQL</div>
-              <div class="my-card__media mdc-card__media--16-9">
-                <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
-              </div>
-              <div class="card-actions mdc-card__actions">
-                <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action">Certificat</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div class="mdc-card my-card">
-              <div class="card-title">Concevez votre site web avec PHP et MySQL</div>
-              <div class="my-card__media mdc-card__media--16-9">
-                <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
-              </div>
-              <div class="card-actions mdc-card__actions">
-                <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action">Certificat</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div class="mdc-card my-card">
-              <div class="card-title">Concevez votre site web avec PHP et MySQL</div>
-              <div class="my-card__media mdc-card__media--16-9">
-                <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
-              </div>
-              <div class="card-actions mdc-card__actions">
-                <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action">Certificat</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- card -->
-            <div class="mdc-card my-card">
-              <div class="card-title">Concevez votre site web avec PHP et MySQL</div>
+            <div class="mdc-card my-card" v-for="course in category.courses">
+              <div class="card-title">{{ course.name }}</div>
               <div class="my-card__media mdc-card__media--16-9">
                 <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
               </div>
