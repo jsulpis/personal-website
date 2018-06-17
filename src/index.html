@@ -496,7 +496,7 @@
       <div id="certificates__content" class="card">
         <div class="certificate-group" v-for="category in categories">
           <button class="collapsible certificate-group-name">
-            {{ category.name }}
+            {{ category.name }}<span class="arrow"><i class="fas fa-angle-left"></i></span>
           </button>
           <div class="certificates-list">
             <div class="course-row-wrapper" v-for="course in category.courses">

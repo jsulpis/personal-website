@@ -6,6 +6,7 @@ import faChevron from "@fortawesome/fontawesome-free-solid/faChevronCircleDown";
 import faQuoteLeft from "@fortawesome/fontawesome-free-solid/faQuoteLeft";
 import faQuoteRight from "@fortawesome/fontawesome-free-solid/faQuoteRight";
 import faGraduationCap from "@fortawesome/fontawesome-free-solid/faGraduationCap";
+import faAngleLeft from "@fortawesome/fontawesome-free-solid/faAngleLeft";
 
 fontawesome.library.add(
   faGithub,
@@ -14,5 +15,6 @@ fontawesome.library.add(
   faChevron,
   faQuoteLeft,
   faQuoteRight,
-  faGraduationCap
+  faGraduationCap,
+  faAngleLeft
 );

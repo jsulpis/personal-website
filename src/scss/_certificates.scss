@@ -19,6 +19,14 @@
     width: 100%;
     border: none;
     outline: none;
+    position: relative;
+
+    .arrow {
+      color: $material-color-grey-800;
+      position: absolute;
+      right: 2rem;
+      transition: 0.1s $mdc-animation-standard-curve-timing-function;;
+    }
   }
 
   .active,
@@ -28,6 +36,10 @@
 
   .active + .certificates-list {
     padding-bottom: 1rem;
+  }
+
+  .active .arrow {
+    transform: rotate(-90deg);
   }
 
   .certificates-list {
