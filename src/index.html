@@ -510,8 +510,8 @@
               </div>
               <div class="card-actions mdc-card__actions">
                 <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action">Certificat</button>
+                  <button class="my-button mdc-button mdc-card__action" @click="redirect(course.course_url)">Cours</button>
+                  <button class="my-button mdc-button mdc-card__action" @click="redirect(course.certificate_url)">Certificat</button>
                 </div>
               </div>
             </div>
