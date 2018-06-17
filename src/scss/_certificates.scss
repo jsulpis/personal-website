@@ -2,96 +2,92 @@
   .card {
     padding: 0;
   }
-}
-.certificate-group {
-  height: fit-content;
-}
-.certificate-group-name {
-  @include mdc-typography(headline6);
-  text-align: left;
-  margin: 0;
-  padding-left: 1rem;
-  line-height: 3rem;
-}
-
-.collapsible {
-  background-color: white;
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  outline: none;
-}
-
-.active,
-.collapsible:hover {
-  background-color: $material-color-grey-100;
-}
-
-.active + .certificates-cards {
-  padding-bottom: 1rem;
-}
-
-.certificates-cards {
-  text-align: left;
-  padding: 0 1rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: white;
-}
-
-.my-card {
-  text-align: center;
-  display: inline-block;
-  width: calc((100% - 25px) / 2);
-  margin: 15px 5px 0 5px;
-
-  @media only screen and (min-width: 576px) {
-    width: calc((100% - 39px) / 3);
+  .certificate-group {
+    height: fit-content;
+  }
+  .certificate-group-name {
+    @include mdc-typography(headline6);
+    text-align: left;
+    margin: 0;
+    padding-left: 1rem;
+    line-height: 3rem;
   }
 
-  @media only screen and (min-width: 768px) {
-    width: calc((100% - 55px) / 4);
+  .collapsible {
+    background-color: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
   }
 
-  transition: mdc-animation-standard(all, 0.1s);
-
-  &:hover {
-    @include mdc-elevation(8);
+  .active,
+  .collapsible:hover {
+    background-color: $material-color-grey-100;
   }
 
-  .card-title {
-    padding-top: 0.5rem;
-    @include mdc-typography(body2);
-    font-weight: 600;
+  .active + .certificates-list {
+    padding-bottom: 1rem;
   }
 
-  .my-card__media {
-    background-color: $material-color-grey-50;
-    img {
-      width: 40%;
-    }
-  }
-
-  .card-actions {
+  .certificates-list {
+    text-align: left;
     padding: 0;
-    min-height: fit-content;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
   }
 
-  .buttons {
-    margin: 0 auto;
+  .course-row {
+    display: table-row;
   }
 
-  .my-button {
-    @media only screen and (max-width: 576px) {
-      min-width: fit-content;
-      font-size: 0.6rem;
+  .course-row-wrapper:not(:last-child):after {
+    content: "";
+    margin: 0.1rem 1rem;
+    display: block;
+    border-bottom: 1px solid $material-color-grey-200;
+  }
+
+  .course-name,
+  .course-image-container {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .course-name {
+    width: 70%;
+    padding: 0.2rem 0 0 1rem;
+  }
+
+  .course-image-container {
+    width: 5%;
+    padding: 0.2rem 0.25rem 0 0.25rem;
+
+    @media only screen and (min-width: 576px) {
+      padding: 0.2rem 0.75rem 0 0.75rem;
     }
 
-    @media only screen and (max-width: 992px) {
-        padding: 0 4px;
+    @media only screen and (min-width: 1200px) {
+      width: 10%;
+      padding: 0.2rem 1rem 0 1rem;
     }
 
-    font-size: 0.65rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .course-inline-image {
+    height: 25px;
+  }
+
+  .certificate-icon {
+    opacity: 0.8;
+    transition: opacity 0.1s $mdc-animation-standard-curve-timing-function;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

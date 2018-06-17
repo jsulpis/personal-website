@@ -7,8 +7,8 @@
   <title>Starter Template - Materialize</title>
 
   <!-- CSS  -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -493,33 +493,30 @@
   <section id="certificates">
     <div class="container">
       <h2 class="mdc-typography--headline5 section-title">Certifications</h2>
-      <p class="mdc-typography--body2">Gros consommateur de cours en ligne, j'écume régulièrement les sites de cours, principalement Openclassrooms, pour
-        y trouver de nouvelles connaissances. Voici quelques uns des certificats que j'ai obtenus (une trentaine au total).</p>
-
       <div id="certificates__content" class="card">
         <div class="certificate-group" v-for="category in categories">
           <button class="collapsible certificate-group-name">
             {{ category.name }}
           </button>
-          <div class="certificates-cards">
-            <!-- card -->
-            <div class="mdc-card my-card" v-for="course in category.courses">
-              <div class="card-title">{{ course.name }}</div>
-              <div class="my-card__media mdc-card__media--16-9">
-                <img src="img/brands/OpenClassrooms.png" alt="logo_oc">
-              </div>
-              <div class="card-actions mdc-card__actions">
-                <div class="buttons mdc-card__action-buttons">
-                  <button class="my-button mdc-button mdc-card__action" @click="redirect(course.course_url)">Cours</button>
-                  <button class="my-button mdc-button mdc-card__action" @click="redirect(course.certificate_url)">Certificat</button>
-                </div>
+          <div class="certificates-list">
+            <div class="course-row-wrapper" v-for="course in category.courses">
+              <div class="course-row" >
+                <span class="course-name">{{ course.name }}</span>
+                <span class="course-image-container">
+                  <img class="course-inline-image" v-bind:src="'../img/institutions/' + course.institution + '.png'" v-bind:alt="'logo_' + course.institution">
+                </span>
+                <a title="Voir le cours" class="course-image-container" v-bind:href="course.course_url">
+                  <i class="course-inline-image fas fa-graduation-cap"></i>
+                </a>
+                <a title="Voir le certificat" class="course-image-container" v-if="course.certificate_url != ''" v-bind:href="course.certificate_url">
+                  <img class="course-inline-image certificate-icon" src="img/institutions/certificate_icon.png" alt="certificate_icon">
+                </a>
               </div>
             </div>
-
+            </table>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <section id="contact">

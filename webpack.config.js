@@ -2,7 +2,7 @@ var path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CleanWebpackPlugin = require("clean-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+var CopyWebpackPlugin = require("copy-webpack-plugin");
 
 var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
@@ -76,6 +76,10 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
+    new CopyWebpackPlugin([{ 
+      from: 'src/img/', 
+      to: 'img/'
+    }]),
     new MiniCssExtractPlugin({
       filename: "css/[name].bundle.css"
     }),
@@ -83,9 +87,9 @@ module.exports = {
       filename: "index.html",
       template: "src/index.html",
       chunks: ["index"]
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerPort: 9999
     })
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 9999
+    // })
   ]
 };

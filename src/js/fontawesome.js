@@ -5,6 +5,7 @@ import faTwitter from "@fortawesome/fontawesome-free-brands/faTwitter";
 import faChevron from "@fortawesome/fontawesome-free-solid/faChevronCircleDown";
 import faQuoteLeft from "@fortawesome/fontawesome-free-solid/faQuoteLeft";
 import faQuoteRight from "@fortawesome/fontawesome-free-solid/faQuoteRight";
+import faGraduationCap from "@fortawesome/fontawesome-free-solid/faGraduationCap";
 
 fontawesome.library.add(
   faGithub,
@@ -12,5 +13,6 @@ fontawesome.library.add(
   faTwitter,
   faChevron,
   faQuoteLeft,
-  faQuoteRight
+  faQuoteRight,
+  faGraduationCap
 );
