@@ -1,0 +1,52 @@
+#contact {
+  .mdc-text-field {
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+  }
+
+  .text-field--error {
+    &:not(#message-helper-text) {
+      color: $material-color-red-900;
+    }
+    @include mdc-typography(caption);
+
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 8px auto;
+
+    &:not(#email--error):not(#message-helper-text) {
+      visibility: hidden;
+    }
+  }
+
+  .mdc-text-field--invalid + .text-field--error:not(#email--error) {
+    visibility: visible !important;
+  }
+
+  #email--error {
+    display: none;
+  }
+
+  #name-field {
+    margin-top: 1rem;
+  }
+
+  #form-message {
+    min-height: 200px;
+  }
+
+  #message-helper-text {
+    text-align: right;
+
+    &.message-error {
+      color: $material-color-red-900;
+      text-align: center;
+    }
+  }
+
+  .mdc-button {
+    margin-bottom: 1rem;
+  }
+}

@@ -24,14 +24,13 @@ a {
 }
 
 section:not(.mdc-top-app-bar__section) {
-  min-height: 600px;
   margin: auto;
   padding: 48px 0 5px 0;
   background-color: $material-color-grey-100;
 }
 
 .section-title {
-  margin: 1rem auto 3rem auto;
+  margin: 1rem auto 2rem auto;
   @include title-underline;
 }
 

@@ -9,6 +9,9 @@
 @import "variables";
 @import "@material/theme/mdc-theme";
 @import "@material/card/mdc-card";
+@import "@material/textfield/mdc-text-field";
+@import "@material/textfield/icon/mdc-text-field-icon";
+@import "@material/textfield/helper-text/mdc-text-field-helper-text";
 
 @import "mixins";
 @import "global";
@@ -18,3 +21,4 @@
 @import "studies";
 @import "skills";
 @import "certificates";
+@import "contact";

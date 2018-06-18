@@ -496,11 +496,14 @@
       <div id="certificates__content" class="card">
         <div class="certificate-group" v-for="category in categories">
           <button class="collapsible certificate-group-name">
-            {{ category.name }}<span class="arrow"><i class="fas fa-angle-left"></i></span>
+            {{ category.name }}
+            <span class="arrow">
+              <i class="fas fa-angle-left"></i>
+            </span>
           </button>
           <div class="certificates-list">
             <div class="course-row-wrapper" v-for="course in category.courses">
-              <div class="course-row" >
+              <div class="course-row">
                 <span class="course-name">{{ course.name }}</span>
                 <span class="course-image-container">
                   <img class="course-inline-image" v-bind:src="'../img/institutions/' + course.institution + '.png'" v-bind:alt="'logo_' + course.institution">
@@ -520,7 +523,69 @@
   </section>
 
   <section id="contact">
-    <h2 class="mdc-typography--headline5 section-title">Contact</h2>
+    <div class="container">
+
+      <h2 class="mdc-typography--headline5 section-title">Contact</h2>
+      <div class="card">
+
+        <div class="container">
+
+          <form id="contact-form" action="#" onsubmit="return false;">
+
+            <!-- Name -->
+            <div id="name-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+              <i class="material-icons mdc-text-field__icon">account_box</i>
+              <input type="text" id="form-name" class="mdc-text-field__input" required>
+              <label for="form-name" class="mdc-floating-label">Nom</label>
+              <div class="mdc-notched-outline">
+                <svg>
+                  <path class="mdc-notched-outline__path" />
+                </svg>
+              </div>
+              <div class="mdc-notched-outline__idle"></div>
+            </div>
+            <p id="name--error" class="text-field--error">
+                Nom invalide
+              </p>
+
+            <!-- Email-->
+            <div id="email-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+              <i class="material-icons mdc-text-field__icon">email</i>
+              <input type="text" id="form-email" class="mdc-text-field__input" aria-controls="email-helper-text"
+              aria-describedby="email-helper-text" required>
+              <label for="form-email" class="mdc-floating-label">E-mail</label>
+              <div class="mdc-notched-outline">
+                <svg>
+                  <path class="mdc-notched-outline__path" />
+                </svg>
+              </div>
+              <div class="mdc-notched-outline__idle"></div>
+            </div>
+            <p id="email-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+                Il sera utilisé uniquement pour vous répondre.
+              </p>
+              <p id="email--error" class="text-field--error">
+                  Adresse e-mail invalide
+                </p>
+
+            <!-- Message -->
+            <div id="message-field" class="mdc-text-field mdc-text-field--textarea">
+              <textarea id="form-message" class="mdc-text-field__input" rows="8" cols="40" required></textarea>
+              <label for="textarea" class="mdc-floating-label">Message</label>
+            </div>
+            <p id="message-helper-text" class="text-field--error">
+                Message trop court
+              </p>
+
+            <button class="mdc-button mdc-button--raised">
+              <i class="material-icons mdc-button__icon" aria-hidden="true" type="submit">send</i>
+              Envoyer
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
   </section>
 
 </body>
