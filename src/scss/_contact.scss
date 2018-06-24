@@ -49,4 +49,13 @@
   .mdc-button {
     margin-bottom: 1rem;
   }
+
+  .mdc-snackbar {
+    background-color: $material-color-green-500;
+    color: white;
+
+    &.invalid {
+      background-color: $material-color-red-500;
+    }
+  }
 }
