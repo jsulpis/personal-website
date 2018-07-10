@@ -98,6 +98,10 @@ document
     } else {
       console.log("Valid formular. Sending an e-mail...");
       //console.log(getContactFormContent());
+      document.querySelector("#send-btn-arrow").style.display = "none";
+      document.querySelector(".animate_loader").style.display = "inline-block";
+      document.querySelector("#send-form-btn").disabled = true;
+
       ajaxPost(
         "https://90y1fzl9ij.execute-api.eu-west-3.amazonaws.com/prod",
         getContactFormContent(),
@@ -105,6 +109,9 @@ document
           console.log("E-mail sent. Response: " + response);
           snackbarElt.classList.remove("invalid");
           snackbar.show({ message: "Message envoyé !" });
+          document.querySelector("#send-btn-arrow").style.display = "inline-block";
+          document.querySelector(".animate_loader").style.display = "none";
+          document.querySelector("#send-form-btn").disabled = false;
         }
       );
     }

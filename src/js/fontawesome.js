@@ -7,6 +7,7 @@ import faQuoteLeft from "@fortawesome/fontawesome-free-solid/faQuoteLeft";
 import faQuoteRight from "@fortawesome/fontawesome-free-solid/faQuoteRight";
 import faGraduationCap from "@fortawesome/fontawesome-free-solid/faGraduationCap";
 import faAngleLeft from "@fortawesome/fontawesome-free-solid/faAngleLeft";
+import faHeart from "@fortawesome/fontawesome-free-solid/faHeart";
 
 fontawesome.library.add(
   faGithub,
@@ -16,5 +17,6 @@ fontawesome.library.add(
   faQuoteLeft,
   faQuoteRight,
   faGraduationCap,
-  faAngleLeft
+  faAngleLeft,
+  faHeart
 );
