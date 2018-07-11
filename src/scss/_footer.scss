@@ -1,10 +1,10 @@
 footer {
   background-color: $mdc-theme-primary;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 0.75rem;
 
   .footer-message {
-    @include mdc-typography(body1);
+    @include mdc-typography(body2);
     @include mdc-theme-prop(color, on-primary);
     // line-height: 60px;
     margin: 0;
@@ -21,7 +21,7 @@ footer {
   }
 
   .footer-caption {
-    @include mdc-typography(body2);
+    @include mdc-typography(caption);
     @include mdc-theme-prop(color, on-secondary);
     margin: 0;
 

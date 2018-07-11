@@ -11,11 +11,13 @@ let drawer = new MDCTemporaryDrawer(
 document
   .querySelector(".menu")
   .addEventListener("click", () => (drawer.open = true));
-document
-  .querySelector(".mdc-list-item")
-  .addEventListener("click", () =>
-    document.querySelector("aside").classList.remove("mdc-drawer--open")
+document.querySelectorAll(".mdc-list-item").forEach(function(elt) {
+  elt.addEventListener("click", () => {
+    document.querySelector("aside").classList.remove("mdc-drawer--open");
+    document.querySelector("body").classList.remove("mdc-drawer-scroll-lock");
+  }
   );
+});
 
 window.onload = function() {
   var anchors = document.getElementsByTagName("a");
