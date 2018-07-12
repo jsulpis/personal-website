@@ -1,4 +1,5 @@
 var path = require("path");
+var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CleanWebpackPlugin = require("clean-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -80,6 +81,10 @@ module.exports = {
       from: 'src/img/', 
       to: 'img/'
     }]),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+  }),
     new MiniCssExtractPlugin({
       filename: "css/[name].bundle.css"
     }),

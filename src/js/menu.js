@@ -1,34 +1,26 @@
-// MDC DRAWER
-import {
-  MDCTemporaryDrawer,
-  MDCTemporaryDrawerFoundation,
-  util
-} from "@material/drawer";
+import { MDCTemporaryDrawer } from "@material/drawer";
+import { MDCTopAppBar } from "@material/top-app-bar/index";
 
+// MDC DRAWER
 let drawer = new MDCTemporaryDrawer(
   document.querySelector(".mdc-drawer--temporary")
 );
-document
-  .querySelector(".menu")
-  .addEventListener("click", () => (drawer.open = true));
-document.querySelectorAll(".mdc-list-item").forEach(function(elt) {
-  elt.addEventListener("click", () => {
-    document.querySelector("aside").classList.remove("mdc-drawer--open");
-    document.querySelector("body").classList.remove("mdc-drawer-scroll-lock");
-  }
-  );
-});
-
-window.onload = function() {
-  var anchors = document.getElementsByTagName("a");
-  for (var i = 0; i < anchors.length; i++) {
-    anchors[i].setAttribute("target", "_blank");
-  }
-};
 
 // MDC TOP APP BAR
-import { MDCTopAppBar } from "@material/top-app-bar/index";
+new MDCTopAppBar(document.querySelector(".mdc-top-app-bar"));
 
-// Instantiation
-const topAppBarElement = document.querySelector(".mdc-top-app-bar");
-const topAppBar = new MDCTopAppBar(topAppBarElement);
+// Open the navigation drawer when clicking on the hamburger icon
+$(".menu").on("click", () => (drawer.open = true));
+
+// Set the listeners to each menu item
+$(".mdc-list-item").each(function() {
+  $(this).on("click", () => {
+    $("aside").removeClass("mdc-drawer--open");
+    $("body").removeClass("mdc-drawer-scroll-lock");
+  });
+});
+
+// Set the target to _blank for all links in the page
+$(function() {
+  $("a").each(() => $(this).prop("target", "_blank"));
+});

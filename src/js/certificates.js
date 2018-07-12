@@ -1,11 +1,6 @@
 import Vue from "vue/dist/vue";
-import { MDCRipple } from "@material/ripple";
 
-document.querySelectorAll(".mdc-button").forEach(function(elt, index, listObj) {
-  new MDCRipple(elt);
-});
-
-var rawJsonContent = [
+const rawJsonContent = [
   {
     "category": "Développement Web",
     "institution": "Openclassrooms",

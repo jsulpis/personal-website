@@ -1,52 +1,44 @@
 // MDC TABS
+import { MDCTabBar } from "@material/tabs";
 
-import "@material/tabs/index";
-
-import { MDCTab, MDCTabFoundation } from "@material/tabs";
-import { MDCTabBar, MDCTabBarFoundation } from "@material/tabs";
-
-var dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
+const dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
   document.querySelector("#dynamic-tab-bar")
 ));
 
 // "Debouncer" to freeze the active tab when
 // clicking on a tab
-var tabClickedTime = 0;
-var tabs = document.getElementsByClassName("mdc-tab");
-for (var i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", function() {
-    tabClickedTime = new Date().getTime();
-  });
-}
+let tabClickedTime = 0;
+$(".mdc-tab").each(function() {
+  $(this).on("click", () => tabClickedTime = new Date().getTime());
+});
 
 // STICKY TAB BAR
-var navbar = document.getElementById("dynamic-toolbar");
-var firstSection = document.getElementById("experiences");
-var profile = document.getElementById("profile");
-var studies = document.getElementById("studies");
-var skills = document.getElementById("skills");
-var certifications = document.getElementById("certificates");
-var contact = document.getElementById("contact");
+const navbar = $("#dynamic-toolbar");
+const firstSection = document.querySelector("#experiences");
+const profile = document.querySelector("#profile");
+const studies = document.querySelector("#studies");
+const skills = document.querySelector("#skills");
+const certifications = document.querySelector("#certificates");
+const contact = document.querySelector("#contact");
 
 function convertRemToPixels(rem) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
 // Get the offset position of the navbar
-var sticky = profile.offsetHeight + convertRemToPixels(10) + 26 - 48;
+const sticky = profile.offsetHeight + convertRemToPixels(10) + 26 - 48;
 
 // Add the sticky class to the header when we reach its scroll position. Remove "sticky" when we leave the scroll position.
-var offsetY;
 window.onscroll = function() {
-  offsetY = window.pageYOffset;
+  const offsetY = window.pageYOffset;
   // Set the sticky tab bar
   if (offsetY >= sticky) {
-    navbar.classList.add("sticky");
-    navbar.classList.add("mdc-elevation--z4");
+    navbar.addClass("sticky");
+    navbar.addClass("mdc-elevation--z4");
     firstSection.classList.add("push");
   } else {
-    navbar.classList.remove("sticky");
-    navbar.classList.remove("mdc-elevation--z4");
+    navbar.removeClass("sticky");
+    navbar.removeClass("mdc-elevation--z4");
     firstSection.classList.remove("push");
   }
 
@@ -67,4 +59,3 @@ window.onscroll = function() {
     }
   }
 };
-

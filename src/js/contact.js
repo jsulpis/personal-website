@@ -1,176 +1,147 @@
 import { MDCTextField } from "@material/textfield";
 import { MDCTextFieldIcon } from "@material/textfield/icon";
 import { MDCTextFieldHelperText } from "@material/textfield/helper-text";
+import { MDCRipple } from "@material/ripple";
+import { MDCSnackbar } from "@material/snackbar";
+import axios from "axios";
 
-document.querySelectorAll(".mdc-text-field-helper-text").forEach(function(elt) {
-  new MDCTextFieldHelperText(elt);
+$(".mdc-text-field-helper-text").each(function() {
+  new MDCTextFieldHelperText(this);
 });
 
-document.querySelectorAll(".mdc-text-field").forEach(function(elt) {
-  new MDCTextField(elt);
+$(".mdc-text-field").each(function() {
+  new MDCTextField(this);
+});
+
+$(".mdc-button").each(function() {
+  new MDCRipple(this);
 });
 
 new MDCTextFieldIcon(document.querySelector(".mdc-text-field__icon"));
 
-import { MDCSnackbar } from "@material/snackbar";
-
-const snackbarElt = document.querySelector(".mdc-snackbar");
-const snackbar = new MDCSnackbar(snackbarElt);
+const snackbar = new MDCSnackbar(document.querySelector(".mdc-snackbar"));
 
 // E-mail verification
-document.getElementById("form-email").addEventListener("blur", function(elt) {
-  var mail = elt.target.value;
-  var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+$("#form-email").on("blur", function(e) {
+  const mail = e.target.value;
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  var errorMsg = document.querySelector("#email--error");
   if (!regex.test(mail) || mail.length > 64) {
-    setInvalid(document.querySelector("#email-field"));
-    document.querySelector("#email-helper-text").style.display = "none";
-    errorMsg.style.visibility = "visible";
-    errorMsg.style.display = "block";
+    setInvalid("#email-field");
+    $("#email-helper-text").css("display", "none");
+    $("#email--error").css("visibility", "visible");
+    $("#email--error").css("display", "block");
   } else {
-    errorMsg.style.visibility = "hidden";
+    $("#email--error").css("visibility", "hidden");
   }
 });
 
 // Name verification
-document.getElementById("form-name").addEventListener("blur", function(elt) {
-  var name = elt.target.value;
-  var nameField = document.getElementById("name-field");
-  var nameErrorMsg = document.querySelector("#name--error");
-  var regex = /[^a-zA-Z ]/;
+$("#form-name").on("blur", function(e) {
+  const name = e.target.value;
+  const regex = /[^a-zA-Z ]/;
   if (regex.test(name) || distinctChars(name) < 3) {
-    nameErrorMsg.textContent = "Nom invalide";
-    setInvalid(nameField);
+    $("#name--error").text("Nom invalide");
+    setInvalid("#name-field");
     return;
   }
 
   if (name.length > 64) {
-    nameErrorMsg.textContent = "Nom trop long";
-    setInvalid(nameField);
+    $("#name--error").text("Nom trop long");
+    setInvalid("#name-field");
   }
 });
 
 // Message character count
 displayCharacterCount(0);
-document
-  .getElementById("form-message")
-  .addEventListener("focus", function(elt) {
-    displayCharacterCount(elt.target.value.length);
-  });
+$("#form-message").on("focus", function(e) {
+  displayCharacterCount(e.target.value.length);
+});
 
-document
-  .getElementById("form-message")
-  .addEventListener("keyup", function(elt) {
-    displayCharacterCount(elt.target.value.length);
-  });
+$("#form-message").on("keyup", function(e) {
+  displayCharacterCount(e.target.value.length);
+});
 
 // Message verification
-document.getElementById("form-message").addEventListener("blur", function(elt) {
-  var message = elt.target.value;
-  var messageField = document.getElementById("message-field");
-  var messageErrorMsg = document.querySelector("#message-helper-text");
+$("#form-message").on("blur", function(e) {
+  const message = e.target.value;
   if (distinctChars(message) < 5) {
-    messageErrorMsg.textContent = "Message invalide";
-    messageErrorMsg.classList.add("message-error");
-    setInvalid(messageField);
+    $("#message-helper-text").text("Message invalide");
+    $("#message-helper-text").addClass("message-error");
+    setInvalid("#message-field");
     return;
   }
 
   if (message.length < 32) {
-    messageErrorMsg.textContent = "Message trop court";
-    messageErrorMsg.classList.add("message-error");
-    setInvalid(messageField);
+    $("#message-helper-text").text("Message trop court");
+    $("#message-helper-text").addClass("message-error");
+    setInvalid($("#message-field"));
   } else if (message.length > 2048) {
-    messageErrorMsg.textContent = "Message trop long: " + message.length;
-    messageErrorMsg.classList.add("message-error");
-    setInvalid(messageField);
+    $("#message-helper-text").text("Message trop long: " + message.length);
+    $("#message-helper-text").addClass("message-error");
+    setInvalid("#message-field");
   }
 });
 
 // Form sending
-document
-  .querySelector("#contact-form")
-  .addEventListener("submit", function(elt) {
-    if (document.querySelectorAll(".mdc-text-field--invalid").length > 0) {
-      console.log("Invalid formular");
-      displayErrorMessage("Formulaire invalide.");
-    } else {
-      console.log("Valid formular. Sending an e-mail...");
-      //console.log(getContactFormContent());
-      document.querySelector("#send-btn-arrow").style.display = "none";
-      document.querySelector(".animate_loader").style.display = "inline-block";
-      document.querySelector("#send-form-btn").disabled = true;
+$("#contact-form").on("submit", function(e) {
+  e.preventDefault();
+  console.log($(this).serialize());
+  if ($(".mdc-text-field--invalid").length > 0) {
+    console.log("Invalid formular");
+    displayErrorMessage("Formulaire invalide.");
+  } else {
+    console.log("Valid formular. Sending an e-mail...");
+    $("#send-btn-arrow").css("display", "none");
+    $(".animate_loader").css("display", "inline-block");
+    $("#send-form-btn").prop("disabled", true);
 
-      ajaxPost(
+    axios
+      .post(
         "https://90y1fzl9ij.execute-api.eu-west-3.amazonaws.com/prod",
-        getContactFormContent(),
-        function(response) {
-          console.log("E-mail sent. Response: " + response);
-          snackbarElt.classList.remove("invalid");
-          snackbar.show({ message: "Message envoyé !" });
-          document.querySelector("#send-btn-arrow").style.display = "inline-block";
-          document.querySelector(".animate_loader").style.display = "none";
-          document.querySelector("#send-form-btn").disabled = false;
-        }
-      );
-    }
-  });
+        getContactFormContent()
+      )
+      .then(function(response) {
+        console.log(
+          "E-mail sent. Response: " +
+            response.status +
+            " - " +
+            JSON.stringify(response.data)
+        );
+        $(".mdc-snackbar").removeClass("invalid");
+        snackbar.show({ message: "Message envoyé !" });
+        activateSendButton();
+      })
+      .catch(function(error) {
+        displayErrorMessage("Une erreur est survenue. Veuillez réessayer.");
+        activateSendButton();
+      });
+  }
+});
 
 // Returns a JSON object containing the formular content.
 function getContactFormContent() {
-  var name = document.querySelector("#form-name").value;
-  var email = document.querySelector("#form-email").value;
-  var message = document.querySelector("#form-message").value;
   return {
-    name: name,
-    email: email,
-    message: message
+    name: $("#form-name").val(),
+    email: $("#form-email").val(),
+    message: $("#form-message").val()
   };
 }
 
-// Makes an AJAX POST request
-function ajaxPost(url, data, callback) {
-  var req = new XMLHttpRequest();
-  req.open("POST", url);
-
-  req.addEventListener("load", function() {
-    if (req.status >= 200 && req.status < 400) {
-      // success, call the callback method and give it the response value
-      callback(req.responseText);
-    } else {
-      console.error(
-        req.status +
-          " : " +
-          req.statusText +
-          " from " +
-          url +
-          " - response: " +
-          req.responseText
-      );
-      displayErrorMessage("Une erreur est survenue. Veuillez réessayer.");
-    }
-  });
-
-  req.addEventListener("error", function() {
-    console.error("Network error with url: " + url);
-    displayErrorMessage("Une erreur est survenue. Veuillez réessayer.");
-  });
-
-  req.setRequestHeader("Content-Type", "application/json");
-  data = JSON.stringify(data);
-
-  req.send(data);
+function activateSendButton() {
+  $("#send-btn-arrow").css("display", "inline-block");
+  $(".animate_loader").css("display", "none");
+  $("#send-form-btn").prop("disabled", false);
 }
 
 function displayErrorMessage(msg) {
-  snackbarElt.classList.add("invalid");
+  $(".mdc-snackbar").addClass("invalid");
   snackbar.show({ message: msg });
 }
 
 // Utils
-function setInvalid(elt) {
-  elt.classList.add("mdc-text-field--invalid");
+function setInvalid(identifier) {
+  $(identifier).addClass("mdc-text-field--invalid");
 }
 
 function distinctChars(str) {
@@ -179,7 +150,6 @@ function distinctChars(str) {
 }
 
 function displayCharacterCount(charNumber) {
-  var messageErrorMsg = document.querySelector("#message-helper-text");
-  messageErrorMsg.classList.remove("message-error");
-  messageErrorMsg.textContent = charNumber + "/2048";
+  $("#message-helper-text").removeClass("message-error");
+  $("#message-helper-text").text(charNumber + "/2048");
 }
