@@ -1,10 +1,12 @@
 // MDC TABS
 import { MDCTabBar } from "@material/tabs";
 
-const dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
-  document.querySelector("#dynamic-tab-bar")
-));
+$(function() {
 
+  const dynamicTabBar = (window.dynamicTabBar = new MDCTabBar(
+    document.querySelector("#dynamic-tab-bar")
+  ));
+  
 // "Debouncer" to freeze the active tab when
 // clicking on a tab
 let tabClickedTime = 0;
@@ -15,7 +17,6 @@ $(".mdc-tab").each(function() {
 // STICKY TAB BAR
 const navbar = $("#dynamic-toolbar");
 const firstSection = document.querySelector("#experiences");
-const profile = document.querySelector("#profile");
 const studies = document.querySelector("#studies");
 const skills = document.querySelector("#skills");
 const certifications = document.querySelector("#certificates");
@@ -26,7 +27,8 @@ function convertRemToPixels(rem) {
 }
 
 // Get the offset position of the navbar
-const sticky = profile.offsetHeight + convertRemToPixels(10) + 26 - 48;
+// 48px is the height of the tabs
+const sticky = document.querySelector("#profile").offsetHeight + convertRemToPixels(10) - 48;
 
 // Add the sticky class to the header when we reach its scroll position. Remove "sticky" when we leave the scroll position.
 window.onscroll = function() {
@@ -41,7 +43,7 @@ window.onscroll = function() {
     navbar.removeClass("mdc-elevation--z4");
     firstSection.classList.remove("push");
   }
-
+  
   if (new Date().getTime() - tabClickedTime > 1000) {
     // update the active tab
     if (offsetY < sticky) {
@@ -59,3 +61,5 @@ window.onscroll = function() {
     }
   }
 };
+
+});
