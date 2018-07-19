@@ -22,7 +22,7 @@
                   <img class="course-inline-image" v-bind:src="'../img/institutions/' + course.institution + '.png'" v-bind:alt="'logo_' + course.institution">
                 </span>
                 <a title="Voir le cours" class="course-image-container" v-bind:href="course.course_url">
-                  <font-awesome-icon icon="graduation-cap"></font-awesome-icon>
+                  <v-icon>fas fa-graduation-cap</v-icon>
                 </a>
                 <a title="Voir le certificat" class="course-image-container" v-if="course.certificate_url != ''" v-bind:href="course.certificate_url">
                   <img class="course-inline-image certificate-icon" src="img/institutions/certificate_icon.png" alt="certificate_icon">
@@ -320,21 +320,9 @@ rawJsonContent.forEach(function(elem) {
   }
 });
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(faAngleLeft, faGraduationCap);
-
 export default {
   data() {
     return { categories: parsedJson };
-  },
-  components: {
-    FontAwesomeIcon
   }
 };
 </script>

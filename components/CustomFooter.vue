@@ -2,7 +2,7 @@
     <!-- FOOTER -->
     <v-footer height="auto" color="primary">
     <v-layout justify-center column py-3>
-      <v-flex xs12 class="footer-message">
+      <v-flex white--text xs12 class="footer-message">
       &copy; 2018 - Site développé par Julien Sulpis
       </v-flex>
       <v-flex white--text xs12 class="footer-caption">

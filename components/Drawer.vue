@@ -41,50 +41,84 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        drawer: false,
-        options: {
-          duration: 400,
-          offset: 0,
-          easing: "easeInOutCubic"
+export default {
+  data() {
+    return {
+      drawer: false,
+      options: {
+        duration: 400,
+        offset: 0,
+        easing: "easeInOutCubic"
+      },
+      items: [
+        {
+          title: "A propos",
+          to: "header-wrapper",
+          icon: "account_circle"
         },
-        items: [{
-            title: "A propos",
-            to: "header-wrapper",
-            icon: "account_circle"
-          },
-          {
-            title: "Experiences",
-            to: "experiences",
-            icon: "work"
-          },
-          {
-            title: "Formation",
-            to: "studies",
-            icon: "fas fa-graduation-cap"
-          },
-          {
-            title: "Compétences",
-            to: "skills",
-            icon: "fas fa-list-alt"
-          },
-          {
-            title: "Certifications",
-            to: "certificates",
-            icon: "fas fa-certificate"
-          },
-          {
-            title: "Contact",
-            to: "contact",
-            icon: "mdi-amazon"
-          }
-        ]
-      };
-    },
-    beforeMount() {
-      console.log("The drawer appears when hiding the developper window on Chrome. It seems to be an issue with Vuetify. Just click on one of the tabs to hide it.");
+        {
+          title: "Experiences",
+          to: "experiences",
+          icon: "work"
+        },
+        {
+          title: "Formation",
+          to: "studies",
+          icon: "fas fa-graduation-cap"
+        },
+        {
+          title: "Compétences",
+          to: "skills",
+          icon: "fas fa-list-alt"
+        },
+        {
+          title: "Certifications",
+          to: "certificates",
+          icon: "fas fa-certificate"
+        },
+        {
+          title: "Contact",
+          to: "contact",
+          icon: "mdi-amazon"
+        }
+      ]
+    };
+  },
+  beforeMount() {
+    console.log(
+      "The drawer appears when hiding the developper window on Chrome. It seems to be an issue with Vuetify. Just click on one of the tabs to hide it."
+    );
+    // STICKY TAB BAR
+    const navbar = $("#dynamic-toolbar");
+    const firstSection = document.querySelector("#experiences");
+
+    function convertRemToPixels(rem) {
+      return (
+        rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+      );
     }
-  };
+
+    // Get the offset position of the navbar
+    // 48px is the height of the tabs
+    const sticky =
+      document.querySelector("#profile").offsetHeight +
+      convertRemToPixels(10) -
+      48;
+
+    // Add the sticky class to the header when we reach its scroll position. Remove "sticky" when we leave the scroll position.
+    window.onscroll = function() {
+      const offsetY = window.pageYOffset;
+      // Set the sticky tab bar
+      if (offsetY >= sticky) {
+        navbar.addClass("sticky");
+        navbar.addClass("mdc-elevation--z4");
+        firstSection.classList.add("push");
+      } else {
+        navbar.removeClass("sticky");
+        navbar.removeClass("mdc-elevation--z4");
+        firstSection.classList.remove("push");
+      }
+    };
+  }
+};
 </script>

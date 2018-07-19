@@ -94,8 +94,8 @@ module.exports = {
       }
 
       // Include node_modules in css path
-      // const vueLoader = config.module.rules.find((rule) => rule.loader === 'vue-loader')
-      // vueLoader.options.loaders.scss = 'vue-style-loader!css-loader!sass-loader?' + JSON.stringify({ includePaths: [path.resolve(__dirname), 'node_modules'] })
+      const vueLoader = config.module.rules.find((rule) => rule.loader === 'vue-loader')
+      vueLoader.options.loaders.scss = 'vue-style-loader!css-loader!sass-loader?' + JSON.stringify({ includePaths: [path.resolve(__dirname), 'node_modules'] })
       for (const rule of config.module.rules) {
         if (rule.use) {
           for (const use of rule.use) {

@@ -2,7 +2,7 @@
     <div id="header-wrapper" >
     <div id="particles"></div>
 
-    <div id="profile">
+    <div id="profile" elevation-4>
       <div class="avatar">
         <img class="rounded-circle" src="/img/avatar.jpeg" alt="photo_profile" />
       </div>
@@ -115,11 +115,16 @@ export default {
       // update the active tab
       if (offsetTop < sticky) {
         this.activeTab = 0;
-      } else if (offsetTop < document.querySelector("#studies").offsetTop - 48) {
+      } else if (
+        offsetTop <
+        document.querySelector("#studies").offsetTop - 48
+      ) {
         this.activeTab = 1;
       } else if (offsetTop < document.querySelector("#skills").offsetTop - 48) {
         this.activeTab = 2;
-      } else if (offsetTop < document.querySelector("#certificates").offsetTop) {
+      } else if (
+        offsetTop < document.querySelector("#certificates").offsetTop
+      ) {
         this.activeTab = 3;
       } else if (offsetTop < document.querySelector("#contact").offsetTop) {
         this.activeTab = 4;

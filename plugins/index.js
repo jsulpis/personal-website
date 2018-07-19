@@ -1,9 +1,13 @@
-// Particles.js
-import "particles.js/particles";
-import "~/assets/js/particles-config.js";
+// Code with vendor librairy to execute on client side only
+// (use window object)
 
-// Components
-import "~/assets/js/tabs";
-import "~/assets/js/studies";
-import "~/assets/js/skills";
-import "~/assets/js/certificates";
+import ScrollReveal from "scrollreveal/dist/scrollreveal.min";
+
+window.sr = ScrollReveal();
+sr.reveal(".progress-bar", {
+  origin: "left",
+  distance: "100%",
+  easing: "ease-in-out",
+  reset: false
+});
+sr.reveal(".skill", { reset: true }, 50);
