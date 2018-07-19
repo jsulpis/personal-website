@@ -1,17 +1,20 @@
 <template>
     <!-- CERTIFICATES -->
   <section id="certificates">
-    <div class="container">
+    <v-container>
       <h2 class="mdc-typography--headline5 section-title">Certifications</h2>
-      <div id="certificates__content" class="card">
-        <div class="certificate-group" v-for="(category, index) in categories" :key="index">
-          <button class="collapsible certificate-group-name">
+      <!-- <v-card id="certificates__content"> -->
+
+        <v-expansion-panel popout>
+        <v-expansion-panel-content class="certificate-group" 
+        v-for="(category, index) in categories" 
+        :key="index">
+
+          <div slot="header" class="font-weight-regular">
             {{ category.name }}
-            <span class="arrow">
-              <font-awesome-icon icon="angle-left"></font-awesome-icon>
-            </span>
-          </button>
-          <div class="certificates-list">
+            </div>
+
+          <v-card >
             <div class="course-row-wrapper" v-for="(course, index) in category.courses" :key="index">
               <div class="course-row">
                 <span class="course-name">{{ course.name }}</span>
@@ -26,10 +29,12 @@
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </v-card>
+        </v-expansion-panel-content>
+        </v-expansion-panel>
+
+      <!-- </v-card> -->
+    </v-container>
   </section>
 </template>
 

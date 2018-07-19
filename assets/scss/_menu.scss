@@ -1,18 +1,6 @@
-// TOP APP BAR
-.mdc-top-app-bar {
-  z-index: 2;
-}
-
-// DRAWER
-.mdc-drawer__header-content {
-  display: block !important;
-  line-height: 2rem;
-  text-align: center;
-  top: 5rem !important;
-}
-
-.mdc-list-item {
-  line-height: 3rem !important;
+// Fix font-awesome icon width
+.v-icon.fas {
+  width: 24px;
 }
 
 // TAB BAR
@@ -34,7 +22,7 @@
 }
 
 // RESPONSIVE
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 960px) {
   .push {
     padding-top: 96px !important;
   }
@@ -43,15 +31,18 @@
     position: fixed !important;
     top: 0 !important;
   }
+}
 
-  .mdc-drawer,
-  .mdc-top-app-bar {
-    display: none;
+.tab-item {
+  font-size: 0.875rem;
+  letter-spacing: 0.08929em;
+
+  &:hover {
+    background-color: $material-color-grey-100;
+    transition: color 0.1s $mdc-animation-standard-curve-timing-function;
   }
 }
 
-@media only screen and (max-width: 992px) {
-  #dynamic-toolbar {
-    display: none;
-  }
+.v-tabs__item {
+  font-weight: 400;
 }

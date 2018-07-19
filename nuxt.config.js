@@ -1,4 +1,5 @@
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
 
 module.exports = {
@@ -26,6 +27,10 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/icon?family=Material+Icons"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://use.fontawesome.com/releases/v5.1.0/css/all.css"
       }
     ]
   },
@@ -33,12 +38,13 @@ module.exports = {
   * Include custom Javascript files
   */
   plugins: [
-    { src: "~/plugins/index.js", ssr: false }
+    { src: "~/plugins/index.js", ssr: false },
+    "~/plugins/vuetify.js"
   ],
   /*
   ** Include Sass files
   */
-  css: ["~assets/scss/index.scss"],
+  css: ["~assets/scss/index.scss", "~/assets/style/app.styl"],
   /*
   ** Customize the progress bar color
   */
@@ -47,23 +53,44 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ["jquery"],
     plugins: [
       new webpack.ProvidePlugin({
         $: "jquery"
       })
     ],
+    babel: {
+      plugins: [
+        [
+          "transform-imports",
+          {
+            vuetify: {
+              transform: "vuetify/es5/components/${member}",
+              preventFullImport: true
+            }
+          }
+        ]
+      ]
+    },
+    vendor: ["jquery", "~/plugins/vuetify.js"],
+    extractCSS: true,
     /*
     ** Run ESLint on save
     */
-    extend(config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    extend(config, ctx) {
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
           exclude: /(node_modules)/
         });
+      }
+      if (ctx.isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [/^vuetify/]
+          })
+        ];
       }
 
       // Include node_modules in css path

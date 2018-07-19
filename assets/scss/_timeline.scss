@@ -8,7 +8,6 @@
   line-height: 1.4em;
   list-style: none;
   margin: 0;
-  @include card();
 }
 
 /*----- TIMELINE ITEM -----*/
@@ -54,6 +53,7 @@
     top: 4px;
     left: 0;
     width: 14px;
+    box-sizing: initial;
     transition: background 0.3s $mdc-animation-standard-curve-timing-function, border 0.3s $mdc-animation-standard-curve-timing-function;
   }
   &:after {
@@ -134,7 +134,7 @@
     ----------------------------------------------*/
 
 .timeline-split {
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     .timeline {
       display: table;
     }

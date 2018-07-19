@@ -1,37 +1,35 @@
 #studies {
   min-height: 705px;
-  @media only screen and(min-width: 992px) {
+  @media only screen and(min-width: 960px) {
     max-height: 705px;
-  }
-}
-
-.schools{
-  width: 90%;
-
-  @media only screen and (min-width: 768px) {
-    width: 85%;
-  }
-
-  @media only screen and (min-width: 1200px) {
-    width: 70%;
   }
 }
 
 .school {
   transition: all 0.4s $mdc-animation-standard-curve-timing-function;
 
-  @include card();
-
-  @media only screen and(max-width: 992px) {
+  @media only screen and(max-width: 959px) {
     @include school-focus;
     width: auto;
     display: block !important;
   }
 
   display: inline-block;
-  height: 260px;
-  width: 270px;
-  margin: 20px auto;
+  margin: 0 auto;
+  
+  &.icm:not(.in) {
+    height: 240px;
+  }
+  &.cps2 {
+    &:not(.in) {
+      height: 270px;
+    }
+    @media only screen and(max-width: 959px) {
+      margin: 20px auto 0 auto;
+    }
+  }
+
+  width: 40%;
 
   h3 {
     font-weight: 500;
@@ -52,7 +50,7 @@
   }
 
   .school-content {
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 960px) {
       opacity: 0;
     }
     text-align: left;
@@ -77,8 +75,8 @@
 
 .school.in {
   @include school-focus;
-  @media only screen and (min-width: 992px) {
-    width: 37vw;
+  @media only screen and (min-width: 960px) {
+    width: 40vw;
     @include mdc-elevation(8);
   }
 }
@@ -86,11 +84,18 @@
 .schools {
   display: block;
 
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 960px) {
     display: inline-flex;
   }
 }
 
 .dots {
-  width: 20px;
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+
+  &:hover {
+    border-radius: 50%;
+    background-color: $material-color-grey-100;
+  }
 }

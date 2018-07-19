@@ -1,29 +1,17 @@
 footer {
-  background-color: $mdc-theme-primary;
   margin-top: 2rem;
-  padding: 0.75rem;
-
   .footer-message {
     @include mdc-typography(body2);
     @include mdc-theme-prop(color, on-primary);
-    // line-height: 60px;
-    margin: 0;
 
     svg {
       width: 0.75rem !important;
-    }
-
-    @media only screen and (min-width: 576px) {
-      span {
-        display: none;
-      }
     }
   }
 
   .footer-caption {
     @include mdc-typography(caption);
     @include mdc-theme-prop(color, on-secondary);
-    margin: 0;
 
     a {
         font-weight: 600;

@@ -31,6 +31,11 @@ export default {
     Certificates,
     Contact,
     CustomFooter
+  },
+  mounted() {
+    $(function() {
+      $("a").each((i, val) => $(val).prop("target", "_blank"));
+    });
   }
 };
 </script>

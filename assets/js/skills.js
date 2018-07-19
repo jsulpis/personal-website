@@ -7,4 +7,4 @@ sr.reveal(".progress-bar", {
   easing: "ease-in-out",
   reset: false
 });
-sr.reveal(".skill", {reset: true}, 50);
+sr.reveal(".skill", { reset: true }, 50);

@@ -1,7 +1,7 @@
 @mixin title-underline {
   &::after {
     content: "";
-    margin: 1rem auto;
+    margin: 0.75rem auto;
     display: block;
     width: 5rem;
     border-bottom: 3px solid;
@@ -9,7 +9,7 @@
 }
 
 @mixin school-focus {
-  height: fit-content;
+  height: fit-content !important;
 
   .school-content {
     opacity: 1;
@@ -18,12 +18,4 @@
   .dots {
     display: none;
   }
-}
-
-@mixin card {
-  @include mdc-elevation(1);
-  border-radius: 2px;
-  border: 1px solid $material-color-grey-200;
-  padding: 1rem;
-  background-color: white;
 }

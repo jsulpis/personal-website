@@ -1,5 +1,5 @@
 <template>
-    <div id="header-wrapper">
+    <div id="header-wrapper" >
     <div id="particles"></div>
 
     <div id="profile">
@@ -10,56 +10,129 @@
       <h2 class="mdc-typography--subtitle1">Stagiaire développeur Android</h2>
       <h3 class="mdc-typography--body2">SOLUTEC &#x2022; École des Mines de Saint-Étienne<br>Région de Lyon, France</h3>
       <p class="social">
-        <a href="https://www.linkedin.com/in/julien-sulpis">
-          <font-awesome-icon :icon="['fab', 'linkedin-in']"></font-awesome-icon>
+        <a href="https://www.linkedin.com/in/julien-sulpis" @mouseover="color1='grey darken-3'" @mouseleave="color1='inherit'">
+          <v-icon :color="color1">fab fa-linkedin-in</v-icon>
         </a>
-        <a href="https://github.com/jsulpis">
-          <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
+        <a class="ma-3" href="https://github.com/jsulpis" @mouseover="color2='grey darken-3'" @mouseleave="color2='inherit'">
+          <v-icon :color="color2">fab fa-github</v-icon>
         </a>
-        <a href="https://twitter.com/JulienSulpis">
-          <font-awesome-icon :icon="['fab', 'twitter']"></font-awesome-icon>
+        <a href="https://twitter.com/JulienSulpis" @mouseover="color3='grey darken-3'" @mouseleave="color3='inherit'">
+          <v-icon :color="color3">fab fa-twitter</v-icon>
         </a>
       </p>
 
       <p id="description" class="mdc-typography--body1">
-        <font-awesome-icon icon="quote-left"></font-awesome-icon>
+        <v-icon small>fas fa-quote-left</v-icon>
         Développeur généraliste passionné et curieux, toujours à la recherche de technologies à explorer. <br>Gros consommateur de cours en ligne et chasseur de certifications.
-        <font-awesome-icon icon="quote-right"></font-awesome-icon>
+        <v-icon small>fas fa-quote-right</v-icon>
       </p> 
 
 
-      <div id="dynamic-toolbar">
-        <nav id="dynamic-tab-bar" class="mdc-tab-bar hide-on-med-and-down" role="tablist">
-          <a data-scroll role="tab" aria-controls="panel-1" class="mdc-tab mdc-tab--active" href="#header-wrapper">A propos</a>
-          <a data-scroll role="tab" aria-controls="panel-2" class="mdc-tab" href="#experiences">Expériences</a>
-          <a data-scroll role="tab" aria-controls="panel-3" class="mdc-tab" href="#studies">Formation</a>
-          <a data-scroll role="tab" aria-controls="panel-3" class="mdc-tab" href="#skills">Compétences</a>
-          <a data-scroll role="tab" aria-controls="panel-3" class="mdc-tab" href="#certificates">Certifications</a>
-          <a data-scroll role="tab" aria-controls="panel-3" class="mdc-tab" href="#contact">Contact</a>
-          <span class="mdc-tab-bar__indicator"></span>
-        </nav>
-      </div>
+      <v-tabs
+      v-model="activeTab"
+      id="dynamic-toolbar"
+      class="hidden-sm-and-down"
+      centered
+      fixed-tabs
+    >
+      <v-tab
+        v-for="(item, index) in items"
+        class="tab-item "
+        :key="index"
+        ripple
+        @click="$vuetify.goTo('#' + item.to, options)"
+      >
+       {{ item.title }}
+
+      </v-tab>
+      </v-tabs>
     </div>
 
   </div>
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
-import { faQuoteRight } from "@fortawesome/free-solid-svg-icons";
-
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(faLinkedinIn, faGithub, faTwitter, faQuoteLeft, faQuoteRight);
+function convertRemToPixels(rem) {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
 
 export default {
-  components: {
-    FontAwesomeIcon
+  data() {
+    return {
+      color1: "inherit",
+      color2: "inherit",
+      color3: "inherit",
+      activeTab: 0,
+      options: {
+        duration: 400,
+        offset: 0,
+        easing: "easeInOutQuint"
+      },
+      items: [
+        {
+          title: "A propos",
+          to: "header-wrapper",
+          icon: "account_circle"
+        },
+        {
+          title: "Experiences",
+          to: "experiences",
+          icon: "work"
+        },
+        {
+          title: "Formation",
+          to: "studies",
+          icon: "fas fa-graduation-cap"
+        },
+        {
+          title: "Compétences",
+          to: "skills",
+          icon: "fas fa-list-alt"
+        },
+        {
+          title: "Certifications",
+          to: "certificates",
+          icon: "fas fa-certificate"
+        },
+        {
+          title: "Contact",
+          to: "contact",
+          icon: "mdi-amazon"
+        }
+      ]
+    };
+  },
+  methods: {
+    onScroll(e) {
+      const offsetTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      const sticky =
+        document.querySelector("#profile").offsetHeight +
+        convertRemToPixels(10) -
+        48;
+
+      // update the active tab
+      if (offsetTop < sticky) {
+        this.activeTab = 0;
+      } else if (offsetTop < document.querySelector("#studies").offsetTop - 48) {
+        this.activeTab = 1;
+      } else if (offsetTop < document.querySelector("#skills").offsetTop - 48) {
+        this.activeTab = 2;
+      } else if (offsetTop < document.querySelector("#certificates").offsetTop) {
+        this.activeTab = 3;
+      } else if (offsetTop < document.querySelector("#contact").offsetTop) {
+        this.activeTab = 4;
+      } else {
+        this.activeTab = 5;
+      }
+    }
+  },
+  beforeMount() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
   }
 };
 </script>

@@ -2,7 +2,8 @@
     <!-- EXPERIENCES -->
   <section id="experiences">
     <h2 class="mdc-typography--headline5 section-title">Expériences</h2>
-    <div class="container container-fluid">
+    <v-container>
+      <v-card>
       <ul class="timeline timeline-split">
 
         <li class="timeline-item">
@@ -86,6 +87,7 @@
           <div class="timeline-marker"></div>
         </li>
       </ul>
-    </div>
+      </v-card>
+    </v-container>
   </section>
 </template>

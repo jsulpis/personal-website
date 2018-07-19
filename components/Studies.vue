@@ -2,8 +2,8 @@
     <!-- STUDIES -->
   <section id="studies">
     <h2 class="mdc-typography--headline5 section-title">Formation</h2>
-    <div class="container schools">
-      <div class="school in">
+    <v-container class="schools">
+      <v-card class="school icm in">
         <h3 class="mdc-typography--headline6">Ingénieur Civil des Mines</h3>
         <h4 class="mdc-typography--body2">Mines Saint-Étienne</h4>
         <div class="school-logo">
@@ -41,10 +41,10 @@
             <a href="https://github.com/MajeureInfo">Voir sur GitHub.</a>
           </span>
         </div>
-      </div>
+      </v-card>
 
 
-      <div class="school">
+      <v-card class="school cps2">
         <h3 class="mdc-typography--headline6">Master on Cyber-Physical and Social Systems</h3>
         <h4 class="mdc-typography--body2">Mines Saint-Étienne, Université Jean Monnet</h4>
         <div class="school-logo">
@@ -83,7 +83,7 @@
             <a href="https://github.com/CPS2project">Voir sur GitHub.</a>
           </span>
         </div>
-      </div>
-    </div>
+      </v-card>
+    </v-container>
   </section>
 </template>

@@ -4,7 +4,7 @@
     <div class="container">
       <h2 class="mdc-typography--headline5 section-title">Compétences techniques</h2>
       <p class="mdc-typography--body2">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
-      <div class="card">
+      <v-card>
 
         <!-- Développement Web-->
         <h3 class="skill-title skill-title-first">Développement Web</h3>
@@ -185,7 +185,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </v-card>
     </div>
   </section>
 </template>

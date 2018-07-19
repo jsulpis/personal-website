@@ -1,91 +1,189 @@
 <template>
     <!-- CONTACT -->
   <section id="contact">
-    <div class="container">
+    <v-container>
 
       <h2 class="mdc-typography--headline5 section-title">Contact</h2>
-      <div class="card">
+      <v-card>
 
-        <div class="container">
+        <v-container justify-center>
 
-          <form id="contact-form" action="#">
+          <form id="contact-form" action="#" @submit.prevent="onSubmit">
 
             <!-- Name -->
-            <div id="name-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
-              <i class="material-icons mdc-text-field__icon">account_box</i>
-              <input type="text" id="form-name" class="mdc-text-field__input" required>
-              <label for="form-name" class="mdc-floating-label">Nom</label>
-              <div class="mdc-notched-outline">
-                <svg>
-                  <path class="mdc-notched-outline__path" />
-                </svg>
-              </div>
-              <div class="mdc-notched-outline__idle"></div>
-            </div>
-            <p id="name--error" class="text-field--error">
-              Nom invalide
-            </p>
+            <v-text-field
+            id="name-field"
+            v-model="name"
+            label="Nom"
+            prepend-inner-icon="account_box"
+            :rules="[rules.required, rules.nameChecker]"
+            :success="validName"
+            required
+            validate-on-blur
+            ></v-text-field>
 
             <!-- Email-->
-            <div id="email-field" class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
-              <i class="material-icons mdc-text-field__icon">email</i>
-              <input type="text" id="form-email" class="mdc-text-field__input" aria-controls="email-helper-text" aria-describedby="email-helper-text"
-                required />
-              <label for="form-email" class="mdc-floating-label">E-mail</label>
-              <div class="mdc-notched-outline">
-                <svg>
-                  <path class="mdc-notched-outline__path" />
-                </svg>
-              </div>
-              <div class="mdc-notched-outline__idle"/>
-            </div>
-            <p id="email-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
-              Il sera utilisé uniquement pour vous répondre.
-            </p>
-            <p id="email--error" class="text-field--error">
-              Adresse e-mail invalide
-            </p>
+            <v-text-field
+            id="email-field"
+            v-model="email"
+            label="E-mail"
+            prepend-inner-icon="email"
+            hint="Il sera utilisé uniquement pour vous répondre."
+            :rules="[rules.required, rules.emailChecker]"
+            :success="validEmail"
+            required
+            validate-on-blur
+            ></v-text-field>
 
             <!-- Message -->
-            <div id="message-field" class="mdc-text-field mdc-text-field--textarea">
-              <textarea id="form-message" class="mdc-text-field__input" rows="8" cols="40" required></textarea>
-              <label for="textarea" class="mdc-floating-label">Message</label>
-            </div>
-            <p id="message-helper-text" class="text-field--error">
-              0/2048
-            </p>
+            <v-textarea
+            id="message-field"
+            v-model="message"
+            label="Message"
+            auto-grow
+            counter="1000"
+            :rules="[rules.required, rules.messageChecker]"
+            :success="validMessage"
+            required
+            validate-on-blur
+            ></v-textarea>
 
-            <button id="send-form-btn" class="mdc-button mdc-button--raised">
-
-              <i id="send-btn-arrow" class="material-icons mdc-button__icon" aria-hidden="true" type="submit">send</i>
-
-              <div class="animate_loader mdc-button__icon">
-                <svg class="circular" viewBox="25 25 50 50">
-                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" />
-                </svg>
-              </div>
-
+            <v-btn
+            color="primary"
+            :loading="loading"
+            :disabled="loading"
+            type="submit"
+            >
+              <v-icon left>send</v-icon>
               Envoyer
-            </button>
+            </v-btn>
           </form>
 
-        </div>
+          
+        </v-container>
 
-        <div class="mdc-snackbar" aria-live="assertive" aria-atomic="true" aria-hidden="true">
-          <div class="mdc-snackbar__text"></div>
-          <div class="mdc-snackbar__action-wrapper">
-            <button type="button" class="mdc-snackbar__action-button"></button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <v-snackbar
+        v-model="snackbar"
+        :color="snackBarState"
+        :timeout="snackBarTimeout"
+        >
+          {{ snackBarText }}
+          <v-btn
+          dark
+          flat
+          @click="snackbar = false"
+          >
+            OK
+          </v-btn>
+        </v-snackbar>
+
+      </v-card>
+    </v-container>
   </section>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
-    return {message: ""}
+    return {
+      name: "",
+      email: "",
+      message: "",
+      loading: false,
+      snackbar: false,
+      snackBarTimeout: 3000,
+      snackBarState: "",
+      snackBarText: "",
+      validName: false,
+      validEmail: false,
+      validMessage: false,
+      rules: {
+        required: value => !!value || "Champ requis.",
+        nameChecker: value => {
+          const regex = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ ]{1,48}[A-Za-zÀ-ÿ]$/i;
+          if (value.length < 3) {
+            this.validName = false;
+            return "Nom trop court.";
+          } else if (value.length > 50) {
+            this.validName = false;
+            return "Nom trop long.";
+          } else if (!regex.test(value) || this.distinctChars(value) < 3) {
+            this.validName = false;
+            return "Nom invalide.";
+          } else {
+            this.validName = true;
+            return true;
+          }
+        },
+        emailChecker: value => {
+          const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          if (!regex.test(value)) {
+            this.validEmail = false;
+            return "E-mail invalide.";
+          } else {
+            this.validEmail = true;
+            return true;
+          }
+        },
+        messageChecker: value => {
+          if (value.length > 1000) {
+            this.validMessage = false;
+            return "Message trop long.";
+          } else if (value.length < 32) {
+            this.validMessage = false;
+            return "Message trop court.";
+          } else if (this.distinctChars(value) < 10) {
+            this.validMessage = false;
+            return "Message invalide.";
+          } else {
+            this.validMessage = true;
+            return true;
+          }
+        }
+      }
+    };
+  },
+  computed: {
+    validForm() {
+      return this.validName && this.validEmail && this.validMessage;
+    }
+  },
+  methods: {
+    onSubmit() {
+      if (this.validForm) {
+        console.log("Valid formular. Sending the e-mail...");
+        this.loading = true;
+        axios
+          .post("https://90y1fzl9ij.execute-api.eu-west-3.amazonaws.com/prod", {
+            name: this.name,
+            email: this.email,
+            message: this.message
+          })
+          .then(() => {
+            console.log("success");
+            this.showSnackBar("success", "Message envoyé !");
+          })
+          .catch(() => {
+            console.log("error");
+            this.showSnackBar(
+              "error",
+              "Une erreur est survenue. Veuillez réessayer."
+            );
+          });
+      }
+    },
+    showSnackBar(state, text) {
+      this.snackBarState = state;
+      this.snackBarText = text;
+      this.loading = false;
+      this.snackbar = true;
+    },
+    distinctChars(str) {
+      // returns the number of distinct characters in the string
+      return Array.from(new Set(str.split(""))).length;
+    }
   }
-}
+};
 </script>

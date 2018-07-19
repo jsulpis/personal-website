@@ -1,34 +1,90 @@
 <template>
-    <div>
-        <!-- MOBILE MENU -->
-                <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
-    <div class="mdc-top-app-bar__row">
-      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <a id="hamburger-menu" class="menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
-        <span class="mdc-top-app-bar__title"></span>
-      </section>
-    </div>
-  </header>
-
-  <aside class="mdc-drawer mdc-drawer--temporary mdc-typography">
-    <nav class="mdc-drawer__drawer">
-      <header class="mdc-drawer__header">
-        <div class="mdc-drawer__header-content title-underline">Menu</div>
-      </header>
-      <nav id="icon-with-text-demo" class="mdc-drawer__content mdc-list">
-        <a class="mdc-list-item" data-scroll role="tab" href="#header-wrapper">A propos</a>
-        <br>
-        <a class="mdc-list-item" data-scroll role="tab" href="#experiences">Expériences</a>
-        <br>
-        <a class="mdc-list-item" data-scroll role="tab" href="#studies">Formation</a>
-        <br>
-        <a class="mdc-list-item" data-scroll role="tab" href="#skills">Compétences</a>
-        <br>
-        <a class="mdc-list-item" data-scroll role="tab" href="#certificates">Certifications</a>
-        <br>
-        <a class="mdc-list-item" data-scroll role="tab" href="#contact">Contact</a>
-      </nav>
-    </nav>
-  </aside>
-    </div>
+  <div>
+    <v-navigation-drawer v-model="drawer" app>
+  
+      <v-list class="pa-1">
+        <v-list-tile avatar>
+          <v-list-tile-avatar>
+            <img src="/img/avatar.jpeg">
+          </v-list-tile-avatar>
+  
+          <v-list-tile-content>
+            <v-list-tile-title>Julien Sulpis</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+  
+      <v-list>
+        <v-divider></v-divider>
+  
+        <v-list-tile 
+        v-for="(item, i) in items" 
+        :key="i" 
+        @click="$vuetify.goTo('#' + item.to, options); drawer = !drawer" 
+        exact>
+          <!-- <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action> -->
+  
+          <v-list-tile-content>
+            <v-list-tile-title class="text-xs-center" v-text="item.title"></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+  
+    <v-toolbar class="hidden-md-and-up" fixed>
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+    </v-toolbar>
+  
+  </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        drawer: false,
+        options: {
+          duration: 400,
+          offset: 0,
+          easing: "easeInOutCubic"
+        },
+        items: [{
+            title: "A propos",
+            to: "header-wrapper",
+            icon: "account_circle"
+          },
+          {
+            title: "Experiences",
+            to: "experiences",
+            icon: "work"
+          },
+          {
+            title: "Formation",
+            to: "studies",
+            icon: "fas fa-graduation-cap"
+          },
+          {
+            title: "Compétences",
+            to: "skills",
+            icon: "fas fa-list-alt"
+          },
+          {
+            title: "Certifications",
+            to: "certificates",
+            icon: "fas fa-certificate"
+          },
+          {
+            title: "Contact",
+            to: "contact",
+            icon: "mdi-amazon"
+          }
+        ]
+      };
+    },
+    beforeMount() {
+      console.log("The drawer appears when hiding the developper window on Chrome. It seems to be an issue with Vuetify. Just click on one of the tabs to hide it.");
+    }
+  };
+</script>
