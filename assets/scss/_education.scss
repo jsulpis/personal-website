@@ -83,6 +83,9 @@
       width: 40vw;
       @include mdc-elevation(8);
     }
+    @media only screen and (min-width: 1600px) {
+      width: 33vw;
+    }
   }
 
   .schools {

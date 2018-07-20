@@ -44,3 +44,10 @@ section:not(.mdc-top-app-bar__section) {
 .v-card {
   padding: 1rem;
 }
+
+// Override Vuetify container width
+@media only screen and (min-width: 1904px) {
+  .container {
+    max-width: 1185px !important;
+  }
+}
