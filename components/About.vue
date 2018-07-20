@@ -47,7 +47,7 @@
         class="tab-item " 
         :key="index" 
         ripple 
-        @click="$vuetify.goTo('#' + item.to, options)">
+        @click="$vuetify.goTo('#' + item.to, options); tablClickedTime = new Date().getTime()">
           {{ item.title }}
         </v-tab>
       </v-tabs>
@@ -67,6 +67,7 @@
         color2: "inherit",
         color3: "inherit",
         activeTab: 0,
+        tablClickedTime: 0,
         options: {
           duration: 400,
           offset: 0,
@@ -115,24 +116,27 @@
           convertRemToPixels(10) -
           48;
 
-        // update the active tab
-        if (offsetTop < sticky) {
-          this.activeTab = 0;
-        } else if (
-          offsetTop <
-          document.querySelector("#studies").offsetTop - 48
-        ) {
-          this.activeTab = 1;
-        } else if (offsetTop < document.querySelector("#skills").offsetTop - 48) {
-          this.activeTab = 2;
-        } else if (
-          offsetTop < document.querySelector("#certificates").offsetTop
-        ) {
-          this.activeTab = 3;
-        } else if (offsetTop < document.querySelector("#contact").offsetTop) {
-          this.activeTab = 4;
-        } else {
-          this.activeTab = 5;
+        // "Debouncer" to freeze the active tab when clicking on a tab
+        if (new Date().getTime() - this.tabClickedTime > 1000) {
+          // update the active tab
+          if (offsetTop < sticky) {
+            this.activeTab = 0;
+          } else if (
+            offsetTop <
+            document.querySelector("#studies").offsetTop - 48
+          ) {
+            this.activeTab = 1;
+          } else if (offsetTop < document.querySelector("#skills").offsetTop - 48) {
+            this.activeTab = 2;
+          } else if (
+            offsetTop < document.querySelector("#certificates").offsetTop
+          ) {
+            this.activeTab = 3;
+          } else if (offsetTop < document.querySelector("#contact").offsetTop) {
+            this.activeTab = 4;
+          } else {
+            this.activeTab = 5;
+          }
         }
       }
     },
