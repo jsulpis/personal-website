@@ -54,7 +54,8 @@
     left: 0;
     width: 14px;
     box-sizing: initial;
-    transition: background 0.3s $mdc-animation-standard-curve-timing-function, border 0.3s $mdc-animation-standard-curve-timing-function;
+    transition: background 0.3s $mdc-animation-standard-curve-timing-function,
+      border 0.3s $mdc-animation-standard-curve-timing-function;
   }
   &:after {
     content: "";
@@ -76,6 +77,9 @@
 }
 
 /*----- TIMELINE CONTENT -----*/
+.date {
+  @include mdc-typography(subtitle2);
+}
 
 .timeline-content {
   padding-bottom: 80px;
@@ -86,8 +90,21 @@
   h4 {
     margin: 0.25rem 0;
   }
+
+  .timeline-title {
+    @include mdc-typography(headline6);
+  }
+
+  .company {
+    @include mdc-typography(subtitle1);
+  }
   .location {
+    @include mdc-typography("caption");
     line-height: 0.75rem;
+  }
+  p,
+  ul {
+    @include mdc-typography(body2);
   }
   p:last-child {
     margin-bottom: 0;

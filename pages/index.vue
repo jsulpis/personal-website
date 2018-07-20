@@ -3,7 +3,7 @@
     <drawer/>
     <about/>
     <experiences/>
-    <studies/>
+    <education/>
     <skills/>
     <certificates/>
     <contact/>
@@ -15,7 +15,7 @@
 import About from "~/components/About.vue";
 import Drawer from "~/components/Drawer.vue";
 import Experiences from "~/components/Experiences.vue";
-import Studies from "~/components/Studies.vue";
+import Education from "~/components/Education.vue";
 import Skills from "~/components/Skills.vue";
 import Certificates from "~/components/Certificates.vue";
 import Contact from "~/components/Contact.vue";
@@ -26,7 +26,7 @@ export default {
     About,
     Drawer,
     Experiences,
-    Studies,
+    Education,
     Skills,
     Certificates,
     Contact,

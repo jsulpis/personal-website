@@ -1,4 +1,8 @@
 #skills {
+  .subtitle {
+    @include mdc-typography(body2);
+  }
+  
   .skill-title {
     @include mdc-typography(headline6);
     margin-bottom: 0.5rem;
@@ -49,58 +53,50 @@
       transparent
     );
   }
-}
+  .skill {
+    display: inline-block;
+    width: $skill-item-size;
+    margin: 1rem 1.5rem;
+    .progress-container {
+      display: flex;
+      flex-direction: column;
+      .tooltip {
+        img {
+          max-height: $skill-item-size * 0.8;
+          max-width: $skill-item-size;
+          margin-bottom: 0.5rem;
+        } /* Tooltip text */
+        .tooltiptext {
+          visibility: hidden;
+          width: 150px;
+          text-align: center;
+          padding: 0.5rem;
+          border-radius: 2px;
 
-.skill {
-  display: inline-block;
-  width: $skill-item-size;
-  margin: 1rem 1.5rem;
-
-  .progress-container {
-    display: flex;
-    flex-direction: column;
-
-    .tooltip {
-      img {
-        max-height: $skill-item-size * 0.8;
-        max-width: $skill-item-size;
-        margin-bottom: 0.5rem;
+          background-color: white;
+          @include mdc-elevation(8);
+          @include mdc-typography(body2);
+          /* Position the tooltip text */
+          position: absolute;
+          // z-index: 9999;
+          bottom: 115%;
+          left: -50%;
+        }
       }
-
-      /* Tooltip text */
-      .tooltiptext {
-        visibility: hidden;
-        width: 150px;
-        text-align: center;
-        padding: 0.5rem;
-        border-radius: 2px;
-        background-color: white;
-        @include mdc-elevation(8);
-        @include mdc-typography(body2);
-
-        /* Position the tooltip text */
-        position: absolute;
-        // z-index: 9999;
-        bottom: 115%;
-        left: -50%;
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
       }
-    }
-
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-    }
-
-    .progress {
-      flex-basis: 100%;
-      border-radius: $skill-item-size * 0.1;
-      overflow: hidden;
-      height: $skill-item-size * 0.1;
-      background-color: $material-color-grey-300;
-
-      .progress-bar {
+      .progress {
+        flex-basis: 100%;
+        border-radius: $skill-item-size * 0.1;
+        overflow: hidden;
         height: $skill-item-size * 0.1;
-        background-color: $mdc-theme-primary;
+        background-color: $material-color-grey-300;
+        .progress-bar {
+          height: $skill-item-size * 0.1;
+          background-color: $mdc-theme-primary;
+        }
       }
     }
   }

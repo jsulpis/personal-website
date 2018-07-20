@@ -1,191 +1,175 @@
 <template>
-    <!-- SKILLS -->
+  <!-- SKILLS -->
   <section id="skills">
-    <div class="container">
-      <h2 class="mdc-typography--headline5 section-title">Compétences techniques</h2>
-      <p class="mdc-typography--body2">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
+    <v-container>
+      <h2 class="section-title">Compétences techniques</h2>
+      <p class="subtitle">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
       <v-card>
-
-        <!-- Développement Web-->
-        <h3 class="skill-title skill-title-first">Développement Web</h3>
-        <h4 class="skill-subtitle">Front-end</h4>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/html.png" alt="logo_html">
-              <span class="tooltiptext">Langage de balisage définissant le contenu des pages web.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/css3.png" alt="logo_css3">
-              <span class="tooltiptext">Langage définissant le style des pages web.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/js.png" alt="logo_javascript">
-              <span class="tooltiptext">Langage de programmation principalement utilisé dans les pages web interactives.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/sass.svg" alt="logo_sass">
-              <span class="tooltiptext">Outil facilitant (beaucoup) le développement CSS.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/webpack.png" alt="logo_webpack">
-              <span class="tooltiptext">Outil permettant d'empaqueter et d'optimiser les fichiers d'un site web.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-
-        <h4 class="skill-subtitle">Back-end</h4>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/spring-boot.png" alt="logo_spring_boot">
-              <span class="tooltiptext">Framework de développement d'applications web en java.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/nodejs.png" alt="logo_nodejs">
-              <span class="tooltiptext">Framework de développement d'applications web en javascript.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/mongodb.png" alt="logo_mongodb">
-              <span class="tooltiptext">Base de données NoSQL orientée document.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/aws.png" alt="logo_mongodb">
-              <span class="tooltiptext">Première et principale plateforme de cloud computing.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 60%"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile & IoT -->
-        <h3 class="skill-title">Mobile & IoT</h3>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/android.png" alt="logo_html">
-              <span class="tooltiptext">Système d'exploitation de la majorité des smartphones.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/arduino.png" alt="logo_html">
-              <span class="tooltiptext">Plateforme de prototypage de systèmes électroniques simples.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Big Data -->
-        <h3 class="skill-title">Big Data</h3>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/spark.png" alt="logo_html">
-              <span class="tooltiptext">Moteur de traitement de gros volumes de données.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/kafka.png" alt="logo_html">
-              <span class="tooltiptext">Outil de transfert et de traitement de gros volumes de données en temps réel.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 40%"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Langages -->
-        <h3 class="skill-title">Langages généralistes</h3>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/java.png" alt="logo_html">
-              <span class="tooltiptext">Langage orienté objet, facilement portable d'un système à un autre. Sa devise: "write once, run everywhere".</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="progress-container">
-            <div class="tooltip">
-              <img src="img/techno/python.svg" alt="logo_html">
-              <span class="tooltiptext">Langage haut niveau orienté objet, très utilisé par les scientifiques et dans les logiciels open-source.</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 80%"></div>
+        <!-- Loop on domains -->
+        <div v-for="(domain, index) in skillSet" :key="index">
+          <h3 :class="'skill-title' + (index == 0 ? ' skill-title-first' : '')">{{ domain.name }}</h3>
+          <!-- Loop on subdomains -->
+          <div v-for="(subdomain, index) in domain.subdomains" :key="index">
+            <h4 v-if="subdomain.name != ''" class="skill-subtitle">{{ subdomain.name }}</h4>
+            <!-- Loop on skills -->
+            <div v-for="(skill, index) in subdomain.skills" :key="index" class="skill">
+              <div class="progress-container">
+                <div class="tooltip">
+                  <img :src="skill.imageUrl" :alt="'logo_' + skill.imageUrl.split('.')[0]">
+                  <span class="tooltiptext">{{ skill.description }}</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" :style="'width: ' + skill.level + '%'"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </v-card>
-    </div>
+    </v-container>
   </section>
 </template>
+
+<script>
+  const rawJsonContent = [
+    {
+      name: "Développement Web",
+      subdomains: [
+        {
+          name: "Front-end",
+          skills: [
+            {
+              imageUrl: "img/techno/html.png",
+              description:
+                "Langage de balisage définissant le contenu des pages web.",
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/css3.png",
+              description: "Langage définissant le style des pages web.",
+              level: 60
+            },
+            {
+              imageUrl: "img/techno/javascript.png",
+              description:
+                "Langage de programmation principalement utilisé dans les pages web interactives.",
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/sass.svg",
+              description: "Outil facilitant le développement CSS.",
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/webpack.png",
+              description:
+                "Outil permettant d'empaqueter et d'optimiser les fichiers d'un site web.",
+              level: 60
+            }
+          ]
+        },
+        {
+          name: "Back-end",
+          skills: [
+            {
+              imageUrl: "img/techno/spring-boot.png",
+              description:
+                "Framework de développement d'applications web en java.",
+              level: 60
+            },
+            {
+              imageUrl: "img/techno/nodejs.png",
+              description:
+                "Framework de développement d'applications web en javascript.",
+              level: 60
+            },
+            {
+              imageUrl: "img/techno/mongodb.png",
+              description: "Base de données NoSQL orientée document.",
+              level: 60
+            },
+            {
+              imageUrl: "img/techno/aws.png",
+              description:
+                "Première et principale plateforme de cloud computing.",
+              level: 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Mobile & IoT",
+      subdomains: [
+        {
+          name: "",
+          skills: [
+            {
+              imageUrl: "img/techno/android.png",
+              description:
+                "Système d'exploitation de la majorité des smartphones.",
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/arduino.png",
+              description:
+                "Plateforme de prototypage de systèmes électroniques simples.",
+              level: 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Big Data",
+      subdomains: [
+        {
+          name: "",
+          skills: [
+            {
+              imageUrl: "img/techno/spark.png",
+              description: "Moteur de traitement de gros volumes de données.",
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/kafka.png",
+              description:
+                "Outil de transfert et de traitement de gros volumes de données en temps réel.",
+              level: 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Langages généralistes",
+      subdomains: [
+        {
+          name: "",
+          skills: [
+            {
+              imageUrl: "img/techno/java.png",
+              description:
+                'Langage orienté objet, facilement portable d\'un système à un autre. Sa devise: "write once, run everywhere".',
+              level: 80
+            },
+            {
+              imageUrl: "img/techno/python.svg",
+              description:
+                "Langage haut niveau orienté objet, très utilisé par les scientifiques et dans les logiciels open-source.",
+              level: 80
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  export default {
+    data() {
+      return {
+        skillSet: rawJsonContent
+      };
+    }
+  };
+</script>
