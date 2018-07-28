@@ -5,18 +5,11 @@ import {
   VApp,
   VCard,
   VNavigationDrawer,
-  VFooter,
   VList,
-  VBtn,
-  VTabs,
   VIcon,
   VDivider,
   VGrid,
-  VToolbar,
-  VTextField,
-  VTextArea,
-  VSnackbar,
-  VExpansionPanel
+  VToolbar
 } from "vuetify";
 
 Vue.use(Vuetify, {
@@ -24,17 +17,10 @@ Vue.use(Vuetify, {
     VApp,
     VCard,
     VNavigationDrawer,
-    VFooter,
     VList,
-    VBtn,
-    VTabs,
     VIcon,
     VDivider,
     VGrid,
-    VToolbar,
-    VTextField,
-    VTextArea,
-    VSnackbar,
-    VExpansionPanel
+    VToolbar
   }
 });

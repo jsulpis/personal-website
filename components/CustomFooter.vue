@@ -12,3 +12,13 @@
     </v-layout>
   </v-footer>
 </template>
+
+<script>
+import * as VFooter from "vuetify/es5/components/VFooter";
+
+export default {
+  components: {
+    ...VFooter
+  }
+};
+</script>

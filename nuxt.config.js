@@ -37,14 +37,11 @@ module.exports = {
   /*
   * Include custom Javascript files
   */
-  plugins: [
-    { src: "~/plugins/index.js", ssr: false },
-    "~/plugins/vuetify.js"
-  ],
+  plugins: ["~/plugins/vuetify.js"],
   /*
   ** Include Sass files
   */
-  css: ["~assets/scss/index.scss", "~/assets/style/app.styl"],
+  css: ["~/assets/vuetify-style/app.styl"],
   /*
   ** Customize the progress bar color
   */
@@ -94,8 +91,14 @@ module.exports = {
       }
 
       // Include node_modules in css path
-      const vueLoader = config.module.rules.find((rule) => rule.loader === 'vue-loader')
-      vueLoader.options.loaders.scss = 'vue-style-loader!css-loader!sass-loader?' + JSON.stringify({ includePaths: [path.resolve(__dirname), 'node_modules'] })
+      const vueLoader = config.module.rules.find(
+        rule => rule.loader === "vue-loader"
+      );
+      vueLoader.options.loaders.scss =
+        "vue-style-loader!css-loader!sass-loader?" +
+        JSON.stringify({
+          includePaths: [path.resolve(__dirname), "node_modules"]
+        });
       for (const rule of config.module.rules) {
         if (rule.use) {
           for (const use of rule.use) {

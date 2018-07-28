@@ -8,7 +8,7 @@
         <img class="rounded-circle" src="/img/avatar.jpeg" alt="photo_profile" />
       </div>
       <h1>Julien Sulpis</h1>
-      <h2 class="mdc-typography--subtitle1">Stagiaire développeur Android</h2>
+      <h2>Stagiaire développeur Android</h2>
       <h3>SOLUTEC &#x2022; École des Mines de Saint-Étienne
         <br>Région de Lyon, France</h3>
       <!-- Social links -->
@@ -56,24 +56,36 @@
 </template>
 
 <script>
-  function convertRemToPixels(rem) {
-    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-  }
+import * as VTabs from "vuetify/es5/components/VTabs";
 
-  export default {
-    data() {
-      return {
-        color1: "inherit",
-        color2: "inherit",
-        color3: "inherit",
-        activeTab: 0,
-        tablClickedTime: 0,
-        options: {
-          duration: 400,
-          offset: 0,
-          easing: "easeInOutQuint"
-        },
-        items: [{
+if (process.browser) {
+  require("particles.js/particles");
+  require("~/assets/js/particles.config.js");
+}
+
+function convertRemToPixels(rem) {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
+export default {
+  components: {
+    ...VTabs
+  },
+  data() {
+    return {
+      color1: "inherit",
+      color2: "inherit",
+      color3: "inherit",
+      activeTab: 0,
+      tablClickedTime: 0,
+      options: {
+        duration: 400,
+        offset: 0,
+        easing: "easeInOutQuint"
+      },
+      sticky: 0,
+      items: [
+        {
           title: "A propos",
           to: "header-wrapper",
           icon: "account_circle"
@@ -103,48 +115,65 @@
           to: "contact",
           icon: "mdi-amazon"
         }
-        ]
-      };
-    },
-    methods: {
-      onScroll(e) {
-        const offsetTop =
-          window.pageYOffset || document.documentElement.scrollTop;
+      ]
+    };
+  },
+  methods: {
+    onScroll(e) {
+      const offsetTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-        const sticky =
-          document.querySelector("#profile").offsetHeight +
-          convertRemToPixels(10) -
-          48;
+      // STICKY TAB BAR
+      const navbar = $("#tab-bar");
+      const firstSection = document.querySelector("#experiences");
 
-        // "Debouncer" to freeze the active tab when clicking on a tab
-        if (new Date().getTime() - this.tabClickedTime > 1000) {
-          // update the active tab
-          if (offsetTop < sticky) {
-            this.activeTab = 0;
-          } else if (
-            offsetTop <
-            document.querySelector("#studies").offsetTop - 48
-          ) {
-            this.activeTab = 1;
-          } else if (offsetTop < document.querySelector("#skills").offsetTop - 48) {
-            this.activeTab = 2;
-          } else if (
-            offsetTop < document.querySelector("#certificates").offsetTop
-          ) {
-            this.activeTab = 3;
-          } else if (offsetTop < document.querySelector("#contact").offsetTop) {
-            this.activeTab = 4;
-          } else {
-            this.activeTab = 5;
-          }
+      // Set the sticky tab bar
+      if (offsetTop >= this.sticky) {
+        navbar.addClass("sticky");
+        navbar.addClass("mdc-elevation--z4");
+        firstSection.classList.add("push");
+      } else {
+        navbar.removeClass("sticky");
+        navbar.removeClass("mdc-elevation--z4");
+        firstSection.classList.remove("push");
+      }
+
+      // "Debouncer" to freeze the active tab when clicking on a tab
+      if (new Date().getTime() - this.tabClickedTime > 1000) {
+        // update the active tab
+        if (offsetTop < this.sticky) {
+          this.activeTab = 0;
+        } else if (
+          offsetTop <
+          document.querySelector("#studies").offsetTop - 48
+        ) {
+          this.activeTab = 1;
+        } else if (
+          offsetTop <
+          document.querySelector("#skills").offsetTop - 48
+        ) {
+          this.activeTab = 2;
+        } else if (
+          offsetTop < document.querySelector("#certificates").offsetTop
+        ) {
+          this.activeTab = 3;
+        } else if (offsetTop < document.querySelector("#contact").offsetTop) {
+          this.activeTab = 4;
+        } else {
+          this.activeTab = 5;
         }
       }
-    },
-    beforeMount() {
-      window.addEventListener("scroll", this.onScroll);
-    },
-    beforeDestroy() {
-      window.removeEventListener("scroll", this.onScroll);
     }
-  };
+  },
+  beforeMount() {
+    this.sticky =
+      document.querySelector("#profile").offsetHeight +
+      convertRemToPixels(10) -
+      48;
+    window.addEventListener("scroll", this.onScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
+};
 </script>
