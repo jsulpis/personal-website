@@ -18,36 +18,3 @@ a {
     @include mdc-theme-prop(color, text-primary-on-background);
   }
 }
-
-.rounded-circle {
-  border-radius: 50%;
-  padding: 0px;
-  border: 5px solid white;
-  @include mdc-elevation(8);
-}
-
-section:not(.mdc-top-app-bar__section) {
-  margin: auto;
-  padding: 16px 0 5px 0;
-}
-
-.section-title {
-  margin: 1rem auto 2rem auto;
-  @include title-underline;
-  @include mdc-typography(headline5);
-}
-
-.title-underline {
-  @include title-underline;
-}
-
-.v-card {
-  padding: 1rem;
-}
-
-// Override Vuetify container width
-@media only screen and (min-width: 1904px) {
-  .container {
-    max-width: 1185px !important;
-  }
-}

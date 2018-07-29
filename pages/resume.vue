@@ -1,6 +1,11 @@
 <template>
   <div>
-    <drawer/>
+    <drawer 
+    :items="items"
+    :dark=false
+    :fixed=true
+    :flat=false 
+    color=""/>
     <about/>
     <experiences/>
     <education/>
@@ -32,6 +37,42 @@ export default {
     Contact,
     CustomFooter
   },
+  data() {
+    return {
+      items: [
+        {
+          title: "A propos",
+          to: "header-wrapper",
+          icon: "account_circle"
+        },
+        {
+          title: "Experiences",
+          to: "experiences",
+          icon: "work"
+        },
+        {
+          title: "Formation",
+          to: "studies",
+          icon: "fas fa-graduation-cap"
+        },
+        {
+          title: "Compétences",
+          to: "skills",
+          icon: "fas fa-list-alt"
+        },
+        {
+          title: "Certifications",
+          to: "certificates",
+          icon: "fas fa-certificate"
+        },
+        {
+          title: "Contact",
+          to: "contact",
+          icon: "mdi-amazon"
+        }
+      ]
+    };
+  },
   mounted() {
     $(function() {
       $("a").each((i, val) => $(val).prop("target", "_blank"));
@@ -41,5 +82,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~assets/scss/resume.scss";
+@import "~assets/scss/resume/main.scss";
 </style>

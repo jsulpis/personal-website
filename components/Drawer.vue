@@ -34,7 +34,12 @@
     </v-navigation-drawer>
 
     <!-- TOOLBAR -->
-    <v-toolbar class="hidden-md-and-up" fixed>
+    <v-toolbar 
+    class="hidden-md-and-up" 
+    :dark="dark" 
+    :fixed="fixed" 
+    :flat="flat" 
+    :color="color">
       <v-toolbar-side-icon @click="drawer = !drawer" />
     </v-toolbar>
 
@@ -43,6 +48,13 @@
 
 <script>
 export default {
+  props: {
+    items: Array,
+    dark: Boolean,
+    fixed: Boolean,
+    flat: Boolean,
+    color: String
+  },
   data() {
     return {
       drawer: false,
@@ -50,39 +62,7 @@ export default {
         duration: 400,
         offset: 0,
         easing: "easeInOutCubic"
-      },
-      items: [
-        {
-          title: "A propos",
-          to: "header-wrapper",
-          icon: "account_circle"
-        },
-        {
-          title: "Experiences",
-          to: "experiences",
-          icon: "work"
-        },
-        {
-          title: "Formation",
-          to: "studies",
-          icon: "fas fa-graduation-cap"
-        },
-        {
-          title: "Compétences",
-          to: "skills",
-          icon: "fas fa-list-alt"
-        },
-        {
-          title: "Certifications",
-          to: "certificates",
-          icon: "fas fa-certificate"
-        },
-        {
-          title: "Contact",
-          to: "contact",
-          icon: "mdi-amazon"
-        }
-      ]
+      }
     };
   }
 };
