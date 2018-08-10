@@ -1,0 +1,18 @@
+@import "@material/theme/color-palette";
+@import "@material/typography/mdc-typography";
+@import "@material/elevation/mdc-elevation";
+@import "@material/animation/functions";
+@import "variables";
+@import "@material/theme/mdc-theme";
+
+@import "../global";
+@import "mixins";
+@import "page";
+@import "menu";
+@import "about";
+@import "experiences";
+@import "education";
+@import "skills";
+@import "certificates";
+@import "contact";
+@import "../footer";
