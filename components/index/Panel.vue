@@ -1,7 +1,6 @@
 <template>
   <section 
-    :class="'panel ' + title | toDataSectionFormat" 
-    :data-section-name="title | toDataSectionFormat">
+    class="section">
     <div class="inner">
       <div class="vertical-center">
         <h2 class="panel-title">un {{ title }}</h2>

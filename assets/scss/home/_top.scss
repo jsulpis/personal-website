@@ -11,31 +11,6 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
 
-  a.down-arrow {
-    position: absolute;
-    top: 85vh;
-    left: 50vw;
-    padding: 0;
-    margin: 0;
-
-    .v-icon {
-      width: 100%;
-      transform: translateX(-50%);
-      opacity: 0.8;
-      animation: arrow 1s ease-in-out infinite alternate;
-    }
-  }
-
-  @keyframes arrow {
-    from {
-      margin-top: 0;
-    }
-
-    to {
-      margin-top: 0.5rem;
-    }
-  }
-
   a {
     color: #fff;
     text-decoration: none;
