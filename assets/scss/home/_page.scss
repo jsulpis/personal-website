@@ -7,5 +7,16 @@
 
   font-size: 2.5rem;
   font-weight: 400;
-  color: white;
+  color: $material-white;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
+  color: $material-white;
+
+  &:hover {
+    color: darken($material-white, 20);
+  }
 }

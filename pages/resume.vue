@@ -42,32 +42,32 @@ export default {
       items: [
         {
           title: "A propos",
-          to: "header-wrapper",
+          to: "#header-wrapper",
           icon: "account_circle"
         },
         {
           title: "Experiences",
-          to: "experiences",
+          to: "#experiences",
           icon: "work"
         },
         {
           title: "Formation",
-          to: "studies",
+          to: "#studies",
           icon: "fas fa-graduation-cap"
         },
         {
           title: "Compétences",
-          to: "skills",
+          to: "#skills",
           icon: "fas fa-list-alt"
         },
         {
           title: "Certifications",
-          to: "certificates",
+          to: "#certificates",
           icon: "fas fa-certificate"
         },
         {
           title: "Contact",
-          to: "contact",
+          to: "#contact",
           icon: "mdi-amazon"
         }
       ]

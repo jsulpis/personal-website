@@ -7,14 +7,3 @@ body {
   margin: 0;
   text-align: center;
 }
-
-a {
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
-  @include mdc-theme-prop(color, text-secondary-on-background);
-
-  &:hover {
-    @include mdc-theme-prop(color, text-primary-on-background);
-  }
-}

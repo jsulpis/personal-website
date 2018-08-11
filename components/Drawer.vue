@@ -20,14 +20,18 @@
         <v-list-tile 
         v-for="(item, i) in items" 
         :key="i" 
-        @click="$vuetify.goTo('#' + item.to, options); drawer = !drawer" 
-        exact>
+        :to="nuxtLinks ? item.to : ''"
+        @click="!nuxtLinks ? $vuetify.goTo(item.to, options) : '';drawer = !drawer;" 
+        exact
+        nuxt>
           <!-- <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action> -->
 
           <v-list-tile-content>
-            <v-list-tile-title class="text-xs-center" v-text="item.title" />
+            <v-list-tile-title class="text-xs-center">
+              {{ item.title }}
+            </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -64,6 +68,12 @@ export default {
         easing: "easeInOutCubic"
       }
     };
+  },
+  computed: {
+    // A helper property to know whether the links are anchors or other pages
+    nuxtLinks() {
+      return this.items[0].to.startsWith("/");
+    }
   }
 };
 </script>

@@ -30,3 +30,14 @@ section:not(.mdc-top-app-bar__section) {
     max-width: 1185px !important;
   }
 }
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
+  @include mdc-theme-prop(color, text-secondary-on-background);
+
+  &:hover {
+    @include mdc-theme-prop(color, text-primary-on-background);
+  }
+}

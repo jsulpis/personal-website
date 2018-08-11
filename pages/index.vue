@@ -89,6 +89,7 @@
           $("#fixed-catchphrase").fadeIn();
         }
       });
+      $(".section").css("visibility", "visible");
     }
   };
 </script>

@@ -2,11 +2,12 @@
       <!-- Header -->
   <header class="section presentation" data-section-name="presentation">
     <div class="header-container">
-      <nav class="hidden-sm-and-down borderXwidth text-sm-right">
+      <nav class="hidden-sm-and-down main-menu text-sm-right">
         <ul>
           <li 
           v-for="(item, i) in items" 
-          :key="i"><nuxt-link :to="item.to">{{ item.title }}</nuxt-link></li>
+          :key="i"
+          :class="i == 0 ? 'active' : ''"><nuxt-link :to="item.to">{{ item.title }}</nuxt-link></li>
         </ul>
       </nav>
       <div class="inner">
