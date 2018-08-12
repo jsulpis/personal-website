@@ -1,6 +1,6 @@
 <template>
       <!-- Header -->
-  <header class="section presentation" data-section-name="presentation">
+  <header id="presentation" class="section">
     <div class="header-container">
       <nav class="hidden-sm-and-down main-menu text-sm-right">
         <ul>
@@ -13,6 +13,7 @@
       <div class="inner">
         <div class="vertical-center">
           <h1 class="panel-title">{{ title }}</h1>
+          <h3 class="panel-subtitle"></h3>
           <p class="panel-description"><slot></slot></p>
         </div>
       </div>

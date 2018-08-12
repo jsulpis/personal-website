@@ -7,7 +7,8 @@
     <div id="fullpage">
 
       <home :items="items" title="Julien Sulpis">
-        Bienvenue ! Vous trouverez sur ce site divers contenus artistiques et techniques que je souhaite partager.
+        Bienvenue sur ce site !
+        <br>Vous y trouverez divers contenus artistiques et techniques que je souhaite partager.
       </home>
 
       <panel title="développeur" subtitle="passionné">
@@ -33,12 +34,15 @@
   import Home from "~/components/index/Home.vue";
   import Panel from "~/components/index/Panel.vue";
 
+  function loadImage(id) {
+    $("#" + id).css("background-image", "url('/img/background/" + id + ".jpg')");
+  }
+
   export default {
     head() {
       return {
         script: [
-          { src: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.js" },
-          { src: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.extensions.min.js"}
+          { src: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.js" }
         ],
         link: [
           { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.css" }
@@ -77,19 +81,26 @@
       };
     },
     mounted() {
+      // Initialize the panel components
       new fullpage('#fullpage', {
         autoScrolling: true,
         licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
         verticalCentered: true,
         navigation: true,
         scrollingSpeed: 600,
-        dragAndMove: true,
-        onLeave() {
-          $("#fixed-catchphrase").fadeOut("fast");
-          $("#fixed-catchphrase").fadeIn();
+        onLeave(leavingSection, destination, direction) {
+          // When leaving a section, animate the catchphrase...
+          $("#fixed-catchphrase").css("opacity", "0")
+          setTimeout(() => $("#fixed-catchphrase").css("opacity", "1"), 300);
+          // ... load the next image and display the section
+          loadImage(destination.item.id);
+          destination.item.classList.add("show");
         }
       });
-      $(".section").css("visibility", "visible");
+      // Show the first panel
+      loadImage("presentation");
+      $("#presentation").addClass("show");
+      $("#fixed-catchphrase").addClass("show");
     }
   };
 </script>

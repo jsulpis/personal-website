@@ -1,22 +1,40 @@
+.hide-on-load {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
 #fixed-catchphrase {
+  @extend .hide-on-load;
   position: fixed;
   z-index: 1;
   left: 50%;
   transform: translateX(-50%);
-  top: 20vh;
-
-  font-size: 2.5rem;
+  top: 22%;
+  font-size: 2.1rem;
   font-weight: 400;
-  color: $material-white;
 }
 
 a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
   color: $material-white;
 
-  &:hover {
+  p &:hover {
     color: darken($material-white, 20);
   }
+}
+
+#fixed-catchphrase,
+.section {
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.application.theme--light {
+  color: $material-white;
+  background: $material-color-grey-900;
 }

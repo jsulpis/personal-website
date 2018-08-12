@@ -4,7 +4,13 @@
   "description": "My personnal website built with Nuxt.js and other awesome tools",
   "author": "Julien Sulpis <julien.sulpis@gmail.com>",
   "private": true,
-  "scripts": {
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+   },
+   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "analyze": "nuxt build --analyze",
