@@ -50,7 +50,7 @@
         class="tab-item " 
         :key="index" 
         ripple 
-        @click="$vuetify.goTo('#' + item.to, options); tablClickedTime = new Date().getTime()">
+        @click="$vuetify.goTo('#' + item.to, options); tabClickedTime = new Date().getTime()">
           {{ item.title }}
         </v-tab>
       </v-tabs>
@@ -80,7 +80,7 @@ export default {
       color2: "inherit",
       color3: "inherit",
       activeTab: 0,
-      tablClickedTime: 0,
+      tabClickedTime: 0,
       options: {
         duration: 400,
         offset: 0,

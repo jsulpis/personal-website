@@ -76,12 +76,12 @@ export default {
         }
       ]
     };
-  },
+  }/*,
   mounted() {
     $(function() {
-      //$("a").each((i, val) => $(val).prop("target", "_blank"));
+      $("a").each((i, val) => $(val).prop("target", "_blank"));
     });
-  }
+  }*/
 };
 </script>
 

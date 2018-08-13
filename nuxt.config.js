@@ -70,6 +70,11 @@ module.exports = {
     },
     vendor: ["jquery", "~/plugins/vuetify.js"],
     extractCSS: true,
+    cssSourceMap: false,
+    // avoids warnings on vuetify/src/stylus/components/*.css.map not found
+    extend (config) {
+      config.devtool = false
+    },
     /*
     ** Run ESLint on save
     */

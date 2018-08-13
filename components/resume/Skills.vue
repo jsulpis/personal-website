@@ -89,7 +89,7 @@
               level: 60
             },
             {
-              imageUrl: "img/techno/aws.png",
+              imageUrl: "img/techno/aws.jpg",
               description:
                 "Première et principale plateforme de cloud computing.",
               level: 60

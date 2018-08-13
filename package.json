@@ -9,8 +9,8 @@
       "host": "0.0.0.0",
       "port": "3000"
     }
-   },
-   "scripts": {
+  },
+  "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "analyze": "nuxt build --analyze",
@@ -25,13 +25,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "@fortawesome/vue-fontawesome": "^0.1.0",
     "axios": "^0.18.0",
-    "fullpage.js": "^3.0.2",
     "jquery": "^3.3.1",
     "material-components-web": "^0.37.0",
     "nuxt": "^1.0.0",
     "particles.js": "^2.0.0",
     "scrollreveal": "^3.4.0",
-    "smooth-scroll": "^14.2.0",
     "vuetify": "^1.1.4"
   },
   "devDependencies": {

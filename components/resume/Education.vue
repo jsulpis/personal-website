@@ -21,20 +21,20 @@
             <span class="courses">Cours:</span>
             <ul>
               <li>
-                <span class="course-name">Big Data:</span>
-                <a href="https://hadoop.apache.org/"> Hadoop</a>,
+                <span class="course-name">Big Data: </span>
+                <a href="https://hadoop.apache.org/">Hadoop</a>,
                 <a href="https://spark.apache.org/">Spark</a>, SQL, Shell, Fouille de Données...</li>
               <li>
-                <span class="course-name">Développement Web:</span> Front-end, Back-end, API REST</li>
+                <span class="course-name">Développement Web: </span>Front-end, Back-end, API REST</li>
               <li>
-                <span class="course-name">Intelligence Artificielle:</span> jeux, planning, résolution de problèmes, représentation des connaissances...</li>
+                <span class="course-name">Intelligence Artificielle: </span>jeux, planning, résolution de problèmes, représentation des connaissances...</li>
               <li>
-                <span class="course-name">Microélectronique:</span> Objets communicants, systèmes embarqués, électronique numérique et analogique
+                <span class="course-name">Microélectronique: </span>Objets communicants, systèmes embarqués, électronique numérique et analogique
               </li>
               <li>
-                <span class="course-name">Gestion:</span> Bilans, résultats...</li>
+                <span class="course-name">Gestion: </span>Bilans, résultats...</li>
               <li>
-                <span class="course-name">Management:</span> Méthodes agiles, performance...</li>
+                <span class="course-name">Management: </span>Méthodes agiles, performance...</li>
             </ul>
 
             <br>
@@ -62,18 +62,18 @@
             <span class="courses">Cours:</span>
             <ul>
               <li>
-                <span class="course-name">Web Semantics:</span>
+                <span class="course-name">Web Semantics: </span>
                 <a href="https://en.wikipedia.org/wiki/Linked_data">Linked Data</a>,
                 <a href="https://fr.wikipedia.org/wiki/RDF_Schema">RDFS</a>,
                 <a href="https://fr.wikipedia.org/wiki/SPARQL">SPARQL</a>,
                 <a href="https://jena.apache.org/">Jena</a>
               </li>
               <li>
-                <span class="course-name">Cloud computing:</span>
+                <span class="course-name">Cloud computing: </span>
                 <a href="https://aws.amazon.com/fr">AWS</a>
               </li>
               <li>
-                <span class="course-name">Multi-Agent Systems:</span>
+                <span class="course-name">Multi-Agent Systems: </span>
                 <a href="https://www.emse.fr/~picard/cours/mas/lecture-DCSP-2017.pdf">Distributed Constraint Processing</a>,
                 <a href="https://en.wikipedia.org/wiki/Distributed_constraint_optimization">Distributed Constraint Optimization</a>
               </li>
