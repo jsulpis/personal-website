@@ -5,9 +5,12 @@
     :dark=false
     :fixed=true
     :flat=false 
-    color=""/>
-    <about/>
-    <experiences/>
+    color=""
+    :backLink=true />
+    <div id="hide-on-load">
+      <about/>
+      <experiences/>
+    </div>
     <education/>
     <skills/>
     <certificates/>
@@ -27,6 +30,7 @@ import Contact from "~/components/Contact.vue";
 import CustomFooter from "~/components/CustomFooter.vue";
 
 export default {
+  layout: "light",
   components: {
     About,
     Drawer,
@@ -75,7 +79,7 @@ export default {
   },
   mounted() {
     $(function() {
-      $("a").each((i, val) => $(val).prop("target", "_blank"));
+      //$("a").each((i, val) => $(val).prop("target", "_blank"));
     });
   }
 };

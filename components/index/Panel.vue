@@ -22,8 +22,5 @@
         return this.title.replace("é", "e");
       }
     }
-    // mounted() {
-    //   $("#" + this.id).css("background-image", "url('/img/background/" + this.id + ".jpg')");
-    // }
   };
 </script>

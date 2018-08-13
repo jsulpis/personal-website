@@ -18,7 +18,7 @@
 
       <panel title="ingénieur" subtitle="généraliste">
         Je m'intéresse à la Science en général, à la technologie et l'informatique en particulier. Retrouvez mon CV sur
-        <nuxt-link to='/resume'>cette page</nuxt-link> pour en savoir plus.
+        <a href='/resume'>cette page</a> pour en savoir plus.
       </panel>
 
       <panel title="artiste" subtitle="amateur">
@@ -30,81 +30,70 @@
 </template>
 
 <script>
-  import Drawer from "~/components/Drawer.vue";
-  import Home from "~/components/index/Home.vue";
-  import Panel from "~/components/index/Panel.vue";
+import Drawer from "~/components/Drawer.vue";
+import Home from "~/components/index/Home.vue";
+import Panel from "~/components/index/Panel.vue";
 
-  function loadImage(id) {
-    $("#" + id).css("background-image", "url('/img/background/" + id + ".jpg')");
-  }
+function loadImage(id) {
+  $("#" + id).css("background-image", "url('/img/background/" + id + ".jpg')");
+}
 
-  export default {
-    head() {
-      return {
-        script: [
-          { src: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.js" }
-        ],
-        link: [
-          { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.2/fullpage.min.css" }
-        ]
-      }
-    },
-    components: {
-      Drawer,
-      Home,
-      Panel
-    },
-    data() {
-      return {
-        items: [
-          {
-            title: "Accueil",
-            to: "/",
-            icon: "account_circle"
-          },
-          {
-            title: "Portfolio",
-            to: "/portfolio",
-            icon: "work"
-          },
-          {
-            title: "Ressources",
-            to: "/ressources",
-            icon: "fas fa-graduation-cap"
-          },
-          {
-            title: "Contact",
-            to: "/contact",
-            icon: "mdi-amazon"
-          }
-        ]
-      };
-    },
-    mounted() {
-      // Initialize the panel components
-      new fullpage('#fullpage', {
-        autoScrolling: true,
-        licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
-        verticalCentered: true,
-        navigation: true,
-        scrollingSpeed: 600,
-        onLeave(leavingSection, destination, direction) {
-          // When leaving a section, animate the catchphrase...
-          $("#fixed-catchphrase").css("opacity", "0")
-          setTimeout(() => $("#fixed-catchphrase").css("opacity", "1"), 300);
-          // ... load the next image and display the section
-          loadImage(destination.item.id);
-          destination.item.classList.add("show");
+export default {
+  components: {
+    Drawer,
+    Home,
+    Panel
+  },
+  data() {
+    return {
+      items: [
+        {
+          title: "Accueil",
+          to: "/",
+          icon: "account_circle"
+        },
+        {
+          title: "Portfolio",
+          to: "/portfolio",
+          icon: "work"
+        },
+        {
+          title: "Ressources",
+          to: "/ressources",
+          icon: "fas fa-graduation-cap"
+        },
+        {
+          title: "Contact",
+          to: "/contact",
+          icon: "mdi-amazon"
         }
-      });
-      // Show the first panel
-      loadImage("presentation");
-      $("#presentation").addClass("show");
-      $("#fixed-catchphrase").addClass("show");
-    }
-  };
+      ]
+    };
+  },
+  mounted() {
+    // Initialize the panel components
+    new fullpage("#fullpage", {
+      autoScrolling: true,
+      licenseKey: "OPEN-SOURCE-GPLV3-LICENSE",
+      navigation: true,
+      scrollingSpeed: 600,
+      onLeave(leavingSection, destination, direction) {
+        // When leaving a section, animate the catchphrase...
+        $("#fixed-catchphrase").css("opacity", "0");
+        setTimeout(() => $("#fixed-catchphrase").css("opacity", "1"), 300);
+        // ... load the next image and display the section
+        loadImage(destination.item.id);
+        destination.item.classList.add("show");
+      }
+    });
+    // Show the first panel
+    loadImage("presentation");
+    $("#presentation").addClass("show");
+    $("#fixed-catchphrase").addClass("show");
+  }
+};
 </script>
 
 <style lang="scss">
-  @import "~assets/scss/home/main.scss";
+@import "~assets/scss/home/main.scss";
 </style>

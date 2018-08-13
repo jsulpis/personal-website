@@ -35,6 +35,8 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+    
+      <a v-if="backLink" href="/" id="drawer-backlink">Site principal</a>
     </v-navigation-drawer>
 
     <!-- TOOLBAR -->
@@ -57,7 +59,8 @@ export default {
     dark: Boolean,
     fixed: Boolean,
     flat: Boolean,
-    color: String
+    color: String,
+    backLink: Boolean
   },
   data() {
     return {

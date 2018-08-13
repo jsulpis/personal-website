@@ -87,3 +87,12 @@
     </v-container>
   </section>
 </template>
+
+<script>
+export default {
+  mounted() {
+    // Show the two first sections after this one is mounted
+    $("#hide-on-load").addClass("show");
+  }
+}
+</script>

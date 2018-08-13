@@ -2,6 +2,9 @@
   <div id="header-wrapper">
     <div id="particles"></div>
 
+    <!-- Backlink to the main site -->
+    <a href="/" id="top-backlink">Site principal</a>
+
     <!-- PROFILE -->
     <div id="profile">
       <div class="avatar">
@@ -165,7 +168,7 @@ export default {
       }
     }
   },
-  beforeMount() {
+  mounted() {
     this.sticky =
       document.querySelector("#profile").offsetHeight +
       convertRemToPixels(10) -

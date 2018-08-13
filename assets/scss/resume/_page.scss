@@ -41,3 +41,30 @@ a {
     @include mdc-theme-prop(color, text-primary-on-background);
   }
 }
+
+#drawer-backlink {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#top-backlink {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  @include mdc-theme-prop(color, on-secondary);
+
+  &:hover {
+    @include mdc-theme-prop(color, text-secondary-on-background);
+  }
+}
+
+#hide-on-load {
+  opacity: 0;
+  transition: opacity 0.2s $mdc-animation-standard-curve-timing-function;
+
+  &.show {
+    opacity: 1;
+  }
+}
