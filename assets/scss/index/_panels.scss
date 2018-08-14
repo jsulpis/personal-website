@@ -1,8 +1,5 @@
 .section {
   @extend .hide-on-load;
-  background-position: 90%;
-  background-repeat: no-repeat;
-  background-size: cover;
 
   .inner {
     position: relative;
@@ -41,16 +38,5 @@
       top: 50%;
       transform: translateY(-50%);
     }
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    background: rgba(0, 0, 0, 0.4);
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
   }
 }

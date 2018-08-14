@@ -1,9 +1,9 @@
 <template>
   <section 
-    class="section" :id="id">
+    class="section background-image" :id="id">
     <div class="inner">
       <div class="vertical-center">
-        <h2 class="panel-title">un {{ title }}</h2>
+        <h2 class="panel-title">{{ title }}</h2>
         <h3 class="panel-subtitle">{{ subtitle }}</h3>
         <p class="panel-description"><slot></slot></p>
       </div>
@@ -12,15 +12,15 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      title: String,
-      subtitle: String
-    },
-    computed: {
-      id() {
-        return this.title.replace("é", "e");
-      }
+export default {
+  props: {
+    title: String,
+    subtitle: String
+  },
+  computed: {
+    id() {
+      return this.title.split(" ")[1].replace("é", "e");
     }
-  };
+  }
+};
 </script>

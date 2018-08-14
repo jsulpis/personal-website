@@ -23,17 +23,6 @@
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-a {
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
-  color: $mdc-theme-on-primary;
-
-  p &:hover {
-    color: darken($mdc-theme-on-primary, 20);
-  }
-}
-
 #fp-nav ul li a span {
   background-color: $mdc-theme-on-primary;
 }

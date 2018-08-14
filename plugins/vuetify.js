@@ -23,6 +23,10 @@ Vue.use(Vuetify, {
     VGrid,
     VToolbar
   },
+  theme: {
+    primary: "#ff9100",
+    secondary: "#0745ff"
+  },
   options: {
     minifyTheme: function(css) {
       return css.replace(/[\s|\r\n|\r|\n]/g, "");

@@ -26,7 +26,7 @@ import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Certificates from "~/components/resume/Certificates.vue";
-import Contact from "~/components/Contact.vue";
+import Contact from "~/components/resume/Contact.vue";
 import CustomFooter from "~/components/CustomFooter.vue";
 
 export default {
