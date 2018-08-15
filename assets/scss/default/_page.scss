@@ -17,17 +17,27 @@ a {
   }
 }
 
+.hide-on-load {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
 .background-image {
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position-y: center;
 
   &:before {
     content: "";
     position: absolute;
     display: block;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
     height: 100%;

@@ -2,20 +2,22 @@
   <v-app dark>
     <v-content>
       <drawer :items="items" :dark=true :fixed=false :flat=true color="transparent" />
-      <nav class="hidden-sm-and-down main-menu text-sm-right">
-        <ul>
-          <li v-for="(item, i) in items" :key="i" :class="i == 0 ? 'active' : ''">
+      <nav id="main-menu" class="hidden-sm-and-down text-sm-right">
+        <ul id="main-menu__list">
+          <li v-for="(item, i) in items" :key="i" class="main-menu__item">
             <nuxt-link :to="item.to">{{ item.title }}</nuxt-link>
           </li>
         </ul>
       </nav>
       <nuxt />
+      <my-footer class="hide-on-load"/>
     </v-content>
   </v-app>
 </template>
 
 <script>
   import Drawer from "~/components/Drawer.vue";
+  import MyFooter from "~/components/MyFooter.vue";
   export default {
     head() {
       return {
@@ -35,7 +37,8 @@
       };
     },
     components: {
-      Drawer
+      Drawer,
+      MyFooter
     },
     data() {
       return {

@@ -1,14 +1,4 @@
-.hide-on-load {
-  opacity: 0;
-  transition: opacity 0.2s $mdc-animation-standard-curve-timing-function;
-
-  &.show {
-    opacity: 1;
-  }
-}
-
 #fixed-catchphrase {
-  @extend .hide-on-load;
   position: fixed;
   z-index: 1;
   left: 50%;

@@ -24,8 +24,8 @@ Vue.use(Vuetify, {
     VToolbar
   },
   theme: {
-    primary: "#ff9100",
-    secondary: "#0745ff"
+    primary: "#bc5100",
+    secondary: "#f57f17"
   },
   options: {
     minifyTheme: function(css) {
