@@ -7,6 +7,14 @@ body {
   text-align: center;
 }
 
+.page-header {
+  padding-top: 4rem;
+
+  @media only screen and (min-width: 960px) {
+    padding-top: 6rem;
+  }
+}
+
 a {
   text-decoration: none;
   font-weight: 600;
@@ -17,7 +25,7 @@ a {
   }
 }
 
-.hide-on-load {
+.hide-on-render {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 
@@ -43,4 +51,12 @@ a {
     height: 100%;
     width: 100%;
   }
+}
+
+.theme--dark .v-card, .application .theme--dark.v-card {
+  background: #303030;
+}
+
+.application.theme--dark {
+  background: #212121;
 }

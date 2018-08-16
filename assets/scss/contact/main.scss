@@ -1,23 +1,15 @@
 #background {
-  background-image: url("/img/background/contact.jpg");
+  //background-image: url("/img/background/contact.jpg");
+  padding-bottom: 10rem;
 }
 
 #contact {
   position: relative;
-  padding-top: 4rem;
-  margin-bottom: 10rem;
-
-  @media only screen and (min-width: 960px) {
-    padding-top: 7rem;
-  }
+  padding-top: 0;
 
   #contact-form {
     max-width: 600px;
     margin: 0 auto;
-  }
-
-  .headline {
-    margin-bottom: 2rem;
   }
 
   .v-card {

@@ -1,9 +1,10 @@
 <template>
-  <div id="background" class="hide-on-load background-image">
+  <div id="background" class="page-header hide-on-render">
     <v-container id="contact">
-      <p class="title font-weight-regular">Une question ? Une remarque ? Un bug rencontré sur ce site ?<br>
-        Envoyez-moi un message, et je vous recontacterai dès que possible !</p>
-      <contact/>
+      <v-card>
+        <p class="font-weight-regular py-4 ma-0">Utilisez ce formulaire pour me contacter si vous avez une quelconque question ou suggestion.</p>
+        <contact/>
+      </v-card>
     </v-container>
   </div>
 </template>
@@ -16,7 +17,7 @@ export default {
     Contact
   },
   mounted() {
-    $(".hide-on-load").addClass("show");
+    $(".hide-on-render").addClass("show");
   }
 };
 </script>

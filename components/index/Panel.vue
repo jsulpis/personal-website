@@ -1,6 +1,6 @@
 <template>
   <section 
-    class="section hide-on-load background-image" :id="id">
+    class="section hide-on-render background-image" :id="id">
     <div class="inner">
       <div class="vertical-center">
         <h2 class="panel-title">{{ title }}</h2>

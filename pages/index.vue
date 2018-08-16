@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 id="fixed-catchphrase" class="hide-on-load">Je suis</h1>
+    <h1 id="fixed-catchphrase" class="hide-on-render">Je suis</h1>
 
     <div id="fullpage">
 
@@ -26,7 +26,7 @@
         <nuxt-link to="/portfolio">portfolio</nuxt-link>.
       </panel>
 
-      <my-footer class="section fp-auto-height hide-on-load"/>
+      <my-footer class="section fp-auto-height hide-on-render"/>
     </div>
   </div>
 </template>
