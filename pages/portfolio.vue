@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content">
+    <div class="hide-on-render">
       <nuxt-child/>
     </div>
 </template>
