@@ -1,15 +1,26 @@
 <template>
   <v-app dark>
     <v-content>
-      <drawer :items="items" :dark=true :fixed=false :flat=true color="transparent" />
+      <drawer 
+      :items="items" 
+      :dark=true 
+      :fixed=false 
+      :flat=false 
+      color="grey darken-3"
+      :height="smallViewport ? '56' : '80'"
+      :showOnLargeScreens=true
+      id="index-drawer"
+      class="hide-on-render"/>
+      <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div>
       <nav id="main-menu" class="hidden-sm-and-down text-sm-right">
         <ul id="main-menu__list">
           <li v-for="(item, i) in items" :key="i" class="main-menu__item">
-            <nuxt-link :to="item.to">{{ item.title }}</nuxt-link>
+            <nuxt-link :to="item.to" :exact=false>{{ item.title }}</nuxt-link>
           </li>
         </ul>
       </nav>
       <nuxt />
+      <div id="push-bottom"></div>
       <my-footer class="hide-on-render"/>
     </v-content>
   </v-app>
@@ -60,6 +71,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    smallViewport() {
+      return this.$vuetify.breakpoint.smAndDown;
+    }
   }
 };
 </script>

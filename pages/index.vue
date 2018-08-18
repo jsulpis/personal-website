@@ -44,6 +44,14 @@ export default {
     Panel,
     MyFooter
   },
+  beforeMount() {
+    // Override some default style
+    $(".v-toolbar").attr(
+      "style",
+      "position: fixed; z-index: 5; background-color: transparent !important; box-shadow: 0 0;"
+    );
+    $("#push-top").css("display", "none");
+  },
   mounted() {
     // Initialize the panel components
     new fullpage("#fullpage", {
@@ -68,6 +76,7 @@ export default {
     loadImage("Sulpis");
     $("#Sulpis").addClass("show");
     $("#fixed-catchphrase").addClass("show");
+    $("#index-drawer").addClass("show");
 
     // Override click listeners on the navigation dots because they don't work
     // when leaving the page and coming back
@@ -85,10 +94,15 @@ export default {
   },
   beforeDestroy() {
     // Destroy all the fullPage.js components
+    $(".hide-on-render").removeClass("show");
     setTimeout(function() {
       fullpage_api.destroy("all");
     }, 300);
     $("#footer").removeClass("section");
+
+    // Reset the style to default
+    $(".v-toolbar").attr("style", "");
+    $("#push-top").css("display", "block");
   }
 };
 </script>

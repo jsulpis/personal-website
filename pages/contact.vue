@@ -1,12 +1,10 @@
 <template>
-  <div id="background" class="page-header hide-on-render">
-    <v-container id="contact">
-      <v-card>
-        <p class="font-weight-regular py-4 ma-0">Utilisez ce formulaire pour me contacter si vous avez une quelconque question ou suggestion.</p>
-        <contact/>
-      </v-card>
-    </v-container>
-  </div>
+  <v-container id="contact" class="page-content hide-on-render">
+    <v-card>
+      <p class="font-weight-regular py-4 ma-0">Utilisez ce formulaire pour me contacter si vous avez une quelconque question ou suggestion.</p>
+      <contact/>
+    </v-card>
+  </v-container>
 </template>
 
 <script>

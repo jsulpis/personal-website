@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- DRAWER -->
-    <v-navigation-drawer v-model="drawer" disable-resize-watcher app>
+    <v-navigation-drawer 
+    right 
+    v-model="drawer" 
+    disable-resize-watcher 
+    app>
       <v-list class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
@@ -21,8 +25,7 @@
         v-for="(item, i) in items" 
         :key="i" 
         :to="nuxtLinks ? item.to : ''"
-        @click="!nuxtLinks ? $vuetify.goTo(item.to, options) : '';drawer = !drawer;" 
-        exact
+        @click="!nuxtLinks ? $vuetify.goTo(item.to, options) : '';drawer = !drawer;"
         nuxt>
           <!-- <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -41,12 +44,17 @@
 
     <!-- TOOLBAR -->
     <v-toolbar 
-    class="hidden-md-and-up" 
+    :class="showOnLargeScreens ? '' : 'hidden-md-and-up'" 
     :dark="dark" 
-    :fixed="fixed" 
+    :fixed="fixed"
+    :absolute="!fixed"
     :flat="flat" 
-    :color="color">
-      <v-toolbar-side-icon @click="drawer = !drawer" />
+    :color="color"
+    :height="height">
+    <v-spacer></v-spacer>
+      <v-toolbar-side-icon 
+      class="hidden-md-and-up"
+      @click="drawer = !drawer" />
     </v-toolbar>
 
   </div>
@@ -59,8 +67,11 @@ export default {
     dark: Boolean,
     fixed: Boolean,
     flat: Boolean,
+    right: Boolean,
     color: String,
-    backLink: Boolean
+    height: String,
+    backLink: Boolean,
+    showOnLargeScreens: Boolean
   },
   data() {
     return {

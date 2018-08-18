@@ -4,7 +4,8 @@
     :items="items"
     :dark=false
     :fixed=true
-    :flat=false 
+    :flat=false
+    :showOnLargeScreens=false
     color=""
     :backLink=true />
     <div id="hide-on-load">

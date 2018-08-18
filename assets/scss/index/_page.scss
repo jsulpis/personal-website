@@ -13,6 +13,28 @@
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-#fp-nav ul li a span {
-  background-color: $mdc-theme-on-primary;
+#fp-nav {
+  z-index: 3;
+  ul li a span {
+    background-color: $mdc-theme-on-primary;
+  }
+}
+
+.background-image {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
 }

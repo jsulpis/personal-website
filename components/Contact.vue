@@ -64,14 +64,12 @@
 import axios from "axios";
 import * as VTextField from "vuetify/es5/components/VTextField";
 import * as VTextArea from "vuetify/es5/components/VTextarea";
-import * as VBtn from "vuetify/es5/components/VBtn";
 import * as VSnackbar from "vuetify/es5/components/VSnackbar";
 
 export default {
   components: {
     ...VTextField,
     ...VTextArea,
-    ...VBtn,
     ...VSnackbar
   },
   data() {

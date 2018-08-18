@@ -1,14 +1,10 @@
-.v-toolbar {
-  position: fixed;
-  z-index: 5;
-}
-
 #main-menu {
   position: absolute !important;
-  z-index: 99;
-  height: 8rem;
+  top: 0;
+  z-index: 10;
+  height: 80px;
   width: 100%;
-  padding: 1.5rem;
+  padding-right: 40px;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 
   a {
@@ -32,6 +28,7 @@
     }
   }
 
+  .nuxt-link-active:not([href="/"]):before,
   .nuxt-link-exact-active:before,
   a:hover:before {
     visibility: visible;
@@ -41,6 +38,7 @@
 
   #main-menu__list {
     list-style: none;
+    line-height: 80px;
     margin: 0;
     padding: 0;
 

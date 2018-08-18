@@ -2,8 +2,10 @@
   <!-- CONTACT -->
   <section id="contact">
     <v-container>
-      <h2 class="section-title">Contact</h2>
+      <v-card>
+        <h2 class="section-title">Contact</h2>
         <contact/>
+      </v-card>
     </v-container>
   </section>
 </template>

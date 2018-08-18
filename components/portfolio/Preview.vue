@@ -1,5 +1,6 @@
 <template>
   <v-flex xs6 sm4 md3 xl2 class="preview">
+    <nuxt-link :to="'/portfolio/' + title">
     <img :src="url" :alt="title" class="image">
     <div class="overlay">
         <h3 class="img--title font-weight-regular">
@@ -10,6 +11,7 @@
           {{ likes }} <v-icon small>far fa-heart</v-icon>
         </div>
     </div>
+    </nuxt-link>
   </v-flex>
 </template>
 

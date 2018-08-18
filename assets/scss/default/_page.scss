@@ -7,14 +7,6 @@ body {
   text-align: center;
 }
 
-.page-header {
-  padding-top: 4rem;
-
-  @media only screen and (min-width: 960px) {
-    padding-top: 6rem;
-  }
-}
-
 a {
   text-decoration: none;
   font-weight: 600;
@@ -25,31 +17,17 @@ a {
   }
 }
 
+// Push the content of the page above the footer (positioned absolutely)
+#push-bottom {
+  height: 137px;
+}
+
 .hide-on-render {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 
   &.show {
     opacity: 1;
-  }
-}
-
-.background-image {
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: center;
-
-  &:before {
-    content: "";
-    position: absolute;
-    display: block;
-    background: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
   }
 }
 

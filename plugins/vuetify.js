@@ -4,6 +4,7 @@ import {
   Vuetify,
   VApp,
   VCard,
+  VBtn,
   VNavigationDrawer,
   VList,
   VIcon,
@@ -16,6 +17,7 @@ Vue.use(Vuetify, {
   components: {
     VApp,
     VCard,
+    VBtn,
     VNavigationDrawer,
     VList,
     VIcon,

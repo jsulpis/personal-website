@@ -24,12 +24,10 @@
 
 <script>
 import * as VFooter from "vuetify/es5/components/VFooter";
-import VBtn from "vuetify/es5/components/VBtn";
 
 export default {
   components: {
-    ...VFooter,
-    VBtn
+    ...VFooter
   },
   data() {
     return {
