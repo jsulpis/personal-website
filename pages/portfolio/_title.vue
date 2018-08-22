@@ -1,9 +1,9 @@
 <template>
   <div id="gallery-item">
-    <v-btn 
-    flat 
-    :ripple=false 
-    id="gallery-back-btn" 
+    <v-btn
+    flat
+    :ripple=false
+    id="gallery-back-btn"
     to="/portfolio"
     :style="'height: ' + (smallViewport ? '56px' : '80px')">
       <v-icon left>keyboard_backspace</v-icon>
@@ -11,7 +11,7 @@
     </v-btn>
     <v-container>
       <section>
-        <h1>{{ artwork.title }}</h1>
+        <h1 class="display-1 ma-3">{{ artwork.title }}</h1>
         <div class="artwork-data grey--text text--lighten-3">
           <span class="artwork-date">
             <v-icon color="grey lighten-3">date_range</v-icon>{{ artwork.date }}</span>
@@ -21,21 +21,23 @@
             </v-btn>{{ artwork.likes }}
           </span>
         </div>
-        <img 
-        class="artwork-img elevation-8" 
-        :src="imageUrl" 
-        :alt="artwork.urlTitle">
+        <a :href="imageUrl" target="_blank">
+          <img
+          class="artwork-img elevation-8"
+          :src="imageUrl"
+          :alt="artwork.title">
+        </a>
       </section>
 
       <section>
         <h3 class="font-weight-regular">Logiciels utilisés:</h3>
-        <div 
+        <div
         class="artwork-software"
         v-for="(software, i) in artwork.softwares"
         :key="i">
           <a :href="links[software]">
-            <img 
-            :src="'/img/softwares/' + software + '.png'" 
+            <img
+            :src="'/img/softwares/' + software + '.png'"
             :alt="software">
           </a>
           <p>{{ software }}</p>
@@ -78,7 +80,10 @@ export default {
         "https://ihb8a9aixg.execute-api.eu-west-3.amazonaws.com/dev/portfolio/" +
           this.$route.params.title
       )
-      .then(response => (this.artwork = response.data.Item));
+      .then(response => {
+        this.artwork = response.data.Item;
+        $("#gallery-item").addClass("show");
+      });
   }
 };
 </script>

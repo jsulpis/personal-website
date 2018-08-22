@@ -1,9 +1,9 @@
 <template>
-  <v-flex xs6 sm4 md3 xl2 class="preview">
-    <nuxt-link :to="'/portfolio/' + title">
-    <img :src="url" :alt="title" class="image">
+  <v-flex xs4 sm3 lg2 class="preview">
+    <nuxt-link :to="'/portfolio/' + url">
+    <img :src="url | parseUrl" :alt="title" class="image">
     <div class="overlay">
-        <h3 class="img--title font-weight-regular">
+        <h3 class="img--title headline font-weight-regular">
           {{ title }}
         </h3>
         <div class="img--date">{{ date }}</div>
@@ -22,6 +22,15 @@ export default {
     url: String,
     date: String,
     likes: Number
+  },
+  filters: {
+    parseUrl(url) {
+      return typeof url != "undefined"
+        ? "https://s3.eu-west-3.amazonaws.com/juliensulpis-portfolio/min/" +
+            url +
+            ".jpg"
+        : "";
+    }
   }
 };
 </script>
