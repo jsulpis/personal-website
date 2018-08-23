@@ -16,6 +16,7 @@
     "analyze": "nuxt build --analyze",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "eslint --fix --ext .vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
@@ -33,6 +34,7 @@
     "vuetify": "^1.1.4"
   },
   "devDependencies": {
+    "@nuxtjs/google-analytics": "^2.0.2",
     "babel-eslint": "^8.2.1",
     "babel-plugin-transform-imports": "^1.5.0",
     "eslint": "^4.15.0",
@@ -40,6 +42,7 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.9.2",
+    "push-dir": "^0.4.1",
     "sass-loader": "^7.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

@@ -35,6 +35,23 @@ module.exports = {
     ]
   },
   /*
+  * Generate proper fallback pages
+  */
+  generate: {
+    fallback: true
+  },
+  /*
+  * Include Google Analytics module
+  */
+  modules: [
+    [
+      "@nuxtjs/google-analytics",
+      {
+        id: "UA-124217907-2"
+      }
+    ]
+  ],
+  /*
   * Include custom Javascript files
   */
   plugins: ["~/plugins/vuetify.js"],
@@ -72,8 +89,8 @@ module.exports = {
     extractCSS: true,
     cssSourceMap: false,
     // avoids warnings on vuetify/src/stylus/components/*.css.map not found
-    extend (config) {
-      config.devtool = false
+    extend(config) {
+      config.devtool = false;
     },
     /*
     ** Run ESLint on save
