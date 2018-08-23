@@ -5,18 +5,18 @@
       <h2 class="section-title">Formation</h2>
       <div class="schools">
         <!-- ICM -->
-        <v-card class="school icm in">
+        <v-card :class="'school icm' + (activeCard === 'emse' ? ' in' : '')">
           <h3>Ingénieur Civil des Mines</h3>
           <h4>Mines Saint-Étienne</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/icm/">
-              <img src="img/schools/emse.png" alt="logo_emse" />
+              <img src="/img/schools/emse.png" alt="logo_emse" />
             </a>
             <br>
           </div>
-          <a href="" onclick="return false;">
-            <img class="dots" src="img/more-256.png" alt="dots" />
-          </a>
+          <v-btn v-show="activeCard === 'cps2'" icon @click="activeCard = 'emse'">
+            <v-icon>more_horiz</v-icon>
+          </v-btn>
           <div class="school-content">
             <span class="courses">Cours:</span>
             <ul>
@@ -46,18 +46,18 @@
         </v-card>
 
         <!-- CPS2 -->
-        <v-card class="school cps2">
+        <v-card :class="'school cps2' + (activeCard === 'cps2' ? ' in' : '')">
           <h3>Master on Cyber-Physical and Social Systems</h3>
           <h4>Mines Saint-Étienne, Université Jean Monnet</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/cyber-physical-social-systems-cps2/">
-              <img src="img/schools/cps2.png" alt="logo_emse_jean_monnet">
+              <img src="/img/schools/cps2.png" alt="logo_emse_jean_monnet">
             </a>
             <br>
           </div>
-          <a href="" onclick="return false;">
-            <img class="dots" src="img/more-256.png" alt="dots" />
-          </a>
+          <v-btn v-show="activeCard === 'emse'" icon @click="activeCard = 'cps2'">
+            <v-icon>more_horiz</v-icon>
+          </v-btn>
           <div class="school-content">
             <span class="courses">Cours:</span>
             <ul>
@@ -93,17 +93,10 @@
 
 <script>
   export default {
-    mounted() {
-      // Create the "accordion" effect of the two school cards in desktop screens
-      $(".dots").each(function () {
-        $(this).on("click", function (e) {
-          e.preventDefault();
-          $(".school").each(function () {
-            $(this).removeClass("in");
-            e.target.parentElement.parentElement.classList.add("in");
-          });
-        });
-      });
+    data() {
+      return {
+        activeCard: "emse"
+      }
     }
   };
 </script>

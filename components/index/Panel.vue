@@ -1,5 +1,5 @@
 <template>
-  <section 
+  <section
     class="section hide-on-render background-image" :id="id">
     <div class="inner">
       <div class="vertical-center">
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     id() {
-      return this.title.split(" ")[1].replace("é", "e");
+      return this.title.split(" ")[1].toLowerCase().replace("é", "e");
     }
   }
 };

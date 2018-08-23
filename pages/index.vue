@@ -73,8 +73,8 @@ export default {
     });
 
     // Show the first panel
-    loadImage("Sulpis");
-    $("#Sulpis").addClass("show");
+    loadImage("sulpis");
+    $("#sulpis").addClass("show");
     $("#fixed-catchphrase").addClass("show");
     $("#index-drawer").addClass("show");
 

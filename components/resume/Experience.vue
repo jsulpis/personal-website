@@ -2,7 +2,7 @@
   <li class="timeline-item">
     <div class="timeline-info">
       <p class="date" v-html="date"></p>
-      <img :src="'img/brands/' + company.split(' ')[0] + '.jpg'" :alt="'logo_' + company">
+      <img :src="'/img/brands/' + company.split(' ')[0].toLowerCase() + '.jpg'" :alt="'logo_' + company">
     </div>
     <div class="timeline-marker"></div>
     <div class="timeline-content">

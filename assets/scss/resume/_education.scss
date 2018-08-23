@@ -95,15 +95,4 @@
       display: inline-flex;
     }
   }
-
-  .dots {
-    width: 35px;
-    height: 35px;
-    padding: 8px;
-
-    &:hover {
-      border-radius: 50%;
-      background-color: $material-color-grey-100;
-    }
-  }
 }

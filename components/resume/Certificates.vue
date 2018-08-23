@@ -5,9 +5,9 @@
       <h2 class="section-title">Certifications</h2>
 
       <v-expansion-panel popout>
-        <v-expansion-panel-content 
-        class="certificate-group" 
-        v-for="(category, index) in categories" 
+        <v-expansion-panel-content
+        class="certificate-group"
+        v-for="(category, index) in categories"
         :key="index">
 
           <div slot="header" class="font-weight-regular">
@@ -15,31 +15,31 @@
           </div>
 
           <v-card>
-            <div class="course-row-wrapper" 
-            v-for="(course, index) in category.courses" 
+            <div class="course-row-wrapper"
+            v-for="(course, index) in category.courses"
             :key="index">
               <div class="course-row">
                 <!-- Name -->
                 <span class="course-name">{{ course.name }}</span>
                 <!-- Image -->
                 <span class="course-image-container">
-                  <img class="course-inline-image" 
-                  v-bind:src="'../img/institutions/' + course.institution + '.png'" 
+                  <img class="course-inline-image"
+                  v-bind:src="'../img/institutions/' + course.institution + '.png'"
                   v-bind:alt="'logo_' + course.institution">
                 </span>
                 <!-- Course link-->
-                <a title="Voir le cours" 
-                class="course-image-container" 
+                <a title="Voir le cours"
+                class="course-image-container"
                 v-bind:href="course.course_url">
                   <v-icon>fas fa-graduation-cap</v-icon>
                 </a>
                 <!-- Certificate link-->
-                <a title="Voir le certificat" 
-                class="course-image-container" 
-                v-if="course.certificate_url != ''" 
+                <a title="Voir le certificat"
+                class="course-image-container"
+                v-if="course.certificate_url != ''"
                 v-bind:href="course.certificate_url">
-                  <img class="course-inline-image certificate-icon" 
-                  src="img/institutions/certificate_icon.png" 
+                  <img class="course-inline-image certificate-icon"
+                  src="/img/institutions/certificate_icon.png"
                   alt="certificate_icon">
                 </a>
               </div>
