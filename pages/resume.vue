@@ -1,6 +1,6 @@
 <template>
   <div>
-    <drawer 
+    <drawer
     :items="items"
     :dark=false
     :fixed=true
@@ -77,7 +77,7 @@ export default {
         }
       ]
     };
-  }/*,
+  } /*,
   mounted() {
     $(function() {
       $("a").each((i, val) => $(val).prop("target", "_blank"));

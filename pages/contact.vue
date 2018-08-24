@@ -1,7 +1,7 @@
 <template>
   <v-container id="contact" class="page-content hide-on-render">
     <v-card>
-      <p class="font-weight-regular py-4 ma-0">Utilisez ce formulaire pour me contacter si vous avez une quelconque question ou suggestion.</p>
+      <p class="font-weight-regular pt-4 px-2 ma-0">Une question ? Une suggestion ? Une envie de remplir un formulaire ?<br>C'est ici !</p>
       <contact/>
     </v-card>
   </v-container>

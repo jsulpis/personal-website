@@ -5,28 +5,26 @@
     <div id="fullpage">
 
       <panel title="Julien Sulpis">
-        Bienvenue sur ce site !
-        <br>Vous y trouverez divers contenus artistiques et techniques que je souhaite partager.
+        Bienvenue sur mon site !
+        <br>Il est encore en développement, vous y croiserez peut-être quelques bizarreries...
       </panel>
 
       <panel title="un développeur" subtitle="passionné">
-        J'ai conçu et développé ce site dont vous pouvez trouver le code source, ainsi que celui de mes autres projets, sur
+        Vous pouvez retrouver le code de mes divers projets - ce site par exemple - sur
         <a
           href='https://github.com/jsulpis'>GitHub</a>.
       </panel>
 
       <panel title="un ingénieur" subtitle="généraliste">
-        Je m'intéresse à la Science en général, à la technologie et l'informatique en particulier. Retrouvez mon CV sur
+        Ou encore touche-à-tout polyvalent, spécialité informatique. Retrouvez mon CV sur
         <a
           href='/resume'>cette page</a> pour en savoir plus.
       </panel>
 
       <panel title="un artiste" subtitle="amateur">
-        Je développe mes compétences de musicien, artiste 3D et infographiste sur mon temps libre. Retrouvez mes créations sur mon
-        <nuxt-link to="/portfolio">portfolio</nuxt-link>.
+        Musicien et infographiste à mes heures perdues, je crée des choses plus ou moin jolies que vous pouvez retrouver sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link>.
       </panel>
 
-      <my-footer class="section fp-auto-height hide-on-render"/>
     </div>
   </div>
 </template>
@@ -60,14 +58,13 @@ export default {
       navigation: true,
       scrollingSpeed: 600,
       onLeave(source, destination, direction) {
-        if (destination.item.id != "footer" && source.item.id != "footer") {
-          // ... load the next image and display the section
-          loadImage(destination.item.id);
+        // ... load the next image and display the section
+        loadImage(destination.item.id);
 
-          // When leaving a section, animate the catchphrase...
-          $("#fixed-catchphrase").css("opacity", "0");
-          setTimeout(() => $("#fixed-catchphrase").css("opacity", "1"), 300);
-        }
+        // When leaving a section, animate the catchphrase...
+        $("#fixed-catchphrase").css("opacity", "0");
+        setTimeout(() => $("#fixed-catchphrase").css("opacity", "1"), 300);
+
         destination.item.classList.add("show");
       }
     });
@@ -83,12 +80,6 @@ export default {
     $("#fp-nav a").each((i, link) =>
       link.addEventListener("click", () => {
         fullpage_api.moveTo(i + 1);
-
-        // If we click on the last navigation dot (footer), load the artist section
-        if (link === $("#fp-nav li").last()[0].lastChild) {
-          loadImage("artiste");
-          $("#artiste").addClass("show");
-        }
       })
     );
   },
@@ -98,7 +89,6 @@ export default {
     setTimeout(function() {
       fullpage_api.destroy("all");
     }, 300);
-    $("#footer").removeClass("section");
 
     // Reset the style to default
     $(".v-toolbar").attr("style", "");

@@ -16,15 +16,15 @@
         <br>Région de Lyon, France</h3>
       <!-- Social links -->
       <p class="social">
-        <a href="https://www.linkedin.com/in/julien-sulpis" 
+        <a href="https://www.linkedin.com/in/julien-sulpis"
         @mouseover="color1='grey darken-3'" @mouseleave="color1='inherit'">
           <v-icon :color="color1">fab fa-linkedin-in</v-icon>
         </a>
-        <a class="ma-3" href="https://github.com/jsulpis" 
+        <a class="ma-3" href="https://github.com/jsulpis"
         @mouseover="color2='grey darken-3'" @mouseleave="color2='inherit'">
           <v-icon :color="color2">fab fa-github</v-icon>
         </a>
-        <a href="https://twitter.com/JulienSulpis" 
+        <a href="https://twitter.com/JulienSulpis"
         @mouseover="color3='grey darken-3'" @mouseleave="color3='inherit'">
           <v-icon :color="color3">fab fa-twitter</v-icon>
         </a>
@@ -33,23 +33,22 @@
       <!-- Description -->
       <p id="description">
         <v-icon small>fas fa-quote-left</v-icon>
-        Développeur généraliste passionné et curieux, toujours à la recherche de technologies à explorer.
-        <br>Gros consommateur de cours en ligne et chasseur de certifications.
+        Développeur généraliste passionné et curieux, insatiable de technologies à explorer et de méthodes pour progresser.
         <v-icon small>fas fa-quote-right</v-icon>
       </p>
 
       <!-- Tabs -->
-      <v-tabs 
-      v-model="activeTab" 
-      id="tab-bar" 
-      class="hidden-sm-and-down" 
-      centered 
+      <v-tabs
+      v-model="activeTab"
+      id="tab-bar"
+      class="hidden-sm-and-down"
+      centered
       fixed-tabs>
-        <v-tab 
-        v-for="(item, index) in items" 
-        class="tab-item " 
-        :key="index" 
-        ripple 
+        <v-tab
+        v-for="(item, index) in items"
+        class="tab-item "
+        :key="index"
+        ripple
         @click="$vuetify.goTo('#' + item.to, options); tabClickedTime = new Date().getTime()">
           {{ item.title }}
         </v-tab>

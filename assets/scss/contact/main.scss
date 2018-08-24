@@ -1,5 +1,8 @@
 #contact {
-  position: relative;
+  min-height: calc(100vh - 137px - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   #contact-form {
     max-width: 600px;
@@ -7,6 +10,7 @@
   }
 
   .v-card {
+    width: inherit;
     max-width: 850px;
     margin: 0 auto;
   }

@@ -60,9 +60,9 @@
     @include mdc-typography(body1);
     padding: 1rem 3rem 1.5rem 3rem;
     margin: auto;
+    max-width: 800px;
 
     .v-icon::before {
-      width: 1em !important;
       @include mdc-theme-prop(color, text-hint-on-background);
     }
   }
