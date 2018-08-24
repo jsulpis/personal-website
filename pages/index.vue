@@ -22,7 +22,7 @@
       </panel>
 
       <panel title="un artiste" subtitle="amateur">
-        Musicien et infographiste à mes heures perdues, je crée des choses plus ou moin jolies que vous pouvez retrouver sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link>.
+        Musicien et infographiste à mes heures perdues, je crée des choses plus ou moins jolies que vous pouvez retrouver sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link>.
       </panel>
 
     </div>
