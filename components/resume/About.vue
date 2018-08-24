@@ -107,11 +107,11 @@ export default {
           to: "skills",
           icon: "fas fa-list-alt"
         },
-        {
-          title: "Certifications",
-          to: "certificates",
-          icon: "fas fa-certificate"
-        },
+        // {
+        //   title: "Certifications",
+        //   to: "certificates",
+        //   icon: "fas fa-certificate"
+        // },
         {
           title: "Contact",
           to: "contact",
@@ -155,14 +155,14 @@ export default {
           document.querySelector("#skills").offsetTop - 48
         ) {
           this.activeTab = 2;
-        } else if (
+        } else if (offsetTop < document.querySelector("#contact").offsetTop) {
+          /* else if (
           offsetTop < document.querySelector("#certificates").offsetTop
         ) {
           this.activeTab = 3;
-        } else if (offsetTop < document.querySelector("#contact").offsetTop) {
-          this.activeTab = 4;
+        }*/ this.activeTab = 3;
         } else {
-          this.activeTab = 5;
+          this.activeTab = 4;
         }
       }
     }
@@ -172,10 +172,14 @@ export default {
       document.querySelector("#profile").offsetHeight +
       convertRemToPixels(10) -
       48;
-    window.addEventListener("scroll", this.onScroll);
+    if (this.$vuetify.breakpoint.mdAndUp) {
+      window.addEventListener("scroll", this.onScroll);
+    }
   },
   beforeDestroy() {
-    window.removeEventListener("scroll", this.onScroll);
+    if (this.$vuetify.breakpoint.mdAndUp) {
+      window.removeEventListener("scroll", this.onScroll);
+    }
   }
 };
 </script>

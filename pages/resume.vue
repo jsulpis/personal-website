@@ -14,7 +14,8 @@
     </div>
     <education/>
     <skills/>
-    <certificates/>
+    <!-- Certificates hidden for now -->
+    <!-- <certificates/> -->
     <contact/>
     <my-footer/>
   </div>
@@ -26,7 +27,7 @@ import Drawer from "~/components/Drawer.vue";
 import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
-import Certificates from "~/components/resume/Certificates.vue";
+//import Certificates from "~/components/resume/Certificates.vue";
 import Contact from "~/components/resume/Contact.vue";
 import MyFooter from "~/components/MyFooter.vue";
 
@@ -38,7 +39,7 @@ export default {
     Experiences,
     Education,
     Skills,
-    Certificates,
+    //Certificates,
     Contact,
     MyFooter
   },
@@ -65,11 +66,11 @@ export default {
           to: "#skills",
           icon: "fas fa-list-alt"
         },
-        {
-          title: "Certifications",
-          to: "#certificates",
-          icon: "fas fa-certificate"
-        },
+        // {
+        //   title: "Certifications",
+        //   to: "#certificates",
+        //   icon: "fas fa-certificate"
+        // },
         {
           title: "Contact",
           to: "#contact",
