@@ -1,17 +1,19 @@
 <template>
   <v-app dark>
     <v-content>
-      <drawer 
-      :items="items" 
-      :dark=true 
-      :fixed=false 
-      :flat=false 
+      <!-- Navigation drawer -->
+      <drawer
+      :items="items"
+      :fixed=false
+      :flat=false
       color="grey darken-3"
       :height="smallViewport ? '56' : '80'"
       :showOnLargeScreens=true
       id="index-drawer"
       class="hide-on-render"/>
+      <!-- Element to push the content below the toolbar -->
       <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div>
+      <!-- Main menu visible on medium screens and above -->
       <nav id="main-menu" class="hidden-sm-and-down text-sm-right">
         <ul id="main-menu__list">
           <li v-for="(item, i) in items" :key="i" class="main-menu__item">
@@ -19,8 +21,11 @@
           </li>
         </ul>
       </nav>
+      <!-- Page content -->
       <nuxt />
+      <!-- Element to push the content above the footer -->
       <div id="push-bottom"></div>
+      <!-- Footer -->
       <my-footer class="hide-on-render"/>
     </v-content>
   </v-app>

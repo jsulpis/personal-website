@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- DRAWER -->
-    <v-navigation-drawer 
-    right 
-    v-model="drawer" 
-    disable-resize-watcher 
+    <v-navigation-drawer
+    right
+    v-model="drawer"
+    disable-resize-watcher
     app>
       <v-list class="pa-1">
         <v-list-tile avatar>
@@ -21,9 +21,9 @@
       <!-- LIST -->
       <v-list>
         <v-divider />
-        <v-list-tile 
-        v-for="(item, i) in items" 
-        :key="i" 
+        <v-list-tile
+        v-for="(item, i) in items"
+        :key="i"
         :to="nuxtLinks ? item.to : ''"
         @click="!nuxtLinks ? $vuetify.goTo(item.to, options) : '';drawer = !drawer;"
         nuxt>
@@ -38,21 +38,20 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    
+
       <a v-if="backLink" href="/" id="drawer-backlink">Site principal</a>
     </v-navigation-drawer>
 
     <!-- TOOLBAR -->
-    <v-toolbar 
-    :class="showOnLargeScreens ? '' : 'hidden-md-and-up'" 
-    :dark="dark" 
+    <v-toolbar
+    :class="showOnLargeScreens ? '' : 'hidden-md-and-up'"
     :fixed="fixed"
     :absolute="!fixed"
-    :flat="flat" 
+    :flat="flat"
     :color="color"
     :height="height">
     <v-spacer></v-spacer>
-      <v-toolbar-side-icon 
+      <v-toolbar-side-icon
       class="hidden-md-and-up"
       @click="drawer = !drawer" />
     </v-toolbar>
@@ -64,7 +63,6 @@
 export default {
   props: {
     items: Array,
-    dark: Boolean,
     fixed: Boolean,
     flat: Boolean,
     right: Boolean,

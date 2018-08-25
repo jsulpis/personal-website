@@ -11,10 +11,7 @@ a {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.1s ease-in-out !important;
-  color: $mdc-theme-on-primary;
-  p &:hover {
-    color: darken($mdc-theme-on-primary, 20);
-  }
+  color: inherit !important;
 }
 
 // Push the content of the page above the footer (positioned absolutely)
@@ -31,7 +28,8 @@ a {
   }
 }
 
-.theme--dark .v-card, .application .theme--dark.v-card {
+.theme--dark .v-card,
+.application .theme--dark.v-card {
   background: #303030;
 }
 

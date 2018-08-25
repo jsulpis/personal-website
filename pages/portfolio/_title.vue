@@ -82,7 +82,7 @@ export default {
       )
       .then(response => {
         this.artwork = response.data.Item;
-        $("#gallery-item").addClass("show");
+        $(".hide-on-render").addClass("show");
       });
   }
 };
