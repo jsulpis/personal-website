@@ -1,4 +1,9 @@
 #gallery-item {
+
+  #gallery-item-container {
+    display: none;
+  }
+
   #gallery-back-btn {
     position: absolute;
     z-index: 12;
@@ -19,6 +24,11 @@
   .artwork- {
     &data {
       margin: 0.5rem;
+
+      .v-icon {
+        height: 36px;
+        width: 36px;
+      }
     }
 
     &img {
@@ -28,8 +38,15 @@
     }
 
     &date,
+    &comments,
     &likes {
-      margin: 1rem;
+      margin: 0.5rem;
+      height: 36px;
+      display: inline-block;
+
+      span {
+        vertical-align: super;
+      }
     }
 
     &software {
@@ -47,7 +64,8 @@
   }
 
   .like-btn {
-    margin: 0;
+    margin: 0 0.25rem 0 0;
+    vertical-align: baseline;
   }
 
   section {

@@ -19,7 +19,10 @@ export default {
   },
   computed: {
     id() {
-      return this.title.split(" ")[1].toLowerCase().replace("é", "e");
+      return this.title
+        .split(" ")[1]
+        .toLowerCase()
+        .replace("é", "e");
     }
   }
 };

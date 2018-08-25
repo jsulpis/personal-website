@@ -1,5 +1,6 @@
 <template>
   <div id="gallery-item">
+    <!-- Back button -->
     <v-btn
     flat
     :ripple=false
@@ -7,20 +8,32 @@
     to="/portfolio"
     :style="'height: ' + (smallViewport ? '56px' : '80px')">
       <v-icon left>keyboard_backspace</v-icon>
-      <span v-if="!smallViewport">Retour</span>
+      <span v-show="!smallViewport">Retour</span>
     </v-btn>
-    <v-container>
+    <v-container id="gallery-item-container">
       <section>
-        <h1 class="display-1 ma-3">{{ artwork.title }}</h1>
+        <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
+        <!-- Image metadata -->
         <div class="artwork-data grey--text text--lighten-3">
-          <span class="artwork-date">
-            <v-icon color="grey lighten-3">date_range</v-icon>{{ artwork.date }}</span>
-          <span class="artwork-likes">
-            <v-btn icon class="like-btn">
-              <v-icon color="grey lighten-3">favorite_border</v-icon>
-            </v-btn>{{ artwork.likes }}
-          </span>
+          <!-- date -->
+          <div class="artwork-date">
+            <v-icon>date_range</v-icon>
+            <span>{{ artwork.date }}</span>
+          </div>
+          <!-- Likes -->
+          <div class="artwork-likes">
+            <v-btn icon class="like-btn" color="grey darken-3">
+              <v-icon>favorite_border</v-icon>
+            </v-btn>
+            <span>{{ artwork.likes }}</span>
+          </div>
+          <!-- Comments -->
+          <div class="artwork-comments">
+            <v-icon>forum</v-icon>
+            <span>{{ artwork.likes }}</span>
+          </div>
         </div>
+        <!-- Image -->
         <a :href="imageUrl" target="_blank">
           <img
           class="artwork-img elevation-8"
@@ -75,6 +88,7 @@ export default {
     }
   },
   mounted() {
+    $(".hide-on-render").addClass("show");
     axios
       .get(
         "https://ihb8a9aixg.execute-api.eu-west-3.amazonaws.com/dev/portfolio/" +
@@ -82,7 +96,7 @@ export default {
       )
       .then(response => {
         this.artwork = response.data.Item;
-        $(".hide-on-render").addClass("show");
+        $("#gallery-item-container").fadeIn();
       });
   }
 };

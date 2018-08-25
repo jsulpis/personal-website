@@ -6,9 +6,14 @@
         <h3 class="img--title headline font-weight-regular">
           {{ title }}
         </h3>
-        <div class="img--date">{{ date }}</div>
+        <div class="img--date">
+          <v-icon small>date_range</v-icon>{{ date }}
+        </div>
         <div class="img--likes">
-          {{ likes }} <v-icon small>far fa-heart</v-icon>
+          <v-icon small>favorite_border</v-icon>{{ likes }}
+        </div>
+        <div class="img--comments">
+          <v-icon small>forum</v-icon>{{ likes }}
         </div>
     </div>
     </nuxt-link>

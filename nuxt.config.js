@@ -16,6 +16,11 @@ module.exports = {
           "My personnal website built with Nuxt.js and other awesome tools"
       }
     ],
+    script: [
+      {
+        src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
+      }
+    ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
@@ -39,6 +44,8 @@ module.exports = {
   generate: { fallback: true },
   // Include Google Analytics module
   modules: [["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]],
+  // Include Vuetify components
+  plugins: ["~/plugins/vuetify.js"],
   // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
   // Customize the progress bar color
