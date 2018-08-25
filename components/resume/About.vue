@@ -6,9 +6,9 @@
     <a href="/" id="top-backlink">Site principal</a>
 
     <!-- PROFILE -->
-    <div id="profile">
+    <div id="profile" class="elevation-4">
       <div class="avatar">
-        <img class="rounded-circle" src="/img/avatar.jpeg" alt="photo_profile" />
+        <img class="rounded-circle elevation-8" src="/img/avatar.jpeg" alt="photo_profile" />
       </div>
       <h1>Julien Sulpis</h1>
       <h2>Stagiaire développeur Android</h2>
@@ -33,7 +33,7 @@
       <!-- Description -->
       <p id="description">
         <v-icon small>fas fa-quote-left</v-icon>
-        Développeur généraliste passionné et curieux, insatiable de technologies à explorer et de méthodes pour progresser.
+        Développeur généraliste passionné et curieux, insatiable de technologies à explorer.
         <v-icon small>fas fa-quote-right</v-icon>
       </p>
 
@@ -132,11 +132,11 @@ export default {
       // Set the sticky tab bar
       if (offsetTop >= this.sticky) {
         navbar.addClass("sticky");
-        navbar.addClass("mdc-elevation--z4");
+        navbar.addClass("elevation-4");
         firstSection.classList.add("push");
       } else {
         navbar.removeClass("sticky");
-        navbar.removeClass("mdc-elevation--z4");
+        navbar.removeClass("elevation-4");
         firstSection.classList.remove("push");
       }
 

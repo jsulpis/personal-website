@@ -16,8 +16,6 @@
   width: 100%;
   background-color: white;
 
-  @include mdc-elevation(4);
-
   .avatar {
     height: $avatar-height;
     width: 100%;
@@ -32,10 +30,6 @@
   .social {
     margin: 0.5rem 1rem;
     padding: 0.5rem;
-
-    .v-icon {
-      transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
-    }
   }
 
   h1 {

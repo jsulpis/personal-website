@@ -2,7 +2,7 @@
   .subtitle {
     @include mdc-typography(body2);
   }
-  
+
   .skill-title {
     @include mdc-typography(headline6);
     margin-bottom: 0.5rem;
@@ -61,6 +61,7 @@
       display: flex;
       flex-direction: column;
       .tooltip {
+        position: relative;
         img {
           max-height: $skill-item-size * 0.8;
           max-width: $skill-item-size;
@@ -72,9 +73,7 @@
           text-align: center;
           padding: 0.5rem;
           border-radius: 2px;
-
           background-color: white;
-          @include mdc-elevation(8);
           @include mdc-typography(body2);
           /* Position the tooltip text */
           position: absolute;

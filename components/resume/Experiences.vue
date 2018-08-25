@@ -74,7 +74,7 @@ export default {
   },
   mounted() {
     // Show the two first sections after this one is mounted
-    $("#hide-on-load").addClass("show");
+    $("#hide-on-render").addClass("show");
   }
 };
 </script>

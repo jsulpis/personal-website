@@ -5,7 +5,7 @@
   }
 
   .school {
-    transition: all 0.4s $mdc-animation-standard-curve-timing-function;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // $mdc-animation-standard-curve-timing-function;
     display: inline-block;
     margin: 0 auto;
     width: 40%;
@@ -81,7 +81,6 @@
     @include school-focus;
     @media only screen and (min-width: 960px) {
       width: 40vw;
-      @include mdc-elevation(8);
     }
     @media only screen and (min-width: 1600px) {
       width: 33vw;

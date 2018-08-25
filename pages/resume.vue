@@ -1,14 +1,15 @@
 <template>
   <div>
-    <drawer
-    :items="items"
-    :dark=false
-    :fixed=true
-    :flat=false
-    :showOnLargeScreens=false
-    color=""
-    :backLink=true />
-    <div id="hide-on-load">
+    <!-- Hide the top of the page until the experiences section is rendered -->
+    <div id="hide-on-render">
+      <drawer
+      :items="items"
+      :dark=false
+      :fixed=true
+      :flat=false
+      :showOnLargeScreens=false
+      color=""
+      :backLink=true />
       <about/>
       <experiences/>
     </div>

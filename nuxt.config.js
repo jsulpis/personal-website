@@ -3,9 +3,7 @@ const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
 
 module.exports = {
-  /*
-  ** Headers of the page
-  */
+  // Headers of the page
   head: {
     title: "personnal-website",
     meta: [
@@ -22,7 +20,7 @@ module.exports = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,600"
+        href: "https://fonts.googleapis.com/css?family=Roboto:400,500,600"
       },
       {
         rel: "stylesheet",
@@ -30,48 +28,26 @@ module.exports = {
       },
       {
         rel: "stylesheet",
-        href: "https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        href: "https://use.fontawesome.com/releases/v5.2.0/css/all.css",
+        integrity:
+          "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ",
+        crossorigin: "anonymous"
       }
     ]
   },
-  /*
-  * Generate proper fallback pages
-  */
-  generate: {
-    fallback: true
-  },
-  /*
-  * Include Google Analytics module
-  */
-  modules: [
-    [
-      "@nuxtjs/google-analytics",
-      {
-        id: "UA-124217907-2"
-      }
-    ]
-  ],
-  /*
-  * Include custom Javascript files
-  */
-  plugins: ["~/plugins/vuetify.js"],
-  /*
-  ** Include Sass files
-  */
+  // Generate proper fallback pages
+  generate: { fallback: true },
+  // Include Google Analytics module
+  modules: [["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]],
+  // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
-  /*
-  ** Customize the progress bar color
-  */
+  // Customize the progress bar color
   loading: { color: "#3B8070" },
-  /*
-  ** Build configuration
-  */
+
+  // Build configuration
   build: {
-    plugins: [
-      new webpack.ProvidePlugin({
-        $: "jquery"
-      })
-    ],
+    plugins: [new webpack.ProvidePlugin({ $: "jquery" })],
+    // Include Vuetify components a-la-carte
     babel: {
       plugins: [
         [
@@ -88,13 +64,7 @@ module.exports = {
     vendor: ["jquery", "~/plugins/vuetify.js"],
     extractCSS: true,
     cssSourceMap: false,
-    // avoids warnings on vuetify/src/stylus/components/*.css.map not found
-    extend(config) {
-      config.devtool = false;
-    },
-    /*
-    ** Run ESLint on save
-    */
+    // Run ESLint on save
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -112,7 +82,7 @@ module.exports = {
         ];
       }
 
-      // Include node_modules in css path
+      // Include node_modules in scss path
       const vueLoader = config.module.rules.find(
         rule => rule.loader === "vue-loader"
       );
@@ -132,7 +102,7 @@ module.exports = {
         }
       }
     },
-    // Turn off warnings
+    // Fix some CSS issues (root font-size, gradients...)
     postcss: {
       plugins: {
         "postcss-custom-properties": {

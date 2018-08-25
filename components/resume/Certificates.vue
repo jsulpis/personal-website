@@ -55,18 +55,6 @@
 <script>
 import * as VExpansionPanel from "vuetify/es5/components/VExpansionPanel";
 
-if (process.browser) {
-  const ScrollReveal = require("scrollreveal/dist/scrollreveal.min");
-  window.sr = ScrollReveal();
-  sr.reveal(".progress-bar", {
-    origin: "left",
-    distance: "100%",
-    easing: "ease-in-out",
-    reset: false
-  });
-  sr.reveal(".skill", { reset: true }, 50);
-}
-
 const rawJsonContent = [
   {
     category: "Développement Web",

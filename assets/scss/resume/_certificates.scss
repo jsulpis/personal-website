@@ -16,7 +16,7 @@
     margin: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s $mdc-animation-deceleration-curve-timing-function;
+    transition: max-height 0.2s ease-in-out;
   }
 
   .course-row {
@@ -64,7 +64,7 @@
 
   .certificate-icon {
     opacity: 0.8;
-    transition: opacity 0.1s $mdc-animation-standard-curve-timing-function;
+    transition: opacity 0.1s ease-in-out;
 
     &:hover {
       opacity: 1;

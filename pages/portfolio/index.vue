@@ -28,6 +28,7 @@ export default {
     };
   },
   mounted() {
+    $(".hide-on-render").addClass("show");
     axios
       .get(
         "https://ihb8a9aixg.execute-api.eu-west-3.amazonaws.com/dev/portfolio"
@@ -37,12 +38,21 @@ export default {
         // sort the artworks by their date.
         // we concatenate the year and the month and convert it to an int.
         sortedArtworks.sort((e1, e2) => {
-          const date1 = parseInt(e1.date.split("/").reverse().join(""));
-          const date2 = parseInt(e2.date.split("/").reverse().join(""));
+          const date1 = parseInt(
+            e1.date
+              .split("/")
+              .reverse()
+              .join("")
+          );
+          const date2 = parseInt(
+            e2.date
+              .split("/")
+              .reverse()
+              .join("")
+          );
           return date2 - date1;
-        })
+        });
         this.artworks = sortedArtworks;
-        $(".hide-on-render").addClass("show");
       });
   }
 };

@@ -11,7 +11,6 @@ body {
   border-radius: 50%;
   padding: 0px;
   border: 5px solid white;
-  @include mdc-elevation(8);
 }
 
 section:not(.mdc-top-app-bar__section) {
@@ -43,7 +42,7 @@ section:not(.mdc-top-app-bar__section) {
 a {
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.1s $mdc-animation-standard-curve-timing-function !important;
+  transition: color 0.1s ease-in-out !important;
   @include mdc-theme-prop(color, text-secondary-on-background);
 
   &:hover {
@@ -69,9 +68,9 @@ a {
   }
 }
 
-#hide-on-load {
+#hide-on-render {
   opacity: 0;
-  transition: opacity 0.2s $mdc-animation-standard-curve-timing-function;
+  transition: opacity 0.2s ease-in-out;
 
   &.show {
     opacity: 1;
