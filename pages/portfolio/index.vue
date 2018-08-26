@@ -36,53 +36,50 @@ export default {
   },
   mounted() {
     $(".hide-on-render").addClass("show");
-    axios
-      .get(
-        "https://ihb8a9aixg.execute-api.eu-west-3.amazonaws.com/dev/portfolio"
-      )
-      .then(response => {
-        const sortedArtworks = response.data.Items;
-        // sort the artworks by their date.
-        // we concatenate the year and the month and convert it to an int.
-        sortedArtworks.sort((e1, e2) => {
-          const date1 = parseInt(
-            e1.date
-              .split("/")
-              .reverse()
-              .join("")
-          );
-          const date2 = parseInt(
-            e2.date
-              .split("/")
-              .reverse()
-              .join("")
-          );
-          return date2 - date1;
-        });
-        this.artworks = sortedArtworks;
 
-        // Give a bit of time to fill the artworks array and then fade them in
-        // The call to the function setTimeout itself can be long enough to delay the execution...
-        setTimeout(() => {
-          $("#gallery-progress").hide();
-          $(".preview").each(function(index) {
-            $(this)
-              .delay(20 * index)
-              .fadeIn();
-          });
-        }, 10);
+    axios.get("https://api.juliensulpis.fr/artworks").then(response => {
+      this.artworks = response.data.Items;
+      this.sortArtworksByDate();
 
-        // Second chance for slow devices
-        setTimeout(
-          () =>
-            $(".preview").each(function(index) {
-              $(this)
-                .delay(20 * index)
-                .fadeIn();
-            }),
-          1000
+      // Give a bit of time to fill the artworks array and then fade them in
+      // The call to the function setTimeout itself can be long enough to delay the execution...
+      this.showGalleryWithDelay(10);
+      // Second chance for slow devices
+      this.showGalleryWithDelay(1000);
+    });
+  },
+  methods: {
+    sortArtworksByDate() {
+      // we concatenate the year and the month and convert it to an int.
+      this.artworks.sort((e1, e2) => {
+        const date1 = parseInt(
+          e1.date
+            .split("/")
+            .reverse()
+            .join("")
         );
+        const date2 = parseInt(
+          e2.date
+            .split("/")
+            .reverse()
+            .join("")
+        );
+        return date2 - date1;
       });
+    },
+    showGalleryWithDelay(delay) {
+      // Fade in each gallery item one after another
+      setTimeout(() => {
+        $("#gallery-progress").hide();
+        $(".preview").each(function(index) {
+          $(this)
+            .delay(20 * index)
+            .fadeIn();
+        });
+        // Update comments count
+        DISQUSWIDGETS.getCount({ reset: true });
+      }, delay);
+    }
   }
 };
 </script>

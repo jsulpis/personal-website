@@ -4,42 +4,42 @@
     <v-container justify-center>
       <form id="contact-form" action="#" @submit.prevent="onSubmit">
         <!-- Name -->
-        <v-text-field id="name-field" 
-        v-model="name" 
-        label="Nom" 
-        prepend-inner-icon="account_box" 
+        <v-text-field id="name-field"
+        v-model="name"
+        label="Nom"
+        prepend-inner-icon="account_box"
         :rules="[rules.required, rules.nameChecker]"
-        :success="validName" 
-        required 
+        :success="validName"
+        required
         validate-on-blur></v-text-field>
 
         <!-- Email-->
-        <v-text-field 
-        id="email-field" 
-        v-model="email" 
-        label="E-mail" 
-        prepend-inner-icon="email" 
+        <v-text-field
+        id="email-field"
+        v-model="email"
+        label="E-mail"
+        prepend-inner-icon="email"
         hint="Il sera utilisé uniquement pour vous répondre."
-        :rules="[rules.required, rules.emailChecker]" 
-        :success="validEmail" 
-        required 
+        :rules="[rules.required, rules.emailChecker]"
+        :success="validEmail"
+        required
         validate-on-blur></v-text-field>
 
         <!-- Message -->
-        <v-textarea 
-        id="message-field" 
-        v-model="message" 
-        label="Message" 
-        auto-grow 
-        counter="1000" 
+        <v-textarea
+        id="message-field"
+        v-model="message"
+        label="Message"
+        auto-grow
+        counter="1000"
         :rules="[rules.required, rules.messageChecker]"
-        :success="validMessage" 
-        required 
+        :success="validMessage"
+        required
         validate-on-blur></v-textarea>
 
-        <v-btn color="primary" 
-        :loading="loading" 
-        :disabled="loading" 
+        <v-btn color="primary"
+        :loading="loading"
+        :disabled="loading"
         type="submit">
           <v-icon left>send</v-icon>
           Envoyer
@@ -48,9 +48,9 @@
     </v-container>
 
     <!-- SNACKBAR -->
-    <v-snackbar 
-    v-model="snackbar" 
-    :color="snackBarState" 
+    <v-snackbar
+    v-model="snackbar"
+    :color="snackBarState"
     :timeout="snackBarTimeout">
       {{ snackBarText }}
       <v-btn dark flat @click="snackbar = false">
@@ -142,7 +142,7 @@ export default {
         console.log("Valid formular. Sending the e-mail...");
         this.loading = true;
         axios
-          .post("https://90y1fzl9ij.execute-api.eu-west-3.amazonaws.com/prod", {
+          .post("https://api.juliensulpis.fr/contact", {
             name: this.name,
             email: this.email,
             message: this.message

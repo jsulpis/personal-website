@@ -13,7 +13,7 @@
           <v-icon small>favorite_border</v-icon>{{ likes }}
         </div>
         <div class="img--comments">
-          <v-icon small>forum</v-icon>{{ likes }}
+          <v-icon small>forum</v-icon><a :href="'http://localhost:3000/portfolio/' + url + '#disqus_thread'">0</a>
         </div>
     </div>
     </nuxt-link>

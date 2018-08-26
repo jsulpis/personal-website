@@ -30,7 +30,7 @@
           <!-- Comments -->
           <div class="artwork-comments">
             <v-icon>forum</v-icon>
-            <span>{{ artwork.likes }}</span>
+            <span><a :href="'http://localhost:3000/portfolio/' + this.$route.params.title + '#disqus_thread'">0</a></span>
           </div>
         </div>
         <!-- Image -->
@@ -56,6 +56,9 @@
           <p>{{ software }}</p>
         </div>
       </section>
+
+      <!-- Disqus plugin -->
+      <div id="disqus_thread"></div>
     </v-container>
   </div>
 </template>
@@ -89,14 +92,42 @@ export default {
   },
   mounted() {
     $(".hide-on-render").addClass("show");
+
+    DISQUSWIDGETS.getCount({ reset: true });
+
     axios
-      .get(
-        "https://ihb8a9aixg.execute-api.eu-west-3.amazonaws.com/dev/portfolio/" +
-          this.$route.params.title
-      )
+      .get("https://api.juliensulpis.fr/artworks/" + this.$route.params.title)
       .then(response => {
         this.artwork = response.data.Item;
         $("#gallery-item-container").fadeIn();
+
+        // Disqus plugin
+        const disqus_config = function() {
+          this.page.url =
+            "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
+          this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
+        };
+
+        // Load the Disqus comment plugin if it's not already done (when coming from another artwork for example)
+        if ("undefined" == typeof DISQUS) {
+          (function() {
+            var d = document,
+              s = d.createElement("script");
+            s.src = "https://localhost-ecfgq3nt0m.disqus.com/embed.js";
+            s.setAttribute("data-timestamp", +new Date());
+            d.body.appendChild(s);
+          })();
+        } else {
+          // Or reset the plugin if it's already loaded
+          DISQUS.reset({
+            reload: true,
+            config: function() {
+              this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
+              this.page.url =
+                "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
+            }
+          });
+        }
       });
   }
 };
