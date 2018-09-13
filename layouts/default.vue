@@ -11,8 +11,10 @@
       :showOnLargeScreens=true
       id="index-drawer"
       class="hide-on-render"/>
+
       <!-- Element to push the content below the toolbar -->
       <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div>
+
       <!-- Main menu visible on medium screens and above -->
       <nav id="main-menu" class="hidden-sm-and-down text-sm-right">
         <ul id="main-menu__list">
@@ -21,12 +23,18 @@
           </li>
         </ul>
       </nav>
+
       <!-- Page content -->
-      <nuxt />
+      <nuxt/>
+
       <!-- Element to push the content above the footer -->
       <div id="push-bottom"></div>
+
       <!-- Footer -->
       <my-footer class="hide-on-render"/>
+
+      <!-- Snackbar and dialog to allow cookies -->
+      <cookies/>
     </v-content>
   </v-app>
 </template>
@@ -34,6 +42,8 @@
 <script>
 import Drawer from "~/components/Drawer.vue";
 import MyFooter from "~/components/MyFooter.vue";
+import Cookies from "~/components/Cookies.vue";
+
 export default {
   head() {
     return {
@@ -54,7 +64,8 @@ export default {
   },
   components: {
     Drawer,
-    MyFooter
+    MyFooter,
+    Cookies
   },
   data() {
     return {

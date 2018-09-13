@@ -36,3 +36,17 @@ a {
 .application.theme--dark {
   background: #212121;
 }
+
+#cookie-snackbar {
+  .v-snack__wrapper {
+    // override the snackbar property
+    max-width: 100%;
+  }
+
+  @media only screen and (max-width: 599px) {
+    .v-snack__content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
