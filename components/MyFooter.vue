@@ -16,7 +16,7 @@
 
       <v-card-text>
         &copy; 2018 - code & design par Julien Sulpis <br>
-        Hébergé sur <a href="https://github.com/jsulpis/personal-website">GitHub</a>
+        Site hébergé sur <a href="https://github.com/jsulpis/personal-website">GitHub</a>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -33,16 +33,20 @@ export default {
     return {
       icons: [
         {
+          id: "fab fa-facebook-f",
+          link: "https://www.facebook.com/julien.sulpis"
+        },
+        {
           id: "fab fa-linkedin-in",
           link: "https://www.linkedin.com/in/julien-sulpis"
         },
         {
-          id: "fab fa-github",
-          link: "https://github.com/jsulpis"
-        },
-        {
           id: "fab fa-twitter",
           link: "https://twitter.com/JulienSulpis"
+        },
+        {
+          id: "fab fa-github",
+          link: "https://github.com/jsulpis"
         },
         {
           id: "email",
