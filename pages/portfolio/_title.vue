@@ -66,8 +66,21 @@ export default {
   components: {
     LikeBtn
   },
+  head() {
+    return {
+      title: this.artwork.title,
+      meta: [
+        { name: "og:title", content: this.artwork.title },
+        { name: "og:type", content: "website" },
+        { name: "og:url", content: "https://juliensulpis.fr/portfolio/" + this.artwork.urlTitle },
+        { name: "og:description", content: this.description },
+        { name: "description", content: this.description }
+      ]
+    };
+  },
   data() {
     return {
+      description: "Un élément de ma gallerie personnelle.",
       artwork: {},
       links: {
         Blender: "https://www.blender.org",

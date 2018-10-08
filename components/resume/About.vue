@@ -33,7 +33,7 @@
       <!-- Description -->
       <p id="description">
         <v-icon small>fas fa-quote-left</v-icon>
-        Développeur généraliste passionné et curieux, insatiable de technologies à explorer.
+        <slot></slot>
         <v-icon small>fas fa-quote-right</v-icon>
       </p>
 

@@ -33,6 +33,8 @@
 import Panel from "~/components/index/Panel.vue";
 import MyFooter from "~/components/MyFooter.vue";
 
+import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+
 function loadImage(id) {
   $("#" + id).css("background-image", "url('/img/background/" + id + ".jpg')");
 }
@@ -41,6 +43,25 @@ export default {
   components: {
     Panel,
     MyFooter
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { name: "og:title", content: this.title },
+        { name: "og:type", content: "website" },
+        { name: "og:url", content: ROOT_SITE_NAME },
+        { name: "og:description", content: this.description },
+        { name: "description", content: this.description }
+      ]
+    };
+  },
+  data() {
+    return {
+      title: makePageTitle("Accueil"),
+      description:
+        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
+    };
   },
   beforeMount() {
     // Override some default style

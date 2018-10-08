@@ -21,16 +21,31 @@
 <script>
 import axios from "axios";
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
-
 import Preview from "~/components/portfolio/Preview.vue";
+
+import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
     Preview,
     VProgressCircular
   },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { name: "og:title", content: this.title },
+        { name: "og:type", content: "website" },
+        { name: "og:url", content: ROOT_SITE_NAME + "/portfolio" },
+        { name: "og:description", content: this.description },
+        { name: "description", content: this.description }
+      ]
+    };
+  },
   data() {
     return {
+      title: makePageTitle("Portfolio"),
+      description: "Ma gallerie personnelle exposant certaines de mes réalisations en infographie.",
       artworks: []
     };
   },

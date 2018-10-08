@@ -5,21 +5,14 @@ const webpack = require("webpack");
 module.exports = {
   // Headers of the page
   head: {
-    title: "personnal-website",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content:
-          "My personnal website built with Nuxt.js and other awesome tools"
-      }
+      { name: "og:site_name", content: "Site de Julien Sulpis" },
+      { name: "og:locale", content: "fr_FR" }
     ],
     script: [
-      {
-        src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
-      }
+      { src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
