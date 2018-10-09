@@ -24,8 +24,8 @@
         <v-list-tile
         v-for="(item, i) in items"
         :key="i"
-        :to="nuxtLinks ? item.to : ''"
-        @click="!nuxtLinks ? $vuetify.goTo(item.to, options) : '';drawer = !drawer;"
+        :to="item.to"
+        @click="drawer = !drawer;"
         nuxt>
           <!-- <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -39,21 +39,28 @@
         </v-list-tile>
       </v-list>
 
-      <a v-if="backLink" href="/" id="drawer-backlink">Site principal</a>
     </v-navigation-drawer>
 
     <!-- TOOLBAR -->
     <v-toolbar
-    :class="showOnLargeScreens ? '' : 'hidden-md-and-up'"
-    :fixed="fixed"
-    :absolute="!fixed"
-    :flat="flat"
-    :color="color"
-    :height="height">
-    <v-spacer></v-spacer>
-      <v-toolbar-side-icon
-      class="hidden-md-and-up"
-      @click="drawer = !drawer" />
+    absolute
+    flat
+    color="transparent">
+      <v-toolbar-items id="toolbar-items" class="hidden-sm-and-down">
+        <v-layout align-start justify-center row fill-height>
+          <v-btn
+            v-for="(item, i) in items"
+            :key="i"
+            :to="item.to"
+            :ripple="false"
+            active-class="primary--text"
+            flat>{{item.title}}</v-btn>
+        </v-layout>
+      </v-toolbar-items>
+      <v-spacer></v-spacer>
+        <v-toolbar-side-icon
+        class="hidden-md-and-up"
+        @click="drawer = !drawer" />
     </v-toolbar>
 
   </div>
@@ -62,23 +69,11 @@
 <script>
 export default {
   props: {
-    items: Array,
-    fixed: Boolean,
-    flat: Boolean,
-    right: Boolean,
-    color: String,
-    height: String,
-    backLink: Boolean,
-    showOnLargeScreens: Boolean
+    items: Array
   },
   data() {
     return {
-      drawer: false,
-      options: {
-        duration: 400,
-        offset: 0,
-        easing: "easeInOutCubic"
-      }
+      drawer: false
     };
   },
   computed: {

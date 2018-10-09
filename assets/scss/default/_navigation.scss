@@ -1,49 +1,7 @@
-#main-menu {
-  position: absolute !important;
-  top: 0;
-  z-index: 10;
-  height: 80px;
+#toolbar-items {
   width: 100%;
-  padding-right: 40px;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 
-  a {
-    margin: 0px 10px;
-    padding: 10px 10px 7px 10px;
-    position: relative;
-
-    &:before {
-      visibility: hidden;
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 4px;
-      bottom: 0;
-      left: 0;
-      background-color: #fff;
-      -webkit-transform: scaleX(0);
-      transform: scaleX(0);
-      -webkit-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
-    }
-  }
-
-  .nuxt-link-active:not([href="/"]):before,
-  .nuxt-link-exact-active:before,
-  a:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-  }
-
-  #main-menu__list {
-    list-style: none;
-    line-height: 80px;
-    margin: 0;
-    padding: 0;
-
-    .main-menu__item {
-      display: inline;
-    }
+  .v-btn {
+    text-transform: initial;
   }
 }

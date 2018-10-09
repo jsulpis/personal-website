@@ -3,13 +3,7 @@
     <!-- Hide the top of the page until the experiences section is rendered -->
     <div id="hide-on-render">
       <drawer
-      :items="items"
-      :dark=false
-      :fixed=true
-      :flat=false
-      :showOnLargeScreens=false
-      color=""
-      :backLink=true />
+      :items="items" />
       <about>{{ description }}</about>
       <experiences/>
     </div>
@@ -63,38 +57,6 @@ export default {
       title: makePageTitle("CV"),
       description:
         "Développeur généraliste passionné et curieux, insatiable de technologies à explorer.",
-      items: [
-        {
-          title: "A propos",
-          to: "#header-wrapper",
-          icon: "account_circle"
-        },
-        {
-          title: "Experiences",
-          to: "#experiences",
-          icon: "work"
-        },
-        {
-          title: "Formation",
-          to: "#studies",
-          icon: "fas fa-graduation-cap"
-        },
-        {
-          title: "Compétences",
-          to: "#skills",
-          icon: "fas fa-list-alt"
-        },
-        // {
-        //   title: "Certifications",
-        //   to: "#certificates",
-        //   icon: "fas fa-certificate"
-        // },
-        {
-          title: "Contact",
-          to: "#contact",
-          icon: "mdi-amazon"
-        }
-      ]
     };
   } /*,
   mounted() {
