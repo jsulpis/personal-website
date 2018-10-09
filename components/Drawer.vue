@@ -43,7 +43,6 @@
 
     <!-- TOOLBAR -->
     <v-toolbar
-    absolute
     flat
     color="transparent">
       <v-toolbar-items id="toolbar-items" class="hidden-sm-and-down">

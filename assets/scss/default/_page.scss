@@ -29,7 +29,9 @@ a {
 }
 
 .theme--dark .v-card,
-.application .theme--dark.v-card {
+.application .theme--dark.v-card,
+.theme--dark .v-tabs__bar,
+.application .theme--dark.v-tabs__bar {
   background: #303030;
 }
 

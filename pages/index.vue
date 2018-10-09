@@ -31,7 +31,6 @@
 
 <script>
 import Panel from "~/components/index/Panel.vue";
-import MyFooter from "~/components/MyFooter.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
@@ -41,8 +40,7 @@ function loadImage(id) {
 
 export default {
   components: {
-    Panel,
-    MyFooter
+    Panel
   },
   head() {
     return {

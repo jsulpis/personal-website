@@ -14,7 +14,6 @@
   text-align: center;
   position: relative;
   width: 100%;
-  background-color: white;
 
   .avatar {
     height: $avatar-height;
@@ -30,6 +29,10 @@
   .social {
     margin: 0.5rem 1rem;
     padding: 0.5rem;
+
+    a:hover .v-icon {
+      opacity: 0.5;
+    }
   }
 
   h1 {
@@ -50,14 +53,10 @@
   }
 
   #description {
-    @include mdc-theme-prop(color, text-secondary-on-background);
     @include mdc-typography(body1);
     padding: 1rem 3rem 1.5rem 3rem;
     margin: auto;
     max-width: 800px;
-
-    .v-icon::before {
-      @include mdc-theme-prop(color, text-hint-on-background);
-    }
+    opacity: 0.75;
   }
 }

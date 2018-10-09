@@ -8,6 +8,7 @@
         v-model="name"
         label="Nom"
         prepend-inner-icon="account_box"
+        :light="isLightTheme"
         :rules="[rules.required, rules.nameChecker]"
         :success="validName"
         required
@@ -20,6 +21,7 @@
         label="E-mail"
         prepend-inner-icon="email"
         hint="Il sera utilisé uniquement pour vous répondre."
+        :light="isLightTheme"
         :rules="[rules.required, rules.emailChecker]"
         :success="validEmail"
         required
@@ -32,6 +34,7 @@
         label="Message"
         auto-grow
         counter="1000"
+        :light="isLightTheme"
         :rules="[rules.required, rules.messageChecker]"
         :success="validMessage"
         required
@@ -62,15 +65,18 @@
 
 <script>
 import axios from "axios";
-import * as VTextField from "vuetify/es5/components/VTextField";
+import VTextField from "vuetify/es5/components/VTextField";
 import * as VTextArea from "vuetify/es5/components/VTextarea";
-import * as VSnackbar from "vuetify/es5/components/VSnackbar";
+import VSnackbar from "vuetify/es5/components/VSnackbar";
 
 export default {
   components: {
-    ...VTextField,
+    VTextField,
     ...VTextArea,
-    ...VSnackbar
+    VSnackbar
+  },
+  props: {
+    isLightTheme: Boolean
   },
   data() {
     return {

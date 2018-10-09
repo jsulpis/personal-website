@@ -1,9 +1,6 @@
 <template>
   <!-- CERTIFICATES -->
-  <section id="certificates">
-    <v-container>
-      <h2 class="section-title">Certifications</h2>
-
+  <j-section id="certificates" title="Certifications">
       <v-expansion-panel popout>
         <v-expansion-panel-content
         class="certificate-group"
@@ -47,13 +44,12 @@
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
-
-    </v-container>
-  </section>
+  </j-section>
 </template>
 
 <script>
 import * as VExpansionPanel from "vuetify/es5/components/VExpansionPanel";
+import JSection from "./JSection.vue";
 
 const rawJsonContent = [
   {
@@ -338,7 +334,8 @@ rawJsonContent.forEach(function(elem) {
 
 export default {
   components: {
-    ...VExpansionPanel
+    ...VExpansionPanel,
+    JSection
   },
   data() {
     return {

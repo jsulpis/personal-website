@@ -8,7 +8,7 @@
       class="hide-on-render"/>
 
       <!-- Element to push the content below the toolbar -->
-      <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div>
+      <!-- <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div> -->
 
       <!-- Page content -->
       <nuxt/>
@@ -17,7 +17,7 @@
       <div id="push-bottom"></div>
 
       <!-- Footer -->
-      <my-footer class="hide-on-render"/>
+      <j-footer class="hide-on-render"/>
 
       <!-- Snackbar and dialog to allow cookies -->
       <cookies/>
@@ -27,7 +27,7 @@
 
 <script>
 import Drawer from "~/components/Drawer.vue";
-import MyFooter from "~/components/MyFooter.vue";
+import JFooter from "~/components/JFooter.vue";
 import Cookies from "~/components/Cookies.vue";
 
 export default {
@@ -50,7 +50,7 @@ export default {
   },
   components: {
     Drawer,
-    MyFooter,
+    JFooter,
     Cookies
   },
   data() {

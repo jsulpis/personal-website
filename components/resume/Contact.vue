@@ -1,21 +1,18 @@
 <template>
   <!-- CONTACT -->
-  <section id="contact">
-    <v-container>
-      <v-card>
-        <h2 class="section-title">Contact</h2>
-        <contact/>
-      </v-card>
-    </v-container>
-  </section>
+  <j-section id="contact" title="Contact">
+    <contact :isLightTheme="true"/>
+  </j-section>
 </template>
 
 <script>
 import Contact from "../Contact.vue";
+import JSection from "./JSection.vue";
 
 export default {
   components: {
-    Contact
+    Contact,
+    JSection
   }
 };
 </script>
