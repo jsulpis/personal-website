@@ -7,12 +7,6 @@ body {
   text-align: center;
 }
 
-.rounded-circle {
-  border-radius: 50%;
-  padding: 0px;
-  border: 5px solid white;
-}
-
 section:not(.mdc-top-app-bar__section) {
   margin: auto;
   padding: 16px 0 5px 0;
@@ -36,43 +30,5 @@ section:not(.mdc-top-app-bar__section) {
 @media only screen and (min-width: 1904px) {
   .container {
     max-width: 1185px !important;
-  }
-}
-
-a {
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.1s ease-in-out !important;
-  @include mdc-theme-prop(color, text-secondary-on-background);
-
-  &:hover {
-    @include mdc-theme-prop(color, text-primary-on-background);
-  }
-}
-
-#drawer-backlink {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#top-backlink {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  @include mdc-theme-prop(color, on-secondary);
-
-  &:hover {
-    @include mdc-theme-prop(color, text-secondary-on-background);
-  }
-}
-
-#hide-on-render {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-
-  &.show {
-    opacity: 1;
   }
 }

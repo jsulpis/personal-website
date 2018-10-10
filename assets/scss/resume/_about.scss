@@ -1,63 +1,56 @@
-// PARTICLES SECTION
-#particles {
-  height: $particles-section-height;
-  background: linear-gradient(
-    to top,
-    $mdc-theme-primary,
-    lighten($mdc-theme-primary, 25)
-  );
-  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
-}
-
-// PROFILE
-#profile {
-  text-align: center;
-  position: relative;
-  width: 100%;
-  background-color: white;
-
-  .avatar {
-    height: $avatar-height;
+#about {
+  // PROFILE
+  #profile {
+    text-align: center;
+    position: relative;
     width: 100%;
-    position: absolute;
-    top: -$avatar-height / 2;
 
-    img {
+    .avatar {
       height: $avatar-height;
+      width: 100%;
+      position: absolute;
+      top: -$avatar-height / 2;
+
+      img {
+        height: $avatar-height;
+        border-radius: 50%;
+        padding: 0px;
+        border: 5px solid white;
+      }
     }
-  }
 
-  .social {
-    margin: 0.5rem 1rem;
-    padding: 0.5rem;
-  }
+    .social {
+      margin: 0.5rem 1rem;
+      padding: 0.5rem;
 
-  h1 {
-    @include mdc-typography(headline5);
-    margin: 0;
-    padding-top: $avatar-height/2 + 2rem;
-  }
+      a:hover .v-icon {
+        opacity: 0.5;
+      }
+    }
 
-  h2 {
-    @include mdc-typography(subtitle1);
-    margin: 0;
-  }
+    h1 {
+      @include mdc-typography(headline5);
+      margin: 0;
+      padding-top: $avatar-height/2 + 2rem;
+    }
 
-  h3 {
-    @include mdc-typography(body2);
-    line-height: 1.5rem;
-    margin: 0;
-  }
+    h2 {
+      @include mdc-typography(subtitle1);
+      margin: 0;
+    }
 
-  #description {
-    @include mdc-theme-prop(color, text-secondary-on-background);
-    @include mdc-typography(body1);
-    padding: 1rem 3rem 1.5rem 3rem;
-    margin: auto;
-    max-width: 800px;
+    h3 {
+      @include mdc-typography(body2);
+      line-height: 1.5rem;
+      margin: 0;
+    }
 
-    .v-icon::before {
-      @include mdc-theme-prop(color, text-hint-on-background);
+    #description {
+      @include mdc-typography(body1);
+      padding: 1rem 3rem 1.5rem 3rem;
+      margin: auto;
+      max-width: 800px;
+      opacity: 0.75;
     }
   }
 }

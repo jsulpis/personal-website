@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer" absolute height="auto" class="elevation-8" light>
+  <v-footer id="footer" height="auto" class="elevation-8">
     <v-card flat tile class="text-xs-center pa-1">
       <v-card-text class="pa-0">
         <v-btn
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import * as VFooter from "vuetify/es5/components/VFooter";
+import VFooter from "vuetify/es5/components/VFooter";
 
 export default {
   components: {
-    ...VFooter
+    VFooter
   },
   data() {
     return {
@@ -52,8 +52,7 @@ export default {
           id: "email",
           link: "/contact"
         }
-      ],
-      color: "primary"
+      ]
     };
   }
 };

@@ -1,10 +1,7 @@
 <template>
   <!-- SKILLS -->
-  <section id="skills">
-    <v-container>
-      <h2 class="section-title">Compétences techniques</h2>
+  <j-section id="skills" title="Compétences techniques">
       <p class="subtitle">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
-      <v-card>
         <!-- Loop on domains -->
         <div v-for="(domain, index) in skillSet" :key="index">
           <h3 :class="'skill-title' + (index == 0 ? ' skill-title-first' : '')">{{ domain.name }}</h3>
@@ -25,12 +22,12 @@
             </div>
           </div>
         </div>
-      </v-card>
-    </v-container>
-  </section>
+  </j-section>
 </template>
 
 <script>
+import JSection from "./JSection.vue";
+
 const rawJsonContent = [
   {
     name: "Développement Web",
@@ -178,6 +175,9 @@ if (process.browser) {
 }
 
 export default {
+  components: {
+    JSection
+  },
   data() {
     return {
       skillSet: rawJsonContent

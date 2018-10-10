@@ -1,8 +1,5 @@
 #studies {
-  min-height: 705px;
-  @media only screen and(min-width: 960px) {
-    max-height: 705px;
-  }
+  min-height: 660px;
 
   .school {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // $mdc-animation-standard-curve-timing-function;

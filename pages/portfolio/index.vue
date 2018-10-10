@@ -45,7 +45,8 @@ export default {
   data() {
     return {
       title: makePageTitle("Portfolio"),
-      description: "Ma gallerie personnelle exposant certaines de mes réalisations en infographie.",
+      description:
+        "Ma gallerie personnelle exposant certaines de mes réalisations en infographie.",
       artworks: []
     };
   },
@@ -65,22 +66,18 @@ export default {
   },
   methods: {
     sortArtworksByDate() {
-      // we concatenate the year and the month and convert it to an int.
       this.artworks.sort((e1, e2) => {
-        const date1 = parseInt(
-          e1.date
-            .split("/")
-            .reverse()
-            .join("")
-        );
-        const date2 = parseInt(
-          e2.date
-            .split("/")
-            .reverse()
-            .join("")
-        );
-        return date2 - date1;
+        return this.dateToNumber(e2.date) - this.dateToNumber(e1.date);
       });
+    },
+    dateToNumber(date) {
+      // Concatenate the year and the month and convert it to an int.
+      return parseInt(
+        date
+          .split("/")
+          .reverse()
+          .join("")
+      );
     },
     showGalleryWithDelay(delay) {
       // Fade in each gallery item one after another

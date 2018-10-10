@@ -1,50 +1,40 @@
 <template>
-  <div>
+  <v-card light color="grey lighten-4" class="pa-0">
     <!-- Hide the top of the page until the experiences section is rendered -->
-    <div id="hide-on-render">
-      <drawer
-      :items="items"
-      :dark=false
-      :fixed=true
-      :flat=false
-      :showOnLargeScreens=false
-      color=""
-      :backLink=true />
+    <div class="hide-on-render">
       <about>{{ description }}</about>
+      <j-tabs/>
       <experiences/>
     </div>
     <education/>
     <skills/>
-    <!-- Certificates hidden for now -->
-    <!-- <certificates/> -->
     <contact/>
-    <my-footer/>
-  </div>
+    <scroll-top/>
+  </v-card>
 </template>
 
 <script>
 import About from "~/components/resume/About.vue";
-import Drawer from "~/components/Drawer.vue";
+import JTabs from "~/components/resume/JTabs.vue";
+import Drawer from "~/components/global/Drawer.vue";
 import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
-//import Certificates from "~/components/resume/Certificates.vue";
 import Contact from "~/components/resume/Contact.vue";
-import MyFooter from "~/components/MyFooter.vue";
+import ScrollTop from "~/components/resume/ScrollTop.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
-  layout: "light",
   components: {
     About,
+    JTabs,
     Drawer,
     Experiences,
     Education,
     Skills,
-    //Certificates,
     Contact,
-    MyFooter
+    ScrollTop
   },
   head() {
     return {
@@ -63,45 +53,8 @@ export default {
       title: makePageTitle("CV"),
       description:
         "Développeur généraliste passionné et curieux, insatiable de technologies à explorer.",
-      items: [
-        {
-          title: "A propos",
-          to: "#header-wrapper",
-          icon: "account_circle"
-        },
-        {
-          title: "Experiences",
-          to: "#experiences",
-          icon: "work"
-        },
-        {
-          title: "Formation",
-          to: "#studies",
-          icon: "fas fa-graduation-cap"
-        },
-        {
-          title: "Compétences",
-          to: "#skills",
-          icon: "fas fa-list-alt"
-        },
-        // {
-        //   title: "Certifications",
-        //   to: "#certificates",
-        //   icon: "fas fa-certificate"
-        // },
-        {
-          title: "Contact",
-          to: "#contact",
-          icon: "mdi-amazon"
-        }
-      ]
     };
-  } /*,
-  mounted() {
-    $(function() {
-      $("a").each((i, val) => $(val).prop("target", "_blank"));
-    });
-  }*/
+  }
 };
 </script>
 

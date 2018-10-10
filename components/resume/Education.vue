@@ -1,11 +1,12 @@
 <template>
   <!-- STUDIES -->
   <section id="studies">
-    <v-container>
-      <h2 class="section-title">Formation</h2>
+    <div class="container">
+
+    <h2 class="section-title">Formation</h2>
       <div class="schools">
         <!-- ICM -->
-        <v-card :class="'school icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+        <v-card :light="light" :class="'school icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
           <h3>Ingénieur Civil des Mines</h3>
           <h4>Mines Saint-Étienne</h4>
           <div class="school-logo">
@@ -14,7 +15,7 @@
             </a>
             <br>
           </div>
-          <v-btn v-show="activeCard === 'cps2'" icon @click="activeCard = 'emse'">
+          <v-btn icon v-show="activeCard === 'cps2' && !smallViewport" :light="light" @click="activeCard = 'emse'">
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
@@ -46,7 +47,7 @@
         </v-card>
 
         <!-- CPS2 -->
-        <v-card :class="'school cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+        <v-card :light="light" :class="'school cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
           <h3>Master on Cyber-Physical and Social Systems</h3>
           <h4>Mines Saint-Étienne, Université Jean Monnet</h4>
           <div class="school-logo">
@@ -55,7 +56,7 @@
             </a>
             <br>
           </div>
-          <v-btn v-show="activeCard === 'emse' && !smallViewport" icon @click="activeCard = 'cps2'">
+          <v-btn icon v-show="activeCard === 'emse' && !smallViewport" :light="light" @click="activeCard = 'cps2'">
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
@@ -87,15 +88,21 @@
           </div>
         </v-card>
       </div>
-    </v-container>
+    </div>
   </section>
 </template>
 
 <script>
+import JSection from "./JSection.vue";
+
 export default {
+  components: {
+    JSection
+  },
   data() {
     return {
-      activeCard: "emse"
+      activeCard: "emse",
+      light: true
     };
   },
   computed: {
