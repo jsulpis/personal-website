@@ -71,7 +71,7 @@ export default {
     JSection
   },
   mounted() {
-    // Show the two first sections after this one is mounted
+    // Show the hidden sections in the top of the page after this one is mounted
     $(".hide-on-render").addClass("show");
   }
 };

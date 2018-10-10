@@ -54,8 +54,7 @@
     left: 0;
     width: 14px;
     box-sizing: initial;
-    transition: background 0.2s ease-in-out,
-      border 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   }
   &:after {
     content: "";

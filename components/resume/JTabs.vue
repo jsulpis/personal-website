@@ -23,6 +23,8 @@
 <script>
 import * as VTabs from "vuetify/es5/components/VTabs";
 
+import { bannerHeight } from "~/assets/js/globals.js";
+
 function convertRemToPixels(rem) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
@@ -45,7 +47,7 @@ export default {
       items: [
         {
           title: "A propos",
-          to: "header-wrapper"
+          to: "about"
         },
         {
           title: "Experiences",
@@ -59,10 +61,6 @@ export default {
           title: "Compétences",
           to: "skills"
         },
-        // {
-        //   title: "Certifications",
-        //   to: "certificates"
-        // },
         {
           title: "Contact",
           to: "contact"
@@ -101,7 +99,7 @@ export default {
           this.activeTab = this.items.length - 1 ;
           for (let i = 0; i < this.items.length; i++) {
             const id = "#" + this.items[i].to;
-            if (offsetTop < document.querySelector(id).offsetTop) {
+            if (offsetTop < document.querySelector(id).offsetTop + bannerHeight()) {
               this.activeTab = i - 1;
               break;
             }
@@ -111,7 +109,7 @@ export default {
     }
   },
   mounted() {
-    this.sticky = document.querySelector("#tab-bar").offsetTop + 64;
+    this.sticky = document.querySelector("#tab-bar").offsetTop + bannerHeight();
     if (this.$vuetify.breakpoint.mdAndUp) {
       window.addEventListener("scroll", this.onScroll);
     }

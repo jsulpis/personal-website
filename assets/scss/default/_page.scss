@@ -9,14 +9,7 @@ body {
 
 a {
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.1s ease-in-out !important;
-  color: inherit !important;
-}
-
-// Push the content of the page above the footer (positioned absolutely)
-#push-bottom {
-  height: 137px;
+  font-weight: 500;
 }
 
 .hide-on-render {
@@ -32,7 +25,7 @@ a {
 .application .theme--dark.v-card,
 .theme--dark .v-tabs__bar,
 .application .theme--dark.v-tabs__bar {
-  background: #303030;
+  background-color: #303030;
 }
 
 .application.theme--dark {

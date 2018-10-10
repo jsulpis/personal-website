@@ -1,17 +1,17 @@
 <template>
   <!-- CONTACT -->
   <j-section id="contact" title="Contact">
-    <contact :isLightTheme="true"/>
+    <contact-form :isLightTheme="true"/>
   </j-section>
 </template>
 
 <script>
-import Contact from "../global/Contact.vue";
+import ContactForm from "../global/ContactForm.vue";
 import JSection from "./JSection.vue";
 
 export default {
   components: {
-    Contact,
+    ContactForm,
     JSection
   }
 };

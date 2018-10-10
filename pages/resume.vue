@@ -8,8 +8,6 @@
     </div>
     <education/>
     <skills/>
-    <!-- Certificates hidden for now -->
-    <!-- <certificates/> -->
     <contact/>
     <scroll-top/>
   </v-card>
@@ -22,7 +20,6 @@ import Drawer from "~/components/global/Drawer.vue";
 import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
-//import Certificates from "~/components/resume/Certificates.vue";
 import Contact from "~/components/resume/Contact.vue";
 import ScrollTop from "~/components/resume/ScrollTop.vue";
 
@@ -36,7 +33,6 @@ export default {
     Experiences,
     Education,
     Skills,
-    //Certificates,
     Contact,
     ScrollTop
   },

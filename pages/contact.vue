@@ -1,21 +1,21 @@
 <template>
-  <v-container id="contact" class="page-content hide-on-render">
+  <v-container id="contact" class="hide-on-render">
     <v-card>
       <p class="font-weight-regular pt-4 px-2 ma-0">
         Une question ? Une suggestion ? Une envie de remplir un formulaire ?<br>C'est ici !</p>
-      <contact/>
+      <contact-form/>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import Contact from "~/components/global/Contact.vue";
+import ContactForm from "~/components/global/ContactForm.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
-    Contact
+    ContactForm
   },
   head() {
     return {

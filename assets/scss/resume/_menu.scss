@@ -1,19 +1,7 @@
-// Fix font-awesome icon width
-.v-icon.fas {
-  width: 24px;
-}
-
 // TAB BAR
 #tab-bar {
-  min-height: 10px;
-  // background-color: white;
   width: 100%;
   z-index: 2;
-
-  .tab-item {
-    font-size: 0.875rem;
-    letter-spacing: 0.08929em;
-  }
 
   .v-tabs__item {
     font-weight: 400;

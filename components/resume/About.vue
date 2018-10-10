@@ -1,6 +1,5 @@
 <template>
-  <div id="header-wrapper">
-    <!-- <div id="particles"></div> -->
+  <div id="about">
 
     <!-- PROFILE -->
     <v-card :light="isLightTheme" id="profile" :class="'elevation-4 pa-0 ' + (isLightTheme ? 'white' : '')">
@@ -27,7 +26,7 @@
       <!-- Description -->
       <p id="description">
         <v-icon small>fas fa-quote-left</v-icon>
-        <slot></slot>
+        &nbsp;<slot></slot>&nbsp;
         <v-icon small>fas fa-quote-right</v-icon>
       </p>
     </v-card>

@@ -179,3 +179,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+</style>

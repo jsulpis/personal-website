@@ -1,9 +1,9 @@
 <template>
-      <div id="home-message">
-        <div>Je suis</div>
-        <div>Julien Sulpis</div>
-        <div>{{description}}</div>
-      </div>
+  <div id="home-message">
+    <div>Je suis</div>
+    <div>Julien Sulpis</div>
+    <div>{{description}}</div>
+  </div>
 </template>
 
 <script>
@@ -29,12 +29,7 @@ export default {
         "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
     };
   },
-  beforeMount() {
-    // $(".hide-on-render").removeClass("show");
-    // $("#footer").hide();
-  },
   beforeDestroy() {
-    // $("#push-bottom").show();
     $("#footer").removeClass("show");
     $("#footer").show();
     $("#banner").animate({ height: "25vh" });
