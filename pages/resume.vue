@@ -18,7 +18,7 @@
 <script>
 import About from "~/components/resume/About.vue";
 import JTabs from "~/components/resume/JTabs.vue";
-import Drawer from "~/components/Drawer.vue";
+import Drawer from "~/components/global/Drawer.vue";
 import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";

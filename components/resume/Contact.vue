@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Contact from "../Contact.vue";
+import Contact from "../global/Contact.vue";
 import JSection from "./JSection.vue";
 
 export default {

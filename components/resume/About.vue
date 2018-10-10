@@ -1,6 +1,6 @@
 <template>
   <div id="header-wrapper">
-    <div id="particles"></div>
+    <!-- <div id="particles"></div> -->
 
     <!-- PROFILE -->
     <v-card :light="isLightTheme" id="profile" :class="'elevation-4 pa-0 ' + (isLightTheme ? 'white' : '')">

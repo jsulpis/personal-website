@@ -1,23 +1,10 @@
-#fixed-catchphrase {
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 22%;
-  font-size: 2.1rem;
-  font-weight: 400;
-}
-
-#fixed-catchphrase,
-.section {
+#home-message {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-#fp-nav {
-  z-index: 3;
-  ul li a span {
-    background-color: #fff;
-  }
 }
 
 .background-image {

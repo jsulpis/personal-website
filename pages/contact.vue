@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Contact from "~/components/Contact.vue";
+import Contact from "~/components/global/Contact.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 

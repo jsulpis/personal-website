@@ -4,8 +4,10 @@
       <!-- Navigation drawer -->
       <drawer
       :items="items"
-      id="index-drawer"
-      class="hide-on-render"/>
+      id="index-drawer"/>
+
+      <!-- Banner -->
+      <banner :description="description"/>
 
       <!-- Element to push the content below the toolbar -->
       <!-- <div id="push-top" :style="'height: ' + (smallViewport ? '56px' : '80px')"></div> -->
@@ -14,7 +16,7 @@
       <nuxt/>
 
       <!-- Element to push the content above the footer -->
-      <div id="push-bottom"></div>
+      <!-- <div id="push-bottom"></div> -->
 
       <!-- Footer -->
       <j-footer class="hide-on-render"/>
@@ -26,9 +28,10 @@
 </template>
 
 <script>
-import Drawer from "~/components/Drawer.vue";
-import JFooter from "~/components/JFooter.vue";
-import Cookies from "~/components/Cookies.vue";
+import Banner from "~/components/global/Banner.vue";
+import Drawer from "~/components/global/Drawer.vue";
+import JFooter from "~/components/global/JFooter.vue";
+import Cookies from "~/components/global/Cookies.vue";
 
 export default {
   head() {
@@ -49,12 +52,15 @@ export default {
     };
   },
   components: {
+    Banner,
     Drawer,
     JFooter,
     Cookies
   },
   data() {
     return {
+      description:
+        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design.",
       items: [
         {
           title: "Accueil",

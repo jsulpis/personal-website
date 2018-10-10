@@ -44,6 +44,7 @@
     <!-- TOOLBAR -->
     <v-toolbar
     flat
+    absolute
     color="transparent">
       <v-toolbar-items id="toolbar-items" class="hidden-sm-and-down">
         <v-layout align-start justify-center row fill-height>
