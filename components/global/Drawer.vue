@@ -42,7 +42,7 @@
     flat
     absolute
     color="transparent">
-      <v-toolbar-items id="toolbar-items" class="hidden-sm-and-down">
+      <v-toolbar-items id="toolbar-items" class="hidden-xs-only">
         <v-layout align-start justify-center row fill-height>
           <v-btn
             v-for="(item, i) in items"
@@ -55,7 +55,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
         <v-toolbar-side-icon
-        class="hidden-md-and-up"
+        class="hidden-sm-and-up"
         @click="drawer = !drawer" />
     </v-toolbar>
 

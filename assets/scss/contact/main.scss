@@ -1,5 +1,7 @@
+@import "../default/variables";
+
 #contact {
-  min-height: calc(100vh - 137px - 80px);
+  min-height: calc(100vh - #{$banner-height} - 137px);
   display: flex;
   justify-content: center;
   align-items: center;

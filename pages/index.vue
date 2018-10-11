@@ -1,15 +1,26 @@
 <template>
-  <div id="home-message">
-    <div>Je suis</div>
-    <div>Julien Sulpis</div>
-    <div>{{description}}</div>
+<div>
+  <home v-on:home-screen-loaded="showHiddenSection"/>
+  <div class="hide-on-render">
+    <about/>
+    <scroll-top/>
   </div>
+</div>
 </template>
 
 <script>
+import Home from "~/components/index/Home";
+import About from "~/components/index/About";
+import ScrollTop from "~/components/global/ScrollTop";
+
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
+  components: {
+    Home,
+    About,
+    ScrollTop
+  },
   head() {
     return {
       title: this.title,
@@ -29,23 +40,9 @@ export default {
         "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
     };
   },
-  beforeDestroy() {
-    $("#footer").removeClass("show");
-    $("#footer").show();
-    $("#banner").animate({ height: "25vh" });
-  },
-  mounted() {
-    const banner = $("#banner");
-    $("#footer").hide();
-    if ($("#footer")[0].classList.contains("show")) {
-      // Coming from another page: animate the banner
-      banner.animate({ height: "100%" }, () => {
-        $("#home-message").fadeIn();
-      });
-    } else {
-      // Show the banner directly
-      banner.css("height", "100%");
-      $("#home-message").fadeIn();
+  methods: {
+    showHiddenSection() {
+      $(".hide-on-render").addClass("show");
     }
   }
 };

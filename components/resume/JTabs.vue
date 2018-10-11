@@ -4,7 +4,7 @@
     <v-tabs
     v-model="activeTab"
     id="tab-bar"
-    class="hidden-sm-and-down elevation-4"
+    class="hidden-sm-and-down"
     centered
     fixed-tabs
     slider-color="primary">
@@ -13,7 +13,7 @@
       class="tab-item"
       :key="index"
       ripple
-      @click="$vuetify.goTo('#' + item.to, options); tabClickedTime = new Date().getTime()">
+      @click="$vuetify.goTo('#' + item.to, scrollingOptions); tabClickedTime = new Date().getTime()">
         {{ item.title }}
       </v-tab>
     </v-tabs>
@@ -23,7 +23,7 @@
 <script>
 import * as VTabs from "vuetify/es5/components/VTabs";
 
-import { bannerHeight } from "~/assets/js/globals.js";
+import { BANNER_HEIGHT, SCROLLING_OPTIONS } from "~/assets/js/globals.js";
 
 function convertRemToPixels(rem) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -37,11 +37,7 @@ export default {
     return {
       activeTab: 0,
       tabClickedTime: 0,
-      options: {
-        duration: 400,
-        offset: 0,
-        easing: "easeInOutQuint"
-      },
+      scrollingOptions: SCROLLING_OPTIONS,
       sticky: 0,
       stickyTabsActivated: false,
       items: [
@@ -99,7 +95,7 @@ export default {
           this.activeTab = this.items.length - 1 ;
           for (let i = 0; i < this.items.length; i++) {
             const id = "#" + this.items[i].to;
-            if (offsetTop < document.querySelector(id).offsetTop + bannerHeight()) {
+            if (offsetTop < document.querySelector(id).offsetTop + BANNER_HEIGHT) {
               this.activeTab = i - 1;
               break;
             }
@@ -109,7 +105,7 @@ export default {
     }
   },
   mounted() {
-    this.sticky = document.querySelector("#tab-bar").offsetTop + bannerHeight();
+    this.sticky = document.querySelector("#tab-bar").offsetTop + BANNER_HEIGHT;
     if (this.$vuetify.breakpoint.mdAndUp) {
       window.addEventListener("scroll", this.onScroll);
     }

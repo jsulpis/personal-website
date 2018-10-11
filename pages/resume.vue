@@ -21,7 +21,7 @@ import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
-import ScrollTop from "~/components/resume/ScrollTop.vue";
+import ScrollTop from "~/components/global/ScrollTop.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 

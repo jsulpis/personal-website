@@ -3,9 +3,7 @@
 
     <!-- PROFILE -->
     <v-card :light="isLightTheme" id="profile" :class="'elevation-4 pa-0 ' + (isLightTheme ? 'white' : '')">
-      <div class="avatar">
-        <img class="rounded-circle elevation-8" src="/img/avatar.jpeg" alt="photo_profile" />
-      </div>
+      <avatar/>
       <h1>Julien Sulpis</h1>
       <h2>Stagiaire développeur Android</h2>
       <h3>SOLUTEC &#x2022; École des Mines de Saint-Étienne
@@ -34,7 +32,12 @@
 </template>
 
 <script>
+import Avatar from "../global/Avatar";
+
 export default {
+  components: {
+    Avatar
+  },
   data() {
     return {
       isLightTheme: ""

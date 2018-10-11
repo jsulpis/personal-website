@@ -6,17 +6,9 @@
     width: 100%;
 
     .avatar {
-      height: $avatar-height;
       width: 100%;
       position: absolute;
       top: -$avatar-height / 2;
-
-      img {
-        height: $avatar-height;
-        border-radius: 50%;
-        padding: 0px;
-        border: 5px solid white;
-      }
     }
 
     .social {

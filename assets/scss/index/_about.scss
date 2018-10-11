@@ -1,0 +1,28 @@
+#home-about {
+  .avatar {
+    margin-bottom: 3rem;
+  }
+
+  #home-profile {
+    font-size: 18px;
+
+    .welcome {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .description {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .icon-container {
+    flex: none;
+    height: 120px;
+    width: 120px !important;
+    border-radius: 50%;
+    margin: 1rem auto;
+  }
+}

@@ -3,4 +3,10 @@
 export const ROOT_SITE_NAME = "https://juliensulpis.fr";
 export const makePageTitle = name => name + " - Julien Sulpis";
 
-export const bannerHeight = () => window.innerHeight / 4;
+export const BANNER_HEIGHT = "200px";
+
+export const SCROLLING_OPTIONS = {
+  duration: 600,
+  offset: 0,
+  easing: "easeInOutQuint"
+};

@@ -18,7 +18,7 @@ module.exports = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Roboto:400,500,600"
+        href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,600"
       },
       {
         rel: "stylesheet",
@@ -42,7 +42,7 @@ module.exports = {
   // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
   // Customize the progress bar color
-  loading: { color: "#3B8070" },
+  loading: { color: "#bc5100" },
 
   // Build configuration
   build: {
