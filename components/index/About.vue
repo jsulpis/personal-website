@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="home-about">
+  <v-container fluid id="home-about" class="pb-5">
     <v-layout align-center justify-space-around row wrap>
       <v-flex xs12 id="home-profile">
         <avatar/>

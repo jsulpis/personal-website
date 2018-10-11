@@ -1,25 +1,20 @@
 <template>
 <div>
   <home v-on:home-screen-loaded="showHiddenSection"/>
-  <div class="hide-on-render">
-    <about/>
-    <scroll-top/>
-  </div>
+  <about class="hide-on-render"/>
 </div>
 </template>
 
 <script>
 import Home from "~/components/index/Home";
 import About from "~/components/index/About";
-import ScrollTop from "~/components/global/ScrollTop";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
     Home,
-    About,
-    ScrollTop
+    About
   },
   head() {
     return {

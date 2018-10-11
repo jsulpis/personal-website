@@ -8,8 +8,7 @@
     </div>
     <education/>
     <skills/>
-    <contact/>
-    <scroll-top/>
+    <contact class="pb-5"/>
   </v-card>
 </template>
 
@@ -21,7 +20,6 @@ import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
-import ScrollTop from "~/components/global/ScrollTop.vue";
 
 import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
 
@@ -33,8 +31,7 @@ export default {
     Experiences,
     Education,
     Skills,
-    Contact,
-    ScrollTop
+    Contact
   },
   head() {
     return {

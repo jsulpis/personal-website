@@ -1,5 +1,5 @@
 <template>
-  <v-btn fab color="primary" class="my-4">
+  <v-btn fab color="primary">
     <v-icon dark @click="$vuetify.goTo(0, scrollingOptions)">fas fa-angle-up</v-icon>
   </v-btn>
 </template>
