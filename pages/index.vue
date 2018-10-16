@@ -42,7 +42,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-@import "~assets/scss/index/main.scss";
-</style>

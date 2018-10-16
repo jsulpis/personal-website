@@ -67,7 +67,7 @@ export default {
     return {
       snackbar: false,
       dialog: false
-    }
+    };
   },
   methods: {
     setCookiesAccepted() {
@@ -78,6 +78,22 @@ export default {
     if (getCookie("acceptCookies") == "") {
       this.snackbar = true;
     }
-  },
-}
+  }
+};
 </script>
+
+<style lang="scss">
+#cookie-snackbar {
+  .v-snack__wrapper {
+    // override the snackbar property
+    max-width: 100%;
+  }
+
+  @media only screen and (max-width: 599px) {
+    .v-snack__content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+</style>

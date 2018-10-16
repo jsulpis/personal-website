@@ -63,5 +63,48 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/default/main.scss";
+@import "~/assets/scss/variables.scss";
+
+html {
+  font-size: initial !important;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hide-on-render {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+.theme--dark .v-card,
+.application .theme--dark.v-card,
+.theme--dark .v-tabs__bar,
+.application .theme--dark.v-tabs__bar {
+  background-color: #303030;
+}
+
+.application.theme--dark {
+  background: #212121;
+  color: rgba(255, 255, 255, 0.84) !important;
+}
+
+#banner {
+  height: $banner-height;
+  background-image: url("/img/background/sky.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
+}
 </style>

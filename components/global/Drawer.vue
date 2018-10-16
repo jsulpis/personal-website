@@ -74,3 +74,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+#toolbar-items {
+  width: 100%;
+
+  .v-btn {
+    text-transform: initial; // Remove default capital letters
+  }
+}
+</style>

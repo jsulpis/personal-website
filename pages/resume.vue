@@ -49,12 +49,57 @@ export default {
     return {
       title: makePageTitle("CV"),
       description:
-        "Développeur généraliste passionné et curieux, insatiable de technologies à explorer.",
+        "Développeur généraliste passionné et curieux, insatiable de technologies à explorer."
     };
   }
 };
 </script>
 
 <style lang="scss">
-@import "~assets/scss/resume/main.scss";
+@import "@material/typography/mdc-typography";
+
+@mixin title-underline {
+  &::after {
+    content: "";
+    margin: 0.75rem auto;
+    display: block;
+    width: 5rem;
+    border-bottom: 3px solid;
+  }
+}
+
+html {
+  font-size: initial !important;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+}
+
+section:not(.mdc-top-app-bar__section) {
+  margin: auto;
+  padding: 16px 0 5px 0;
+}
+
+.section-title {
+  margin: 1rem auto 2rem auto;
+  @include title-underline;
+  @include mdc-typography(headline5);
+}
+
+.title-underline {
+  @include title-underline;
+}
+
+.v-card {
+  padding: 1rem;
+}
+
+// Override Vuetify container width
+@media only screen and (min-width: 1904px) {
+  .container {
+    max-width: 1185px !important;
+  }
+}
 </style>

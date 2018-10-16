@@ -48,3 +48,83 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import "~/assets/scss/variables.scss";
+@import "@material/typography/mdc-typography";
+
+#about {
+  // PROFILE
+  #profile {
+    text-align: center;
+    position: relative;
+    width: 100%;
+
+    .avatar {
+      width: 100%;
+      position: absolute;
+      top: -$avatar-height / 2;
+    }
+
+    .social {
+      margin: 0.5rem 1rem;
+      padding: 0.5rem;
+
+      a:hover .v-icon {
+        opacity: 0.5;
+      }
+    }
+
+    h1 {
+      @include mdc-typography(headline5);
+      margin: 0;
+      padding-top: $avatar-height/2 + 2rem;
+    }
+
+    h2 {
+      @include mdc-typography(subtitle1);
+      margin: 0;
+    }
+
+    h3 {
+      @include mdc-typography(body2);
+      line-height: 1.5rem;
+      margin: 0;
+    }
+
+    #description {
+      @include mdc-typography(body1);
+      padding: 1rem 3rem 1.5rem 3rem;
+      margin: auto;
+      max-width: 800px;
+      opacity: 0.75;
+    }
+  }
+}
+
+// TAB BAR
+#tab-bar {
+  width: 100%;
+  z-index: 2;
+
+  .v-tabs__item {
+    font-weight: 400;
+  }
+
+  .v-tabs__slider {
+    height: 3px;
+  }
+}
+
+// RESPONSIVE
+@media only screen and (min-width: 960px) {
+  .push {
+    padding-top: 64px !important;
+  }
+
+  .sticky {
+    position: fixed !important;
+    top: 0 !important;
+  }
+}
+</style>

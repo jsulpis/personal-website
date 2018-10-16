@@ -43,5 +43,19 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/contact/main.scss";
+@import "~/assets/scss/variables.scss";
+
+#contact {
+  min-height: calc(100vh - #{$banner-height} - 161px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .v-card {
+    width: inherit;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+}
+
 </style>
