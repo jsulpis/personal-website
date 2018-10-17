@@ -42,7 +42,7 @@
     flat
     absolute
     color="transparent">
-      <v-toolbar-items id="toolbar-items" class="hidden-xs-only">
+      <v-toolbar-items class="toolbar-items hidden-xs-only">
         <v-layout align-start justify-center row fill-height>
           <v-btn
             v-for="(item, i) in items"
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
-#toolbar-items {
+.toolbar-items {
   width: 100%;
 
   .v-btn {

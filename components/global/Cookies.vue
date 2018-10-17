@@ -36,7 +36,7 @@
 
   <!-- SNACKBAR -->
   <v-snackbar
-  id="cookie-snackbar"
+  class="cookie-snackbar"
   v-model="snackbar"
   color="grey darken-3"
   auto-height
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss">
-#cookie-snackbar {
+.cookie-snackbar {
   .v-snack__wrapper {
     // override the snackbar property
     max-width: 100%;

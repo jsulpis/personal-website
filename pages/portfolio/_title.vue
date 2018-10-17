@@ -1,46 +1,39 @@
 <template>
-  <div id="gallery-item">
-    <!-- Back button -->
-    <v-btn
-    flat
-    :ripple=false
-    id="gallery-back-btn"
-    to="/portfolio"
-    :style="'height: ' + (smallViewport ? '56px' : '80px')">
-      <v-icon left>keyboard_backspace</v-icon>
-      <span v-show="!smallViewport">Retour</span>
-    </v-btn>
-    <v-container id="gallery-item-container">
+  <div>
+    <back-btn/>
+    <v-container class="artwork">
       <section>
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
+
         <!-- Image metadata -->
-        <div class="artwork-data grey--text text--lighten-3">
+        <div class="artwork__data grey--text text--lighten-3">
           <!-- date -->
-          <div class="artwork-date">
+          <div class="artwork__date">
             <v-icon>date_range</v-icon>
             <span>{{ artwork.date }}</span>
           </div>
           <!-- Likes -->
-          <LikeBtn :initialLikes="artwork.likes"/>
+          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
           <!-- Comments -->
-          <div class="artwork-comments">
+          <div class="artwork__comments">
             <v-icon>forum</v-icon>
             <span><a :href="'http://localhost:3000/portfolio/' + this.$route.params.title + '#disqus_thread'">0</a></span>
           </div>
         </div>
+
         <!-- Image -->
         <a :href="imageUrl" target="_blank">
           <img
-          class="artwork-img elevation-8"
+          class="artwork__img elevation-8"
           :src="imageUrl"
           :alt="artwork.title">
         </a>
       </section>
 
-      <section>
+      <section class="artwork__section">
         <h3 class="font-weight-regular">Logiciels utilisés:</h3>
         <div
-        class="artwork-software"
+        class="artwork__softwares"
         v-for="(software, i) in artwork.softwares"
         :key="i">
           <a :href="links[software]">
@@ -61,10 +54,12 @@
 <script>
 import axios from "axios";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
+import BackBtn from "~/components/portfolio/BackBtn.vue";
 
 export default {
   components: {
-    LikeBtn
+    LikeBtn,
+    BackBtn
   },
   head() {
     return {
@@ -94,9 +89,6 @@ export default {
     };
   },
   computed: {
-    smallViewport() {
-      return this.$vuetify.breakpoint.smAndDown;
-    },
     imageUrl() {
       return typeof this.artwork.urlTitle != "undefined"
         ? "https://s3.eu-west-3.amazonaws.com/juliensulpis-portfolio/" +
@@ -139,7 +131,7 @@ export default {
       .get("https://api.juliensulpis.fr/artworks/" + this.$route.params.title)
       .then(response => {
         this.artwork = response.data.Item;
-        $("#gallery-item-container").fadeIn();
+        $(".artwork").fadeIn();
 
         DISQUSWIDGETS.getCount({ reset: true });
         // Load the Disqus comment plugin if it's not already done (when coming from another artwork for example)
@@ -157,76 +149,52 @@ export default {
 <style lang="scss">
 @import "@material/theme/color-palette";
 
-#gallery-item {
-  #gallery-item-container {
-    display: none;
-  }
+.artwork {
+  display: none;
+}
 
-  #gallery-back-btn {
-    position: absolute;
-    z-index: 12;
-    top: 0;
-    left: 0;
-    padding: 0;
-    margin: 0 3vw;
+.artwork__ {
+  &data {
+    margin: 0.5rem;
 
-    text-transform: initial;
-
-    &:before,
-    &:before,
-    &:focus:before {
-      background-color: transparent;
-    }
-  }
-
-  .artwork- {
-    &data {
-      margin: 0.5rem;
-
-      .v-icon {
-        height: 36px;
-        width: 36px;
-      }
-    }
-
-    &img {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 5px;
-    }
-
-    &date,
-    &comments,
-    &likes {
-      margin: 0.5rem;
+    .v-icon {
       height: 36px;
-      display: inline-block;
-
-      span {
-        vertical-align: super;
-      }
-    }
-
-    &software {
-      display: inline-block;
-
-      img {
-        width: 100px;
-        margin: 1rem 3rem;
-      }
-
-      p {
-        opacity: 0.84;
-      }
+      width: 36px;
     }
   }
 
-  .like-btn {
-    margin: 0 0.25rem 0 0;
-    vertical-align: baseline;
+  &img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 5px;
   }
 
-  section {
+  &date,
+  &comments,
+  &likes {
+    margin: 0.5rem;
+    height: 36px;
+    display: inline-block;
+
+    span {
+      vertical-align: super;
+    }
+  }
+
+  &softwares {
+    display: inline-block;
+
+    img {
+      width: 100px;
+      margin: 1rem 3rem;
+    }
+
+    p {
+      opacity: 0.84;
+    }
+  }
+
+  &section {
     position: relative;
     padding-bottom: 2rem;
     margin-bottom: 2rem;

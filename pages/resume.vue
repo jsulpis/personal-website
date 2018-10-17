@@ -56,18 +56,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@material/typography/mdc-typography";
-
-@mixin title-underline {
-  &::after {
-    content: "";
-    margin: 0.75rem auto;
-    display: block;
-    width: 5rem;
-    border-bottom: 3px solid;
-  }
-}
-
 html {
   font-size: initial !important;
 }
@@ -80,16 +68,6 @@ body {
 section:not(.mdc-top-app-bar__section) {
   margin: auto;
   padding: 16px 0 5px 0;
-}
-
-.section-title {
-  margin: 1rem auto 2rem auto;
-  @include title-underline;
-  @include mdc-typography(headline5);
-}
-
-.title-underline {
-  @include title-underline;
 }
 
 .v-card {

@@ -1,6 +1,6 @@
 <template>
   <!-- CONTACT -->
-  <j-section id="contact" title="Contact">
+  <j-section id="resume-contact" title="Contact">
     <contact-form :isLightTheme="true"/>
   </j-section>
 </template>

@@ -1,6 +1,6 @@
 <template>
-  <div class="artwork-likes">
-    <v-btn icon class="like-btn" :color="userLiked ? 'primary' : 'grey darken-3'" @click="toggleLike">
+  <div class="likes">
+    <v-btn icon class="likes__btn" :color="userLiked ? 'primary' : 'grey darken-3'" @click="toggleLike">
       <v-icon>favorite_border</v-icon>
     </v-btn>
     <span>{{ likes }}</span>
@@ -62,3 +62,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.likes__btn {
+  margin: 0 0.25rem 0 0;
+  vertical-align: baseline;
+}
+</style>

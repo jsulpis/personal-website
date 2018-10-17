@@ -1,6 +1,6 @@
 <template>
   <!-- EXPERIENCES -->
-  <j-section id="experiences" title="Expériences">
+  <j-section id="resume-experiences" title="Expériences">
     <ul class="timeline timeline-split">
 
       <!-- SOLUTEC -->
@@ -110,14 +110,15 @@ export default {
 .timeline-info {
   text-align: center;
   white-space: nowrap;
-
-  p {
-    margin: 0.25rem 0 0 0;
-  }
-  img {
-    width: 100px;
-  }
 }
+.timeline-info__date {
+  margin: 0.25rem 0 0 0;
+  @include mdc-typography(subtitle2);
+}
+.timeline-info__logo {
+  width: 100px;
+}
+
 /*----- TIMELINE MARKER -----*/
 
 .timeline-marker {
@@ -142,7 +143,7 @@ export default {
   }
   &:after {
     content: "";
-    width: 3px;
+    width: 2px;
     background: $material-color-grey-300;
     display: block;
     position: absolute;
@@ -160,29 +161,22 @@ export default {
 }
 
 /*----- TIMELINE CONTENT -----*/
-.date {
-  @include mdc-typography(subtitle2);
-}
-
 .timeline-content {
   padding-bottom: 80px;
-  h3 {
+
+  .timeline-content__title {
+    @include mdc-typography(headline6);
     margin: 0;
     line-height: 1.9rem;
   }
-  h4 {
+
+  .timeline-content__company {
+    @include mdc-typography(subtitle1);
     margin: 0.25rem 0;
   }
-
-  .timeline-title {
-    @include mdc-typography(headline6);
-  }
-
-  .company {
-    @include mdc-typography(subtitle1);
-  }
-  .location {
+  .timeline-content__location {
     @include mdc-typography("caption");
+    margin: 0.25rem 0;
     line-height: 0.75rem;
   }
   p,
@@ -191,41 +185,6 @@ export default {
   }
   p:last-child {
     margin-bottom: 0;
-  }
-}
-
-/*----- TIMELINE PERIOD -----*/
-
-.period {
-  padding: 0;
-  .timeline-info {
-    display: none;
-  }
-  .timeline-marker {
-    &:before {
-      background: transparent;
-      content: "";
-      width: 15px;
-      height: auto;
-      border: none;
-      border-radius: 0;
-      top: 0;
-      bottom: 30px;
-      left: 2px;
-      position: absolute;
-      border-top: 3px solid #ccd5db;
-    }
-    &:after {
-      content: "";
-      height: 32px;
-      top: auto;
-    }
-  }
-  .timeline-content {
-    padding: 40px 0 70px;
-  }
-  .timeline-title {
-    margin: 0;
   }
 }
 
@@ -244,8 +203,7 @@ export default {
     }
     .timeline-info,
     .timeline-marker,
-    .timeline-content,
-    .period .timeline-info {
+    .timeline-content {
       display: table-cell;
       vertical-align: top;
     }
@@ -257,10 +215,6 @@ export default {
     }
     .timeline-info {
       padding-right: 30px;
-    }
-    .period .timeline-title {
-      position: relative;
-      left: -45px;
     }
   }
 }

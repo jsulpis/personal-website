@@ -1,5 +1,5 @@
 <template>
-  <v-container id="contact" class="hide-on-render">
+  <v-container id="contact-page" class="hide-on-render">
     <v-card>
       <p class="font-weight-regular pt-4 px-2 ma-0">
         Une question ? Une suggestion ? Une envie de remplir un formulaire ?<br>C'est ici !</p>
@@ -45,7 +45,7 @@ export default {
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
 
-#contact {
+#contact-page {
   min-height: calc(100vh - #{$banner-height} - 161px);
   display: flex;
   justify-content: center;

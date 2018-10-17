@@ -2,9 +2,9 @@
   <!-- CONTACT -->
   <div>
     <v-container justify-center>
-      <form id="contact-form" action="#" @submit.prevent="onSubmit">
+      <form class="contact-form" action="#" @submit.prevent="onSubmit">
         <!-- Name -->
-        <v-text-field id="name-field"
+        <v-text-field
         v-model="name"
         label="Nom"
         prepend-inner-icon="account_box"
@@ -16,7 +16,6 @@
 
         <!-- Email-->
         <v-text-field
-        id="email-field"
         v-model="email"
         label="E-mail"
         prepend-inner-icon="email"
@@ -29,7 +28,6 @@
 
         <!-- Message -->
         <v-textarea
-        id="message-field"
         v-model="message"
         label="Message"
         auto-grow
@@ -180,8 +178,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#contact-form {
+<style>
+.contact-form {
   max-width: 600px;
   margin: 0 auto;
 }

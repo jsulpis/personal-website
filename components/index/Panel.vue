@@ -4,7 +4,7 @@
     <v-layout align-center justify-center class="icon-container primary darken-1">
       <v-icon x-large>{{icon}}</v-icon>
     </v-layout>
-    <div class="panel-text">
+    <div>
       <slot></slot>
     </div>
   </v-layout>
@@ -16,5 +16,15 @@ export default {
   props: {
     icon: String
   }
-}
+};
 </script>
+
+<style>
+.icon-container {
+  flex: none;
+  height: 120px;
+  width: 120px !important;
+  border-radius: 50%;
+  margin: 1rem auto;
+}
+</style>
