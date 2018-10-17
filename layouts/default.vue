@@ -89,11 +89,14 @@ a {
 }
 
 .theme--dark .v-card,
-.application .theme--dark.v-card,
-.theme--dark .v-tabs__bar,
-.application .theme--dark.v-tabs__bar {
+.application .theme--dark.v-card {
   background-color: #303030;
 }
+.theme--dark .v-tabs__bar,
+.application .theme--dark.v-tabs__bar {
+  background-color: #303030 !important; // It should not be overwritten
+}
+
 
 .application.theme--dark {
   background: #212121;

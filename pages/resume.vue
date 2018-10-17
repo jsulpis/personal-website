@@ -55,16 +55,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-html {
-  font-size: initial !important;
-}
-
-body {
-  margin: 0;
-  text-align: center;
-}
-
+<style>
 section:not(.mdc-top-app-bar__section) {
   margin: auto;
   padding: 16px 0 5px 0;
@@ -74,9 +65,9 @@ section:not(.mdc-top-app-bar__section) {
   padding: 1rem;
 }
 
-// Override Vuetify container width
+/* Override Vuetify container width */
 @media only screen and (min-width: 1904px) {
-  .container {
+  section .container {
     max-width: 1185px !important;
   }
 }
