@@ -43,10 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
-
 #contact-page {
-  min-height: calc(100vh - #{$banner-height} - 161px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,5 +54,4 @@ export default {
     margin: 0 auto;
   }
 }
-
 </style>

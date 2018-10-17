@@ -8,7 +8,7 @@
     </div>
     <education/>
     <skills/>
-    <contact class="pb-5"/>
+    <contact/>
   </v-card>
 </template>
 

@@ -8,7 +8,7 @@
       <div id="banner"></div>
 
       <!-- Page content -->
-      <nuxt/>
+      <nuxt class="page-content"/>
 
       <!-- Footer -->
       <j-footer class="hide-on-render"/>
@@ -106,5 +106,10 @@ a {
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+.page-content {
+  min-height: calc(100vh - #{$banner-height} - 161px);
+  padding-bottom: 3rem !important;
 }
 </style>

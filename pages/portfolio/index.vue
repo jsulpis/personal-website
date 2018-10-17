@@ -100,7 +100,6 @@ export default {
 <style lang="scss">
 #gallery {
   padding: 0;
-  min-height: calc(75vh - 137px);
 }
 
 #gallery-progress {
