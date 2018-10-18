@@ -21,21 +21,8 @@
           <div class="school-content">
             <span class="school-courses">Cours:</span>
             <ul>
-              <li>
-                <span class="school-courses-item__name">Big Data: </span>
-                <a href="https://hadoop.apache.org/">Hadoop</a>,
-                <a href="https://spark.apache.org/">Spark</a>, SQL, Shell, Fouille de Données...</li>
-              <li>
-                <span class="school-courses-item__name">Développement Web: </span>Front-end, Back-end, API REST</li>
-              <li>
-                <span class="school-courses-item__name">Intelligence Artificielle: </span>jeux, planning, résolution de problèmes, représentation des connaissances...</li>
-              <li>
-                <span class="school-courses-item__name">Microélectronique: </span>Objets communicants, systèmes embarqués, électronique numérique et analogique
-              </li>
-              <li>
-                <span class="school-courses-item__name">Gestion: </span>Bilans, résultats...</li>
-              <li>
-                <span class="school-courses-item__name">Management: </span>Méthodes agiles, performance...</li>
+              <li v-for="(courseName, i) in Object.keys(emseCourses)" :key="i">
+                <education-course :name="courseName" :description="emseCourses[courseName]"/></li>
             </ul>
 
             <br>
@@ -62,22 +49,8 @@
           <div class="school-content">
             <span class="school-courses">Cours:</span>
             <ul>
-              <li>
-                <span class="school-courses-item__name">Web Semantics: </span>
-                <a href="https://en.wikipedia.org/wiki/Linked_data">Linked Data</a>,
-                <a href="https://fr.wikipedia.org/wiki/RDF_Schema">RDFS</a>,
-                <a href="https://fr.wikipedia.org/wiki/SPARQL">SPARQL</a>,
-                <a href="https://jena.apache.org/">Jena</a>
-              </li>
-              <li>
-                <span class="school-courses-item__name">Cloud computing: </span>
-                <a href="https://aws.amazon.com/fr">AWS</a>
-              </li>
-              <li>
-                <span class="school-courses-item__name">Multi-Agent Systems: </span>
-                <a href="https://www.emse.fr/~picard/cours/mas/lecture-DCSP-2017.pdf">Distributed Constraint Processing</a>,
-                <a href="https://en.wikipedia.org/wiki/Distributed_constraint_optimization">Distributed Constraint Optimization</a>
-              </li>
+              <li v-for="(courseName, i) in Object.keys(cps2Courses)" :key="i">
+                <education-course :name="courseName" :description="cps2Courses[courseName]"/></li>
             </ul>
 
             <br>
@@ -94,14 +67,36 @@
 
 <script>
 import JSection from "./JSection.vue";
+import EducationCourse from "./EducationCourse";
+
+const EMSE_COURSES = {
+  "Big Data": "Hadoop, Spark, SQL, Shell, Fouille de Données...",
+  "Développement Web": "Front-end, Back-end, API REST",
+  "Intelligence Artificielle":
+    "jeux, planning, résolution de problèmes, représentation des connaissances...",
+  Microélectronique:
+    "Objets communicants, systèmes embarqués, électronique numérique et analogique",
+  Gestion: "Bilans, résultats...",
+  Management: "Méthodes agiles, performance..."
+};
+
+const CPS2_COURSES = {
+  "Web Semantics": "Linked Data, RDFS, SPARQL, Jena",
+  "Cloud computing": "AWS",
+  "Multi-Agent Systems":
+    "Distributed Constraint Processing, Distributed Constraint Optimization"
+};
 
 export default {
   components: {
-    JSection
+    JSection,
+    EducationCourse
   },
   data() {
     return {
       activeCard: "emse",
+      emseCourses: EMSE_COURSES,
+      cps2Courses: CPS2_COURSES,
       light: true
     };
   },

@@ -2,59 +2,40 @@
   <!-- EXPERIENCES -->
   <j-section id="resume-experiences" title="Expériences">
     <ul class="timeline timeline-split">
+      <!-- Enedis -->
+      <experience
+      date="oct. 2018 - Aujourd'hui"
+      :duration="Math.floor((new Date(Date.now()) - new Date(2018, 9))/(1000*60*60*24*30)+1) + ' mois'"
+      jobTitle="Ingénieur études et développement"
+      company="SOLUTEC"
+      location="Région de Lyon, France">
+      <p>Consultant pour des missions orientées développement.</p>
+      </experience>
 
       <!-- SOLUTEC -->
       <experience
-      date="avr. 2018 - août 2018<br>5 mois"
+      date="avr. 2018 - août 2018"
+      duration="5 mois"
       jobTitle="Stagiaire développeur Android"
       company="SOLUTEC"
-      location="Région de Lyon, France">
-        <p>Pour le compte d'un client grand compte de SOLUTEC, je développe une application mobile pour faciliter la maintenance
-          d'automates bancaires en utilisant la réalité augmentée.</p>
-        <p>Technologies utilisées:</p>
-        <ul>
-          <li>
-            <a href="https://developer.android.com/topic/libraries/architecture/">Android Architecture Components</a>
-          </li>
-          <li>
-            <a href="https://www.easyar.com/">EasyAR</a> - Réalité Augmentée</li>
-          <li>
-            <a href="https://www.khronos.org/opengles/">OpenGL|ES</a> - Affichage d'objets 2D et 3D</li>
-          <li>
-            <a href="https://opencv.org/">OpenCV</a> - Traitement d'images</li>
-        </ul>
+      location="Région de Lyon, France"
+      technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
+      methodos="SCRUM">
+      <p>Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée. </p>
       </experience>
 
       <!-- Polytechnique Montréal -->
       <experience
-      date="juin 2017 - août 2017<br>3 mois"
-      jobTitle="Stage de recherche en robotique mobile"
+      date="juin 2017 - août 2017"
+      duration="3 mois"
+      jobTitle="Stagiaire de recherche en robotique mobile"
       company="Polytechnique Montréal"
-      location="Région de Montréal, Canada">
-        <p>Pendant ce stage, j'ai implémenté une version simplifiée de localisation et cartographie simultanée (SLAM)
-          pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
-          de données.
-        </p>
-        <p>Technologies utilisées:</p>
-        <ul>
-          <li>
-            <a href="https://spark.apache.org/">Apache Spark</a> - Données massives</li>
-          <li>
-            <a href="https://www.ibm.com/cloud-computing/bluemix/fr">IBM Bluemix</a> - Plateforme Cloud</li>
-          <li>
-            <a href="https://kafka.apache.org/">Apache Kafka</a> - Streaming</li>
-          <li>
-            <a href="https://aws.amazon.com/fr/kinesis/">Amazon Kinesis</a> - Streaming</li>
-        </ul>
-      </experience>
-
-      <!-- Auxitrol -->
-      <experience
-      date="janvier 2016<br>1 mois"
-      jobTitle="Stage opérateur en usine"
-      company="Auxitrol"
-      location="Région de Bourges, France">
-        <p>J'ai découvert les conditions de travail des ouvriers sur une ligne de production d'une usine ainsi qu'au service emballage et expédition.</p>
+      location="Région de Montréal, Canada"
+      technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis">
+      <p>Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
+        pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
+        de données.
+      </p>
       </experience>
 
       </ul>
@@ -114,6 +95,7 @@ export default {
 .timeline-info__date {
   margin: 0.25rem 0 0 0;
   @include mdc-typography(subtitle2);
+  font-weight: normal;
 }
 .timeline-info__logo {
   width: 100px;
@@ -133,11 +115,11 @@ export default {
     border-radius: 100%;
     content: "";
     display: block;
-    height: 14px;
+    height: 15px;
     position: absolute;
     top: 4px;
     left: 0;
-    width: 14px;
+    width: 15px;
     box-sizing: initial;
     transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   }
@@ -149,7 +131,7 @@ export default {
     position: absolute;
     top: 29px;
     bottom: 0;
-    left: 8px;
+    left: 9px;
   }
   .timeline-item:last-child &:after {
     content: none;
@@ -179,9 +161,11 @@ export default {
     margin: 0.25rem 0;
     line-height: 0.75rem;
   }
-  p,
-  ul {
+  p {
     @include mdc-typography(body2);
+  }
+  .timeline-content__technos {
+    font-style: italic;
   }
   p:last-child {
     margin-bottom: 0;

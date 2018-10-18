@@ -11,9 +11,8 @@
         <!-- Loop on skills -->
         <div v-for="(skill, index) in subdomain.skills" :key="index" class="skill-container">
           <div class="skill">
-            <div class="skill__tooltip">
-              <img :src="skill.imageUrl" :alt="'logo_' + skill.imageUrl.split('.')[0]">
-              <span class="skill__tooltiptext elevation-8">{{ skill.description }}</span>
+            <div >
+              <img class="skill__icon" :src="skill.icon" :alt="'logo_' + skill.icon.split('.')[0]">
             </div>
             <div class="skill__progress">
               <div class="skill__progress-bar" :style="'width: ' + skill.level + '%'"></div>
@@ -127,30 +126,11 @@ $skill-item-size: 5rem;
   display: flex;
   flex-direction: column;
 }
-.skill__tooltip {
+.skill__icon {
   position: relative;
-  img {
-    max-height: $skill-item-size * 0.8;
-    max-width: $skill-item-size;
-    margin-bottom: 0.5rem;
-  }
-}
-/* Tooltip text */
-.skill__tooltiptext {
-  visibility: hidden;
-  width: 150px;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 2px;
-  background-color: white;
-  @include mdc-typography(body2); /* Position the tooltip text */
-  position: absolute; // z-index: 9999;
-  bottom: 115%;
-  left: -50%;
-}
-/* Show the tooltip text when you mouse over the tooltip container */
-.skill__tooltip:hover .skill__tooltiptext {
-  visibility: visible;
+  max-height: $skill-item-size * 0.8;
+  max-width: $skill-item-size;
+  margin-bottom: 0.5rem;
 }
 .skill__progress {
   flex-basis: 100%;

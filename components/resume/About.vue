@@ -3,8 +3,8 @@
 <v-card :light="isLightTheme" id="resume-profile" :class="'elevation-4 pa-0 ' + (isLightTheme ? 'white' : '')">
   <avatar class="resume-profile__avatar"/>
   <h1 class="resume-profile__name">Julien Sulpis</h1>
-  <h2 class="resume-profile__job">Stagiaire développeur Android</h2>
-  <h3 class="resume-profile__school">SOLUTEC &#x2022; École des Mines de Saint-Étienne
+  <h2 class="resume-profile__job">Développeur full-stack</h2>
+  <h3 class="resume-profile__school">consultant chez SOLUTEC
     <br>Région de Lyon, France</h3>
   <!-- Social links -->
   <p class="resume-profile__networks">

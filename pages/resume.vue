@@ -49,7 +49,7 @@ export default {
     return {
       title: makePageTitle("CV"),
       description:
-        "Développeur généraliste passionné et curieux, insatiable de technologies à explorer."
+        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et amateur de code de qualité. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };
   }
 };

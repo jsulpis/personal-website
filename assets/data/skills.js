@@ -5,62 +5,20 @@ export const skills = [
       {
         name: "Front-end",
         skills: [
-          {
-            imageUrl: "/img/techno/html.png",
-            description:
-              "Langage de balisage définissant le contenu des pages web.",
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/css3.png",
-            description: "Langage définissant le style des pages web.",
-            level: 60
-          },
-          {
-            imageUrl: "/img/techno/javascript.png",
-            description:
-              "Langage de programmation principalement utilisé dans les pages web interactives.",
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/sass.svg",
-            description: "Outil facilitant le développement CSS.",
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/webpack.png",
-            description:
-              "Outil permettant d'empaqueter et d'optimiser les fichiers d'un site web.",
-            level: 60
-          }
+          { icon: "/img/techno/html.png", level: 80 },
+          { icon: "/img/techno/css3.png", level: 60 },
+          { icon: "/img/techno/javascript.png", level: 80 },
+          { icon: "/img/techno/sass.svg", level: 80 },
+          { icon: "/img/techno/webpack.png", level: 60 }
         ]
       },
       {
         name: "Back-end",
         skills: [
-          {
-            imageUrl: "/img/techno/spring-boot.png",
-            description:
-              "Framework de développement d'applications web en java.",
-            level: 60
-          },
-          {
-            imageUrl: "/img/techno/nodejs.png",
-            description:
-              "Framework de développement d'applications web en javascript.",
-            level: 60
-          },
-          {
-            imageUrl: "/img/techno/mongodb.png",
-            description: "Base de données NoSQL orientée document.",
-            level: 60
-          },
-          {
-            imageUrl: "/img/techno/aws.jpg",
-            description:
-              "Première et principale plateforme de cloud computing.",
-            level: 60
-          }
+          { icon: "/img/techno/spring-boot.png", level: 60 },
+          { icon: "/img/techno/nodejs.png", level: 60 },
+          { icon: "/img/techno/mongodb.png", level: 60 },
+          { icon: "/img/techno/aws.jpg", level: 60 }
         ]
       }
     ]
@@ -71,18 +29,8 @@ export const skills = [
       {
         name: "",
         skills: [
-          {
-            imageUrl: "/img/techno/android.png",
-            description:
-              "Système d'exploitation de la majorité des smartphones.",
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/arduino.png",
-            description:
-              "Plateforme de prototypage de systèmes électroniques simples.",
-            level: 80
-          }
+          { icon: "/img/techno/android.png", level: 80 },
+          { icon: "/img/techno/arduino.png", level: 80 }
         ]
       }
     ]
@@ -93,17 +41,8 @@ export const skills = [
       {
         name: "",
         skills: [
-          {
-            imageUrl: "/img/techno/spark.png",
-            description: "Moteur de traitement de gros volumes de données.",
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/kafka.png",
-            description:
-              "Outil de transfert et de traitement de gros volumes de données en temps réel.",
-            level: 40
-          }
+          { icon: "/img/techno/spark.png", level: 80 },
+          { icon: "/img/techno/kafka.png", level: 40 }
         ]
       }
     ]
@@ -114,18 +53,8 @@ export const skills = [
       {
         name: "",
         skills: [
-          {
-            imageUrl: "/img/techno/java.png",
-            description:
-              'Langage orienté objet, facilement portable d\'un système à un autre. Sa devise: "write once, run everywhere".',
-            level: 80
-          },
-          {
-            imageUrl: "/img/techno/python.svg",
-            description:
-              "Langage haut niveau orienté objet, très utilisé par les scientifiques et dans les logiciels open-source.",
-            level: 80
-          }
+          { icon: "/img/techno/java.png", level: 80 },
+          { icon: "/img/techno/python.svg", level: 80 }
         ]
       }
     ]
