@@ -32,9 +32,9 @@
 
       <!-- Softwares -->
       <section class="artwork__section">
-        <h3 class="font-weight-regular">Logiciels utilisés:</h3>
+        <h3 class="artwork__softwares">Logiciels utilisés:</h3>
         <div
-        class="artwork__softwares"
+        class="artwork__softwares__item"
         v-for="(software, i) in artwork.softwares"
         :key="i">
           <a :href="softwares[software].url">
@@ -129,6 +129,10 @@ export default {
     border-radius: 5px;
   }
 
+  &comments a {
+    color: inherit;
+  }
+
   &date,
   &comments,
   &likes {
@@ -142,11 +146,16 @@ export default {
   }
 
   &softwares {
+    font-weight: normal;
+    margin: 1rem;
+  }
+
+  &softwares__item {
     display: inline-block;
 
     img {
-      width: 100px;
-      margin: 1rem 3rem;
+      width: 5rem;
+      margin: 0.5rem 3rem 0 3rem;
     }
 
     p {
