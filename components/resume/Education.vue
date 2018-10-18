@@ -7,8 +7,8 @@
       <div class="schools">
         <!-- ICM -->
         <v-card :light="light" :class="'school school--icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
-          <h3>Ingénieur Civil des Mines</h3>
-          <h4>Mines Saint-Étienne</h4>
+          <h3 class="school-degree">Ingénieur Civil des Mines</h3>
+          <h4 class="school-name">Mines Saint-Étienne</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/icm/">
               <img src="/img/schools/emse.png" alt="logo_emse" />
@@ -35,8 +35,8 @@
 
         <!-- CPS2 -->
         <v-card :light="light" :class="'school school--cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
-          <h3>Master on Cyber-Physical and Social Systems</h3>
-          <h4>Mines Saint-Étienne, Université Jean Monnet</h4>
+          <h3 class="school-degree">Master on Cyber-Physical and Social Systems</h3>
+          <h4 class="school-name">Mines Saint-Étienne, Université Jean Monnet</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/cyber-physical-social-systems-cps2/">
               <img src="/img/schools/cps2.png" alt="logo_emse_jean_monnet">
@@ -109,11 +109,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@material/typography/mdc-typography";
-
 @mixin school-focus {
   height: fit-content !important;
-
   .school-content {
     opacity: 1;
   }
@@ -126,6 +123,7 @@ export default {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // $mdc-animation-standard-curve-timing-function;
     display: inline-block;
     margin: 0 auto;
+    padding: 1rem;
     width: 40%;
 
     @media only screen and(max-width: 959px) {
@@ -146,16 +144,16 @@ export default {
       }
     }
 
-    h3 {
+    .school-degree {
       font-weight: 500;
       margin: 1rem 1rem 0 1rem;
       vertical-align: middle;
-      @include mdc-typography(headline6);
     }
 
-    h4 {
+    .school-name {
       margin: 0.25rem 0 1rem 0;
-      @include mdc-typography(body2);
+      font-size: 14px;
+      font-weight: 400;
     }
 
     .school-logo {
@@ -177,17 +175,17 @@ export default {
       }
 
       .school-courses-item__name {
-        @include mdc-typography(body1);
+        font-size: 15px;
         font-weight: 500;
       }
 
       .school-project__caption {
+        font-size: 14px;
         margin-left: 30px;
-        @include mdc-typography(body2);
       }
 
       ul {
-        @include mdc-typography(body2);
+        font-size: 14px;
       }
       li {
         margin: 0.25rem;

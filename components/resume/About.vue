@@ -1,10 +1,10 @@
 <template>
 <!-- PROFILE -->
-<v-card :light="isLightTheme" id="resume-profile" :class="'elevation-4 pa-0 ' + (isLightTheme ? 'white' : '')">
+<v-card :light="isLightTheme" id="resume-profile" :class="'elevation-4' + (isLightTheme ? ' white' : '')">
   <avatar class="resume-profile__avatar"/>
-  <h1 class="resume-profile__name">Julien Sulpis</h1>
-  <h2 class="resume-profile__job">Développeur full-stack</h2>
-  <h3 class="resume-profile__school">consultant chez SOLUTEC
+  <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
+  <h2 class="resume-profile__job headline">Développeur full-stack</h2>
+  <h3 class="resume-profile__school subheading">consultant chez SOLUTEC
     <br>Région de Lyon, France</h3>
   <!-- Social links -->
   <p class="resume-profile__networks">
@@ -50,7 +50,6 @@ export default {
 
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
-@import "@material/typography/mdc-typography";
 
 // PROFILE
 #resume-profile {
@@ -76,24 +75,21 @@ export default {
   }
 
   &name {
-    @include mdc-typography(headline5);
     margin: 0;
+    margin-bottom: 0.25rem;
     padding-top: $avatar-height/2 + 2rem;
   }
 
   &job {
-    @include mdc-typography(subtitle1);
     margin: 0;
   }
 
   &school {
-    @include mdc-typography(body2);
     line-height: 1.5rem;
     margin: 0;
   }
 
   &description {
-    @include mdc-typography(body1);
     padding: 1rem 3rem 1.5rem 3rem;
     margin: auto;
     max-width: 800px;

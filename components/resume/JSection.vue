@@ -2,7 +2,7 @@
   <section :id="id">
     <v-container>
       <h2 class="section-title">{{title}}</h2>
-      <v-card light>
+      <v-card class="section-card" light>
         <slot></slot>
       </v-card>
     </v-container>
@@ -16,15 +16,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@material/typography/mdc-typography";
+.section-card {
+  padding: 1rem;
+}
 
 .section-title {
-  @include mdc-typography(headline5);
   margin: 1rem auto 2rem auto;
+  font-weight: 500;
 
   &::after {
     content: "";
-    margin: 0.75rem auto;
+    margin: 0.5rem auto;
     display: block;
     width: 5rem;
     border-bottom: 3px solid;

@@ -1,10 +1,10 @@
 <template>
   <!-- SKILLS -->
   <j-section id="resume-skills" title="Compétences techniques">
-    <p class="resume-skills__subtitle">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
+    <p class="resume-skills__subtitle body-2">Compétences auto-évaluées de 1 à 5 (débutant, autonome, habitué, confirmé, expert).</p>
     <!-- Loop on domains -->
     <div v-for="(domain, index) in skillSet" :key="index">
-      <h3 :class="'domain-title' + (index == 0 ? 'domain-title--first' : '')">{{ domain.name }}</h3>
+      <h3 :class="'domain-title' + (index == 0 ? ' domain-title--first' : '')">{{ domain.name }}</h3>
       <!-- Loop on subdomains -->
       <div v-for="(subdomain, index) in domain.subdomains" :key="index">
         <h4 v-if="subdomain.name != ''" class="domain-subtitle">{{ subdomain.name }}</h4>
@@ -54,19 +54,18 @@ export default {
 
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
-@import "@material/typography/mdc-typography";
-@import "@material/theme/color-palette";
 
 $skill-item-size: 5rem;
 
 #resume-skills {
   .resume-skills__subtitle {
-    @include mdc-typography(body2);
+    font-weight: normal;
   }
 }
 
 .domain-title {
-  @include mdc-typography(headline6);
+  font-size: 20px;
+  font-weight: 500;
   margin-bottom: 0.5rem;
   position: relative;
 
@@ -86,7 +85,6 @@ $skill-item-size: 5rem;
 .domain-subtitle {
   position: relative;
   margin: 1.5rem auto 0 auto;
-  @include mdc-typography(body1);
   font-weight: 500;
 
   &::after {

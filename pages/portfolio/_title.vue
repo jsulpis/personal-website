@@ -107,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@material/theme/color-palette";
+@import "~/assets/scss/variables.scss";
 
 .artwork {
   display: none;

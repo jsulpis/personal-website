@@ -9,7 +9,7 @@
       jobTitle="Ingénieur études et développement"
       company="SOLUTEC"
       location="Région de Lyon, France">
-      <p>Consultant pour des missions orientées développement.</p>
+      Consultant pour des missions orientées développement.
       </experience>
 
       <!-- SOLUTEC -->
@@ -21,7 +21,7 @@
       location="Région de Lyon, France"
       technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
       methodos="SCRUM">
-      <p>Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée. </p>
+      Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée.
       </experience>
 
       <!-- Polytechnique Montréal -->
@@ -32,10 +32,9 @@
       company="Polytechnique Montréal"
       location="Région de Montréal, Canada"
       technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis">
-      <p>Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
+      Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
         pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
         de données.
-      </p>
       </experience>
 
       </ul>
@@ -60,8 +59,6 @@ export default {
 
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
-@import "@material/theme/color-palette";
-@import "@material/typography/mdc-typography";
 
 /*==================================
     TIMELINE
@@ -94,7 +91,6 @@ export default {
 }
 .timeline-info__date {
   margin: 0.25rem 0 0 0;
-  @include mdc-typography(subtitle2);
   font-weight: normal;
 }
 .timeline-info__logo {
@@ -147,25 +143,18 @@ export default {
   padding-bottom: 80px;
 
   .timeline-content__title {
-    @include mdc-typography(headline6);
     margin: 0;
     line-height: 1.9rem;
   }
 
   .timeline-content__company {
-    @include mdc-typography(subtitle1);
     margin: 0.25rem 0;
   }
   .timeline-content__location {
-    @include mdc-typography("caption");
-    margin: 0.25rem 0;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0.25rem 0 0.75rem 0;
     line-height: 0.75rem;
-  }
-  p {
-    @include mdc-typography(body2);
-  }
-  .timeline-content__technos {
-    font-style: italic;
   }
   p:last-child {
     margin-bottom: 0;

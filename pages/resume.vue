@@ -49,22 +49,13 @@ export default {
     return {
       title: makePageTitle("CV"),
       description:
-        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et amateur de code de qualité. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
+        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };
   }
 };
 </script>
 
 <style>
-section:not(.mdc-top-app-bar__section) {
-  margin: auto;
-  padding: 16px 0 5px 0;
-}
-
-.v-card {
-  padding: 1rem;
-}
-
 /* Override Vuetify container width */
 @media only screen and (min-width: 1904px) {
   section .container {
