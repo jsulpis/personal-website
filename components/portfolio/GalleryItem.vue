@@ -1,7 +1,7 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
-    <nuxt-link :to="'/portfolio/' + url">
-    <img :src="url | parseUrl" :alt="title" class="gallery-item__img">
+    <nuxt-link :to="'/portfolio/' + imgUrl">
+    <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
     <div class="gallery-item-overlay">
         <h3 class="gallery-item__title headline font-weight-regular">
           {{ title }}
@@ -13,7 +13,7 @@
           <v-icon small>favorite_border</v-icon>{{ likes }}
         </div>
         <div class="gallery-item__comments">
-          <v-icon small>forum</v-icon><a :href="'http://localhost:3000/portfolio/' + url + '#disqus_thread'">0</a>
+          <v-icon small>forum</v-icon><a :href="disqusRootUrl + '/' + imgUrl + '#disqus_thread'">0</a>
         </div>
     </div>
     </nuxt-link>
@@ -21,20 +21,22 @@
 </template>
 
 <script>
+import { S3_PORTFOLIO_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import ArtworksProvider from "~/services/ArtworksProvider";
+
 export default {
   props: {
     title: String,
-    url: String,
+    imgUrl: String,
     date: String,
     likes: Number
   },
+  data() {
+    return { disqusRootUrl: DISQUS_ROOT_URL };
+  },
   filters: {
-    parseUrl(url) {
-      return typeof url != "undefined"
-        ? "https://s3.eu-west-3.amazonaws.com/juliensulpis-portfolio/min/" +
-            url +
-            ".jpg"
-        : "";
+    miniatureUrl(url) {
+      return ArtworksProvider.provideMiniatureUrl(url);
     }
   }
 };

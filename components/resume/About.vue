@@ -8,13 +8,13 @@
     <br>Région de Lyon, France</h3>
   <!-- Social links -->
   <p class="resume-profile__networks">
-    <a href="https://www.linkedin.com/in/julien-sulpis">
+    <a :href="socialNetworks['LinkedIn'].url">
       <v-icon >fab fa-linkedin-in</v-icon>
     </a>
-    <a class="ma-3" href="https://github.com/jsulpis">
+    <a class="ma-3" :href="socialNetworks['GitHub'].url">
       <v-icon >fab fa-github</v-icon>
     </a>
-    <a href="https://twitter.com/JulienSulpis">
+    <a :href="socialNetworks['Twitter'].url">
       <v-icon >fab fa-twitter</v-icon>
     </a>
   </p>
@@ -30,6 +30,7 @@
 
 <script>
 import Avatar from "../global/Avatar";
+import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
 
 export default {
   components: {
@@ -37,7 +38,8 @@ export default {
   },
   data() {
     return {
-      isLightTheme: ""
+      isLightTheme: "",
+      socialNetworks: SOCIAL_NETWORKS
     };
   },
   mounted() {

@@ -21,7 +21,7 @@ import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -39,7 +39,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME + "/resume" },
+        { name: "og:url", content: SITE_ROOT_URL + "/resume" },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]

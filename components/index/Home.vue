@@ -8,7 +8,7 @@
         Développeur full-stack<br>
         <span>Infographiste et musicien amateur</span>
       </h2>
-      <social-media/>
+      <social-networks/>
     </v-layout>
   </v-container>
   <v-btn icon large id="fab-scroll-down"  @click="$vuetify.goTo('#home-about', scrollingOptions);">
@@ -19,11 +19,11 @@
 
 <script>
 import { SCROLLING_OPTIONS, BANNER_HEIGHT } from "~/assets/js/globals";
-import SocialMedia from "~/components/global/SocialMedia";
+import SocialNetworks from "~/components/global/SocialNetworks";
 
 export default {
   components: {
-    SocialMedia
+    SocialNetworks
   },
   data() {
     return {

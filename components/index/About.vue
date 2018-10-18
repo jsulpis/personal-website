@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .home-about__welcome {
   font-size: 20px;
   font-weight: 500;

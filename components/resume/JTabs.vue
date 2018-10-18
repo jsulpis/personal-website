@@ -135,7 +135,7 @@ export default {
   }
 }
 
-// RESPONSIVE
+// Position the tabs
 @media only screen and (min-width: 960px) {
   .tabs__push {
     padding-top: 64px !important;

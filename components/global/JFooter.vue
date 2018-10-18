@@ -4,9 +4,9 @@
       <!-- Scroll Top -->
       <scroll-top id="footer-scrolltop"/>
 
-      <!-- Media icons -->
+      <!-- Networks icons -->
       <v-card-text class="pa-1">
-        <social-media/>
+        <social-networks/>
       </v-card-text>
 
       <v-divider></v-divider>
@@ -22,19 +22,19 @@
 
 <script>
 import VFooter from "vuetify/es5/components/VFooter";
-import SocialMedia from "./SocialMedia";
+import SocialNetworks from "./SocialNetworks";
 import ScrollTop from "./ScrollTop";
 
 export default {
   components: {
     VFooter,
-    SocialMedia,
+    SocialNetworks,
     ScrollTop
   }
 };
 </script>
 
-<style lang="scss">
+<style>
 .footer-card {
   width: 100%;
   padding: 1rem 0 0 0;

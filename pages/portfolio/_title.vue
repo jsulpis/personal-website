@@ -2,7 +2,7 @@
   <div>
     <back-btn/>
     <v-container class="artwork">
-      <section>
+      <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
 
         <!-- Image metadata -->
@@ -17,7 +17,7 @@
           <!-- Comments -->
           <div class="artwork__comments">
             <v-icon>forum</v-icon>
-            <span><a :href="'http://localhost:3000/portfolio/' + this.$route.params.title + '#disqus_thread'">0</a></span>
+            <span><a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a></span>
           </div>
         </div>
 
@@ -30,15 +30,16 @@
         </a>
       </section>
 
+      <!-- Softwares -->
       <section class="artwork__section">
         <h3 class="font-weight-regular">Logiciels utilisés:</h3>
         <div
         class="artwork__softwares"
         v-for="(software, i) in artwork.softwares"
         :key="i">
-          <a :href="links[software]">
+          <a :href="softwares[software].url">
             <img
-            :src="'/img/softwares/' + software + '.png'"
+            :src="softwares[software].icon"
             :alt="software">
           </a>
           <p>{{ software }}</p>
@@ -46,20 +47,25 @@
       </section>
 
       <!-- Disqus plugin -->
-      <div id="disqus_thread"></div>
+      <disqus-plugin :imgName="artwork.urlTitle"/>
     </v-container>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import BackBtn from "~/components/portfolio/BackBtn.vue";
+import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
+
+import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { CG_SOFTWARES } from "~/assets/data/cgSoftwares";
+import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
     LikeBtn,
-    BackBtn
+    BackBtn,
+    DisqusPlugin
   },
   head() {
     return {
@@ -69,7 +75,7 @@ export default {
         { name: "og:type", content: "website" },
         {
           name: "og:url",
-          content: "https://juliensulpis.fr/portfolio/" + this.artwork.urlTitle
+          content: SITE_ROOT_URL + "/portfolio/" + this.artwork.urlTitle
         },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
@@ -79,69 +85,23 @@ export default {
   data() {
     return {
       description: "Un élément de ma gallerie personnelle.",
+      disqusRootUrl: DISQUS_ROOT_URL,
       artwork: {},
-      links: {
-        Blender: "https://www.blender.org",
-        Photoshop: "https://www.adobe.com/fr/products/photoshop.html",
-        "Substance Painter":
-          "https://www.allegorithmic.com/products/substance-painter"
-      }
+      softwares: CG_SOFTWARES
     };
   },
   computed: {
     imageUrl() {
-      return typeof this.artwork.urlTitle != "undefined"
-        ? "https://s3.eu-west-3.amazonaws.com/juliensulpis-portfolio/" +
-            this.artwork.urlTitle +
-            ".jpg"
-        : "";
-    }
-  },
-  methods: {
-    initDisqus() {
-      // Disqus plugin
-      const disqus_config = function() {
-        this.page.url =
-          "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
-        this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
-      };
-      (function() {
-        var d = document,
-          s = d.createElement("script");
-        s.src = "https://localhost-ecfgq3nt0m.disqus.com/embed.js";
-        s.setAttribute("data-timestamp", +new Date());
-        d.body.appendChild(s);
-      })();
-    },
-    resetDisqus() {
-      DISQUS.reset({
-        reload: true,
-        config: function() {
-          this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
-          this.page.url =
-            "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
-        }
-      });
+      return ArtworksProvider.providePictureUrl(this.$route.params.title);
     }
   },
   mounted() {
+    DISQUSWIDGETS.getCount({ reset: true });
     $(".hide-on-render").addClass("show");
-
-    axios
-      .get("https://api.juliensulpis.fr/artworks/" + this.$route.params.title)
-      .then(response => {
-        this.artwork = response.data.Item;
-        $(".artwork").fadeIn();
-
-        DISQUSWIDGETS.getCount({ reset: true });
-        // Load the Disqus comment plugin if it's not already done (when coming from another artwork for example)
-        if ("undefined" == typeof DISQUS) {
-          this.initDisqus();
-        } else {
-          // Or reset the plugin if it's already loaded
-          this.resetDisqus();
-        }
-      });
+    ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
+      this.artwork = response;
+      $(".artwork").fadeIn();
+    });
   }
 };
 </script>

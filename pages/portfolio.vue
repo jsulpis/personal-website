@@ -3,11 +3,13 @@
 </template>
 
 <script>
+import { DISQUS_SCRIPT_URL } from "~/assets/js/globals";
+
 export default {
   head: {
     script: [
       {
-        src: "//localhost-ecfgq3nt0m.disqus.com/count.js",
+        src: DISQUS_SCRIPT_URL + "/count.js",
         async: "",
         id: "dsq-count-scr"
       }

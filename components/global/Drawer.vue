@@ -49,6 +49,7 @@
             :key="i"
             :to="item.to"
             :ripple="false"
+            class="toolbar-items__btn"
             active-class="primary--text"
             flat>{{item.title}}</v-btn>
         </v-layout>
@@ -78,8 +79,7 @@ export default {
 <style lang="scss">
 .toolbar-items {
   width: 100%;
-
-  .v-btn {
+  .toolbar-items__btn {
     text-transform: initial; // Remove default capital letters
   }
 }

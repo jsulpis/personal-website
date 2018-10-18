@@ -1,6 +1,6 @@
 <template>
   <v-container id="contact-page" class="hide-on-render">
-    <v-card>
+    <v-card class="contact-page__card">
       <p class="font-weight-regular pt-4 px-2 ma-0">
         Une question ? Une suggestion ? Une envie de remplir un formulaire ?<br>C'est ici !</p>
       <contact-form/>
@@ -11,7 +11,7 @@
 <script>
 import ContactForm from "~/components/global/ContactForm.vue";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME + "/contact" },
+        { name: "og:url", content: SITE_ROOT_URL + "/contact" },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]
@@ -42,16 +42,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 #contact-page {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .v-card {
-    width: inherit;
-    max-width: 850px;
-    margin: 0 auto;
-  }
+}
+.contact-page__card {
+  width: inherit;
+  max-width: 850px;
+  margin: 0 auto;
 }
 </style>

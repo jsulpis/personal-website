@@ -9,7 +9,7 @@
 import Home from "~/components/index/Home";
 import About from "~/components/index/About";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME },
+        { name: "og:url", content: SITE_ROOT_URL },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]

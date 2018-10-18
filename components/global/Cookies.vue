@@ -56,7 +56,7 @@
 import VSnackbar from "vuetify/es5/components/VSnackbar";
 import VDialog from "vuetify/es5/components/VDialog";
 
-import { setCookie, getCookie } from "~/assets/js/cookies.js";
+import CookiesService from "~/services/CookiesService";
 
 export default {
   components: {
@@ -71,11 +71,11 @@ export default {
   },
   methods: {
     setCookiesAccepted() {
-      setCookie("acceptCookies", "true");
+      CookiesService.write("acceptCookies", "true");
     }
   },
   mounted() {
-    if (getCookie("acceptCookies") == "") {
+    if (CookiesService.read("acceptCookies") == "") {
       this.snackbar = true;
     }
   }

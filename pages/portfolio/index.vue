@@ -5,7 +5,7 @@
       v-for="(img, i) in artworks"
       :key=i
       :title="img.title"
-      :url="img.urlTitle"
+      :imgUrl="img.urlTitle"
       :date="img.date"
       :likes="img.likes"/>
 
@@ -24,7 +24,8 @@ import axios from "axios";
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
@@ -37,7 +38,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME + "/portfolio" },
+        { name: "og:url", content: SITE_ROOT_URL + "/portfolio" },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]
@@ -54,8 +55,8 @@ export default {
   mounted() {
     $(".hide-on-render").addClass("show");
 
-    axios.get("https://api.juliensulpis.fr/artworks").then(response => {
-      this.artworks = response.data.Items;
+    ArtworksProvider.provideArtworks().then(response => {
+      this.artworks = response;
       this.sortArtworksByDate();
 
       // Give a bit of time to fill the artworks array and then fade them in
@@ -97,7 +98,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 #gallery {
   padding: 0;
 }
