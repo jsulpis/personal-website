@@ -58,6 +58,9 @@ export default {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
     }
+  },
+  mounted() {
+    $("#banner").css("opacity", 1);
   }
 };
 </script>
@@ -104,6 +107,7 @@ a {
 }
 
 #banner {
+  opacity: 0;
   height: $banner-height;
   background-image: url("/img/background/sky.jpg");
   background-size: cover;

@@ -51,8 +51,8 @@ export default {
     JSection
   },
   mounted() {
-    // Show the hidden sections in the top of the page after this one is mounted
-    $(".hide-on-render").addClass("show");
+    // Send an event to the parent to display the page (hidden on load)
+    this.$emit("experiences-loaded");
   }
 };
 </script>

@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     const banner = $("#banner");
-    banner.hide();
+    // banner.hide();
     if ($("#footer")[0].classList.contains("show")) {
       // Coming from another page: animate the banner
       banner.animate({ height: "100vh" }, 300, () => {
