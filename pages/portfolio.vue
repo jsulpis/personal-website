@@ -14,6 +14,9 @@ export default {
         id: "dsq-count-scr"
       }
     ]
+  },
+  mounted() {
+    $(".hide-on-render").addClass("show");
   }
 };
 </script>

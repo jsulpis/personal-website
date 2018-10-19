@@ -1,6 +1,6 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
-    <nuxt-link :to="'/portfolio/' + imgUrl">
+    <nuxt-link :to="'/portfolio/design/' + imgUrl">
     <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
     <div class="gallery-item-overlay">
         <h3 class="gallery-item__title headline font-weight-regular">

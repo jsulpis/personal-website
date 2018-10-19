@@ -1,6 +1,6 @@
 <template>
   <div>
-    <back-btn/>
+    <back-btn to="/portfolio/design"/>
     <v-container class="artwork">
       <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
