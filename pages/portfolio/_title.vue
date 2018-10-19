@@ -1,51 +1,45 @@
 <template>
-  <div id="gallery-item">
-    <!-- Back button -->
-    <v-btn
-    flat
-    :ripple=false
-    id="gallery-back-btn"
-    to="/portfolio"
-    :style="'height: ' + (smallViewport ? '56px' : '80px')">
-      <v-icon left>keyboard_backspace</v-icon>
-      <span v-show="!smallViewport">Retour</span>
-    </v-btn>
-    <v-container id="gallery-item-container">
-      <section>
+  <div>
+    <back-btn/>
+    <v-container class="artwork">
+      <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
+
         <!-- Image metadata -->
-        <div class="artwork-data grey--text text--lighten-3">
+        <div class="artwork__data grey--text text--lighten-3">
           <!-- date -->
-          <div class="artwork-date">
+          <div class="artwork__date">
             <v-icon>date_range</v-icon>
             <span>{{ artwork.date }}</span>
           </div>
           <!-- Likes -->
-          <LikeBtn :initialLikes="artwork.likes"/>
+          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
           <!-- Comments -->
-          <div class="artwork-comments">
+          <div class="artwork__comments">
             <v-icon>forum</v-icon>
-            <span><a :href="'http://localhost:3000/portfolio/' + this.$route.params.title + '#disqus_thread'">0</a></span>
+            <span><a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a></span>
           </div>
         </div>
+
         <!-- Image -->
         <a :href="imageUrl" target="_blank">
           <img
-          class="artwork-img elevation-8"
+          class="artwork__img elevation-8"
           :src="imageUrl"
           :alt="artwork.title">
         </a>
       </section>
 
-      <section>
-        <h3 class="font-weight-regular">Logiciels utilisés:</h3>
+      <!-- Softwares -->
+      <section class="artwork__section">
+        <h3 class="artwork__softwares">Logiciels utilisés:</h3>
         <div
-        class="artwork-software"
+        class="artwork__softwares__item"
         v-for="(software, i) in artwork.softwares"
         :key="i">
-          <a :href="links[software]">
+          <a :href="softwares[software].url">
             <img
-            :src="'/img/softwares/' + software + '.png'"
+            :src="softwares[software].icon"
             :alt="software">
           </a>
           <p>{{ software }}</p>
@@ -53,18 +47,25 @@
       </section>
 
       <!-- Disqus plugin -->
-      <div id="disqus_thread"></div>
+      <disqus-plugin :imgName="artwork.urlTitle"/>
     </v-container>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
+import BackBtn from "~/components/portfolio/BackBtn.vue";
+import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
+
+import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { CG_SOFTWARES } from "~/assets/data/cgSoftwares";
+import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
-    LikeBtn
+    LikeBtn,
+    BackBtn,
+    DisqusPlugin
   },
   head() {
     return {
@@ -74,7 +75,7 @@ export default {
         { name: "og:type", content: "website" },
         {
           name: "og:url",
-          content: "https://juliensulpis.fr/portfolio/" + this.artwork.urlTitle
+          content: SITE_ROOT_URL + "/portfolio/" + this.artwork.urlTitle
         },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
@@ -84,149 +85,85 @@ export default {
   data() {
     return {
       description: "Un élément de ma gallerie personnelle.",
+      disqusRootUrl: DISQUS_ROOT_URL,
       artwork: {},
-      links: {
-        Blender: "https://www.blender.org",
-        Photoshop: "https://www.adobe.com/fr/products/photoshop.html",
-        "Substance Painter":
-          "https://www.allegorithmic.com/products/substance-painter"
-      }
+      softwares: CG_SOFTWARES
     };
   },
   computed: {
-    smallViewport() {
-      return this.$vuetify.breakpoint.smAndDown;
-    },
     imageUrl() {
-      return typeof this.artwork.urlTitle != "undefined"
-        ? "https://s3.eu-west-3.amazonaws.com/juliensulpis-portfolio/" +
-            this.artwork.urlTitle +
-            ".jpg"
-        : "";
-    }
-  },
-  methods: {
-    initDisqus() {
-      // Disqus plugin
-      const disqus_config = function() {
-        this.page.url =
-          "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
-        this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
-      };
-      (function() {
-        var d = document,
-          s = d.createElement("script");
-        s.src = "https://localhost-ecfgq3nt0m.disqus.com/embed.js";
-        s.setAttribute("data-timestamp", +new Date());
-        d.body.appendChild(s);
-      })();
-    },
-    resetDisqus() {
-      DISQUS.reset({
-        reload: true,
-        config: function() {
-          this.page.identifier = response.data.Item.uuid; // Page's unique identifier variable
-          this.page.url =
-            "http://localhost:3000/portfolio/" + this.$route.params.title; // Page's canonical URL variable
-        }
-      });
+      return ArtworksProvider.providePictureUrl(this.$route.params.title);
     }
   },
   mounted() {
+    DISQUSWIDGETS.getCount({ reset: true });
     $(".hide-on-render").addClass("show");
-
-    axios
-      .get("https://api.juliensulpis.fr/artworks/" + this.$route.params.title)
-      .then(response => {
-        this.artwork = response.data.Item;
-        $("#gallery-item-container").fadeIn();
-
-        DISQUSWIDGETS.getCount({ reset: true });
-        // Load the Disqus comment plugin if it's not already done (when coming from another artwork for example)
-        if ("undefined" == typeof DISQUS) {
-          this.initDisqus();
-        } else {
-          // Or reset the plugin if it's already loaded
-          this.resetDisqus();
-        }
-      });
+    ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
+      this.artwork = response;
+      $(".artwork").fadeIn();
+    });
   }
 };
 </script>
 
 <style lang="scss">
-@import "@material/theme/color-palette";
+@import "~/assets/scss/variables.scss";
 
-#gallery-item {
-  #gallery-item-container {
-    display: none;
-  }
+.artwork {
+  display: none;
+}
 
-  #gallery-back-btn {
-    position: absolute;
-    z-index: 12;
-    top: 0;
-    left: 0;
-    padding: 0;
-    margin: 0 3vw;
+.artwork__ {
+  &data {
+    margin: 0.5rem;
 
-    text-transform: initial;
-
-    &:before,
-    &:before,
-    &:focus:before {
-      background-color: transparent;
-    }
-  }
-
-  .artwork- {
-    &data {
-      margin: 0.5rem;
-
-      .v-icon {
-        height: 36px;
-        width: 36px;
-      }
-    }
-
-    &img {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 5px;
-    }
-
-    &date,
-    &comments,
-    &likes {
-      margin: 0.5rem;
+    .v-icon {
       height: 36px;
-      display: inline-block;
-
-      span {
-        vertical-align: super;
-      }
-    }
-
-    &software {
-      display: inline-block;
-
-      img {
-        width: 100px;
-        margin: 1rem 3rem;
-      }
-
-      p {
-        opacity: 0.84;
-      }
+      width: 36px;
     }
   }
 
-  .like-btn {
-    margin: 0 0.25rem 0 0;
-    vertical-align: baseline;
+  &img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 5px;
   }
 
-  section {
+  &comments a {
+    color: inherit;
+  }
+
+  &date,
+  &comments,
+  &likes {
+    margin: 0.5rem;
+    height: 36px;
+    display: inline-block;
+
+    span {
+      vertical-align: super;
+    }
+  }
+
+  &softwares {
+    font-weight: normal;
+    margin: 1rem;
+  }
+
+  &softwares__item {
+    display: inline-block;
+
+    img {
+      width: 5rem;
+      margin: 0.5rem 3rem 0 3rem;
+    }
+
+    p {
+      opacity: 0.84;
+    }
+  }
+
+  &section {
     position: relative;
     padding-bottom: 2rem;
     margin-bottom: 2rem;

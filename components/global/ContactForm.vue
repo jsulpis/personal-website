@@ -2,52 +2,47 @@
   <!-- CONTACT -->
   <div>
     <v-container justify-center>
-      <form id="contact-form" action="#" @submit.prevent="onSubmit">
+      <v-form class="contact-form" action="#" ref="form" @submit.prevent="onSubmit">
         <!-- Name -->
-        <v-text-field id="name-field"
+        <v-text-field
         v-model="name"
         label="Nom"
         prepend-inner-icon="account_box"
         :light="isLightTheme"
         :rules="[rules.required, rules.nameChecker]"
-        :success="validName"
         required
         validate-on-blur></v-text-field>
 
         <!-- Email-->
         <v-text-field
-        id="email-field"
         v-model="email"
         label="E-mail"
         prepend-inner-icon="email"
         hint="Il sera utilisé uniquement pour vous répondre."
         :light="isLightTheme"
         :rules="[rules.required, rules.emailChecker]"
-        :success="validEmail"
         required
         validate-on-blur></v-text-field>
 
         <!-- Message -->
         <v-textarea
-        id="message-field"
         v-model="message"
         label="Message"
         auto-grow
         counter="1000"
         :light="isLightTheme"
         :rules="[rules.required, rules.messageChecker]"
-        :success="validMessage"
         required
         validate-on-blur></v-textarea>
 
         <v-btn color="primary"
         :loading="loading"
-        :disabled="loading"
+        :disabled="loading || btnDisabled"
         type="submit">
           <v-icon left>send</v-icon>
           Envoyer
         </v-btn>
-      </form>
+      </v-form>
     </v-container>
 
     <!-- SNACKBAR -->
@@ -64,13 +59,16 @@
 </template>
 
 <script>
-import axios from "axios";
+import VForm from "vuetify/es5/components/VForm";
 import VTextField from "vuetify/es5/components/VTextField";
 import * as VTextArea from "vuetify/es5/components/VTextarea";
 import VSnackbar from "vuetify/es5/components/VSnackbar";
 
+import ContactFormController from "~/services/ContactFormController";
+
 export default {
   components: {
+    VForm,
     VTextField,
     ...VTextArea,
     VSnackbar
@@ -80,108 +78,64 @@ export default {
   },
   data() {
     return {
+      controller: new ContactFormController(),
       name: "",
       email: "",
       message: "",
       loading: false,
       snackbar: false,
+      btnDisabled: false,
       snackBarTimeout: 3000,
       snackBarState: "",
       snackBarText: "",
-      validName: false,
-      validEmail: false,
-      validMessage: false,
       rules: {
-        required: value => !!value || "Champ requis.",
-        nameChecker: value => {
-          const regex = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ ]{1,48}[A-Za-zÀ-ÿ]$/i;
-          if (value.length < 3) {
-            this.validName = false;
-            return "Nom trop court.";
-          } else if (value.length > 50) {
-            this.validName = false;
-            return "Nom trop long.";
-          } else if (!regex.test(value) || this.distinctChars(value) < 3) {
-            this.validName = false;
-            return "Nom invalide.";
-          } else {
-            this.validName = true;
-            return true;
-          }
-        },
-        emailChecker: value => {
-          const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          if (!regex.test(value)) {
-            this.validEmail = false;
-            return "E-mail invalide.";
-          } else {
-            this.validEmail = true;
-            return true;
-          }
-        },
-        messageChecker: value => {
-          if (value.length > 1000) {
-            this.validMessage = false;
-            return "Message trop long.";
-          } else if (value.length < 32) {
-            this.validMessage = false;
-            return "Message trop court.";
-          } else if (this.distinctChars(value) < 10) {
-            this.validMessage = false;
-            return "Message invalide.";
-          } else {
-            this.validMessage = true;
-            return true;
-          }
-        }
+        required: value => this.controller.required(value),
+        nameChecker: value => this.controller.checkName(value),
+        emailChecker: value => this.controller.checkEmail(value),
+        messageChecker: value => this.controller.checkMessage(value)
       }
     };
   },
-  computed: {
-    validForm() {
-      return this.validName && this.validEmail && this.validMessage;
-    }
-  },
   methods: {
     onSubmit() {
-      if (this.validForm) {
+      if (this.$refs.form.validate()) {
         console.log("Valid formular. Sending the e-mail...");
         this.loading = true;
-        axios
-          .post("https://api.juliensulpis.fr/contact", {
+        this.controller
+          .sendEmail({
             name: this.name,
             email: this.email,
             message: this.message
           })
-          .then(() => {
-            console.log("success");
-            this.showSnackBar("success", "Message envoyé !");
-          })
-          .catch(() => {
-            console.log("error");
-            this.showSnackBar(
-              "error",
-              "Une erreur est survenue. Veuillez réessayer."
-            );
-          });
+          .then(() => this.emailSucceeded())
+          .catch(() => this.emailFailed());
       }
+    },
+    emailSucceeded() {
+      console.log("success");
+      this.showSnackBar("success", "Message envoyé !");
+      // Discourage the client from sending another email
+      this.btnDisabled = true;
+    },
+    emailFailed() {
+      console.log("error");
+      this.showSnackBar(
+        "error",
+        "Une erreur est survenue. Veuillez réessayer."
+      );
     },
     showSnackBar(state, text) {
       this.snackBarState = state;
       this.snackBarText = text;
       this.loading = false;
       this.snackbar = true;
-    },
-    distinctChars(str) {
-      // returns the number of distinct characters in the string
-      return Array.from(new Set(str.split(""))).length;
     }
   }
 };
 </script>
 
-<style lang="scss">
-#contact-form {
+<style>
+.contact-form {
   max-width: 600px;
   margin: 0 auto;
 }

@@ -1,14 +1,11 @@
 <template>
-  <v-card light color="grey lighten-4" class="pa-0">
-    <!-- Hide the top of the page until the experiences section is rendered -->
-    <div class="hide-on-render">
-      <about>{{ description }}</about>
-      <j-tabs/>
-      <experiences/>
-    </div>
+  <v-card light color="grey lighten-4" class="hide-on-render pa-0">
+    <about>{{ description }}</about>
+    <j-tabs/>
+    <experiences @experiences-loaded="showHiddenSection"/>
     <education/>
     <skills/>
-    <contact class="pb-5"/>
+    <contact/>
   </v-card>
 </template>
 
@@ -21,7 +18,7 @@ import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -39,7 +36,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME + "/resume" },
+        { name: "og:url", content: SITE_ROOT_URL + "/resume" },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]
@@ -49,56 +46,21 @@ export default {
     return {
       title: makePageTitle("CV"),
       description:
-        "Développeur généraliste passionné et curieux, insatiable de technologies à explorer."
+        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };
+  },
+  methods: {
+    showHiddenSection() {
+      $(".hide-on-render").addClass("show");
+    }
   }
 };
 </script>
 
-<style lang="scss">
-@import "@material/typography/mdc-typography";
-
-@mixin title-underline {
-  &::after {
-    content: "";
-    margin: 0.75rem auto;
-    display: block;
-    width: 5rem;
-    border-bottom: 3px solid;
-  }
-}
-
-html {
-  font-size: initial !important;
-}
-
-body {
-  margin: 0;
-  text-align: center;
-}
-
-section:not(.mdc-top-app-bar__section) {
-  margin: auto;
-  padding: 16px 0 5px 0;
-}
-
-.section-title {
-  margin: 1rem auto 2rem auto;
-  @include title-underline;
-  @include mdc-typography(headline5);
-}
-
-.title-underline {
-  @include title-underline;
-}
-
-.v-card {
-  padding: 1rem;
-}
-
-// Override Vuetify container width
+<style>
+/* Override Vuetify container width */
 @media only screen and (min-width: 1904px) {
-  .container {
+  section .container {
     max-width: 1185px !important;
   }
 }

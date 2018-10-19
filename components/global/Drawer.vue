@@ -42,13 +42,14 @@
     flat
     absolute
     color="transparent">
-      <v-toolbar-items id="toolbar-items" class="hidden-xs-only">
+      <v-toolbar-items class="toolbar-items hidden-xs-only">
         <v-layout align-start justify-center row fill-height>
           <v-btn
             v-for="(item, i) in items"
             :key="i"
             :to="item.to"
             :ripple="false"
+            class="toolbar-items__btn"
             active-class="primary--text"
             flat>{{item.title}}</v-btn>
         </v-layout>
@@ -76,10 +77,9 @@ export default {
 </script>
 
 <style lang="scss">
-#toolbar-items {
+.toolbar-items {
   width: 100%;
-
-  .v-btn {
+  .toolbar-items__btn {
     text-transform: initial; // Remove default capital letters
   }
 }

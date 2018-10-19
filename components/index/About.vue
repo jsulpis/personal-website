@@ -1,10 +1,10 @@
 <template>
-  <v-container fluid id="home-about" class="pb-5">
+  <v-container fluid id="home-about">
     <v-layout align-center justify-space-around row wrap>
-      <v-flex xs12 id="home-profile">
-        <avatar/>
-        <div class="description">
-          <div class="welcome">Bienvenue sur mon site !</div>
+      <v-flex xs12>
+        <avatar class="mb-4"/>
+        <div class="home-about__welcome">Bienvenue sur mon site !</div>
+        <div class="home-about__description">
           J'y ajoute régulièrement du contenu à propos de programmation et d'infographie, qui sont deux de mes passions. Vous pouvez vous rendre sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link> pour plus de détails. Bonne visite !
         </div>
       </v-flex>
@@ -33,33 +33,16 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#home-about {
-  .avatar {
-    margin-bottom: 3rem;
-  }
+<style>
+.home-about__welcome {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
 
-  #home-profile {
-    font-size: 18px;
-
-    .welcome {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-
-    .description {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
-
-  .icon-container {
-    flex: none;
-    height: 120px;
-    width: 120px !important;
-    border-radius: 50%;
-    margin: 1rem auto;
-  }
+.home-about__description {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 </style>

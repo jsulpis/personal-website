@@ -1,60 +1,40 @@
 <template>
   <!-- EXPERIENCES -->
-  <j-section id="experiences" title="Expériences">
+  <j-section id="resume-experiences" title="Expériences">
     <ul class="timeline timeline-split">
+      <!-- Enedis -->
+      <experience
+      date="oct. 2018 - Aujourd'hui"
+      :duration="Math.floor((new Date(Date.now()) - new Date(2018, 9))/(1000*60*60*24*30)+1) + ' mois'"
+      jobTitle="Ingénieur études et développement"
+      company="SOLUTEC"
+      location="Région de Lyon, France">
+      Consultant pour des missions orientées développement.
+      </experience>
 
       <!-- SOLUTEC -->
       <experience
-      date="avr. 2018 - août 2018<br>5 mois"
+      date="avr. 2018 - août 2018"
+      duration="5 mois"
       jobTitle="Stagiaire développeur Android"
       company="SOLUTEC"
-      location="Région de Lyon, France">
-        <p>Pour le compte d'un client grand compte de SOLUTEC, je développe une application mobile pour faciliter la maintenance
-          d'automates bancaires en utilisant la réalité augmentée.</p>
-        <p>Technologies utilisées:</p>
-        <ul>
-          <li>
-            <a href="https://developer.android.com/topic/libraries/architecture/">Android Architecture Components</a>
-          </li>
-          <li>
-            <a href="https://www.easyar.com/">EasyAR</a> - Réalité Augmentée</li>
-          <li>
-            <a href="https://www.khronos.org/opengles/">OpenGL|ES</a> - Affichage d'objets 2D et 3D</li>
-          <li>
-            <a href="https://opencv.org/">OpenCV</a> - Traitement d'images</li>
-        </ul>
+      location="Région de Lyon, France"
+      technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
+      methodos="SCRUM">
+      Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée.
       </experience>
 
       <!-- Polytechnique Montréal -->
       <experience
-      date="juin 2017 - août 2017<br>3 mois"
-      jobTitle="Stage de recherche en robotique mobile"
+      date="juin 2017 - août 2017"
+      duration="3 mois"
+      jobTitle="Stagiaire de recherche en robotique mobile"
       company="Polytechnique Montréal"
-      location="Région de Montréal, Canada">
-        <p>Pendant ce stage, j'ai implémenté une version simplifiée de localisation et cartographie simultanée (SLAM)
-          pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
-          de données.
-        </p>
-        <p>Technologies utilisées:</p>
-        <ul>
-          <li>
-            <a href="https://spark.apache.org/">Apache Spark</a> - Données massives</li>
-          <li>
-            <a href="https://www.ibm.com/cloud-computing/bluemix/fr">IBM Bluemix</a> - Plateforme Cloud</li>
-          <li>
-            <a href="https://kafka.apache.org/">Apache Kafka</a> - Streaming</li>
-          <li>
-            <a href="https://aws.amazon.com/fr/kinesis/">Amazon Kinesis</a> - Streaming</li>
-        </ul>
-      </experience>
-
-      <!-- Auxitrol -->
-      <experience
-      date="janvier 2016<br>1 mois"
-      jobTitle="Stage opérateur en usine"
-      company="Auxitrol"
-      location="Région de Bourges, France">
-        <p>J'ai découvert les conditions de travail des ouvriers sur une ligne de production d'une usine ainsi qu'au service emballage et expédition.</p>
+      location="Région de Montréal, Canada"
+      technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis">
+      Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
+        pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
+        de données.
       </experience>
 
       </ul>
@@ -71,16 +51,14 @@ export default {
     JSection
   },
   mounted() {
-    // Show the hidden sections in the top of the page after this one is mounted
-    $(".hide-on-render").addClass("show");
+    // Send an event to the parent to display the page (hidden on load)
+    this.$emit("experiences-loaded");
   }
 };
 </script>
 
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
-@import "@material/theme/color-palette";
-@import "@material/typography/mdc-typography";
 
 /*==================================
     TIMELINE
@@ -110,14 +88,15 @@ export default {
 .timeline-info {
   text-align: center;
   white-space: nowrap;
-
-  p {
-    margin: 0.25rem 0 0 0;
-  }
-  img {
-    width: 100px;
-  }
 }
+.timeline-info__date {
+  margin: 0.25rem 0 0 0;
+  font-weight: normal;
+}
+.timeline-info__logo {
+  width: 100px;
+}
+
 /*----- TIMELINE MARKER -----*/
 
 .timeline-marker {
@@ -132,23 +111,23 @@ export default {
     border-radius: 100%;
     content: "";
     display: block;
-    height: 14px;
+    height: 15px;
     position: absolute;
     top: 4px;
     left: 0;
-    width: 14px;
+    width: 15px;
     box-sizing: initial;
     transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   }
   &:after {
     content: "";
-    width: 3px;
+    width: 2px;
     background: $material-color-grey-300;
     display: block;
     position: absolute;
     top: 29px;
     bottom: 0;
-    left: 8px;
+    left: 9px;
   }
   .timeline-item:last-child &:after {
     content: none;
@@ -160,72 +139,25 @@ export default {
 }
 
 /*----- TIMELINE CONTENT -----*/
-.date {
-  @include mdc-typography(subtitle2);
-}
-
 .timeline-content {
   padding-bottom: 80px;
-  h3 {
+
+  .timeline-content__title {
     margin: 0;
     line-height: 1.9rem;
   }
-  h4 {
+
+  .timeline-content__company {
     margin: 0.25rem 0;
   }
-
-  .timeline-title {
-    @include mdc-typography(headline6);
-  }
-
-  .company {
-    @include mdc-typography(subtitle1);
-  }
-  .location {
-    @include mdc-typography("caption");
+  .timeline-content__location {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0.25rem 0 0.75rem 0;
     line-height: 0.75rem;
-  }
-  p,
-  ul {
-    @include mdc-typography(body2);
   }
   p:last-child {
     margin-bottom: 0;
-  }
-}
-
-/*----- TIMELINE PERIOD -----*/
-
-.period {
-  padding: 0;
-  .timeline-info {
-    display: none;
-  }
-  .timeline-marker {
-    &:before {
-      background: transparent;
-      content: "";
-      width: 15px;
-      height: auto;
-      border: none;
-      border-radius: 0;
-      top: 0;
-      bottom: 30px;
-      left: 2px;
-      position: absolute;
-      border-top: 3px solid #ccd5db;
-    }
-    &:after {
-      content: "";
-      height: 32px;
-      top: auto;
-    }
-  }
-  .timeline-content {
-    padding: 40px 0 70px;
-  }
-  .timeline-title {
-    margin: 0;
   }
 }
 
@@ -244,8 +176,7 @@ export default {
     }
     .timeline-info,
     .timeline-marker,
-    .timeline-content,
-    .period .timeline-info {
+    .timeline-content {
       display: table-cell;
       vertical-align: top;
     }
@@ -257,10 +188,6 @@ export default {
     }
     .timeline-info {
       padding-right: 30px;
-    }
-    .period .timeline-title {
-      position: relative;
-      left: -45px;
     }
   }
 }

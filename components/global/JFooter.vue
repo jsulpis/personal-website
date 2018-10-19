@@ -1,12 +1,12 @@
 <template>
   <v-footer id="footer" height="auto" class="elevation-8">
-    <v-card flat tile class="text-xs-center pt-4">
+    <v-card flat tile class="footer-card text-xs-center pt-4">
       <!-- Scroll Top -->
-      <scroll-top id="scrolltop-fab"/>
+      <scroll-top id="footer-scrolltop"/>
 
-      <!-- Media icons -->
+      <!-- Networks icons -->
       <v-card-text class="pa-1">
-        <social-media/>
+        <social-networks/>
       </v-card-text>
 
       <v-divider></v-divider>
@@ -22,29 +22,29 @@
 
 <script>
 import VFooter from "vuetify/es5/components/VFooter";
-import SocialMedia from "./SocialMedia";
+import SocialNetworks from "./SocialNetworks";
 import ScrollTop from "./ScrollTop";
 
 export default {
   components: {
     VFooter,
-    SocialMedia,
+    SocialNetworks,
     ScrollTop
   }
 };
 </script>
 
-<style lang="scss">
-footer .v-card {
+<style>
+.footer-card {
   width: 100%;
   padding: 1rem 0 0 0;
+}
 
-  #scrolltop-fab {
-    position: absolute;
-    margin: 0;
-    left: 50%;
-    top: -28px;
-    transform: translateX(-50%);
-  }
+#footer-scrolltop {
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  top: -28px;
+  transform: translateX(-50%);
 }
 </style>

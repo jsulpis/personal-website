@@ -36,7 +36,7 @@
 
   <!-- SNACKBAR -->
   <v-snackbar
-  id="cookie-snackbar"
+  class="cookie-snackbar"
   v-model="snackbar"
   color="grey darken-3"
   auto-height
@@ -56,7 +56,7 @@
 import VSnackbar from "vuetify/es5/components/VSnackbar";
 import VDialog from "vuetify/es5/components/VDialog";
 
-import { setCookie, getCookie } from "~/assets/js/cookies.js";
+import CookiesService from "~/services/CookiesService";
 
 export default {
   components: {
@@ -71,11 +71,11 @@ export default {
   },
   methods: {
     setCookiesAccepted() {
-      setCookie("acceptCookies", "true");
+      CookiesService.write("acceptCookies", "true");
     }
   },
   mounted() {
-    if (getCookie("acceptCookies") == "") {
+    if (CookiesService.read("acceptCookies") == "") {
       this.snackbar = true;
     }
   }
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss">
-#cookie-snackbar {
+.cookie-snackbar {
   .v-snack__wrapper {
     // override the snackbar property
     max-width: 100%;

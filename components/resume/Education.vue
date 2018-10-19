@@ -1,14 +1,14 @@
 <template>
   <!-- STUDIES -->
-  <section id="studies">
-    <div class="container">
+  <section id="resume-studies">
+    <v-container>
 
     <h2 class="section-title">Formation</h2>
       <div class="schools">
         <!-- ICM -->
-        <v-card :light="light" :class="'school icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
-          <h3>Ingénieur Civil des Mines</h3>
-          <h4>Mines Saint-Étienne</h4>
+        <v-card :light="light" :class="'school school--icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+          <h3 class="school-degree">Ingénieur Civil des Mines</h3>
+          <h4 class="school-name">Mines Saint-Étienne</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/icm/">
               <img src="/img/schools/emse.png" alt="logo_emse" />
@@ -19,37 +19,24 @@
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
-            <span class="courses">Cours:</span>
+            <span class="school-courses">Cours:</span>
             <ul>
-              <li>
-                <span class="course-name">Big Data: </span>
-                <a href="https://hadoop.apache.org/">Hadoop</a>,
-                <a href="https://spark.apache.org/">Spark</a>, SQL, Shell, Fouille de Données...</li>
-              <li>
-                <span class="course-name">Développement Web: </span>Front-end, Back-end, API REST</li>
-              <li>
-                <span class="course-name">Intelligence Artificielle: </span>jeux, planning, résolution de problèmes, représentation des connaissances...</li>
-              <li>
-                <span class="course-name">Microélectronique: </span>Objets communicants, systèmes embarqués, électronique numérique et analogique
-              </li>
-              <li>
-                <span class="course-name">Gestion: </span>Bilans, résultats...</li>
-              <li>
-                <span class="course-name">Management: </span>Méthodes agiles, performance...</li>
+              <li v-for="(courseName, i) in Object.keys(emseCourses)" :key="i">
+                <education-course :name="courseName" :description="emseCourses[courseName]"/></li>
             </ul>
 
             <br>
-            <div class="courses">Projet: Système de gestion de bâtiment intelligent</div>
-            <span class="project-caption">Majeure Informatique, 3e année.
+            <div class="school-courses">Projet: Système de gestion de bâtiment intelligent</div>
+            <span class="school-project__caption">Majeure Informatique, 3e année.
               <a href="https://github.com/MajeureInfo">Voir sur GitHub.</a>
             </span>
           </div>
         </v-card>
 
         <!-- CPS2 -->
-        <v-card :light="light" :class="'school cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
-          <h3>Master on Cyber-Physical and Social Systems</h3>
-          <h4>Mines Saint-Étienne, Université Jean Monnet</h4>
+        <v-card :light="light" :class="'school school--cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+          <h3 class="school-degree">Master on Cyber-Physical and Social Systems</h3>
+          <h4 class="school-name">Mines Saint-Étienne, Université Jean Monnet</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/cyber-physical-social-systems-cps2/">
               <img src="/img/schools/cps2.png" alt="logo_emse_jean_monnet">
@@ -60,48 +47,56 @@
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
-            <span class="courses">Cours:</span>
+            <span class="school-courses">Cours:</span>
             <ul>
-              <li>
-                <span class="course-name">Web Semantics: </span>
-                <a href="https://en.wikipedia.org/wiki/Linked_data">Linked Data</a>,
-                <a href="https://fr.wikipedia.org/wiki/RDF_Schema">RDFS</a>,
-                <a href="https://fr.wikipedia.org/wiki/SPARQL">SPARQL</a>,
-                <a href="https://jena.apache.org/">Jena</a>
-              </li>
-              <li>
-                <span class="course-name">Cloud computing: </span>
-                <a href="https://aws.amazon.com/fr">AWS</a>
-              </li>
-              <li>
-                <span class="course-name">Multi-Agent Systems: </span>
-                <a href="https://www.emse.fr/~picard/cours/mas/lecture-DCSP-2017.pdf">Distributed Constraint Processing</a>,
-                <a href="https://en.wikipedia.org/wiki/Distributed_constraint_optimization">Distributed Constraint Optimization</a>
-              </li>
+              <li v-for="(courseName, i) in Object.keys(cps2Courses)" :key="i">
+                <education-course :name="courseName" :description="cps2Courses[courseName]"/></li>
             </ul>
 
             <br>
-            <div class="courses">Projet: Système d'objets communicants</div>
-            <span class="project-caption">
+            <div class="school-courses">Projet: Système d'objets communicants</div>
+            <span class="school-project__caption">
               <a href="https://github.com/CPS2project">Voir sur GitHub.</a>
             </span>
           </div>
         </v-card>
       </div>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <script>
 import JSection from "./JSection.vue";
+import EducationCourse from "./EducationCourse";
+
+const EMSE_COURSES = {
+  "Big Data": "Hadoop, Spark, SQL, Shell, Fouille de Données...",
+  "Développement Web": "Front-end, Back-end, API REST",
+  "Intelligence Artificielle":
+    "jeux, planning, résolution de problèmes, représentation des connaissances...",
+  Microélectronique:
+    "Objets communicants, systèmes embarqués, électronique numérique et analogique",
+  Gestion: "Bilans, résultats...",
+  Management: "Méthodes agiles, performance..."
+};
+
+const CPS2_COURSES = {
+  "Web Semantics": "Linked Data, RDFS, SPARQL, Jena",
+  "Cloud computing": "AWS",
+  "Multi-Agent Systems":
+    "Distributed Constraint Processing, Distributed Constraint Optimization"
+};
 
 export default {
   components: {
-    JSection
+    JSection,
+    EducationCourse
   },
   data() {
     return {
       activeCard: "emse",
+      emseCourses: EMSE_COURSES,
+      cps2Courses: CPS2_COURSES,
       light: true
     };
   },
@@ -114,27 +109,21 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@material/typography/mdc-typography";
-
 @mixin school-focus {
   height: fit-content !important;
-
   .school-content {
     opacity: 1;
   }
-
-  .dots {
-    display: none;
-  }
 }
 
-#studies {
+#resume-studies {
   min-height: 660px;
 
   .school {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // $mdc-animation-standard-curve-timing-function;
     display: inline-block;
     margin: 0 auto;
+    padding: 1rem;
     width: 40%;
 
     @media only screen and(max-width: 959px) {
@@ -143,10 +132,10 @@ export default {
       display: block !important;
     }
 
-    &.icm:not(.in) {
+    &.school--icm:not(.in) {
       height: 240px;
     }
-    &.cps2 {
+    &.school--cps2 {
       &:not(.in) {
         height: 270px;
       }
@@ -155,16 +144,16 @@ export default {
       }
     }
 
-    h3 {
+    .school-degree {
       font-weight: 500;
       margin: 1rem 1rem 0 1rem;
       vertical-align: middle;
-      @include mdc-typography(headline6);
     }
 
-    h4 {
+    .school-name {
       margin: 0.25rem 0 1rem 0;
-      @include mdc-typography(body2);
+      font-size: 14px;
+      font-weight: 400;
     }
 
     .school-logo {
@@ -181,22 +170,22 @@ export default {
       }
       text-align: left;
 
-      .courses {
+      .school-courses {
         font-weight: 500;
       }
 
-      .course-name {
-        @include mdc-typography(body1);
+      .school-courses-item__name {
+        font-size: 15px;
         font-weight: 500;
       }
 
-      .project-caption {
+      .school-project__caption {
+        font-size: 14px;
         margin-left: 30px;
-        @include mdc-typography(body2);
       }
 
       ul {
-        @include mdc-typography(body2);
+        font-size: 14px;
       }
       li {
         margin: 0.25rem;

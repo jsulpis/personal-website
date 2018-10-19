@@ -1,6 +1,6 @@
 <template>
   <div class="avatar">
-    <img class="elevation-8" src="/img/avatar.jpeg" alt="photo_profile" />
+    <img class="avatar__img elevation-8" src="/img/avatar.jpeg" alt="photo_profile" />
   </div>
 </template>
 
@@ -10,11 +10,11 @@
 .avatar {
   width: 100%;
   height: $avatar-height;
+}
 
-  img {
-    height: $avatar-height;
-    border-radius: 50%;
-    border: 5px solid #f5f5f5;
-  }
+.avatar__img {
+  height: $avatar-height;
+  border-radius: 50%;
+  border: 5px solid #f5f5f5;
 }
 </style>

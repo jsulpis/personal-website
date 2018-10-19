@@ -1,13 +1,14 @@
 <template>
   <v-container fluid grid-list-xs id="gallery">
     <v-layout row wrap>
-      <Preview
+      <gallery-item
       v-for="(img, i) in artworks"
       :key=i
       :title="img.title"
-      :url="img.urlTitle"
+      :imgUrl="img.urlTitle"
       :date="img.date"
       :likes="img.likes"/>
+
       <v-progress-circular
       indeterminate
       size="70"
@@ -21,14 +22,15 @@
 <script>
 import axios from "axios";
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
-import Preview from "~/components/portfolio/Preview.vue";
+import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
-import { ROOT_SITE_NAME, makePageTitle } from "~/assets/js/globals.js";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
-    Preview,
-    VProgressCircular
+    VProgressCircular,
+    GalleryItem
   },
   head() {
     return {
@@ -36,7 +38,7 @@ export default {
       meta: [
         { name: "og:title", content: this.title },
         { name: "og:type", content: "website" },
-        { name: "og:url", content: ROOT_SITE_NAME + "/portfolio" },
+        { name: "og:url", content: SITE_ROOT_URL + "/portfolio" },
         { name: "og:description", content: this.description },
         { name: "description", content: this.description }
       ]
@@ -53,8 +55,8 @@ export default {
   mounted() {
     $(".hide-on-render").addClass("show");
 
-    axios.get("https://api.juliensulpis.fr/artworks").then(response => {
-      this.artworks = response.data.Items;
+    ArtworksProvider.provideArtworks().then(response => {
+      this.artworks = response;
       this.sortArtworksByDate();
 
       // Give a bit of time to fill the artworks array and then fade them in
@@ -83,7 +85,7 @@ export default {
       // Fade in each gallery item one after another
       setTimeout(() => {
         $("#gallery-progress").hide();
-        $(".preview").each(function(index) {
+        $(".gallery-item").each(function(index) {
           $(this)
             .delay(20 * index)
             .fadeIn();
@@ -96,82 +98,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 #gallery {
   padding: 0;
-  min-height: calc(75vh - 137px);
+}
 
-  #gallery-progress {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-
-  .preview {
-    position: relative;
-    padding: 0;
-    line-height: 0;
-    display: none;
-  }
-  /* Make the image to responsive */
-  .image {
-    width: 100%;
-  }
-
-  /* The overlay effect - lays on top of the container and over the image */
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    width: 100%;
-    height: 100%;
-    transition: 0.3s ease;
-    opacity: 0;
-    color: white;
-    text-align: center;
-
-    .v-icon {
-      margin-right: 0.25rem;
-    }
-
-    .img-- {
-      &title {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-      }
-
-      &date,
-      &likes,
-      &comments {
-        position: absolute;
-        padding: 1rem;
-        font-size: 13px;
-      }
-
-      &date {
-        bottom: 0;
-        left: 0;
-      }
-
-      &likes {
-        bottom: 0;
-        left: 40%;
-      }
-
-      &comments {
-        bottom: 0;
-        right: 0;
-      }
-    }
-  }
-
-  /* When you mouse over the container, fade in the overlay title */
-  .preview:hover .overlay {
-    opacity: 1;
-  }
+#gallery-progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 </style>

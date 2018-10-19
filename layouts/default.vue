@@ -8,7 +8,7 @@
       <div id="banner"></div>
 
       <!-- Page content -->
-      <nuxt/>
+      <nuxt class="page-content"/>
 
       <!-- Footer -->
       <j-footer class="hide-on-render"/>
@@ -58,6 +58,9 @@ export default {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
     }
+  },
+  mounted() {
+    $("#banner").css("opacity", 1);
   }
 };
 </script>
@@ -89,11 +92,14 @@ a {
 }
 
 .theme--dark .v-card,
-.application .theme--dark.v-card,
-.theme--dark .v-tabs__bar,
-.application .theme--dark.v-tabs__bar {
+.application .theme--dark.v-card {
   background-color: #303030;
 }
+.theme--dark .v-tabs__bar,
+.application .theme--dark.v-tabs__bar {
+  background-color: #303030 !important; // It should not be overwritten
+}
+
 
 .application.theme--dark {
   background: #212121;
@@ -101,10 +107,16 @@ a {
 }
 
 #banner {
+  opacity: 0;
   height: $banner-height;
   background-image: url("/img/background/sky.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+.page-content {
+  min-height: calc(100vh - #{$banner-height} - 161px);
+  padding-bottom: 3rem !important;
 }
 </style>

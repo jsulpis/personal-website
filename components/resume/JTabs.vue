@@ -3,14 +3,14 @@
   <div>
     <v-tabs
     v-model="activeTab"
-    id="tab-bar"
+    id="tabs"
     class="hidden-sm-and-down"
     centered
     fixed-tabs
     slider-color="primary">
       <v-tab
       v-for="(item, index) in items"
-      class="tab-item"
+      class="tabs__item"
       :key="index"
       ripple
       @click="$vuetify.goTo('#' + item.to, scrollingOptions); tabClickedTime = new Date().getTime()">
@@ -43,23 +43,23 @@ export default {
       items: [
         {
           title: "A propos",
-          to: "about"
+          to: "resume-profile"
         },
         {
           title: "Experiences",
-          to: "experiences"
+          to: "resume-experiences"
         },
         {
           title: "Formation",
-          to: "studies"
+          to: "resume-studies"
         },
         {
           title: "Compétences",
-          to: "skills"
+          to: "resume-skills"
         },
         {
           title: "Contact",
-          to: "contact"
+          to: "resume-contact"
         }
       ]
     };
@@ -70,19 +70,19 @@ export default {
         window.pageYOffset || document.documentElement.scrollTop;
 
       // Sticky tab bar
-      const navbar = $("#tab-bar");
+      const navbar = $("#tabs");
       const firstSection = document.querySelector("#" + this.items[1].to);
 
       // Set the sticky tab bar
       if (offsetTop >= this.sticky && !this.stickyTabsActivated) {
-        navbar.addClass("sticky");
+        navbar.addClass("tabs__sticky");
         navbar.addClass("elevation-4");
-        firstSection.classList.add("push");
+        firstSection.classList.add("tabs__push");
         this.stickyTabsActivated = true;
       } else if (offsetTop < this.sticky && this.stickyTabsActivated) {
-        navbar.removeClass("sticky");
+        navbar.removeClass("tabs__sticky");
         navbar.removeClass("elevation-4");
-        firstSection.classList.remove("push");
+        firstSection.classList.remove("tabs__push");
         this.stickyTabsActivated = false;
       }
 
@@ -92,10 +92,13 @@ export default {
         if (offsetTop < this.sticky) {
           this.activeTab = 0;
         } else {
-          this.activeTab = this.items.length - 1 ;
+          this.activeTab = this.items.length - 1;
           for (let i = 0; i < this.items.length; i++) {
             const id = "#" + this.items[i].to;
-            if (offsetTop < document.querySelector(id).offsetTop + BANNER_HEIGHT) {
+            if (
+              offsetTop <
+              document.querySelector(id).offsetTop + BANNER_HEIGHT
+            ) {
               this.activeTab = i - 1;
               break;
             }
@@ -105,7 +108,7 @@ export default {
     }
   },
   mounted() {
-    this.sticky = document.querySelector("#tab-bar").offsetTop + BANNER_HEIGHT;
+    this.sticky = document.querySelector("#tabs").offsetTop + BANNER_HEIGHT;
     if (this.$vuetify.breakpoint.mdAndUp) {
       window.addEventListener("scroll", this.onScroll);
     }
@@ -117,3 +120,30 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+#tabs {
+  width: 100%;
+  z-index: 2;
+
+  .v-tabs__item {
+    font-weight: 400;
+  }
+
+  .v-tabs__slider {
+    height: 3px;
+  }
+}
+
+// Position the tabs
+@media only screen and (min-width: 960px) {
+  .tabs__push {
+    padding-top: 48px !important;
+  }
+
+  .tabs__sticky {
+    position: fixed !important;
+    top: 0 !important;
+  }
+}
+</style>
