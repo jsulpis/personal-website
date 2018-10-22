@@ -3,7 +3,7 @@
     flat
     :ripple=false
     id="back-btn"
-    to="/portfolio"
+    :to="to"
     :style="'height: ' + (smallViewport ? '56px' : '80px')">
       <v-icon left>keyboard_backspace</v-icon>
       <span v-show="!smallViewport">Retour</span>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  props: {to: String},
   computed: {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
