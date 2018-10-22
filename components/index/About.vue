@@ -2,7 +2,7 @@
   <v-container fluid id="home-about">
     <v-layout align-center justify-space-around row wrap>
       <v-flex xs12>
-        <avatar class="mb-4"/>
+        <avatar :pro="false" class="mb-4"/>
         <div class="home-about__welcome">Bienvenue sur mon site !</div>
         <div class="home-about__description">
           J'y ajoute régulièrement du contenu à propos de programmation et d'infographie, qui sont deux de mes passions. Vous pouvez vous rendre sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link> pour plus de détails. Bonne visite !

@@ -1,7 +1,7 @@
 <template>
 <!-- PROFILE -->
 <v-card :light="isLightTheme" id="resume-profile" :class="'elevation-4' + (isLightTheme ? ' white' : '')">
-  <avatar class="resume-profile__avatar"/>
+  <avatar :pro="true" class="resume-profile__avatar"/>
   <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
   <h2 class="resume-profile__job headline">Développeur full-stack</h2>
   <h3 class="resume-profile__school subheading">consultant chez SOLUTEC

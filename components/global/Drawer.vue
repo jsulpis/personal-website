@@ -6,21 +6,13 @@
     v-model="drawer"
     disable-resize-watcher
     app>
-      <v-list class="pa-1">
-        <v-list-tile avatar>
-          <v-list-tile-avatar>
-            <img src="/img/avatar.jpeg">
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title>Julien Sulpis</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-
       <!-- LIST -->
       <v-list>
-        <v-divider />
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title class="drawer-main-title">Menu</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile
         v-for="(item, i) in items"
         :key="i"
@@ -81,6 +73,21 @@ export default {
   width: 100%;
   .toolbar-items__btn {
     text-transform: initial; // Remove default capital letters
+  }
+}
+
+.drawer-main-title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  overflow: visible;
+
+  &::after {
+    content: "";
+    margin: 0.25rem auto;
+    display: block;
+    width: 5rem;
+    border-bottom: 3px solid;
   }
 }
 </style>
