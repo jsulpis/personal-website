@@ -1,8 +1,8 @@
 <template>
 <v-card class="repo-item">
-  <img
-    class="repo-item__media"
-    :src="'https://raw.githubusercontent.com/jsulpis/' + repo.name + '/' + repo.default_branch + '/screenshot.jpg'"/>
+  <div class="repo-item__media">
+    <img :src="repoPictureUrl"/>
+  </div>
 
   <v-card-title class="repo-item__card-title">
     <div>
@@ -25,11 +25,14 @@
 </template>
 
 <script>
+import GitHubDataProvider from "~/services/GitHubDataProvider";
+
 export default {
   props: ["repoProp"],
   data() {
     return {
-      repo: { name: "" }
+      repo: { name: "" },
+      repoPictureUrl: ""
     };
   },
   filters: {
@@ -44,21 +47,36 @@ export default {
   },
   mounted() {
     this.repo = this.repoProp;
+    const repoPictureUrl =
+      "https://raw.githubusercontent.com/jsulpis/" +
+      this.repo.name +
+      "/" +
+      this.repo.default_branch +
+      "/preview.png";
+    GitHubDataProvider.checkRepoPictureUrl(repoPictureUrl).then(
+      verifiedPictureUrl => (this.repoPictureUrl = verifiedPictureUrl)
+    );
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 .repo-item {
   margin: 1rem;
   text-align: left;
   display: none;
 }
 .repo-item__card-title {
-  padding-bottom: 0;
+  padding: 0 1rem;
 }
 .repo-item__media {
   max-width: 100%;
+  text-align: center;
+
+  img {
+    max-height: 140px;
+    max-width: 100%;
+  }
 }
 .repo-item__description {
   font-weight: normal;

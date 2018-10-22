@@ -45,14 +45,8 @@ export default {
     });
   },
 
-  provideRepoPictureUrl(repoName, defaultBranch) {
-    const pictureUrl =
-      "https://raw.githubusercontent.com/jsulpis/" +
-      repoName +
-      "/" +
-      defaultBranch +
-      "/screenshot.jpg";
-    const defaultPictureUrl = "http://somePictureUrl";
+  checkRepoPictureUrl(pictureUrl) {
+    const defaultPictureUrl = "/img/github-octocat.png";
     return new Promise((resolve, reject) => {
       axios
         .get(pictureUrl)
