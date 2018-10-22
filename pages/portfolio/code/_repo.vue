@@ -2,15 +2,13 @@
 <div>
   <back-btn to="/portfolio/code"/>
   <v-container class="repo-container">
-    <div class="repo-top-bar">
-      <v-btn :href="repoUrl" color="primary" round class="repo-btn ma-0">See on GitHub</v-btn>
+      <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
       <div class="repo-iframe-container">
-        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.repoName + '&type=star&count=true&size=large'"
+        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
           frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
-        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.repoName + '&type=fork&count=true&size=large'"
+        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
           frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
       </div>
-    </div>
     <div class="repo-readme" v-html="content"/>
   </v-container>
 </div>
@@ -53,21 +51,29 @@ export default {
   img {
     max-width: 100%;
   }
-}
 
-.repo-top-bar {
-  text-align: left;
-  margin-bottom: 1.5rem;
+  h2 {
+    margin-top: 1.5rem;
+  }
+  h3 {
+    margin-top: 1rem;
+  }
+  h2 + h3 {
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 0;
+    margin-top: 0.75rem;
+  }
+  h3 + p,
+  h2 + p {
+    margin-top: 0;
+  }
 }
 
 .repo-btn {
   height: 30px;
-}
-
-.repo-iframe-container {
-  display: inline-block;
-  position: absolute;
-  margin-left: 1.5rem;
+  margin: 1rem;
 }
 
 code {

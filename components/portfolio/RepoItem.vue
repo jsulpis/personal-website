@@ -16,9 +16,9 @@
     <v-spacer/>
     <p class="body-1">{{repo.language}}</p>
     <v-spacer/>
-    <v-icon small>star</v-icon>&nbsp; {{repo.stargazers_count}}
+    <v-icon small class="repo-item__icon">star</v-icon>{{repo.stargazers_count}}
     <v-spacer/>
-    <v-icon small>fas fa-code-branch</v-icon>&nbsp; {{repo.forks_count}}
+    <v-icon small class="repo-item__icon">fas fa-code-branch</v-icon>{{repo.forks_count}}
     <v-spacer/>
   </v-card-actions>
 </v-card>
@@ -81,5 +81,8 @@ export default {
 .repo-item__description {
   font-weight: normal;
   margin-bottom: 0;
+}
+.repo-item__icon {
+  margin-right: 3px;
 }
 </style>
