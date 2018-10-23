@@ -1,57 +1,30 @@
 <template>
   <v-app light>
     <v-content>
-      <!-- Navigation drawer -->
-      <drawer :items="items" id="index-drawer"/>
-
-      <!-- Banner -->
+      <MenuWrapper/>
       <div id="banner" class="elevation-2"></div>
-
-      <!-- Page content -->
       <nuxt class="page-content"/>
-
-      <!-- Footer -->
       <j-footer class="hide-on-render"/>
-
-      <!-- Snackbar and dialog to allow cookies -->
       <cookies/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Drawer from "~/components/global/Drawer.vue";
+import MenuWrapper from "~/components/global/MenuWrapper.vue";
 import JFooter from "~/components/global/JFooter.vue";
 import Cookies from "~/components/global/Cookies.vue";
 
 export default {
   components: {
-    Drawer,
+    MenuWrapper,
     JFooter,
     Cookies
   },
   data() {
     return {
       description:
-        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design.",
-      items: [
-        {
-          title: "Accueil",
-          to: "/"
-        },
-        {
-          title: "Portfolio",
-          to: "/portfolio"
-        },
-        {
-          title: "CV",
-          to: "/resume"
-        },
-        {
-          title: "Contact",
-          to: "/contact"
-        }
-      ]
+        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
     };
   },
   computed: {
@@ -99,7 +72,6 @@ a {
 .application .theme--dark.v-tabs__bar {
   background-color: #303030 !important; // It should not be overwritten
 }
-
 
 .application.theme--dark {
   background: #212121;

@@ -1,83 +1,63 @@
 <template>
-  <div>
-    <!-- DRAWER -->
-    <v-navigation-drawer
-    dark
-    right
-    v-model="drawer"
-    disable-resize-watcher
-    app>
-      <!-- LIST -->
-      <v-list>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title class="drawer-main-title">Menu</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile
-        v-for="(item, i) in items"
-        :key="i"
-        :to="item.to"
-        @click="drawer = !drawer;"
-        nuxt>
-          <v-list-tile-content>
-            <v-list-tile-title class="text-xs-center">
-              {{ item.title }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+<v-navigation-drawer
+  dark
+  right
+  v-model="open"
+  disable-resize-watcher
+  app>
+  <v-list>
+    <v-list-tile>
+      <v-list-tile-content>
+        <v-list-tile-title class="drawer-main-title">Menu</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
 
-    </v-navigation-drawer>
+    <v-list-tile to="/">
+      <v-list-tile-title class="text-xs-center">Accueil</v-list-tile-title>
+    </v-list-tile>
 
-    <!-- TOOLBAR -->
-    <v-toolbar
-    dark
-    flat
-    absolute
-    color="transparent">
-      <v-toolbar-items class="toolbar-items hidden-xs-only">
-        <v-layout align-start justify-center row fill-height>
-          <v-btn
-            v-for="(item, i) in items"
-            :key="i"
-            :to="item.to"
-            :ripple="false"
-            class="toolbar-items__btn"
-            active-class="primary--text"
-            flat>{{item.title}}</v-btn>
-        </v-layout>
-      </v-toolbar-items>
-      <v-spacer></v-spacer>
-        <v-toolbar-side-icon
-        class="hidden-sm-and-up"
-        @click="drawer = !drawer" />
-    </v-toolbar>
+    <v-list-group v-model="groupActive">
+      <v-list-tile slot="activator" to="/portfolio">
+        <v-list-tile-title class="text-xs-center">
+          <span class="drawer-portfolio">Portfolio</span>
+        </v-list-tile-title>
+      </v-list-tile>
+      <v-list-tile to="/portfolio/design">
+      <v-list-tile-title class="text-xs-center">Design</v-list-tile-title>
+    </v-list-tile>
+    <v-list-tile to="/portfolio/code">
+      <v-list-tile-title class="text-xs-center">Code</v-list-tile-title>
+    </v-list-tile>
+    </v-list-group>
 
-  </div>
+    <v-list-tile to="/resume">
+      <v-list-tile-title class="text-xs-center">CV</v-list-tile-title>
+    </v-list-tile>
+
+    <v-list-tile to="/contact">
+      <v-list-tile-title class="text-xs-center">Contact</v-list-tile-title>
+    </v-list-tile>
+  </v-list>
+
+</v-navigation-drawer>
 </template>
 
 <script>
 export default {
-  props: {
-    items: Array
-  },
   data() {
     return {
-      drawer: false
+      open: false,
+      groupActive: false
     };
+  },
+  mounted() {
+    this.$parent.$on("toggle-drawer", () => (this.open = !this.open));
+    $(".v-list__tile").on("click", () => (this.groupActive = false));
   }
 };
 </script>
 
 <style lang="scss">
-.toolbar-items {
-  width: 100%;
-  .toolbar-items__btn {
-    text-transform: initial; // Remove default capital letters
-  }
-}
-
 .drawer-main-title {
   font-size: 18px;
   font-weight: 600;
@@ -91,5 +71,13 @@ export default {
     width: 5rem;
     border-bottom: 3px solid;
   }
+}
+.drawer-portfolio {
+  position: absolute;
+}
+
+.v-list__group:before,
+.v-list__group:after {
+  left: 0;
 }
 </style>
