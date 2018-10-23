@@ -1,7 +1,7 @@
 <template>
   <div>
-    <back-btn to="/portfolio/design"/>
     <v-container class="artwork elevation-4">
+      <j-breadcrumbs/>
       <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
 
@@ -53,8 +53,8 @@
 </template>
 
 <script>
+import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
-import BackBtn from "~/components/portfolio/BackBtn.vue";
 import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
 
 import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
@@ -63,8 +63,8 @@ import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
+    JBreadcrumbs,
     LikeBtn,
-    BackBtn,
     DisqusPlugin
   },
   head() {

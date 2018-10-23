@@ -1,7 +1,7 @@
 <template>
 <div>
-  <back-btn to="/portfolio/code"/>
   <v-container class="repo-container">
+    <j-breadcrumbs/>
       <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
       <div class="repo-iframe-container">
         <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
@@ -16,11 +16,13 @@
 
 <script>
 import marked from "marked";
-import BackBtn from "~/components/portfolio/BackBtn.vue";
+
+import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
+
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 
 export default {
-  components: { BackBtn },
+  components: { JBreadcrumbs },
   data() {
     return {
       content: "",
