@@ -1,6 +1,6 @@
 <template>
 <!-- PROFILE -->
-<v-card :light="isLightTheme" id="resume-profile" :class="'elevation-4' + (isLightTheme ? ' white' : '')">
+<v-card dark id="resume-profile" class="elevation-4">
   <avatar :pro="true" class="resume-profile__avatar"/>
   <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
   <h2 class="resume-profile__job headline">Développeur full-stack</h2>
@@ -38,12 +38,8 @@ export default {
   },
   data() {
     return {
-      isLightTheme: "",
       socialNetworks: SOCIAL_NETWORKS
     };
-  },
-  mounted() {
-    this.isLightTheme = $("#app")[0].classList.contains("theme--light");
   }
 };
 </script>

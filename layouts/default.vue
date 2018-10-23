@@ -1,11 +1,11 @@
 <template>
-  <v-app dark>
+  <v-app light>
     <v-content>
       <!-- Navigation drawer -->
       <drawer :items="items" id="index-drawer"/>
 
       <!-- Banner -->
-      <div id="banner"></div>
+      <div id="banner" class="elevation-2"></div>
 
       <!-- Page content -->
       <nuxt class="page-content"/>
@@ -79,7 +79,7 @@ body {
 
 a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .hide-on-render {

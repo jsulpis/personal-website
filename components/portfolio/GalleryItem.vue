@@ -70,6 +70,7 @@ export default {
 
   .v-icon {
     margin-right: 0.25rem;
+    color: white;
   }
 }
 

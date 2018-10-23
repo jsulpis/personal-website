@@ -8,10 +8,10 @@
         Développeur full-stack<br>
         <span>Infographiste et musicien amateur</span>
       </h2>
-      <social-networks/>
+      <social-networks class="home-social-networks"/>
     </v-layout>
   </v-container>
-  <v-btn icon large id="fab-scroll-down"  @click="$vuetify.goTo('#home-about', scrollingOptions);">
+  <v-btn icon dark large id="fab-scroll-down"  @click="$vuetify.goTo('#home-about', scrollingOptions);">
     <v-icon large>fas fa-angle-down</v-icon>
   </v-btn>
 </div>
@@ -99,6 +99,10 @@ export default {
         font-size: 1.3rem;
       }
     }
+  }
+
+  &social-networks a{
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 }
 

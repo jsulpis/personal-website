@@ -1,5 +1,6 @@
 <template>
   <v-btn
+    dark
     flat
     :ripple=false
     id="back-btn"

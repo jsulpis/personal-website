@@ -2,6 +2,7 @@
   <!-- Tabs -->
   <div>
     <v-tabs
+    dark
     v-model="activeTab"
     id="tabs"
     class="hidden-sm-and-down"

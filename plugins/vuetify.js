@@ -26,7 +26,7 @@ Vue.use(Vuetify, {
     VToolbar
   },
   theme: {
-    primary: "#bc5100",
+    primary: "#c95901",
     secondary: "#f57f17"
   },
   options: {

@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer" height="auto" class="elevation-8">
+  <v-footer dark id="footer" height="auto" class="elevation-8">
     <v-card flat tile class="footer-card text-xs-center pt-4">
       <!-- Scroll Top -->
       <scroll-top id="footer-scrolltop"/>

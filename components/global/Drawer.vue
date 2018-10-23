@@ -2,6 +2,7 @@
   <div>
     <!-- DRAWER -->
     <v-navigation-drawer
+    dark
     right
     v-model="drawer"
     disable-resize-watcher
@@ -31,6 +32,7 @@
 
     <!-- TOOLBAR -->
     <v-toolbar
+    dark
     flat
     absolute
     color="transparent">

@@ -1,13 +1,14 @@
 <template>
-  <v-container fluid id="home-about">
+<div id="home-about">
+  <div class="home-about__profile">
+    <avatar :pro="false" class="mb-4"/>
+    <div class="home-about__welcome">Bienvenue sur mon site !</div>
+    <div class="home-about__description">
+      J'y ajoute régulièrement du contenu à propos de programmation et d'infographie, qui sont deux de mes passions. Vous pouvez vous rendre sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link> pour plus de détails. Bonne visite !
+    </div>
+  </div>
+  <v-container>
     <v-layout align-center justify-space-around row wrap>
-      <v-flex xs12>
-        <avatar :pro="false" class="mb-4"/>
-        <div class="home-about__welcome">Bienvenue sur mon site !</div>
-        <div class="home-about__description">
-          J'y ajoute régulièrement du contenu à propos de programmation et d'infographie, qui sont deux de mes passions. Vous pouvez vous rendre sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link> pour plus de détails. Bonne visite !
-        </div>
-      </v-flex>
       <panel icon="fas fa-code">
         Je suis un <b>développeur passionné</b>, orienté vers les technologies web et mobiles et amateur de code de qualité. Mes projets open source, dont ce site fait partie, sont hébergés sur <a href="https://github.com/jsulpis">GitHub</a>.
       </panel>
@@ -19,6 +20,7 @@
       </panel>
     </v-layout>
   </v-container>
+</div>
 </template>
 
 <script>
@@ -34,6 +36,11 @@ export default {
 </script>
 
 <style>
+.home-about__profile {
+  padding: 2rem;
+  background-color: #303030;
+  color: white;
+}
 .home-about__welcome {
   font-size: 20px;
   font-weight: 500;

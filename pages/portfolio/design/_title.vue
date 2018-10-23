@@ -1,12 +1,12 @@
 <template>
   <div>
     <back-btn to="/portfolio/design"/>
-    <v-container class="artwork">
+    <v-container class="artwork elevation-4">
       <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
 
         <!-- Image metadata -->
-        <div class="artwork__data grey--text text--lighten-3">
+        <div class="artwork__data">
           <!-- date -->
           <div class="artwork__date">
             <v-icon>date_range</v-icon>
@@ -111,6 +111,7 @@ export default {
 
 .artwork {
   display: none;
+  border-radius: 0 0 8px 8px;
 }
 
 .artwork__ {
@@ -174,7 +175,7 @@ export default {
       bottom: -3px;
       left: -3px;
       right: -3px;
-      height: 1px;
+      height: 2px;
       background-image: -webkit-linear-gradient(
         left,
         transparent,

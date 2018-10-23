@@ -1,8 +1,8 @@
 <template>
 <v-flex xs12 md4 class="pa-4">
   <v-layout justify-center column>
-    <v-layout align-center justify-center class="icon-container primary darken-1">
-      <v-icon x-large>{{icon}}</v-icon>
+    <v-layout align-center justify-center class="icon-container primary">
+      <v-icon dark x-large>{{icon}}</v-icon>
     </v-layout>
     <div>
       <slot></slot>
