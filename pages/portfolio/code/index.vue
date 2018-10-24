@@ -1,9 +1,10 @@
 <template>
-  <v-container>
+<div>
+  <v-container class="container--card">
     <j-breadcrumbs/>
     <p class="portfolio-code-intro">Ce contenu est extrait de mon profil <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est principalement en anglais !</p>
     <v-layout wrap>
-      <v-flex xs12 sm6 md4 lg3 xl2
+      <v-flex xs12 sm6 md4 lg3
         v-for="(repo, i) in repos"
         :key="i">
         <repo-item
@@ -18,12 +19,14 @@
       class="hide-on-render"/>
     </v-layout>
   </v-container>
+</div>
 </template>
 
 <script>
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
+
 import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
 
 import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";

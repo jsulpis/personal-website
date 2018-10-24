@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="artwork elevation-4">
+    <v-container class="artwork container--card">
       <j-breadcrumbs/>
       <section class="artwork__section">
         <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
@@ -111,7 +111,6 @@ export default {
 
 .artwork {
   display: none;
-  border-radius: 0 0 8px 8px;
 }
 
 .artwork__ {

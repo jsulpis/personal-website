@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-container class="repo-container">
+  <v-container class="container--card">
     <j-breadcrumbs/>
       <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
       <div class="repo-iframe-container">
@@ -41,13 +41,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* Override Vuetify container width */
-@media only screen and (min-width: 1904px) {
-  .repo-container {
-    max-width: 1185px !important;
-  }
-}
-
 .repo-readme {
   text-align: left;
   img {
