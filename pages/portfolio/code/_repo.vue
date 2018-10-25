@@ -41,20 +41,42 @@ export default {
 </script>
 
 <style lang="scss">
+.repo-btn {
+  height: 30px;
+  margin: 1rem;
+}
 .repo-readme {
   text-align: left;
   img {
     max-width: 100%;
   }
 
+  h1,
+  h2,
+  h3,
+  strong {
+    font-weight: 500;
+  }
+
+  h1 {
+    margin-top: 1rem;
+    border-bottom: 1px solid #ddd;
+    + h3 {
+      margin-top: 0;
+    }
+  }
+
   h2 {
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0.75rem;
+
+    + h3 {
+      margin-top: 0;
+    }
   }
   h3 {
     margin-top: 1rem;
-  }
-  h2 + h3 {
-    margin-top: 0;
   }
   p {
     margin-bottom: 0;
@@ -66,16 +88,11 @@ export default {
   }
 }
 
-.repo-btn {
-  height: 30px;
-  margin: 1rem;
-}
-
 code {
-  height: 32px;
-  line-height: 32px;
+  height: 24px;
+  line-height: 24px;
   padding: 0 5px;
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: rgba(128, 128, 128, 0.1);
   box-shadow: none;
   color: inherit;
 }

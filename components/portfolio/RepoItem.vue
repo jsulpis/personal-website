@@ -1,7 +1,9 @@
 <template>
 <v-card class="repo-item">
   <div class="repo-item__media">
-    <img :src="repoPictureUrl"/>
+    <nuxt-link :to="'/portfolio/code/' + repo.name">
+      <img :src="repoPictureUrl"/>
+    </nuxt-link>
   </div>
 
   <v-card-title class="repo-item__card-title">
@@ -20,6 +22,10 @@
     <v-spacer/>
     <v-icon small class="repo-item__icon">fas fa-code-branch</v-icon>{{repo.forks_count}}
     <v-spacer/>
+    <span class="repo-item__license" v-show="showLicense">
+       {{license}}
+    </span>
+    <v-spacer/>
   </v-card-actions>
 </v-card>
 </template>
@@ -32,8 +38,14 @@ export default {
   data() {
     return {
       repo: { name: "" },
-      repoPictureUrl: ""
+      repoPictureUrl: "",
+      showLicense: false
     };
+  },
+  computed: {
+    license() {
+      return this.repo.license != null ? this.repo.license.spdx_id : "";
+    }
   },
   filters: {
     beautify(text) {
@@ -45,15 +57,30 @@ export default {
         : "";
     }
   },
+  methods: {
+    setLicenseDisplay() {
+      const screenWidth = window.innerWidth;
+      this.showLicense =
+        screenWidth < 600 ||
+        (screenWidth > 699 && screenWidth < 960) ||
+        screenWidth > 1264;
+    }
+  },
   mounted() {
     this.repo = this.repoProp;
-    const repoPictureUrl =
+    this.setLicenseDisplay();
+    window.addEventListener("orientationchange", () =>
+      setTimeout(() => this.setLicenseDisplay(), 100)
+    );
+
+    const defaultRepoPictureUrl =
       "https://raw.githubusercontent.com/jsulpis/" +
       this.repo.name +
       "/" +
       this.repo.default_branch +
       "/preview.png";
-    GitHubDataProvider.checkRepoPictureUrl(repoPictureUrl).then(
+    this.repoPictureUrl = defaultRepoPictureUrl;
+    GitHubDataProvider.checkRepoPictureUrl(defaultRepoPictureUrl).then(
       verifiedPictureUrl => (this.repoPictureUrl = verifiedPictureUrl)
     );
   }
@@ -62,9 +89,8 @@ export default {
 
 <style lang="scss">
 .repo-item {
-  margin: 1rem;
+  margin: 0.75rem;
   text-align: left;
-  display: none;
 }
 .repo-item__card-title {
   padding: 0 1rem;
@@ -72,10 +98,11 @@ export default {
 .repo-item__media {
   max-width: 100%;
   text-align: center;
+  overflow: hidden;
 
   img {
-    max-height: 140px;
-    max-width: 100%;
+    max-width: 106%;
+    transform: translateX(-3%) translateY(-2%);
   }
 }
 .repo-item__description {

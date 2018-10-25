@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <v-content>
-      <MenuWrapper/>
+      <MenuWrapper class="hide-on-render"/>
       <div id="banner" class="elevation-2"></div>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
