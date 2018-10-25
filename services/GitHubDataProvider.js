@@ -5,7 +5,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get("https://api.github.com/users/jsulpis/repos")
-        .then(response => resolve(response.data))
+        .then(response => resolve(response.data.filter(repo => !repo.archived)))
         .catch(() => reject());
     });
   },
