@@ -3,7 +3,8 @@
   dark
   flat
   absolute
-  color="transparent">
+  color="transparent"
+  class="toolbar">
     <v-toolbar-items class="toolbar-items hidden-xs-only">
       <v-layout align-start justify-center row fill-height>
         <toolbar-btn to="/" title="Accueil"/>
@@ -47,6 +48,12 @@ export default {
 </script>
 
 <style lang="scss">
+.toolbar {
+  @media only screen and (min-width: 600px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent);
+  }
+}
+
 .toolbar-items {
   width: 100%;
   .toolbar-items__btn {

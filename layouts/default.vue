@@ -2,7 +2,7 @@
   <v-app light>
     <v-content>
       <MenuWrapper class="hide-on-render"/>
-      <div id="banner" class="elevation-2"></div>
+      <div id="banner"></div>
       <logo/>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
@@ -87,7 +87,9 @@ a {
   background-image: url("/img/background/sky.jpg");
   background-size: cover;
   background-position: center;
-  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12),
+    0px 0px 40px 15px rgba(0, 0, 0, 0.3) inset;
 }
 
 .page-content {
