@@ -14,7 +14,7 @@ export const DISQUS_SCRIPT_URL = "https://localhost-ecfgq3nt0m.disqus.com";
 // Other constants and config
 export const makePageTitle = name => name + " - Julien Sulpis";
 
-export const BANNER_HEIGHT = 200;
+export const BANNER_HEIGHT = 161;
 
 export const SCROLLING_OPTIONS = {
   duration: 600,

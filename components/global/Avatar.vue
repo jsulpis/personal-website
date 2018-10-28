@@ -1,7 +1,7 @@
 <template>
-  <div class="avatar">
-    <img class="avatar__img elevation-8" :src="avatarUrl" alt="profile_picture" />
-  </div>
+<div>
+  <img class="avatar__img elevation-8" :src="avatarUrl" alt="profile_picture" />
+</div>
 </template>
 
 <script>
@@ -20,17 +20,9 @@ export default {
 };
 </script>
 
-
-<style lang="scss">
-@import "~/assets/scss/variables.scss";
-
-.avatar {
-  width: 100%;
-  height: $avatar-height;
-}
-
+<style >
 .avatar__img {
-  height: $avatar-height;
+  height: 11rem;
   border-radius: 50%;
   border: 5px solid #f5f5f5;
 }

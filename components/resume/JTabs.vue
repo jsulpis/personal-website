@@ -109,7 +109,14 @@ export default {
     }
   },
   mounted() {
-    this.sticky = document.querySelector("#tabs").offsetTop + BANNER_HEIGHT;
+    // Wait a few milliseconds for the markup to render
+    setTimeout(
+      () =>
+        (this.sticky =
+          document.querySelector("#tabs").offsetTop + BANNER_HEIGHT),
+      50
+    );
+
     if (this.$vuetify.breakpoint.mdAndUp) {
       window.addEventListener("scroll", this.onScroll);
     }

@@ -55,10 +55,8 @@ export default {
 }
 
 .resume-profile__ {
-  &avatar {
-    width: 100%;
-    position: absolute;
-    top: -$avatar-height / 2;
+  &avatar img{
+    margin: 1.5rem 0 0.25rem 0;
   }
 
   &networks {
@@ -73,7 +71,6 @@ export default {
   &name {
     margin: 0;
     margin-bottom: 0.25rem;
-    padding-top: $avatar-height/2 + 2rem;
   }
 
   &job {

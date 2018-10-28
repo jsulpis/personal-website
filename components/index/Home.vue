@@ -22,9 +22,7 @@ import { SCROLLING_OPTIONS, BANNER_HEIGHT } from "~/assets/js/globals";
 import SocialNetworks from "~/components/global/SocialNetworks";
 
 export default {
-  components: {
-    SocialNetworks
-  },
+  components: { SocialNetworks },
   data() {
     return {
       scrollingOptions: SCROLLING_OPTIONS
@@ -32,40 +30,60 @@ export default {
   },
   computed: {
     separation() {
-      return this.$vuetify.breakpoint.xsOnly ? "<br>" : "&nbsp; | &nbsp;";
+      return this.smallScreen ? "<br>" : "&nbsp; | &nbsp;";
+    },
+    smallScreen() {
+      return this.$vuetify.breakpoint.xsOnly;
+    },
+    comingFromAnotherPage() {
+      return $("#footer")[0].classList.contains("show");
+    }
+  },
+  methods: {
+    animateBannerHeight(bannerHeight, callback) {
+      $("#banner").animate({ height: bannerHeight }, 300, callback);
+    },
+    animateLogo(posFromTop) {
+      $("#personal-logo").animate({ top: posFromTop }, 300);
+    },
+    displayHomeMessage() {
+      $(".home-message").fadeIn();
+      this.$emit("home-screen-loaded");
     }
   },
   mounted() {
     const banner = $("#banner");
-    // banner.hide();
-    if ($("#footer")[0].classList.contains("show")) {
-      // Coming from another page: animate the banner
-      banner.animate({ height: "100vh" }, 300, () => {
-        $(".home-message").fadeIn();
-        this.$emit("home-screen-loaded");
-      });
+    const logoPosFromTop = this.smallScreen ? "25vh" : "27vh";
+
+    if (this.comingFromAnotherPage) {
+      this.animateBannerHeight("100vh", this.displayHomeMessage);
+      this.animateLogo(logoPosFromTop);
     } else {
-      // Show the banner directly
       banner.css("height", "100vh");
-      $(".home-message").fadeIn();
-      this.$emit("home-screen-loaded");
+      $("#personal-logo").css("top", logoPosFromTop);
+      this.displayHomeMessage();
     }
     banner.show();
   },
   beforeDestroy() {
     $(".home-message").hide();
-    $("#banner").animate({ height: BANNER_HEIGHT }, 300);
+    this.animateBannerHeight(BANNER_HEIGHT, () => {});
+    const logoHeight = 30;
+    const logoPosFromTop = BANNER_HEIGHT / 2 - logoHeight;
+    this.animateLogo(logoPosFromTop);
   }
 };
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Salsa");
+
 .home- {
   &message {
     position: absolute;
     width: 100%;
-    top: 50vh;
-    transform: translateY(-50%);
+    top: 30vh;
+    transform: translateY(10%);
     display: none;
     line-height: normal;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -74,6 +92,7 @@ export default {
   &name {
     color: white;
     font-weight: 500;
+    font-family: "Salsa", cursive;
     font-size: 3rem;
 
     @media only screen and (min-width: 600px) {
@@ -101,7 +120,7 @@ export default {
     }
   }
 
-  &social-networks a{
+  &social-networks a {
     color: rgba(255, 255, 255, 0.9) !important;
   }
 }

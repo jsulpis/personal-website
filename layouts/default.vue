@@ -3,6 +3,7 @@
     <v-content>
       <MenuWrapper class="hide-on-render"/>
       <div id="banner" class="elevation-2"></div>
+      <logo/>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
       <cookies/>
@@ -12,12 +13,14 @@
 
 <script>
 import MenuWrapper from "~/components/global/MenuWrapper.vue";
+import Logo from "~/components/global/Logo.vue";
 import JFooter from "~/components/global/JFooter.vue";
 import Cookies from "~/components/global/Cookies.vue";
 
 export default {
   components: {
     MenuWrapper,
+    Logo,
     JFooter,
     Cookies
   },
