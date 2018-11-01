@@ -41,8 +41,8 @@ module.exports = {
   plugins: ["~/plugins/vuetify.js"],
   // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
-  // Customize the progress bar color
-  loading: { color: "#bc5100" },
+  // Disable the default progress bar
+  loading: false,
 
   // Build configuration
   build: {

@@ -3,7 +3,7 @@
     <v-container class="artwork container--card">
       <j-breadcrumbs/>
       <section class="artwork__section">
-        <h1 class="display-1 mt-3 mb-2">{{ artwork.title }}</h1>
+        <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
 
         <!-- Image metadata -->
         <div class="artwork__data">
@@ -108,12 +108,20 @@ export default {
 
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
+@import "~/assets/scss/mixins.scss";
 
 .artwork {
   display: none;
 }
 
 .artwork__ {
+  &title {
+    @include font-title;
+    font-weight: 400;
+    font-size: 34px;
+    border-bottom: 1px solid #ddd;
+  }
+
   &data {
     margin: 0.5rem;
 

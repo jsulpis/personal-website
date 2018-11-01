@@ -4,9 +4,9 @@
     <v-layout align-center justify-center class="icon-container primary">
       <v-icon dark x-large>{{icon}}</v-icon>
     </v-layout>
-    <div>
+    <p>
       <slot></slot>
-    </div>
+    </p>
   </v-layout>
 </v-flex>
 </template>

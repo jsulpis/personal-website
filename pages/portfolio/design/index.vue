@@ -99,7 +99,7 @@ export default {
 
 <style>
 #gallery {
-  padding: 0;
+  padding: 0 !important;
 }
 
 #gallery-progress {

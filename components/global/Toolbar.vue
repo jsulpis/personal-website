@@ -49,6 +49,7 @@ export default {
 
 <style lang="scss">
 .toolbar {
+  text-shadow: 0 0 1px black;
   @media only screen and (min-width: 600px) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent);
   }
@@ -57,6 +58,7 @@ export default {
 .toolbar-items {
   width: 100%;
   .toolbar-items__btn {
+    font-size: 1rem;
     text-transform: initial; // Remove default capital letters
   }
 }

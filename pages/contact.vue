@@ -2,7 +2,7 @@
   <v-container id="contact-page" class="hide-on-render">
     <v-card class="contact-page__card">
       <p class="font-weight-regular pt-4 px-2 ma-0">
-        Une question ? Une suggestion ? Une envie de remplir un formulaire ?<br>C'est ici !</p>
+        Une question ? Suggestion ? Envie de remplir un formulaire ?<br>C'est ici !</p>
       <contact-form/>
     </v-card>
   </v-container>

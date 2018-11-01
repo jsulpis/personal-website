@@ -82,6 +82,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~/assets/scss/mixins.scss";
+
 $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
 $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
@@ -202,6 +204,7 @@ $longDelay: 3s;
 }
 
 .parallax-card__title {
+  @include font-title;
   font-size: 36px;
   font-weight: 500;
   text-shadow: rgba(black, 0.5) 0 10px 10px;

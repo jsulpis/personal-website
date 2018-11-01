@@ -3,16 +3,16 @@
   <v-container app fluid class="home-message">
     <v-layout align-center justify-center column fill-height>
       <h1 class="home-name">Julien Sulpis</h1>
-      <h2 class="home-description">
-        Ingénieur généraliste <span v-html="separation"></span>
+      <h2 class="home-subtitle">
+        Ingénieur<span v-html="separation"></span>
         Développeur full-stack<br>
-        <span>Infographiste et musicien amateur</span>
       </h2>
+      <h3 class="home-subsubtitle">Infographiste & musicien amateur</h3>
       <social-networks class="home-social-networks"/>
     </v-layout>
   </v-container>
   <v-btn icon dark large id="fab-scroll-down"  @click="$vuetify.goTo('#home-about', scrollingOptions);">
-    <v-icon large>fas fa-angle-down</v-icon>
+    <v-icon size=32>fas fa-angle-down</v-icon>
   </v-btn>
 </div>
 </template>
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Salsa");
+@import "~/assets/scss/mixins.scss";
 
 .home- {
   &message {
@@ -86,13 +86,12 @@ export default {
     transform: translateY(10%);
     display: none;
     line-height: normal;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
-      0px 1px 3px rgba(0, 0, 0, 0.12);
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.6);
+    color: white;
   }
   &name {
-    color: white;
     font-weight: 500;
-    font-family: "Salsa", cursive;
+    @include font-title;
     font-size: 3rem;
 
     @media only screen and (min-width: 600px) {
@@ -100,8 +99,7 @@ export default {
     }
   }
 
-  &description {
-    color: rgba(255, 255, 255, 0.9);
+  &subtitle {
     font-size: 1.1rem;
     font-weight: 300;
     margin: 0.5em;
@@ -109,14 +107,15 @@ export default {
     @media only screen and (min-width: 600px) {
       font-size: 1.5rem;
     }
+  }
 
-    span {
-      font-size: 0.9rem;
-      opacity: 0.8;
+  &subsubtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.8;
 
-      @media only screen and (min-width: 600px) {
-        font-size: 1.3rem;
-      }
+    @media only screen and (min-width: 600px) {
+      font-size: 1.3rem;
     }
   }
 
@@ -130,16 +129,7 @@ export default {
   top: 90vh;
   left: 50%;
   transform: translateX(-50%);
-  animation: MoveUpDown 1.2s ease-in-out infinite;
-}
-
-@keyframes MoveUpDown {
-  0%,
-  100% {
-    top: 90vh;
-  }
-  50% {
-    top: 91vh;
-  }
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
 }
 </style>

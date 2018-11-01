@@ -10,13 +10,13 @@
   <v-container>
     <v-layout align-center justify-space-around row wrap>
       <panel icon="fas fa-code">
-        Je suis un <b>développeur passionné</b>, orienté vers les technologies web et mobiles et amateur de code de qualité. Mes projets open source, dont ce site fait partie, sont hébergés sur <a href="https://github.com/jsulpis">GitHub</a>.
+        Je suis un <b>développeur passionné</b>, orienté vers les technologies web et mobiles et amateur de code de qualité. Mes projets open source, comme ce site, sont hébergés sur <a href="https://github.com/jsulpis">GitHub</a>.
       </panel>
       <panel icon="fas fa-images">
         Je suis <b>infographiste 2D / 3D</b> amateur à mes heures perdues. Certaines de mes réalisations sont disponibles sur mon <nuxt-link to="/portfolio">portfolio</nuxt-link>. Je suis aussi <b>musicien</b> amateur. Des vidéos arriveront un jour, patience !
       </panel>
       <panel icon="email">
-        N'hésitez pas à utiliser le formulaire de <nuxt-link to="/contact">contact</nuxt-link> pour toute remarque, question, demande... Vous pouvez par exemple me suggérer du contenu à ajouter ou signaler une anomalie, afin de me permettre d'<b>améliorer</b> ce site.
+        N'hésitez pas à m'envoyer vos remarques via le formulaire de <nuxt-link to="/contact">contact</nuxt-link>. Vous pouvez par exemple me suggérer du contenu à ajouter ou signaler une anomalie, afin de me permettre d'<b>améliorer</b> ce site.
       </panel>
     </v-layout>
   </v-container>

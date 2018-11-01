@@ -1,6 +1,6 @@
 <template>
   <v-footer dark id="footer" height="auto" class="elevation-8">
-    <v-card flat tile class="footer-card text-xs-center pt-4">
+    <v-card flat tile class="footer-card text-xs-center pt-3">
       <!-- Scroll Top -->
       <scroll-top id="footer-scrolltop"/>
 
@@ -37,14 +37,13 @@ export default {
 <style>
 .footer-card {
   width: 100%;
-  padding: 1rem 0 0 0;
 }
 
 #footer-scrolltop {
   position: absolute;
   margin: 0;
   left: 50%;
-  top: -28px;
+  top: -20px;
   transform: translateX(-50%);
 }
 </style>
