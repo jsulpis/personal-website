@@ -100,7 +100,26 @@ a {
 }
 
 .page-content {
-  min-height: calc(100vh - #{$banner-height} - 161px);
+  min-height: calc(100vh - #{$banner-height} - 153px);
   padding-bottom: 3rem !important;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  background-color: #ccc;
 }
 </style>
