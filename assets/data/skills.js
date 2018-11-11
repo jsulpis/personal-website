@@ -48,7 +48,7 @@ export const skills = [
     ]
   },
   {
-    name: "Langages généralistes",
+    name: "Langages",
     subdomains: [
       {
         name: "",
