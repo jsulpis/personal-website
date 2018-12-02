@@ -5,11 +5,16 @@ const webpack = require("webpack");
 module.exports = {
   // Headers of the page
   head: {
+    htmlAttrs: { prefix: "og: http://ogp.me/ns#" },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "og:site_name", content: "Site de Julien Sulpis" },
-      { name: "og:locale", content: "fr_FR" }
+      { name: "site_name", property: "og:site_name", content: "Julien Sulpis" },
+      { name: "locale", property: "og:locale", content: "fr_FR" },
+      {
+        name: "google-site-verification",
+        content: "flYBOh35oN6AkHLEDfD-fCx0VKRSWEi1F37r4fwrjoo"
+      }
     ],
     script: [
       { src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" }
