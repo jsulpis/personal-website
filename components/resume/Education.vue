@@ -2,39 +2,53 @@
   <!-- STUDIES -->
   <section id="resume-studies">
     <v-container>
-
-    <h2 class="section-title">Formation</h2>
+      <h2 class="section-title">Formation</h2>
       <div class="schools">
         <!-- ICM -->
-        <v-card :light="light" :class="'school school--icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+        <v-card
+          :light="light"
+          :class="'school school--icm' + (activeCard === 'emse' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')"
+        >
           <h3 class="school-degree">Ingénieur Civil des Mines</h3>
           <h4 class="school-name">Mines Saint-Étienne</h4>
           <div class="school-logo">
             <a href="https://www.mines-stetienne.fr/formation/icm/">
-              <img src="/img/schools/emse.png" alt="logo_emse" />
+              <img src="/img/schools/emse.png" alt="logo_emse">
             </a>
             <br>
           </div>
-          <v-btn icon v-show="activeCard === 'cps2' && !smallViewport" :light="light" @click="activeCard = 'emse'">
+          <v-btn
+            icon
+            v-show="activeCard === 'cps2' && !smallViewport"
+            :light="light"
+            @click="activeCard = 'emse'"
+          >
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
             <span class="school-courses">Cours:</span>
             <ul>
               <li v-for="(courseName, i) in Object.keys(emseCourses)" :key="i">
-                <education-course :name="courseName" :description="emseCourses[courseName]"/></li>
+                <education-course :name="courseName" :description="emseCourses[courseName]"/>
+              </li>
             </ul>
 
             <br>
             <div class="school-courses">Projet: Système de gestion de bâtiment intelligent</div>
-            <span class="school-project__caption">Majeure Informatique, 3e année.
-              <a href="https://github.com/MajeureInfo">Voir sur GitHub.</a>
+            <span class="school-project__caption">
+              Majeure Informatique, 3e année.
+              <a
+                href="https://github.com/MajeureInfo"
+              >Voir sur GitHub.</a>
             </span>
           </div>
         </v-card>
 
         <!-- CPS2 -->
-        <v-card :light="light" :class="'school school--cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')">
+        <v-card
+          :light="light"
+          :class="'school school--cps2' + (activeCard === 'cps2' ? ' in' + (smallViewport ? '' : ' elevation-8') : ' ')"
+        >
           <h3 class="school-degree">Master on Cyber-Physical and Social Systems</h3>
           <h4 class="school-name">Mines Saint-Étienne, Université Jean Monnet</h4>
           <div class="school-logo">
@@ -43,14 +57,20 @@
             </a>
             <br>
           </div>
-          <v-btn icon v-show="activeCard === 'emse' && !smallViewport" :light="light" @click="activeCard = 'cps2'">
+          <v-btn
+            icon
+            v-show="activeCard === 'emse' && !smallViewport"
+            :light="light"
+            @click="activeCard = 'cps2'"
+          >
             <v-icon>more_horiz</v-icon>
           </v-btn>
           <div class="school-content">
             <span class="school-courses">Cours:</span>
             <ul>
               <li v-for="(courseName, i) in Object.keys(cps2Courses)" :key="i">
-                <education-course :name="courseName" :description="cps2Courses[courseName]"/></li>
+                <education-course :name="courseName" :description="cps2Courses[courseName]"/>
+              </li>
             </ul>
 
             <br>

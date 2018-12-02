@@ -2,7 +2,6 @@
   <div>
     <div class="full-page background-gradient"></div>
     <div class="content container">
-
       <!-- Display the error code -->
       <p class="error-caption">ERREUR</p>
       <h1>{{error.statusCode}}</h1>
@@ -15,7 +14,12 @@
 
       <!-- Add a custom message for 404 error -->
       <!-- Not displayed in mobiles in paysage mode (otherwise all content does not fit in the window) -->
-      <p v-if="error.statusCode === 404" id="message">La page demandée a décidé de disparaître sans m'en informer.<br>À moins qu'elle n'existe pas...</p>
+      <p
+        v-if="error.statusCode === 404"
+        id="message"
+      >La page demandée a décidé de disparaître sans m'en informer.
+        <br>À moins qu'elle n'existe pas...
+      </p>
 
       <!-- Redirect the user to relevant pages -->
       <div v-if="Math.trunc(error.statusCode / 100) === 4">
@@ -28,7 +32,6 @@
         <p class="title mt-3">Si l'erreur persiste, merci de m'en informer.</p>
         <v-btn to="/contact" round outline color="primary">Contact</v-btn>
       </div>
-
     </div>
     <div id="particles-js" class="full-page"/>
   </div>

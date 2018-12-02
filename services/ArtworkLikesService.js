@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "~/services/CookiesService";
 import { API_ROOT_URL } from "~/assets/js/globals";
 
-export default class ArtworkLikesController {
+export default class ArtworkLikesService {
   constructor(imgName) {
     this.imgName = imgName;
     this.cookieName = "artworkLikes";

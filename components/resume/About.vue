@@ -1,31 +1,32 @@
 <template>
-<!-- PROFILE -->
-<v-card dark id="resume-profile" class="elevation-4">
-  <avatar :pro="true" class="resume-profile__avatar"/>
-  <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
-  <h2 class="resume-profile__job headline">Développeur full-stack</h2>
-  <h3 class="resume-profile__school subheading">consultant chez SOLUTEC
-    <br>Région de Lyon, France</h3>
-  <!-- Social links -->
-  <p class="resume-profile__networks">
-    <a :href="socialNetworks['LinkedIn'].url">
-      <v-icon >fab fa-linkedin-in</v-icon>
-    </a>
-    <a class="ma-3" :href="socialNetworks['GitHub'].url">
-      <v-icon >fab fa-github</v-icon>
-    </a>
-    <a :href="socialNetworks['Twitter'].url">
-      <v-icon >fab fa-twitter</v-icon>
-    </a>
-  </p>
+  <!-- PROFILE -->
+  <v-card dark id="resume-profile" class="elevation-4">
+    <avatar :pro="true" class="resume-profile__avatar"/>
+    <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
+    <h2 class="resume-profile__job headline">Développeur full-stack</h2>
+    <h3 class="resume-profile__school subheading">consultant chez SOLUTEC
+      <br>Région de Lyon, France
+    </h3>
+    <!-- Social links -->
+    <p class="resume-profile__networks">
+      <a :href="socialNetworks['LinkedIn'].url">
+        <v-icon>fab fa-linkedin-in</v-icon>
+      </a>
+      <a class="ma-3" :href="socialNetworks['GitHub'].url">
+        <v-icon>fab fa-github</v-icon>
+      </a>
+      <a :href="socialNetworks['Twitter'].url">
+        <v-icon>fab fa-twitter</v-icon>
+      </a>
+    </p>
 
-  <!-- Description -->
-  <p class="resume-profile__description">
-    <v-icon small>fas fa-quote-left</v-icon>
-    &nbsp;<slot></slot>&nbsp;
-    <v-icon small>fas fa-quote-right</v-icon>
-  </p>
-</v-card>
+    <!-- Description -->
+    <p class="resume-profile__description">
+      <v-icon small>fas fa-quote-left</v-icon>&nbsp;
+      <slot></slot>&nbsp;
+      <v-icon small>fas fa-quote-right</v-icon>
+    </p>
+  </v-card>
 </template>
 
 <script>
@@ -55,7 +56,7 @@ export default {
 }
 
 .resume-profile__ {
-  &avatar img{
+  &avatar img {
     margin: 1.5rem 0 0.25rem 0;
   }
 

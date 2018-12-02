@@ -1,15 +1,9 @@
 <template>
-<v-breadcrumbs class="j-breadcrumbs">
-  <v-icon slot="divider">chevron_right</v-icon>
+  <v-breadcrumbs class="j-breadcrumbs">
+    <v-icon slot="divider">chevron_right</v-icon>
 
-  <v-breadcrumbs-item
-    v-for="(item, i) in items"
-    :key="i"
-    :to="item.to"
-    exact>
-    {{ item.name }}
-  </v-breadcrumbs-item>
-</v-breadcrumbs>
+    <v-breadcrumbs-item v-for="(item, i) in items" :key="i" :to="item.to" exact>{{ item.name }}</v-breadcrumbs-item>
+  </v-breadcrumbs>
 </template>
 
 <script>

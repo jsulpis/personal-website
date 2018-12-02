@@ -5,55 +5,46 @@
       <v-form class="contact-form" action="#" ref="form" @submit.prevent="onSubmit">
         <!-- Name -->
         <v-text-field
-        v-model="name"
-        label="Nom"
-        prepend-inner-icon="account_box"
-        :light="isLightTheme"
-        :rules="[rules.required, rules.nameChecker]"
-        required
-        validate-on-blur></v-text-field>
+          v-model="name"
+          label="Nom"
+          prepend-inner-icon="account_box"
+          :rules="[rules.required, rules.nameChecker]"
+          required
+          validate-on-blur
+        ></v-text-field>
 
         <!-- Email-->
         <v-text-field
-        v-model="email"
-        label="E-mail"
-        prepend-inner-icon="email"
-        hint="Il sera utilisé uniquement pour vous répondre."
-        :light="isLightTheme"
-        :rules="[rules.required, rules.emailChecker]"
-        required
-        validate-on-blur></v-text-field>
+          v-model="email"
+          label="E-mail"
+          prepend-inner-icon="email"
+          hint="Il sera utilisé uniquement pour vous répondre."
+          :rules="[rules.required, rules.emailChecker]"
+          required
+          validate-on-blur
+        ></v-text-field>
 
         <!-- Message -->
         <v-textarea
-        v-model="message"
-        label="Message"
-        auto-grow
-        counter="1000"
-        :light="isLightTheme"
-        :rules="[rules.required, rules.messageChecker]"
-        required
-        validate-on-blur></v-textarea>
+          v-model="message"
+          label="Message"
+          auto-grow
+          counter="1000"
+          :rules="[rules.required, rules.messageChecker]"
+          required
+          validate-on-blur
+        ></v-textarea>
 
-        <v-btn color="primary"
-        :loading="loading"
-        :disabled="loading || btnDisabled"
-        type="submit">
-          <v-icon left>send</v-icon>
-          Envoyer
+        <v-btn color="primary" :loading="loading" :disabled="loading || btnDisabled" type="submit">
+          <v-icon left>send</v-icon>Envoyer
         </v-btn>
       </v-form>
     </v-container>
 
     <!-- SNACKBAR -->
-    <v-snackbar
-    v-model="snackbar"
-    :color="snackBarState"
-    :timeout="snackBarTimeout">
+    <v-snackbar v-model="snackbar" :color="snackBarState" :timeout="snackBarTimeout">
       {{ snackBarText }}
-      <v-btn dark flat @click="snackbar = false">
-        OK
-      </v-btn>
+      <v-btn dark flat @click="snackbar = false">OK</v-btn>
     </v-snackbar>
   </div>
 </template>
@@ -64,7 +55,7 @@ import VTextField from "vuetify/es5/components/VTextField";
 import * as VTextArea from "vuetify/es5/components/VTextarea";
 import VSnackbar from "vuetify/es5/components/VSnackbar";
 
-import ContactFormController from "~/services/ContactFormController";
+import EmailService from "~/services/EmailService";
 
 export default {
   components: {
@@ -73,12 +64,9 @@ export default {
     ...VTextArea,
     VSnackbar
   },
-  props: {
-    isLightTheme: Boolean
-  },
   data() {
     return {
-      controller: new ContactFormController(),
+      controller: new EmailService(),
       name: "",
       email: "",
       message: "",

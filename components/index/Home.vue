@@ -1,25 +1,28 @@
 <template>
-<div>
-  <v-container app fluid class="home-message">
-    <v-layout align-center justify-center column fill-height>
-      <h1 class="home-name">Julien Sulpis</h1>
-      <h2 class="home-subtitle">
-        Ingénieur<span v-html="separation"></span>
-        Développeur full-stack<br>
-      </h2>
-      <h3 class="home-subsubtitle">Infographiste & musicien amateur</h3>
-      <social-networks class="home-social-networks"/>
-    </v-layout>
-  </v-container>
-  <v-btn icon dark large id="fab-scroll-down"  @click="$vuetify.goTo('#home-about', scrollingOptions);">
-    <v-icon size=32>fas fa-angle-down</v-icon>
-  </v-btn>
-</div>
+  <div>
+    <v-container app fluid class="home-message">
+      <v-layout align-center justify-center column fill-height>
+        <h1 class="home-name">Julien Sulpis</h1>
+        <h2 class="home-subtitle">Développeur Web & Mobile</h2>
+        <h3 class="home-subsubtitle">Avec quelques hobbies...</h3>
+        <social-networks class="home-social-networks"/>
+      </v-layout>
+    </v-container>
+    <v-btn
+      icon
+      dark
+      large
+      id="fab-scroll-down"
+      @click="$vuetify.goTo('#home-about', scrollingOptions);"
+    >
+      <v-icon size="32">fas fa-angle-down</v-icon>
+    </v-btn>
+  </div>
 </template>
 
 <script>
 import { SCROLLING_OPTIONS, BANNER_HEIGHT } from "~/assets/js/globals";
-import SocialNetworks from "~/components/global/SocialNetworks";
+import SocialNetworks from "~/components/shared/SocialNetworks";
 
 export default {
   components: { SocialNetworks },
@@ -102,7 +105,7 @@ export default {
   &subtitle {
     font-size: 1.1rem;
     font-weight: 300;
-    margin: 0.5em;
+    margin-top: 0.5rem;
 
     @media only screen and (min-width: 600px) {
       font-size: 1.5rem;
@@ -110,12 +113,13 @@ export default {
   }
 
   &subsubtitle {
-    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
     font-weight: 300;
     opacity: 0.8;
 
     @media only screen and (min-width: 600px) {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
   }
 

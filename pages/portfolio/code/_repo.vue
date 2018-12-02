@@ -1,23 +1,33 @@
 <template>
-<div>
-  <v-container class="container--card">
-    <j-breadcrumbs/>
+  <div>
+    <v-container class="container--card">
+      <j-breadcrumbs/>
       <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
       <div class="repo-iframe-container">
-        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
-          frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
-        <iframe :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
-          frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
+        <iframe
+          :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
+          frameborder="0"
+          scrolling="0"
+          width="140px"
+          height="30px"
+        ></iframe>
+        <iframe
+          :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
+          frameborder="0"
+          scrolling="0"
+          width="140px"
+          height="30px"
+        ></iframe>
       </div>
-    <div class="repo-readme" v-html="content"/>
-  </v-container>
-</div>
+      <div class="repo-readme" v-html="content"/>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import marked from "marked";
 
-import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
+import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 

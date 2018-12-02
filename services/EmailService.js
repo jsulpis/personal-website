@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_ROOT_URL } from "~/assets/js/globals";
 
-export default class ContactFormController {
+export default class EmailService {
   constructor() {
     this.validName = false;
     this.validEmail = false;

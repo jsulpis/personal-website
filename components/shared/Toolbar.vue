@@ -1,10 +1,5 @@
 <template>
-<v-toolbar
-  dark
-  flat
-  absolute
-  color="transparent"
-  class="toolbar">
+  <v-toolbar dark flat absolute color="transparent" class="toolbar">
     <v-toolbar-items class="toolbar-items hidden-xs-only">
       <v-layout align-start justify-center row fill-height>
         <toolbar-btn to="/" title="Accueil"/>
@@ -14,9 +9,8 @@
             class="toolbar-items__btn"
             active-class="primary--text"
             to="/portfolio"
-            flat>
-            Portfolio
-          </v-btn>
+            flat
+          >Portfolio</v-btn>
           <v-list class="pa-0">
             <v-list-tile to="/portfolio/design">
               <v-list-tile-title>Design</v-list-tile-title>
@@ -31,9 +25,7 @@
       </v-layout>
     </v-toolbar-items>
     <v-spacer></v-spacer>
-      <v-toolbar-side-icon
-      class="hidden-sm-and-up"
-      @click="$emit('side-icon-clicked')" />
+    <v-toolbar-side-icon class="hidden-sm-and-up" @click="$emit('side-icon-clicked')"/>
   </v-toolbar>
 </template>
 

@@ -17,30 +17,24 @@
           <!-- Comments -->
           <div class="artwork__comments">
             <v-icon>forum</v-icon>
-            <span><a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a></span>
+            <span>
+              <a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a>
+            </span>
           </div>
         </div>
 
         <!-- Image -->
         <a :href="imageUrl" target="_blank">
-          <img
-          class="artwork__img elevation-8"
-          :src="imageUrl"
-          :alt="artwork.title">
+          <img class="artwork__img elevation-8" :src="imageUrl" :alt="artwork.title">
         </a>
       </section>
 
       <!-- Softwares -->
       <section class="artwork__section">
         <h3 class="artwork__softwares">Logiciels utilisés:</h3>
-        <div
-        class="artwork__softwares__item"
-        v-for="(software, i) in artwork.softwares"
-        :key="i">
+        <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
           <a :href="softwares[software].url">
-            <img
-            :src="softwares[software].icon"
-            :alt="software">
+            <img :src="softwares[software].icon" :alt="software">
           </a>
           <p>{{ software }}</p>
         </div>
@@ -53,7 +47,7 @@
 </template>
 
 <script>
-import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
+import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
 

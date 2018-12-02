@@ -2,21 +2,21 @@
   <!-- Tabs -->
   <div>
     <v-tabs
-    dark
-    v-model="activeTab"
-    id="tabs"
-    class="hidden-sm-and-down"
-    centered
-    fixed-tabs
-    slider-color="primary">
+      dark
+      v-model="activeTab"
+      id="tabs"
+      class="hidden-sm-and-down"
+      centered
+      fixed-tabs
+      slider-color="primary"
+    >
       <v-tab
-      v-for="(item, index) in items"
-      class="tabs__item"
-      :key="index"
-      ripple
-      @click="$vuetify.goTo('#' + item.to, scrollingOptions); tabClickedTime = new Date().getTime()">
-        {{ item.title }}
-      </v-tab>
+        v-for="(item, index) in items"
+        class="tabs__item"
+        :key="index"
+        ripple
+        @click="$vuetify.goTo('#' + item.to, scrollingOptions); tabClickedTime = new Date().getTime()"
+      >{{ item.title }}</v-tab>
     </v-tabs>
   </div>
 </template>

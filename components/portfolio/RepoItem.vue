@@ -1,33 +1,33 @@
 <template>
-<v-card class="repo-item">
-  <div class="repo-item__media">
-    <nuxt-link :to="'/portfolio/code/' + repo.name">
-      <img :src="repoPictureUrl"/>
-    </nuxt-link>
-  </div>
-
-  <v-card-title class="repo-item__card-title">
-    <div>
-      <h3 class="repo-item__title headline mb-0">{{repo.name | beautify}}</h3>
-      <p class="repo-item__description body-2">{{repo.description}}</p>
+  <v-card class="repo-item">
+    <div class="repo-item__media">
+      <nuxt-link :to="'/portfolio/code/' + repo.name">
+        <img :src="repoPictureUrl">
+      </nuxt-link>
     </div>
-  </v-card-title>
 
-  <v-card-actions>
-    <v-btn flat color="primary" :to="'/portfolio/code/' + repo.name">Details</v-btn>
-    <v-spacer/>
-    <p class="body-1">{{repo.language}}</p>
-    <v-spacer/>
-    <v-icon small class="repo-item__icon">star</v-icon>{{repo.stargazers_count}}
-    <v-spacer/>
-    <v-icon small class="repo-item__icon">fas fa-code-branch</v-icon>{{repo.forks_count}}
-    <v-spacer/>
-    <span class="repo-item__license" v-show="showLicense">
-       {{license}}
-    </span>
-    <v-spacer/>
-  </v-card-actions>
-</v-card>
+    <v-card-title class="repo-item__card-title">
+      <div>
+        <h3 class="repo-item__title headline mb-0">{{repo.name | beautify}}</h3>
+        <p class="repo-item__description body-2">{{repo.description}}</p>
+      </div>
+    </v-card-title>
+
+    <v-card-actions>
+      <v-btn flat color="primary" :to="'/portfolio/code/' + repo.name">Details</v-btn>
+      <v-spacer/>
+      <p class="body-1">{{repo.language}}</p>
+      <v-spacer/>
+      <v-icon small class="repo-item__icon">star</v-icon>
+      {{repo.stargazers_count}}
+      <v-spacer/>
+      <v-icon small class="repo-item__icon">fas fa-code-branch</v-icon>
+      {{repo.forks_count}}
+      <v-spacer/>
+      <span class="repo-item__license" v-show="showLicense">{{license}}</span>
+      <v-spacer/>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>

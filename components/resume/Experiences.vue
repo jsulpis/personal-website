@@ -4,40 +4,38 @@
     <ul class="timeline timeline-split">
       <!-- Enedis -->
       <experience
-      date="oct. 2018 - Aujourd'hui"
-      :duration="Math.floor((new Date(Date.now()) - new Date(2018, 9))/(1000*60*60*24*30)+1) + ' mois'"
-      jobTitle="Ingénieur études et développement"
-      company="SOLUTEC"
-      location="Région de Lyon, France">
-      Consultant pour des missions orientées développement.
-      </experience>
+        date="oct. 2018 - Aujourd'hui"
+        :duration="Math.floor((new Date() - new Date(2018, 9))/(1000*60*60*24*30)+1) + ' mois'"
+        jobTitle="Ingénieur études et développement"
+        company="SOLUTEC"
+        location="Région de Lyon, France"
+      >Consultant pour des missions orientées développement.</experience>
 
       <!-- SOLUTEC -->
       <experience
-      date="avr. 2018 - août 2018"
-      duration="5 mois"
-      jobTitle="Stagiaire développeur Android"
-      company="SOLUTEC"
-      location="Région de Lyon, France"
-      technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
-      methodos="SCRUM">
-      Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée.
-      </experience>
+        date="avr. 2018 - août 2018"
+        duration="5 mois"
+        jobTitle="Stagiaire développeur Android"
+        company="SOLUTEC"
+        location="Région de Lyon, France"
+        technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
+        methodos="SCRUM"
+      >Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée.</experience>
 
       <!-- Polytechnique Montréal -->
       <experience
-      date="juin 2017 - août 2017"
-      duration="3 mois"
-      jobTitle="Stagiaire de recherche en robotique mobile"
-      company="Polytechnique Montréal"
-      location="Région de Montréal, Canada"
-      technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis">
-      Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
+        date="juin 2017 - août 2017"
+        duration="3 mois"
+        jobTitle="Stagiaire de recherche en robotique mobile"
+        company="Polytechnique Montréal"
+        location="Région de Montréal, Canada"
+        technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis"
+      >
+        Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
         pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
         de données.
       </experience>
-
-      </ul>
+    </ul>
   </j-section>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
-<v-flex xs12 md4 class="pa-4">
-  <v-layout justify-center column>
-    <v-layout align-center justify-center class="icon-container primary">
-      <v-icon dark x-large>{{icon}}</v-icon>
+  <v-flex xs12 md4 class="pa-4">
+    <v-layout justify-center column>
+      <v-layout align-center justify-center class="icon-container primary">
+        <v-icon dark x-large>{{icon}}</v-icon>
+      </v-layout>
+      <p>
+        <slot></slot>
+      </p>
     </v-layout>
-    <p>
-      <slot></slot>
-    </p>
-  </v-layout>
-</v-flex>
+  </v-flex>
 </template>
 
 <script>

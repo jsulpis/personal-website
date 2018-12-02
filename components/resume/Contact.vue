@@ -1,12 +1,12 @@
 <template>
   <!-- CONTACT -->
   <j-section id="resume-contact" title="Contact">
-    <contact-form :isLightTheme="true"/>
+    <contact-form/>
   </j-section>
 </template>
 
 <script>
-import ContactForm from "../global/ContactForm.vue";
+import ContactForm from "../shared/ContactForm.vue";
 import JSection from "./JSection.vue";
 
 export default {

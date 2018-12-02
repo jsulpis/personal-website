@@ -1,20 +1,21 @@
 <!-- Adapted from a CodePen by Andy Merskin
 https://codepen.io/andymerskin/pen/XNMWvQ -->
 <template>
-<div class="parallax-card-wrap hide-on-render"
-  @mousemove="handleMouseMove"
-  @mouseenter="handleMouseEnter"
-  @mouseleave="handleMouseLeave"
-  ref="parallaxCard">
-  <div class="parallax-card"
-    :style="cardStyle">
-    <img class="parallax-card__bg" :src="imgSource" :style="[cardBgTransform]"/>
-    <div class="parallax-card__info">
-      <h1 class="parallax-card__title">{{title}}</h1>
-      <p class="parallax-card__description">{{description}}</p>
+  <div
+    class="parallax-card-wrap hide-on-render"
+    @mousemove="handleMouseMove"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+    ref="parallaxCard"
+  >
+    <div class="parallax-card" :style="cardStyle">
+      <img class="parallax-card__bg" :src="imgSource" :style="[cardBgTransform]">
+      <div class="parallax-card__info">
+        <h1 class="parallax-card__title">{{title}}</h1>
+        <p class="parallax-card__description">{{description}}</p>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

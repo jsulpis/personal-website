@@ -2,19 +2,21 @@
   <v-container fluid grid-list-xs id="gallery">
     <v-layout row wrap>
       <gallery-item
-      v-for="(img, i) in artworks"
-      :key=i
-      :title="img.title"
-      :imgUrl="img.urlTitle"
-      :date="img.date"
-      :likes="img.likes"/>
+        v-for="(img, i) in artworks"
+        :key="i"
+        :title="img.title"
+        :imgUrl="img.urlTitle"
+        :date="img.date"
+        :likes="img.likes"
+      />
 
       <v-progress-circular
-      indeterminate
-      size="70"
-      color="primary"
-      id="gallery-progress"
-      class="hide-on-render"/>
+        indeterminate
+        size="70"
+        color="primary"
+        id="gallery-progress"
+        class="hide-on-render"
+      />
     </v-layout>
   </v-container>
 </template>

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <span class="school-courses-item__name">{{name}}: </span>{{description}}
+    <span class="school-courses-item__name">{{name}}:</span>
+    {{description}}
   </div>
 </template>
 

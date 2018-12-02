@@ -3,23 +3,26 @@
   <section id="resume-skills">
     <h2 class="section-title">Compétences</h2>
     <v-container class="skills-container">
-
-    <v-expansion-panel expand>
-      <!-- Loop on domains -->
-      <v-expansion-panel-content v-for="(domain, index) in skillSet" :key="index">
-        <div slot="header" class="domain__name">{{domain.name}}</div>
-        <div class="skill-list">
-          <!-- Loop on subdomains -->
-          <div v-for="(subdomain, index) in domain.subdomains" :key="index">
-            <h4 v-if="subdomain.name != ''" class="domain__subtitle">{{ subdomain.name }}</h4>
-            <!-- Loop on skills -->
-            <div v-for="(skill, index) in subdomain.skills" :key="index" class="skill">
-              <img class="skill__icon" :src="skill.icon" :alt="'logo_' + skill.icon.split('.')[0]">
+      <v-expansion-panel expand>
+        <!-- Loop on domains -->
+        <v-expansion-panel-content v-for="(domain, index) in skillSet" :key="index">
+          <div slot="header" class="domain__name">{{domain.name}}</div>
+          <div class="skill-list">
+            <!-- Loop on subdomains -->
+            <div v-for="(subdomain, index) in domain.subdomains" :key="index">
+              <h4 v-if="subdomain.name != ''" class="domain__subtitle">{{ subdomain.name }}</h4>
+              <!-- Loop on skills -->
+              <div v-for="(skill, index) in subdomain.skills" :key="index" class="skill">
+                <img
+                  class="skill__icon"
+                  :src="skill.icon"
+                  :alt="'logo_' + skill.icon.split('.')[0]"
+                >
+              </div>
             </div>
           </div>
-        </div>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
     </v-container>
   </section>
 </template>
@@ -86,14 +89,12 @@ $skill-item-size: 4rem;
       );
     }
   }
-
   .skill-list {
     border-top: 1px solid $material-color-grey-300;
     padding: 1rem;
     text-align: center;
     background-color: $material-color-grey-50;
   }
-
   .skill {
     display: inline-block;
     position: relative;

@@ -1,15 +1,18 @@
 <template>
   <v-container id="contact-page" class="hide-on-render">
     <v-card class="contact-page__card">
-      <p class="font-weight-regular pt-4 px-2 ma-0">
-        Une question ? Suggestion ? Envie de remplir un formulaire ?<br>C'est ici !</p>
+      <p
+        class="font-weight-regular pt-4 px-2 ma-0"
+      >Une question ? Suggestion ? Envie de remplir un formulaire ?
+        <br>C'est ici !
+      </p>
       <contact-form/>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import ContactForm from "~/components/global/ContactForm.vue";
+import ContactForm from "~/components/shared/ContactForm.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 

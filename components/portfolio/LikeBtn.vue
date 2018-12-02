@@ -1,6 +1,11 @@
 <template>
   <div class="likes">
-    <v-btn icon class="likes__btn" :color="userLiked ? 'primary' : 'grey lighten-2'" @click="toggleLike">
+    <v-btn
+      icon
+      class="likes__btn"
+      :color="userLiked ? 'primary' : 'grey lighten-2'"
+      @click="toggleLike"
+    >
       <v-icon>favorite_border</v-icon>
     </v-btn>
     <span>{{ likes }}</span>
@@ -8,7 +13,7 @@
 </template>
 
 <script>
-import ArtworkLikesController from "~/services/ArtworkLikesController";
+import ArtworkLikesService from "~/services/ArtworkLikesService";
 
 export default {
   props: { initialLikes: Number },

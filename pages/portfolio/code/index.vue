@@ -1,32 +1,28 @@
 <template>
-<div>
-  <v-container class="portfolio-code container--card hide-on-render">
-    <j-breadcrumbs/>
-    <p class="portfolio-code__intro">Ce contenu est extrait de mon profil <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est principalement en anglais !</p>
-    <v-layout wrap>
-      <v-flex xs12 sm6 md4
-        v-for="(repo, i) in repos"
-        :key="i">
-        <repo-item class="portfolio-code__item" :repoProp="repo"/>
-      </v-flex>
+  <div>
+    <v-container class="portfolio-code container--card hide-on-render">
+      <j-breadcrumbs/>
+      <p class="portfolio-code__intro">Ce contenu est extrait de mon profil
+        <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est principalement en anglais !
+      </p>
+      <v-layout wrap>
+        <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
+          <repo-item class="portfolio-code__item" :repoProp="repo"/>
+        </v-flex>
 
-      <v-flex xs12 class="portfolio-code__progress">
-        <v-progress-circular
-        indeterminate
-        size="70"
-        color="primary"/>
-      </v-flex>
-    </v-layout>
-  </v-container>
-</div>
+        <v-flex xs12 class="portfolio-code__progress">
+          <v-progress-circular indeterminate size="70" color="primary"/>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
-
-import JBreadcrumbs from "~/components/global/JBreadcrumbs.vue";
+import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 
 import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
 import GitHubDataProvider from "~/services/GitHubDataProvider";

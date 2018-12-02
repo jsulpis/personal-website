@@ -1,19 +1,22 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
     <nuxt-link :to="'/portfolio/design/' + imgUrl">
-    <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
-    <div class="gallery-item-overlay" v-show="!smallViewport">
+      <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
+      <div class="gallery-item-overlay" v-show="!smallViewport">
         <h3 class="gallery-item__title">{{ title }}</h3>
         <div class="gallery-item__date">
-          <v-icon small>date_range</v-icon>{{ date }}
+          <v-icon small>date_range</v-icon>
+          {{ date }}
         </div>
         <div class="gallery-item__likes">
-          <v-icon small>favorite_border</v-icon>{{ likes }}
+          <v-icon small>favorite_border</v-icon>
+          {{ likes }}
         </div>
         <div class="gallery-item__comments">
-          <v-icon small>forum</v-icon><a :href="disqusRootUrl + '/' + imgUrl + '#disqus_thread'">0</a>
+          <v-icon small>forum</v-icon>
+          <a :href="disqusRootUrl + '/' + imgUrl + '#disqus_thread'">0</a>
         </div>
-    </div>
+      </div>
     </nuxt-link>
   </v-flex>
 </template>

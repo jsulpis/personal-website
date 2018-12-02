@@ -2,7 +2,7 @@
   <v-app light>
     <v-content>
       <MenuWrapper class="hide-on-render"/>
-      <div id="banner"></div>
+      <banner/>
       <logo/>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
@@ -12,15 +12,17 @@
 </template>
 
 <script>
-import MenuWrapper from "~/components/global/MenuWrapper.vue";
-import Logo from "~/components/global/Logo.vue";
-import JFooter from "~/components/global/JFooter.vue";
-import Cookies from "~/components/global/Cookies.vue";
+import MenuWrapper from "~/components/shared/MenuWrapper.vue";
+import Logo from "~/components/shared/Logo.vue";
+import Banner from "~/components/shared/Banner.vue";
+import JFooter from "~/components/shared/JFooter.vue";
+import Cookies from "~/components/shared/Cookies.vue";
 
 export default {
   components: {
     MenuWrapper,
     Logo,
+    Banner,
     JFooter,
     Cookies
   },
@@ -82,21 +84,10 @@ a {
   color: rgba(255, 255, 255, 0.84) !important;
 }
 
-#banner {
-  opacity: 0;
-  height: $banner-height;
-  background-image: url("/img/background/sky.jpg");
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12),
-    0px 0px 40px 15px rgba(0, 0, 0, 0.3) inset;
-
-  filter: none;
-  -webkit-filter: grayscale(20%);
-  -moz-filter: grayscale(20%);
-  -ms-filter: grayscale(20%);
-  -o-filter: grayscale(20%);
+#personal-logo {
+  position: absolute;
+  top: calc(#{$banner-height} / 2 - 30px);
+  transform: translateX(-50%);
 }
 
 .page-content {
