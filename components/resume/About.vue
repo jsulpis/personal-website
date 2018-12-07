@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Avatar from "../global/Avatar";
+import Avatar from "../shared/Avatar";
 import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
 
 export default {

@@ -1,45 +1,39 @@
 <template>
-<v-navigation-drawer
-  dark
-  right
-  v-model="open"
-  disable-resize-watcher
-  app>
-  <v-list>
-    <v-list-tile>
-      <v-list-tile-content>
-        <v-list-tile-title class="drawer-main-title">Menu</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-
-    <v-list-tile to="/">
-      <v-list-tile-title class="text-xs-center">Accueil</v-list-tile-title>
-    </v-list-tile>
-
-    <v-list-group v-model="groupActive">
-      <v-list-tile slot="activator" to="/portfolio">
-        <v-list-tile-title class="text-xs-center">
-          <span class="drawer-portfolio">Portfolio</span>
-        </v-list-tile-title>
+  <v-navigation-drawer dark right v-model="open" disable-resize-watcher app>
+    <v-list>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title class="drawer-main-title">Menu</v-list-tile-title>
+        </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile to="/portfolio/design">
-      <v-list-tile-title class="text-xs-center">Design</v-list-tile-title>
-    </v-list-tile>
-    <v-list-tile to="/portfolio/code">
-      <v-list-tile-title class="text-xs-center">Code</v-list-tile-title>
-    </v-list-tile>
-    </v-list-group>
 
-    <v-list-tile to="/resume">
-      <v-list-tile-title class="text-xs-center">CV</v-list-tile-title>
-    </v-list-tile>
+      <v-list-tile to="/">
+        <v-list-tile-title class="text-xs-center">Accueil</v-list-tile-title>
+      </v-list-tile>
 
-    <v-list-tile to="/contact">
-      <v-list-tile-title class="text-xs-center">Contact</v-list-tile-title>
-    </v-list-tile>
-  </v-list>
+      <v-list-group v-model="groupActive">
+        <v-list-tile slot="activator" to="/portfolio">
+          <v-list-tile-title class="text-xs-center">
+            <span class="drawer-portfolio">Portfolio</span>
+          </v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile to="/portfolio/design">
+          <v-list-tile-title class="text-xs-center">Design</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile to="/portfolio/code">
+          <v-list-tile-title class="text-xs-center">Code</v-list-tile-title>
+        </v-list-tile>
+      </v-list-group>
 
-</v-navigation-drawer>
+      <v-list-tile to="/resume">
+        <v-list-tile-title class="text-xs-center">CV</v-list-tile-title>
+      </v-list-tile>
+
+      <v-list-tile to="/contact">
+        <v-list-tile-title class="text-xs-center">Contact</v-list-tile-title>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>

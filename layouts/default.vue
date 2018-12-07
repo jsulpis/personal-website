@@ -2,7 +2,7 @@
   <v-app light>
     <v-content>
       <MenuWrapper class="hide-on-render"/>
-      <banner/>
+      <banner class="hide-on-render"/>
       <logo/>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
@@ -82,6 +82,10 @@ a {
 .application.theme--dark {
   background: #212121;
   color: rgba(255, 255, 255, 0.84) !important;
+}
+
+#banner {
+  height: $banner-height;
 }
 
 #personal-logo {

@@ -25,7 +25,6 @@
     "jquery": "^3.3.1",
     "marked": "^0.5.1",
     "nuxt": "^1.0.0",
-    "particles.js": "^2.0.0",
     "scrollreveal": "^3.4.0",
     "vuetify": "^1.1.4"
   },

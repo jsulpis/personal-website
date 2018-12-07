@@ -6,8 +6,6 @@
 @import "~/assets/scss/variables.scss";
 
 #banner {
-  opacity: 0;
-  height: $banner-height;
   background-image: url("/img/background/sky.jpg");
   background-size: cover;
   background-position: center;
