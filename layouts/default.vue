@@ -36,9 +36,6 @@ export default {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
     }
-  },
-  mounted() {
-    $("#banner").css("opacity", 1);
   }
 };
 </script>

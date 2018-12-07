@@ -1,6 +1,6 @@
 <template>
   <div>
-    <banner class="full-page"/>
+    <banner/>
     <div class="content container">
       <!-- Display the error code -->
       <p class="error-caption">ERREUR</p>
@@ -25,12 +25,12 @@
       <div v-if="Math.trunc(error.statusCode / 100) === 4">
         <p class="title mt-3">Vous pouvez plutôt aller sur une de ces pages:</p>
         <v-btn href="/" round outline color="white">Accueil</v-btn>
-        <v-btn to="/portfolio" round outline color="white">Portfolio</v-btn>
-        <v-btn to="/contact" round outline color="white">Contact</v-btn>
+        <v-btn href="/portfolio" round outline color="white">Portfolio</v-btn>
+        <v-btn href="/contact" round outline color="white">Contact</v-btn>
       </div>
       <div v-else>
         <p class="title mt-3">Si l'erreur persiste, merci de m'en informer.</p>
-        <v-btn to="/contact" round outline color="white">Contact</v-btn>
+        <v-btn href="/contact" round outline color="white">Contact</v-btn>
       </div>
     </div>
   </div>
@@ -146,7 +146,7 @@ export default {
   }
 }
 
-.full-page {
+#banner {
   position: absolute;
   top: 0;
   left: 0;
