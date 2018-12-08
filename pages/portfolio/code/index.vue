@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { SITE_ROOT_URL } from "~/assets/js/globals";
+
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
@@ -29,8 +31,27 @@ export default {
     VProgressCircular,
     JBreadcrumbs
   },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { name: "title", property: "og:title", content: this.title },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + "/portfolio/code"
+        },
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
+      ]
+    };
+  },
   data() {
     return {
+      title: "Portfolio - Code",
       description:
         "Mes projets informatiques open-source. Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !",
       repos: []
@@ -70,7 +91,6 @@ export default {
 <style>
 .portfolio-code {
   min-height: 350px;
-  padding-top: 1rem;
 }
 
 .portfolio-code__item {

@@ -24,11 +24,17 @@ export default {
     return {
       title: this.title,
       meta: [
-        { name: "og:title", content: this.title },
-        { name: "og:type", content: "website" },
-        { name: "og:url", content: SITE_ROOT_URL + "/contact" },
-        { name: "og:description", content: this.description },
-        { name: "description", content: this.description }
+        { name: "title", property: "og:title", content: this.title },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + "/contact"
+        },
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
       ]
     };
   },

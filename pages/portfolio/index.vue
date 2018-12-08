@@ -24,13 +24,29 @@
 <script>
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
 import ArtworksProvider from "~/services/ArtworksProvider";
+import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals";
 
 export default {
   components: {
     ParallaxCard
   },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { name: "title", property: "og:title", content: this.title },
+        { name: "url", property: "og:url", content: SITE_ROOT_URL + "/resume" },
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
+      ]
+    };
+  },
   data() {
     return {
+      title: makePageTitle("Portfolio"),
       designHeroUrl: "",
       codeHeroUrl: "",
       description: "Je partage ici mes projets réalisés sur mon temps libre."

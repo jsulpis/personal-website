@@ -11,14 +11,16 @@ import PageHeader from "~/components/shared/PageHeader.vue";
 
 export default {
   components: { PageHeader },
-  head: {
-    script: [
-      {
-        src: DISQUS_SCRIPT_URL + "/count.js",
-        async: "",
-        id: "dsq-count-scr"
-      }
-    ]
+  head() {
+    return {
+      script: [
+        {
+          src: DISQUS_SCRIPT_URL + "/count.js",
+          async: "",
+          id: "dsq-count-scr"
+        }
+      ]
+    };
   },
   data() {
     return {
@@ -47,6 +49,7 @@ export default {
 
   @media only screen and (min-width: 600px) {
     padding: 3rem;
+    padding-top: 1rem;
   }
 
   @media only screen and (min-width: 1904px) {

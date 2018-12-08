@@ -1,51 +1,79 @@
 <template>
-  <div>
-    <v-container class="container--card">
-      <j-breadcrumbs/>
-      <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
-      <div class="repo-iframe-container">
-        <iframe
-          :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
-          frameborder="0"
-          scrolling="0"
-          width="140px"
-          height="30px"
-        ></iframe>
-        <iframe
-          :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
-          frameborder="0"
-          scrolling="0"
-          width="140px"
-          height="30px"
-        ></iframe>
-      </div>
-      <div class="repo-readme" v-html="content"/>
-    </v-container>
-  </div>
+  <v-container class="container--card hide-on-render">
+    <j-breadcrumbs/>
+    <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
+    <div class="repo-iframe-container">
+      <iframe
+        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
+        frameborder="0"
+        scrolling="0"
+        width="140px"
+        height="30px"
+      ></iframe>
+      <iframe
+        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
+        frameborder="0"
+        scrolling="0"
+        width="140px"
+        height="30px"
+      ></iframe>
+    </div>
+    <div class="repo-readme" v-html="content"/>
+  </v-container>
 </template>
 
 <script>
 import marked from "marked";
 
+import { SITE_ROOT_URL } from "~/assets/js/globals";
+import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
-
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 
 export default {
   components: { JBreadcrumbs },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { name: "title", property: "og:title", content: this.title },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + "/portfolio/code/" + this.$route.params.repo
+        },
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
+      ]
+    };
+  },
   data() {
     return {
+      title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
+      description: "README d'un de mes projets GitHub.",
       content: "",
-      repoName: "",
       repoUrl: ""
     };
   },
+  beforeMount() {
+    this.$emit("update-header", {
+      title: "Code",
+      description:
+        "Mes projets informatiques open-source. Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !"
+    });
+  },
   mounted() {
-    this.repoName = this.$route.params.repo;
-    this.repoUrl = GitHubDataProvider.provideRepositoryUrl(this.repoName);
-    GitHubDataProvider.provideRepositoryData(this.repoName).then(
+    const repoName = this.$route.params.repo;
+    this.repoUrl = GitHubDataProvider.provideRepositoryUrl(repoName);
+    GitHubDataProvider.provideRepositoryData(repoName).then(
       data => (this.content = marked(data))
     );
+  },
+  updated() {
+    $(".hide-on-render").addClass("show");
   }
 };
 </script>

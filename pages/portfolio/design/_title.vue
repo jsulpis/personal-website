@@ -1,49 +1,47 @@
 <template>
-  <div>
-    <v-container class="artwork container--card">
-      <j-breadcrumbs/>
-      <section class="artwork__section">
-        <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
+  <v-container class="container--card hide-on-render">
+    <j-breadcrumbs/>
+    <section class="artwork__section">
+      <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
 
-        <!-- Image metadata -->
-        <div class="artwork__data">
-          <!-- date -->
-          <div class="artwork__date">
-            <v-icon>date_range</v-icon>
-            <span>{{ artwork.date }}</span>
-          </div>
-          <!-- Likes -->
-          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
-          <!-- Comments -->
-          <div class="artwork__comments">
-            <v-icon>forum</v-icon>
-            <span>
-              <a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a>
-            </span>
-          </div>
+      <!-- Image metadata -->
+      <div class="artwork__data">
+        <!-- date -->
+        <div class="artwork__date">
+          <v-icon>date_range</v-icon>
+          <span>{{ artwork.date }}</span>
         </div>
+        <!-- Likes -->
+        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+        <!-- Comments -->
+        <div class="artwork__comments">
+          <v-icon>forum</v-icon>
+          <span>
+            <a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a>
+          </span>
+        </div>
+      </div>
 
-        <!-- Image -->
-        <a :href="imageUrl" target="_blank">
-          <img class="artwork__img elevation-8" :src="imageUrl" :alt="artwork.title">
+      <!-- Image -->
+      <a :href="imageUrl" target="_blank">
+        <img class="artwork__img elevation-8" :src="imageUrl" :alt="artwork.title">
+      </a>
+    </section>
+
+    <!-- Softwares -->
+    <section class="artwork__section">
+      <h3 class="artwork__softwares">Logiciels utilisés:</h3>
+      <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
+        <a :href="softwares[software].url">
+          <img :src="softwares[software].icon" :alt="software">
         </a>
-      </section>
+        <p>{{ software }}</p>
+      </div>
+    </section>
 
-      <!-- Softwares -->
-      <section class="artwork__section">
-        <h3 class="artwork__softwares">Logiciels utilisés:</h3>
-        <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
-          <a :href="softwares[software].url">
-            <img :src="softwares[software].icon" :alt="software">
-          </a>
-          <p>{{ software }}</p>
-        </div>
-      </section>
-
-      <!-- Disqus plugin -->
-      <disqus-plugin :imgName="artwork.urlTitle"/>
-    </v-container>
-  </div>
+    <!-- Disqus plugin -->
+    <disqus-plugin :imgName="artwork.urlTitle"/>
+  </v-container>
 </template>
 
 <script>
@@ -52,6 +50,7 @@ import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
 
 import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { StringFormatter } from "~/assets/js/utils";
 import { CG_SOFTWARES } from "~/assets/data/cgSoftwares";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
@@ -63,24 +62,29 @@ export default {
   },
   head() {
     return {
-      title: this.artwork.title,
+      title: this.title,
       meta: [
-        { name: "og:title", content: this.artwork.title },
-        { name: "og:type", content: "website" },
+        { name: "title", property: "og:title", content: this.title },
         {
-          name: "og:url",
-          content: SITE_ROOT_URL + "/portfolio/" + this.artwork.urlTitle
+          name: "url",
+          property: "og:url",
+          content:
+            SITE_ROOT_URL + "/portfolio/design/" + this.$route.params.title
         },
-        { name: "og:description", content: this.description },
-        { name: "description", content: this.description }
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
       ]
     };
   },
   data() {
     return {
-      description: "Un élément de ma gallerie personnelle.",
+      title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
+      description: "Un élément de ma gallerie.",
       disqusRootUrl: DISQUS_ROOT_URL,
-      artwork: {},
+      artwork: { title: "-" },
       softwares: CG_SOFTWARES
     };
   },
@@ -89,13 +93,21 @@ export default {
       return ArtworksProvider.providePictureUrl(this.$route.params.title);
     }
   },
+  beforeMount() {
+    this.$emit("update-header", {
+      title: "Design",
+      description: "Mes réalisations en infographie 2D et 3D."
+    });
+  },
   mounted() {
     DISQUSWIDGETS.getCount({ reset: true });
-    $(".hide-on-render").addClass("show");
     ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
       this.artwork = response;
       $(".artwork").fadeIn();
     });
+  },
+  updated() {
+    $(".hide-on-render").addClass("show");
   }
 };
 </script>
@@ -103,11 +115,6 @@ export default {
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
 @import "~/assets/scss/mixins.scss";
-
-.artwork {
-  display: none;
-}
-
 .artwork__ {
   &title {
     @include font-title;

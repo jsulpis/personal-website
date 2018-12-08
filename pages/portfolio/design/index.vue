@@ -1,26 +1,18 @@
 <template>
-  <div>
-    <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
-      <v-layout row wrap id="gallery-layout">
-        <gallery-item
-          v-for="(img, i) in artworks"
-          :key="i"
-          :title="img.title"
-          :imgUrl="img.urlTitle"
-          :date="img.date"
-          :likes="img.likes"
-        />
+  <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
+    <v-layout row wrap id="gallery-layout">
+      <gallery-item
+        v-for="(img, i) in artworks"
+        :key="i"
+        :title="img.title"
+        :imgUrl="img.urlTitle"
+        :date="img.date"
+        :likes="img.likes"
+      />
 
-        <v-progress-circular
-          indeterminate
-          size="70"
-          color="primary"
-          id="gallery-progress"
-          class="hide-on-render"
-        />
-      </v-layout>
-    </v-container>
-  </div>
+      <v-progress-circular indeterminate size="70" color="primary" id="gallery-progress"/>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -39,17 +31,23 @@ export default {
     return {
       title: this.title,
       meta: [
-        { name: "og:title", content: this.title },
-        { name: "og:type", content: "website" },
-        { name: "og:url", content: SITE_ROOT_URL + "/portfolio" },
-        { name: "og:description", content: this.description },
-        { name: "description", content: this.description }
+        { name: "title", property: "og:title", content: this.title },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + "/portfolio/design"
+        },
+        {
+          name: "description",
+          property: "og:description",
+          content: this.description
+        }
       ]
     };
   },
   data() {
     return {
-      title: makePageTitle("Portfolio"),
+      title: "Portfolio - Design",
       description: "Mes réalisations en infographie 2D et 3D.",
       artworks: []
     };
@@ -61,7 +59,6 @@ export default {
     });
   },
   mounted() {
-    $(".hide-on-render").addClass("show");
     ArtworksProvider.provideArtworks().then(response => {
       this.artworks = response;
       this.sortArtworksByDate();
@@ -70,6 +67,9 @@ export default {
       // The call to the function setTimeout itself can be long enough to delay the execution...
       this.showGalleryWithDelay(10);
     });
+  },
+  updated() {
+    $(".hide-on-render").addClass("show");
   },
   methods: {
     sortArtworksByDate() {
