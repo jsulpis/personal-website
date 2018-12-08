@@ -1,10 +1,5 @@
 <template>
   <div>
-    <page-header class="hide-on-render">
-      Mes projets informatiques open-source.
-      <br>Ce contenu est extrait de mon profil
-      <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est en anglais !
-    </page-header>
     <v-container class="portfolio-code container--card hide-on-render">
       <j-breadcrumbs/>
       <v-layout wrap>
@@ -25,23 +20,27 @@ import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
-import PageHeader from "~/components/shared/PageHeader.vue";
 
-import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 
 export default {
   components: {
     RepoItem,
     VProgressCircular,
-    JBreadcrumbs,
-    PageHeader
+    JBreadcrumbs
   },
   data() {
     return {
-      repos: [],
-      socialNetworks: SOCIAL_NETWORKS
+      description:
+        "Mes projets informatiques open-source. Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !",
+      repos: []
     };
+  },
+  beforeMount() {
+    this.$emit("update-header", {
+      title: "Code",
+      description: this.description
+    });
   },
   mounted() {
     $(".hide-on-render").addClass("show");

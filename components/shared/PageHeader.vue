@@ -2,26 +2,16 @@
   <v-card dark class="page-header">
     <v-card-text>
       <h1>{{ title }}</h1>
-      <p>
-        <slot></slot>
-      </p>
+      <p>{{ description }}</p>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-import { StringFormatter } from "~/assets/js/utils";
-
 export default {
-  data() {
-    return {
-      title: ""
-    };
-  },
-  beforeMount() {
-    this.title = StringFormatter.beautifyWord(
-      this.$route.path.split("/").slice(-1)[0]
-    );
+  props: {
+    title: String,
+    description: String
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="hide-on-render">
-    <page-header>Une question ? Suggestion ? Envie de remplir un formulaire ? C'est ici !</page-header>
+    <page-header title="Contact" :description="description"></page-header>
     <v-container id="contact-page">
       <v-card class="contact-page__card">
         <contact-form/>
@@ -36,7 +36,7 @@ export default {
     return {
       title: makePageTitle("Contact"),
       description:
-        "Utilisez ce formulaire pour m'envoyer toute requête, question, etc."
+        "Vous pouvez utiliser ce formulaire pour m'envoyer vos remarques, questions, etc."
     };
   },
   mounted() {

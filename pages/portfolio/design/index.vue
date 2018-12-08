@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header class="hide-on-render">Mes réalisations en infographie 2D et 3D.</page-header>
     <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
       <v-layout row wrap id="gallery-layout">
         <gallery-item
@@ -27,7 +26,6 @@
 <script>
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
-import PageHeader from "~/components/shared/PageHeader.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 import ArtworksProvider from "~/services/ArtworksProvider";
@@ -35,8 +33,7 @@ import ArtworksProvider from "~/services/ArtworksProvider";
 export default {
   components: {
     VProgressCircular,
-    GalleryItem,
-    PageHeader
+    GalleryItem
   },
   head() {
     return {
@@ -53,10 +50,15 @@ export default {
   data() {
     return {
       title: makePageTitle("Portfolio"),
-      description:
-        "Ma gallerie personnelle exposant certaines de mes réalisations en infographie.",
+      description: "Mes réalisations en infographie 2D et 3D.",
       artworks: []
     };
+  },
+  beforeMount() {
+    this.$emit("update-header", {
+      title: "Design",
+      description: this.description
+    });
   },
   mounted() {
     $(".hide-on-render").addClass("show");

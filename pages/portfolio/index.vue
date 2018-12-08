@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-header class="hide-on-render">Je partage ici mes projets réalisés sur mon temps libre.</page-header>
     <v-container class="portfolio-page">
       <v-layout wrap justify-center>
         <nuxt-link to="/portfolio/design">
@@ -24,21 +23,27 @@
 
 <script>
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
-import PageHeader from "~/components/shared/PageHeader.vue";
-
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   components: {
-    ParallaxCard,
-    PageHeader
+    ParallaxCard
   },
   data() {
-    return { designHeroUrl: "", codeHeroUrl: "" };
+    return {
+      designHeroUrl: "",
+      codeHeroUrl: "",
+      description: "Je partage ici mes projets réalisés sur mon temps libre."
+    };
   },
   beforeMount() {
     this.designHeroUrl = ArtworksProvider.providePictureUrl("design-hero");
     this.codeHeroUrl = ArtworksProvider.providePictureUrl("code-hero");
+
+    this.$emit("update-header", {
+      title: "Portfolio",
+      description: this.description
+    });
   },
   mounted() {
     $(".hide-on-render").addClass("show");

@@ -1,11 +1,16 @@
 <template>
-  <nuxt-child/>
+  <div>
+    <page-header class="hide-on-render" :title="title" :description="pageDescription"></page-header>
+    <nuxt-child @update-header="updateHeader($event)"/>
+  </div>
 </template>
 
 <script>
 import { DISQUS_SCRIPT_URL } from "~/assets/js/globals";
+import PageHeader from "~/components/shared/PageHeader.vue";
 
 export default {
+  components: { PageHeader },
   head: {
     script: [
       {
@@ -15,8 +20,20 @@ export default {
       }
     ]
   },
+  data() {
+    return {
+      title: "",
+      pageDescription: ""
+    };
+  },
   mounted() {
     $(".hide-on-render").addClass("show");
+  },
+  methods: {
+    updateHeader(newDescription) {
+      this.title = newDescription.title;
+      this.pageDescription = newDescription.description;
+    }
   }
 };
 </script>
