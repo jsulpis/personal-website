@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark id="footer" height="auto" class="elevation-8">
+  <v-footer dark id="footer" height="auto">
     <v-card flat tile class="footer-card text-xs-center">
       <!-- Scroll Top -->
       <scroll-top id="footer-scrolltop"/>
@@ -44,6 +44,11 @@ export default {
 
 <style lang="scss">
 $footer-padding-top: 0.75rem;
+
+#footer {
+  box-shadow: 0px -3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px -2px 2px 0px rgba(0, 0, 0, 0.14), 0px -1px 5px 0px rgba(0, 0, 0, 0.12) !important;
+}
 
 .footer-card {
   width: 100%;

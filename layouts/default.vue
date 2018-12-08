@@ -92,6 +92,8 @@ a {
 }
 
 .page-content {
+  display: flex;
+  flex-direction: column;
   min-height: calc(100vh - #{$banner-height} - 153px);
   padding-bottom: 3rem !important;
 }

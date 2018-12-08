@@ -1,24 +1,24 @@
 <template>
-  <v-container id="contact-page" class="hide-on-render">
-    <v-card class="contact-page__card">
-      <p
-        class="font-weight-regular pt-4 px-2 ma-0"
-      >Une question ? Suggestion ? Envie de remplir un formulaire ?
-        <br>C'est ici !
-      </p>
-      <contact-form/>
-    </v-card>
-  </v-container>
+  <div class="hide-on-render">
+    <page-header>Une question ? Suggestion ? Envie de remplir un formulaire ? C'est ici !</page-header>
+    <v-container id="contact-page">
+      <v-card class="contact-page__card">
+        <contact-form/>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 
 <script>
 import ContactForm from "~/components/shared/ContactForm.vue";
+import PageHeader from "~/components/shared/PageHeader.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
-    ContactForm
+    ContactForm,
+    PageHeader
   },
   head() {
     return {
@@ -47,9 +47,7 @@ export default {
 
 <style>
 #contact-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-grow: initial;
 }
 .contact-page__card {
   width: inherit;
