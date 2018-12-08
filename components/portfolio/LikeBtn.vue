@@ -19,7 +19,7 @@ export default {
   props: { initialLikes: Number },
   data() {
     return {
-      controller: new ArtworkLikesController(this.$route.params.title),
+      ArtworkLikesService: new ArtworkLikesService(this.$route.params.title),
       userLiked: false,
       incr: 0
     };
@@ -31,13 +31,13 @@ export default {
   },
   methods: {
     toggleLike() {
-      this.controller.toggleLike();
+      this.ArtworkLikesService.toggleLike();
       this.userLiked = !this.userLiked;
       this.incr += this.userLiked ? 1 : -1;
     }
   },
   mounted() {
-    this.userLiked = this.controller.checkCookie();
+    this.userLiked = this.ArtworkLikesService.checkCookie();
   }
 };
 </script>

@@ -212,6 +212,6 @@ $longDelay: 3s;
 }
 
 .parallax-card__description {
-  min-height: 75px;
+  min-height: 50px;
 }
 </style>

@@ -1,30 +1,33 @@
 <template>
-  <v-container fluid grid-list-xs id="gallery">
-    <v-layout row wrap>
-      <gallery-item
-        v-for="(img, i) in artworks"
-        :key="i"
-        :title="img.title"
-        :imgUrl="img.urlTitle"
-        :date="img.date"
-        :likes="img.likes"
-      />
+  <div>
+    <page-header class="hide-on-render">Mes réalisations en infographie 2D et 3D.</page-header>
+    <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
+      <v-layout row wrap id="gallery-layout">
+        <gallery-item
+          v-for="(img, i) in artworks"
+          :key="i"
+          :title="img.title"
+          :imgUrl="img.urlTitle"
+          :date="img.date"
+          :likes="img.likes"
+        />
 
-      <v-progress-circular
-        indeterminate
-        size="70"
-        color="primary"
-        id="gallery-progress"
-        class="hide-on-render"
-      />
-    </v-layout>
-  </v-container>
+        <v-progress-circular
+          indeterminate
+          size="70"
+          color="primary"
+          id="gallery-progress"
+          class="hide-on-render"
+        />
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
+import PageHeader from "~/components/shared/PageHeader.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 import ArtworksProvider from "~/services/ArtworksProvider";
@@ -32,7 +35,8 @@ import ArtworksProvider from "~/services/ArtworksProvider";
 export default {
   components: {
     VProgressCircular,
-    GalleryItem
+    GalleryItem,
+    PageHeader
   },
   head() {
     return {
@@ -63,8 +67,6 @@ export default {
       // Give a bit of time to fill the artworks array and then fade them in
       // The call to the function setTimeout itself can be long enough to delay the execution...
       this.showGalleryWithDelay(10);
-      // Second chance for slow devices
-      this.showGalleryWithDelay(1000);
     });
   },
   methods: {
@@ -102,6 +104,12 @@ export default {
 <style>
 #gallery {
   padding: 0 !important;
+  margin-bottom: -3rem;
+  background-color: #212121;
+}
+
+#gallery-layout {
+  flex-grow: initial;
 }
 
 #gallery-progress {

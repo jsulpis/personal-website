@@ -1,10 +1,12 @@
 <template>
   <div>
+    <page-header class="hide-on-render">
+      Mes projets informatiques open-source.
+      <br>Ce contenu est extrait de mon profil
+      <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est en anglais !
+    </page-header>
     <v-container class="portfolio-code container--card hide-on-render">
       <j-breadcrumbs/>
-      <p class="portfolio-code__intro">Ce contenu est extrait de mon profil
-        <a :href="socialNetworks.GitHub.url">GitHub</a>, c'est pourquoi il est principalement en anglais !
-      </p>
       <v-layout wrap>
         <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
           <repo-item class="portfolio-code__item" :repoProp="repo"/>
@@ -23,6 +25,7 @@ import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
+import PageHeader from "~/components/shared/PageHeader.vue";
 
 import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
 import GitHubDataProvider from "~/services/GitHubDataProvider";
@@ -31,7 +34,8 @@ export default {
   components: {
     RepoItem,
     VProgressCircular,
-    JBreadcrumbs
+    JBreadcrumbs,
+    PageHeader
   },
   data() {
     return {
@@ -67,14 +71,13 @@ export default {
 <style>
 .portfolio-code {
   min-height: 350px;
+  padding-top: 1rem;
 }
 
-.portfolio-code__intro {
-  text-align: left;
-}
 .portfolio-code__item {
   display: none;
 }
+
 .portfolio-code__progress {
   margin-top: 2.5rem;
 }
