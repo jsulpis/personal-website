@@ -7,30 +7,8 @@
         </v-list-tile-content>
       </v-list-tile>
 
-      <v-list-tile to="/">
-        <v-list-tile-title class="text-xs-center">Accueil</v-list-tile-title>
-      </v-list-tile>
-
-      <v-list-group v-model="groupActive">
-        <v-list-tile slot="activator" to="/portfolio">
-          <v-list-tile-title class="text-xs-center">
-            <span class="drawer-portfolio">Portfolio</span>
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile to="/portfolio/design">
-          <v-list-tile-title class="text-xs-center">Design</v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile to="/portfolio/code">
-          <v-list-tile-title class="text-xs-center">Code</v-list-tile-title>
-        </v-list-tile>
-      </v-list-group>
-
-      <v-list-tile to="/resume">
-        <v-list-tile-title class="text-xs-center">CV</v-list-tile-title>
-      </v-list-tile>
-
-      <v-list-tile to="/contact">
-        <v-list-tile-title class="text-xs-center">Contact</v-list-tile-title>
+      <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to">
+        <v-list-tile-title class="text-xs-center">{{ item.name }}</v-list-tile-title>
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
@@ -38,6 +16,7 @@
 
 <script>
 export default {
+  props: { items: Array },
   data() {
     return {
       open: false,
@@ -46,7 +25,6 @@ export default {
   },
   mounted() {
     this.$parent.$on("toggle-drawer", () => (this.open = !this.open));
-    $(".v-list__tile").on("click", () => (this.groupActive = false));
   }
 };
 </script>
