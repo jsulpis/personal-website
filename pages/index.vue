@@ -21,7 +21,6 @@ export default {
       title: this.title,
       meta: [
         { name: "title", property: "og:title", content: this.title },
-        { name: "type", property: "og:type", content: "website" },
         { name: "url", property: "og:url", content: SITE_ROOT_URL },
         {
           name: "description",

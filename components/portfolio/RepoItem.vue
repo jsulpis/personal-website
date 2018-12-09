@@ -1,7 +1,7 @@
 <template>
   <v-card class="repo-item">
     <div class="repo-item__media">
-      <nuxt-link :to="'/portfolio/code/' + repo.name">
+      <nuxt-link :to="$route.fullPath + '/' + repo.name">
         <img :src="repoPictureUrl">
       </nuxt-link>
     </div>
@@ -14,7 +14,7 @@
     </v-card-title>
 
     <v-card-actions>
-      <v-btn flat color="primary" :to="'/portfolio/code/' + repo.name">Details</v-btn>
+      <v-btn flat color="primary" :to="$route.fullPath + '/' +  repo.name">Readme</v-btn>
       <v-spacer/>
       <p class="body-1">{{repo.language}}</p>
       <v-spacer/>

@@ -1,6 +1,6 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
-    <nuxt-link :to="'/portfolio/design/' + imgUrl">
+    <nuxt-link :to="$route.fullPath + '/' + imgUrl">
       <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
       <div class="gallery-item-overlay" v-show="!smallViewport">
         <h3 class="gallery-item__title">{{ title }}</h3>
@@ -12,28 +12,23 @@
           <v-icon small>favorite_border</v-icon>
           {{ likes }}
         </div>
-        <div class="gallery-item__comments">
-          <v-icon small>forum</v-icon>
-          <a :href="disqusRootUrl + '/' + imgUrl + '#disqus_thread'">0</a>
-        </div>
       </div>
     </nuxt-link>
   </v-flex>
 </template>
 
 <script>
-import { S3_PORTFOLIO_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { S3_PORTFOLIO_URL, SITE_ROOT_URL } from "~/assets/js/globals";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   props: {
     title: String,
     imgUrl: String,
+    disqusId: String,
+    disqusUrl: String,
     date: String,
     likes: Number
-  },
-  data() {
-    return { disqusRootUrl: DISQUS_ROOT_URL };
   },
   computed: {
     smallViewport() {
@@ -100,29 +95,19 @@ export default {
   }
 
   &date,
-  &likes,
-  &comments {
+  &likes {
     position: absolute;
+    bottom: 0;
     padding: 1rem;
     font-size: 13px;
   }
 
   &date {
-    bottom: 0;
     left: 0;
   }
 
   &likes {
-    bottom: 0;
-    left: 40%;
-  }
-
-  &comments {
-    bottom: 0;
     right: 0;
-    a {
-      color: inherit;
-    }
   }
 }
 </style>

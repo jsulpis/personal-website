@@ -6,10 +6,11 @@
         :key="i"
         :title="img.title"
         :imgUrl="img.urlTitle"
+        :disqusId="img.uuid"
+        :disqusUrl="pageUrl + '/' + img.urlTitle"
         :date="img.date"
         :likes="img.likes"
       />
-
       <v-progress-circular indeterminate size="70" color="primary" id="gallery-progress"/>
     </v-layout>
   </v-container>
@@ -21,6 +22,11 @@ import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 import ArtworksProvider from "~/services/ArtworksProvider";
+
+export const INFOGRAPHIE_HEADER = {
+  title: "Infographie",
+  description: "Mes réalisations 2D/3D."
+};
 
 export default {
   components: {
@@ -35,7 +41,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + "/portfolio/design"
+          content: this.pageUrl
         },
         {
           name: "description",
@@ -47,16 +53,14 @@ export default {
   },
   data() {
     return {
-      title: "Portfolio - Design",
-      description: "Mes réalisations en infographie 2D et 3D.",
+      title: "Portfolio - " + INFOGRAPHIE_HEADER.description,
+      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      description: INFOGRAPHIE_HEADER.description,
       artworks: []
     };
   },
   beforeMount() {
-    this.$emit("update-header", {
-      title: "Design",
-      description: this.description
-    });
+    this.$emit("update-header", INFOGRAPHIE_HEADER);
   },
   mounted() {
     ArtworksProvider.provideArtworks().then(response => {
@@ -95,8 +99,6 @@ export default {
             .delay(20 * index)
             .fadeIn();
         });
-        // Update comments count
-        DISQUSWIDGETS.getCount({ reset: true });
       }, delay);
     }
   }

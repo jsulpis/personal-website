@@ -35,7 +35,11 @@ export default {
       title: this.title,
       meta: [
         { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: SITE_ROOT_URL + "/resume" },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + this.$route.fullPath
+        },
         {
           name: "description",
           property: "og:description",

@@ -2,7 +2,7 @@
   <v-card dark class="page-header">
     <v-card-text>
       <h1>{{ title }}</h1>
-      <p>{{ description }}</p>
+      <p v-html="description"></p>
     </v-card-text>
   </v-card>
 </template>

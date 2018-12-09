@@ -11,17 +11,6 @@ import PageHeader from "~/components/shared/PageHeader.vue";
 
 export default {
   components: { PageHeader },
-  head() {
-    return {
-      script: [
-        {
-          src: DISQUS_SCRIPT_URL + "/count.js",
-          async: "",
-          id: "dsq-count-scr"
-        }
-      ]
-    };
-  },
   data() {
     return {
       title: "",

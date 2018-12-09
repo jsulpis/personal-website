@@ -4,21 +4,24 @@
     <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
     <div class="repo-iframe-container">
       <iframe
-        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=star&count=true&size=large'"
+        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + repoName + '&type=star&count=true&size=large'"
         frameborder="0"
         scrolling="0"
         width="140px"
         height="30px"
       ></iframe>
       <iframe
-        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + this.$route.params.repo + '&type=fork&count=true&size=large'"
+        :src="'https://ghbtns.com/github-btn.html?user=jsulpis&repo=' + repoName + '&type=fork&count=true&size=large'"
         frameborder="0"
         scrolling="0"
         width="140px"
         height="30px"
       ></iframe>
     </div>
-    <div class="repo-readme" v-html="content"/>
+    <div class="repo-readme" v-html="repoReadme"/>
+
+    <!-- Disqus plugin -->
+    <disqus-plugin class="disqus" :url="pageUrl" :identifier="repoName" :title="repoName"/>
   </v-container>
 </template>
 
@@ -26,22 +29,20 @@
 import marked from "marked";
 
 import { SITE_ROOT_URL } from "~/assets/js/globals";
+import { CODE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
+import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 
 export default {
-  components: { JBreadcrumbs },
+  components: { JBreadcrumbs, DisqusPlugin },
   head() {
     return {
       title: this.title,
       meta: [
         { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: SITE_ROOT_URL + "/portfolio/code/" + this.$route.params.repo
-        },
+        { name: "url", property: "og:url", content: this.pageUrl },
         {
           name: "description",
           property: "og:description",
@@ -52,24 +53,23 @@ export default {
   },
   data() {
     return {
+      repoName: this.$route.params.repo,
       title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
       description: "README d'un de mes projets GitHub.",
-      content: "",
+      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      repoReadme: "",
       repoUrl: ""
     };
   },
   beforeMount() {
-    this.$emit("update-header", {
-      title: "Code",
-      description:
-        "Mes projets informatiques open-source. Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !"
-    });
+    this.$emit("update-header", CODE_HEADER);
   },
   mounted() {
-    const repoName = this.$route.params.repo;
-    this.repoUrl = GitHubDataProvider.provideRepositoryUrl(repoName);
-    GitHubDataProvider.provideRepositoryData(repoName).then(
-      data => (this.content = marked(data))
+    this.repoUrl = GitHubDataProvider.provideRepositoryUrl(
+      this.$route.params.repo
+    );
+    GitHubDataProvider.provideRepositoryData(this.repoName).then(
+      data => (this.repoReadme = marked(data))
     );
   },
   updated() {
@@ -133,5 +133,9 @@ code {
   background-color: rgba(128, 128, 128, 0.1);
   box-shadow: none;
   color: inherit;
+}
+
+.disqus {
+  margin-top: 4rem;
 }
 </style>

@@ -2,14 +2,14 @@
   <div>
     <v-container class="portfolio-page">
       <v-layout wrap justify-center>
-        <nuxt-link to="/portfolio/design">
+        <nuxt-link :to="$route.fullPath + '/infographie'">
           <parallax-card
             :data-image="designHeroUrl"
-            title="Design"
-            description="Voir mes réalisations en infographie."
+            title="Infographie"
+            description="Voir mes réalisations 2D/3D."
           />
         </nuxt-link>
-        <nuxt-link to="/portfolio/code">
+        <nuxt-link :to="$route.fullPath + '/code'">
           <parallax-card
             :data-image="codeHeroUrl"
             title="Code"
@@ -35,7 +35,11 @@ export default {
       title: this.title,
       meta: [
         { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: SITE_ROOT_URL + "/resume" },
+        {
+          name: "url",
+          property: "og:url",
+          content: SITE_ROOT_URL + this.$route.fullPath
+        },
         {
           name: "description",
           property: "og:description",
@@ -49,7 +53,7 @@ export default {
       title: makePageTitle("Portfolio"),
       designHeroUrl: "",
       codeHeroUrl: "",
-      description: "Je partage ici mes projets réalisés sur mon temps libre."
+      description: "Quelques projets réalisés sur mon temps libre."
     };
   },
   beforeMount() {

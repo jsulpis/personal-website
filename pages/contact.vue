@@ -28,7 +28,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + "/contact"
+          content: SITE_ROOT_URL + this.$route.fullPath
         },
         {
           name: "description",

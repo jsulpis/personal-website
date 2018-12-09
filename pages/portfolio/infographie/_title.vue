@@ -13,13 +13,6 @@
         </div>
         <!-- Likes -->
         <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
-        <!-- Comments -->
-        <div class="artwork__comments">
-          <v-icon>forum</v-icon>
-          <span>
-            <a :href="disqusRootUrl + '/' + this.$route.params.title + '#disqus_thread'">0</a>
-          </span>
-        </div>
       </div>
 
       <!-- Image -->
@@ -30,7 +23,7 @@
 
     <!-- Softwares -->
     <section class="artwork__section">
-      <h3 class="artwork__softwares">Logiciels utilisés:</h3>
+      <h3 class="artwork__softwares">Logiciels:</h3>
       <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
         <a :href="softwares[software].url">
           <img :src="softwares[software].icon" :alt="software">
@@ -40,16 +33,17 @@
     </section>
 
     <!-- Disqus plugin -->
-    <disqus-plugin :imgName="artwork.urlTitle"/>
+    <disqus-plugin :identifier="artwork.uuid" :url="pageUrl" :title="title"/>
   </v-container>
 </template>
 
 <script>
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
-import DisqusPlugin from "~/components/portfolio/DisqusPlugin.vue";
+import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 
 import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { INFOGRAPHIE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import { CG_SOFTWARES } from "~/assets/data/cgSoftwares";
 import ArtworksProvider from "~/services/ArtworksProvider";
@@ -65,12 +59,7 @@ export default {
       title: this.title,
       meta: [
         { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content:
-            SITE_ROOT_URL + "/portfolio/design/" + this.$route.params.title
-        },
+        { name: "url", property: "og:url", content: this.pageUrl },
         {
           name: "description",
           property: "og:description",
@@ -83,8 +72,8 @@ export default {
     return {
       title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
       description: "Un élément de ma gallerie.",
-      disqusRootUrl: DISQUS_ROOT_URL,
-      artwork: { title: "-" },
+      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      artwork: {},
       softwares: CG_SOFTWARES
     };
   },
@@ -94,13 +83,9 @@ export default {
     }
   },
   beforeMount() {
-    this.$emit("update-header", {
-      title: "Design",
-      description: "Mes réalisations en infographie 2D et 3D."
-    });
+    this.$emit("update-header", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    DISQUSWIDGETS.getCount({ reset: true });
     ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
       this.artwork = response;
       $(".artwork").fadeIn();

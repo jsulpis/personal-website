@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <v-container class="portfolio-code container--card hide-on-render">
-      <j-breadcrumbs/>
-      <v-layout wrap>
-        <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
-          <repo-item class="portfolio-code__item" :repoProp="repo"/>
-        </v-flex>
+  <v-container class="portfolio-code container--card hide-on-render">
+    <j-breadcrumbs/>
+    <v-layout wrap>
+      <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
+        <repo-item class="portfolio-code__item" :repoProp="repo"/>
+      </v-flex>
 
-        <v-flex xs12 class="portfolio-code__progress">
-          <v-progress-circular indeterminate size="70" color="primary"/>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+      <v-flex xs12 class="portfolio-code__progress">
+        <v-progress-circular indeterminate size="70" color="primary"/>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -24,6 +22,12 @@ import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 
 import GitHubDataProvider from "~/services/GitHubDataProvider";
+
+export const CODE_HEADER = {
+  title: "Code",
+  description:
+    "Mes projets informatiques open-source.<br> Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !"
+};
 
 export default {
   components: {
@@ -39,7 +43,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + "/portfolio/code"
+          content: SITE_ROOT_URL + this.$route.fullPath
         },
         {
           name: "description",
@@ -52,30 +56,26 @@ export default {
   data() {
     return {
       title: "Portfolio - Code",
-      description:
-        "Mes projets informatiques open-source. Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !",
+      description: "Mes projets informatiques open-source.",
       repos: []
     };
   },
   beforeMount() {
-    this.$emit("update-header", {
-      title: "Code",
-      description: this.description
-    });
+    this.$emit("update-header", CODE_HEADER);
   },
   mounted() {
-    $(".hide-on-render").addClass("show");
     GitHubDataProvider.provideRepositories().then(response => {
       this.repos = response;
       this.showItemsWithDelay(10);
     });
   },
+  updated() {
+    $(".hide-on-render").addClass("show");
+  },
   methods: {
     showItemsWithDelay(delay) {
       // Fade in each gallery item one after another
       setTimeout(() => {
-        // For some reason, the class 'show' disappear when updating the repos property so I put it back here
-        $(".hide-on-render").addClass("show");
         $(".portfolio-code__progress").hide();
         $(".portfolio-code__item").each(function(index) {
           $(this)
