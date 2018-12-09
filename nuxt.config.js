@@ -11,13 +11,11 @@ module.exports = {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "site_name", property: "og:site_name", content: "Julien Sulpis" },
       { name: "locale", property: "og:locale", content: "fr_FR" },
+      { name: "type", property: "og:type", content: "website" },
       {
         name: "google-site-verification",
         content: "flYBOh35oN6AkHLEDfD-fCx0VKRSWEi1F37r4fwrjoo"
       }
-    ],
-    script: [
-      { src: "https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

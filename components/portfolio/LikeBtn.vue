@@ -4,7 +4,7 @@
       icon
       class="likes__btn"
       :color="userLiked ? 'primary' : 'grey lighten-2'"
-      @click="toggleLike"
+      @click="handleClick"
     >
       <v-icon>favorite_border</v-icon>
     </v-btn>
@@ -14,6 +14,7 @@
 
 <script>
 import ArtworkLikesService from "~/services/ArtworkLikesService";
+import { throttle } from "lodash";
 
 export default {
   props: { initialLikes: Number },
@@ -27,10 +28,16 @@ export default {
   computed: {
     likes() {
       return this.initialLikes + this.incr;
+    },
+    throttledClickHandler() {
+      return throttle(this.toggleLike, 1500);
     }
   },
   methods: {
-    toggleLike() {
+    handleClick() {
+      this.throttledClickHandler();
+    },
+    toggleLike: function() {
       this.ArtworkLikesService.toggleLike();
       this.userLiked = !this.userLiked;
       this.incr += this.userLiked ? 1 : -1;
