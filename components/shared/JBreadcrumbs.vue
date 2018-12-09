@@ -12,17 +12,39 @@ import { StringFormatter } from "~/assets/js/utils";
 
 export default {
   components: { ...VBreadcrumbs },
-  data() {
-    return { items: [] };
+  computed: {
+    items() {
+      const items = [];
+      for (let i = 1; i < this.pathArray.length; i++) {
+        items.push({
+          to: this.getRouteForLevel(i),
+          name: this.getNameOfLevel(i)
+        });
+      }
+      return items;
+    },
+    pathArray() {
+      return this.$route.fullPath
+        .split("/")
+        .map(this.removeAnchors)
+        .map(this.removeParameters);
+    }
   },
-  mounted() {
-    const fullPath = this.$route.fullPath.split("/");
-
-    for (let i = 1; i < fullPath.length; i++) {
-      this.items.push({
-        to: fullPath.slice(0, i + 1).join("/"),
-        name: StringFormatter.beautifyWords(fullPath[i], "-")
-      });
+  methods: {
+    removeAnchors(path) {
+      return this.troncateStringBeforeSymbol(path, "#");
+    },
+    removeParameters(path) {
+      return this.troncateStringBeforeSymbol(path, "?");
+    },
+    troncateStringBeforeSymbol(param, symbol) {
+      return param.includes(symbol) ? param.split(symbol)[0] : param;
+    },
+    getRouteForLevel(level) {
+      return this.pathArray.slice(0, level + 1).join("/");
+    },
+    getNameOfLevel(level) {
+      return StringFormatter.beautifyWords(this.pathArray[level], "-");
     }
   }
 };
