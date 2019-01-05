@@ -1,6 +1,5 @@
 <template>
   <div class="hide-on-render">
-    <page-header title="Contact" :description="description"></page-header>
     <v-container id="contact-page">
       <v-card class="contact-page__card">
         <contact-form/>
@@ -11,14 +10,12 @@
 
 <script>
 import ContactForm from "~/components/shared/ContactForm.vue";
-import PageHeader from "~/components/shared/PageHeader.vue";
 
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
-    ContactForm,
-    PageHeader
+    ContactForm
   },
   head() {
     return {
@@ -44,6 +41,12 @@ export default {
       description:
         "Vous pouvez utiliser ce formulaire pour m'envoyer vos remarques, questions, etc."
     };
+  },
+  beforeMount() {
+    this.$store.commit("setHeaderContent", {
+      title: "Contact",
+      description: this.description
+    });
   },
   mounted() {
     $(".hide-on-render").addClass("show");

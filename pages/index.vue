@@ -37,6 +37,9 @@ export default {
         "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
     };
   },
+  beforeMount() {
+    this.$store.commit("resetHeaderContent");
+  },
   methods: {
     showHiddenSection() {
       $(".hide-on-render").addClass("show");

@@ -4,6 +4,7 @@
       <MenuWrapper class="hide-on-render"/>
       <banner class="hide-on-render"/>
       <logo/>
+      <page-header class="hide-on-render" :title="headerTitle" :description="headerDescription"></page-header>
       <nuxt class="page-content"/>
       <j-footer class="hide-on-render"/>
       <cookies/>
@@ -13,16 +14,18 @@
 
 <script>
 import MenuWrapper from "~/components/shared/MenuWrapper.vue";
-import Logo from "~/components/shared/Logo.vue";
 import Banner from "~/components/shared/Banner.vue";
+import Logo from "~/components/shared/Logo.vue";
+import PageHeader from "~/components/shared/PageHeader.vue";
 import JFooter from "~/components/shared/JFooter.vue";
 import Cookies from "~/components/shared/Cookies.vue";
 
 export default {
   components: {
     MenuWrapper,
-    Logo,
     Banner,
+    Logo,
+    PageHeader,
     JFooter,
     Cookies
   },
@@ -35,6 +38,19 @@ export default {
   computed: {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
+    },
+    headerTitle() {
+      return this.$store.state.header.title;
+    },
+    headerDescription() {
+      return this.$store.state.header.description;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if (to.path === "/") {
+        $(".page-content, .page-header").removeClass("show");
+      }
     }
   }
 };
@@ -96,6 +112,11 @@ a {
   flex-direction: column;
   min-height: calc(100vh - #{$banner-height} - 153px);
   padding-bottom: 3rem !important;
+}
+
+.below-banner {
+  box-shadow: 0px 4px 10px -5px rgba(255, 255, 255, 0.2) inset,
+    0px -3px 10px -5px rgba(255, 255, 255, 0.3);
 }
 
 ::-webkit-scrollbar-track {

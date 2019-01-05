@@ -61,7 +61,7 @@ export default {
     };
   },
   beforeMount() {
-    this.$emit("update-header", CODE_HEADER);
+    this.$store.commit("setHeaderContent", CODE_HEADER);
   },
   mounted() {
     GitHubDataProvider.provideRepositories().then(response => {

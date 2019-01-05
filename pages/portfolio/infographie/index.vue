@@ -60,7 +60,7 @@ export default {
     };
   },
   beforeMount() {
-    this.$emit("update-header", INFOGRAPHIE_HEADER);
+    this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
     ArtworksProvider.provideArtworks().then(response => {

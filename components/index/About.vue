@@ -1,6 +1,6 @@
 <template>
   <div id="home-about">
-    <div class="home-about__profile">
+    <div class="home-about__profile below-banner">
       <avatar :pro="false" class="mb-4"/>
       <div class="home-about__welcome">Bienvenue sur mon site !</div>
       <div

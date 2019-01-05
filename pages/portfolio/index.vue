@@ -60,7 +60,7 @@ export default {
     this.designHeroUrl = ArtworksProvider.providePictureUrl("design-hero");
     this.codeHeroUrl = ArtworksProvider.providePictureUrl("code-hero");
 
-    this.$emit("update-header", {
+    this.$store.commit("setHeaderContent", {
       title: "Portfolio",
       description: this.description
     });

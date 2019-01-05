@@ -1,6 +1,6 @@
 <template>
   <!-- PROFILE -->
-  <v-card dark id="resume-profile" class="elevation-4">
+  <v-card dark id="resume-profile" class="below-banner">
     <avatar :pro="true" class="resume-profile__avatar"/>
     <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
     <h2 class="resume-profile__job headline">Développeur full-stack</h2>

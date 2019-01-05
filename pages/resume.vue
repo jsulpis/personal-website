@@ -1,12 +1,12 @@
 <template>
-  <v-card light color="grey lighten-4" class="hide-on-render pa-0">
+  <div class="grey lighten-3 hide-on-render pa-0">
     <about>{{ description }}</about>
     <j-tabs/>
     <experiences @experiences-loaded="showHiddenSection"/>
     <education/>
     <skills/>
     <contact/>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -54,6 +54,9 @@ export default {
       description:
         "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };
+  },
+  beforeMount() {
+    this.$store.commit("resetHeaderContent");
   },
   methods: {
     showHiddenSection() {
