@@ -1,16 +1,16 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
-    <nuxt-link :to="$route.fullPath + '/' + imgUrl">
-      <img :src="imgUrl | miniatureUrl" :alt="title" class="gallery-item__img">
+    <nuxt-link :to="$route.fullPath + '/' + artwork.urlTitle">
+      <img :src="responsivePictureUrl" :alt="artwork.title" class="gallery-item__img">
       <div class="gallery-item-overlay" v-show="!smallViewport">
-        <h3 class="gallery-item__title">{{ title }}</h3>
+        <h3 class="gallery-item__title">{{ artwork.title }}</h3>
         <div class="gallery-item__date">
           <v-icon small>date_range</v-icon>
-          {{ date }}
+          {{ this.artwork.creationDate | dateUsToEu }}
         </div>
         <div class="gallery-item__likes">
           <v-icon small>favorite_border</v-icon>
-          {{ likes }}
+          {{ artwork.likes }}
         </div>
       </div>
     </nuxt-link>
@@ -23,21 +23,42 @@ import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   props: {
-    title: String,
-    imgUrl: String,
-    disqusId: String,
-    disqusUrl: String,
-    date: String,
-    likes: Number
+    artwork: Object
   },
   computed: {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
+    },
+    responsivePictureUrl() {
+      return `${this.artwork.picture}?w=${this.responsivePictureSize}&h=${
+        this.responsivePictureSize
+      }&fit=thumb`;
+    },
+    responsivePictureSize() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return parseInt(window.innerWidth / 3);
+          break;
+        case "sm" || "md":
+          return parseInt(window.innerWidth / 4);
+          break;
+        case "lg" || "xl":
+          return parseInt(window.innerWidth / 6);
+          break;
+        default:
+          return 250;
+      }
     }
   },
   filters: {
-    miniatureUrl(url) {
-      return ArtworksProvider.provideMiniatureUrl(url);
+    dateUsToEu(date) {
+      // input : yyyy-mm-dd
+      // output: mm/yyyy
+      return date
+        .split("-")
+        .reverse()
+        .slice(1)
+        .join("/");
     }
   }
 };
