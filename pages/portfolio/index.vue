@@ -4,14 +4,14 @@
       <v-layout wrap justify-center>
         <nuxt-link :to="$route.fullPath + '/infographie'">
           <parallax-card
-            :data-image="designHeroUrl"
+            :img-url="designHeroUrl"
             title="Infographie"
             description="Voir mes réalisations 2D/3D."
           />
         </nuxt-link>
         <nuxt-link :to="$route.fullPath + '/code'">
           <parallax-card
-            :data-image="codeHeroUrl"
+            :img-url="codeHeroUrl"
             title="Code"
             description="Voir mes projets informatiques open-source."
           />
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import MediaService from "~/services/MediaService";
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
 import ArtworksProvider from "~/services/ArtworksProvider";
 import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals";
@@ -57,8 +58,12 @@ export default {
     };
   },
   beforeMount() {
-    this.designHeroUrl = ArtworksProvider.providePictureUrl("design-hero");
-    this.codeHeroUrl = ArtworksProvider.providePictureUrl("code-hero");
+    MediaService.getPictureUrl("design-hero").then(
+      url => (this.designHeroUrl = url)
+    );
+    MediaService.getPictureUrl("code-hero").then(
+      url => (this.codeHeroUrl = url)
+    );
 
     this.$store.commit("setHeaderContent", {
       title: "Portfolio",

@@ -9,7 +9,7 @@ https://codepen.io/andymerskin/pen/XNMWvQ -->
     ref="parallaxCard"
   >
     <div class="parallax-card" :style="cardStyle">
-      <img class="parallax-card__bg" :src="imgSource" :style="[cardBgTransform]">
+      <img class="parallax-card__bg" :src="imgUrl" :style="[cardBgTransform]">
       <div class="parallax-card__info">
         <h1 class="parallax-card__title">{{title}}</h1>
         <p class="parallax-card__description">{{description}}</p>
@@ -20,11 +20,10 @@ https://codepen.io/andymerskin/pen/XNMWvQ -->
 
 <script>
 export default {
-  props: { dataImage: String, title: String, description: String },
+  props: { imgUrl: String, title: String, description: String },
   data() {
     return {
       card: null,
-      imgSource: this.dataImage,
       width: 240,
       height: 320,
       mouseX: 0,

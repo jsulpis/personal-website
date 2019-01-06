@@ -5,15 +5,18 @@
 </template>
 
 <script>
-import { S3_WEBSITE_URL } from "~/assets/js/globals";
+import MediaService from "~/services/MediaService";
 
 export default {
   props: { pro: Boolean },
   data() {
     return {
-      avatarUrl:
-        S3_WEBSITE_URL + (this.pro ? "/portrait_pro.jpg" : "/portrait.jpg")
+      avatarUrl: ""
     };
+  },
+  mounted() {
+    const pictureName = "portrait" + (this.pro ? "-pro" : "");
+    MediaService.getPictureUrl(pictureName).then(url => (this.avatarUrl = url));
   }
 };
 </script>

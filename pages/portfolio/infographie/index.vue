@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      title: "Portfolio - " + INFOGRAPHIE_HEADER.description,
+      title: "Portfolio - " + INFOGRAPHIE_HEADER.title,
       pageUrl: SITE_ROOT_URL + this.$route.fullPath,
       description: INFOGRAPHIE_HEADER.description,
       artworks: []

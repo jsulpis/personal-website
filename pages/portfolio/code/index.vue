@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      title: "Portfolio - Code",
+      title: "Portfolio - " + CODE_HEADER.title,
       description: "Mes projets informatiques open-source.",
       repos: []
     };
