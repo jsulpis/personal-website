@@ -6,7 +6,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get(API_ROOT_URL + "/artworks/" + artworkName)
-        .then(response => resolve(response.data.Item))
+        .then(response => resolve(response.data))
         .catch(() => reject());
     });
   },

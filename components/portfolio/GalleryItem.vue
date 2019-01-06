@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { S3_PORTFOLIO_URL, SITE_ROOT_URL } from "~/assets/js/globals";
+import { dateUsToEu } from "~/filters/date";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
@@ -50,17 +50,7 @@ export default {
       }
     }
   },
-  filters: {
-    dateUsToEu(date) {
-      // input : yyyy-mm-dd
-      // output: mm/yyyy
-      return date
-        .split("-")
-        .reverse()
-        .slice(1)
-        .join("/");
-    }
-  }
+  filters: { dateUsToEu }
 };
 </script>
 
