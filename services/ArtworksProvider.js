@@ -1,11 +1,12 @@
 import axios from "axios";
-import { API_ROOT_URL } from "~/assets/js/globals";
+
+const artworksEndpoint = process.env.API_URL + "/artworks/";
 
 export default {
   provideArtwork(artworkName) {
     return new Promise((resolve, reject) => {
       axios
-        .get(API_ROOT_URL + "/artworks/" + artworkName)
+        .get(artworksEndpoint + artworkName)
         .then(response => resolve(response.data))
         .catch(() => reject());
     });
@@ -14,7 +15,7 @@ export default {
   provideArtworks() {
     return new Promise((resolve, reject) => {
       axios
-        .get(API_ROOT_URL + "/artworks")
+        .get(artworksEndpoint)
         .then(response => resolve(response.data))
         .catch(() => reject());
     });

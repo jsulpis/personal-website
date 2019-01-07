@@ -28,7 +28,6 @@
 <script>
 import marked from "marked";
 
-import { SITE_ROOT_URL } from "~/assets/js/globals";
 import { CODE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
@@ -56,7 +55,7 @@ export default {
       repoName: this.$route.params.repo,
       title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
       description: "README d'un de mes projets GitHub.",
-      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      pageUrl: process.env.URL + this.$route.fullPath,
       repoReadme: "",
       repoUrl: ""
     };

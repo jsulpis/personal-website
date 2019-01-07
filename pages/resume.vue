@@ -18,7 +18,7 @@ import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
 
-import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -38,7 +38,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + this.$route.fullPath
+          content: process.env.URL + this.$route.fullPath
         },
         {
           name: "description",

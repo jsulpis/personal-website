@@ -2,6 +2,11 @@ const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
 
+let modules = ["@nuxtjs/dotenv"];
+if (process.env.CONTEXT === "production") {
+  modules.push(["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]);
+}
+
 module.exports = {
   // Headers of the page
   head: {
@@ -38,8 +43,8 @@ module.exports = {
   },
   // Generate proper fallback pages
   generate: { fallback: true },
-  // Include Google Analytics module
-  modules: [["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]],
+  // Modules specified above
+  modules: modules,
   // Include Vuetify components
   plugins: ["~/plugins/vuetify.js"],
   // Include Vuetify style
@@ -104,6 +109,10 @@ module.exports = {
           }
         }
       }
+
+      config.node = {
+        fs: "empty"
+      };
     },
     // Fix some CSS issues (root font-size, gradients...)
     postcss: {

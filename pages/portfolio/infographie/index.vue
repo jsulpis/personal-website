@@ -11,7 +11,7 @@
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
-import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/assets/js/globals.js";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export const INFOGRAPHIE_HEADER = {
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       title: "Portfolio - " + INFOGRAPHIE_HEADER.title,
-      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      pageUrl: process.env.URL + this.$route.fullPath,
       description: INFOGRAPHIE_HEADER.description,
       artworks: []
     };

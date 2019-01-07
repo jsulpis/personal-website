@@ -25,7 +25,7 @@
 import MediaService from "~/services/MediaService";
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
 import ArtworksProvider from "~/services/ArtworksProvider";
-import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals";
+import { makePageTitle } from "~/assets/js/globals";
 
 export default {
   components: {
@@ -39,7 +39,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + this.$route.fullPath
+          content: process.env.URL + this.$route.fullPath
         },
         {
           name: "description",

@@ -1,6 +1,5 @@
 import axios from "axios";
 import Cookies from "~/services/CookiesService";
-import { API_ROOT_URL } from "~/assets/js/globals";
 
 export default class ArtworkLikesService {
   constructor(imgName) {
@@ -28,7 +27,7 @@ export default class ArtworkLikesService {
 
   buildUrl() {
     return (
-      API_ROOT_URL +
+      process.env.API_URL +
       "/artworks/" +
       this.imgName +
       (this.userLiked ? "/remove-like" : "/add-like")

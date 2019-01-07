@@ -47,7 +47,6 @@ import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 
 import { dateUsToEu } from "~/filters/date";
-import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
 import { INFOGRAPHIE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import ArtworksProvider from "~/services/ArtworksProvider";
@@ -76,7 +75,7 @@ export default {
     return {
       title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
       description: "Un élément de ma gallerie.",
-      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
+      pageUrl: process.env.URL + this.$route.fullPath,
       artwork: null
     };
   },
