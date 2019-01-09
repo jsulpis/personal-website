@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="avatar__img elevation-8" :src="avatarUrl" alt="profile_picture">
+    <img class="avatar__img elevation-8" :src="avatarUrl" height="175" width="175" alt="profile_picture">
   </div>
 </template>
 
@@ -11,10 +11,10 @@ export default {
   props: { pro: Boolean },
   data() {
     return {
-      avatarUrl: ""
+      avatarUrl: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
     };
   },
-  mounted() {
+  beforeMount() {
     const pictureName = "portrait" + (this.pro ? "-pro" : "");
     MediaService.getPictureUrl(pictureName).then(url => (this.avatarUrl = url));
   }
@@ -23,7 +23,6 @@ export default {
 
 <style >
 .avatar__img {
-  height: 11rem;
   border-radius: 50%;
   border: 5px solid #f5f5f5;
 }

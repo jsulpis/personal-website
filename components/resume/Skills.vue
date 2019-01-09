@@ -1,8 +1,8 @@
 <template>
   <!-- SKILLS -->
   <section id="resume-skills">
-    <h2 class="section-title">Compétences</h2>
     <v-container class="skills-container">
+      <h2 class="section-title">Compétences</h2>
       <v-expansion-panel expand>
         <!-- Loop on domains -->
         <v-expansion-panel-content v-for="(domain, index) in skillSet" :key="index">

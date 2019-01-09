@@ -21,7 +21,7 @@ export default {
 }
 
 .section-title {
-  margin: 1rem auto 2rem auto;
+  margin: 2rem auto;
   font-weight: 500;
 
   &::after {
