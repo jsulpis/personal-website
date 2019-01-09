@@ -26,8 +26,7 @@
 </template>
 
 <script>
-import marked from "marked";
-
+const md = require("markdown-it")({ html: true });
 import { CODE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
@@ -55,23 +54,21 @@ export default {
       repoName: this.$route.params.repo,
       title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
       description: "README d'un de mes projets GitHub.",
-      pageUrl: process.env.URL + this.$route.fullPath,
-      repoReadme: "",
-      repoUrl: ""
+      pageUrl: process.env.URL + this.$route.fullPath
     };
+  },
+  asyncData({ params }) {
+    return GitHubDataProvider.provideRepositoryData(params.repo).then(data => {
+      return {
+        repoReadme: md.render(data),
+        repoUrl: GitHubDataProvider.provideRepositoryUrl(params.repo)
+      };
+    });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", CODE_HEADER);
   },
   mounted() {
-    this.repoUrl = GitHubDataProvider.provideRepositoryUrl(
-      this.$route.params.repo
-    );
-    GitHubDataProvider.provideRepositoryData(this.repoName).then(
-      data => (this.repoReadme = marked(data))
-    );
-  },
-  updated() {
     $(".hide-on-render").addClass("show");
   }
 };
@@ -80,7 +77,7 @@ export default {
 <style lang="scss">
 .repo-btn {
   height: 30px;
-  margin: 1rem;
+  margin: 1rem auto;
 }
 .repo-readme {
   text-align: left;

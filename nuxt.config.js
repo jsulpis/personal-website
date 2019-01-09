@@ -2,7 +2,7 @@ const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
 
-let modules = ["@nuxtjs/dotenv", "@nuxtjs/markdownit"];
+let modules = ["@nuxtjs/dotenv"];
 if (process.env.CONTEXT === "production") {
   modules.push(["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]);
 }
@@ -45,10 +45,6 @@ module.exports = {
   generate: { fallback: true },
   // Modules specified above
   modules: modules,
-  markdownit: {
-    injected: true,
-    breaks: true
-  },
   // Include Vuetify components
   plugins: ["~/plugins/vuetify.js"],
   // Include Vuetify style

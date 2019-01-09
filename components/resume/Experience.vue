@@ -17,12 +17,13 @@
         v-if="!job.uniqueJob"
         class="timeline-content__duration"
       >{{ job.dateStart | dateFrShort }} - {{ job.dateEnd | dateFrShortIfExists }} &bull; {{ jobDuration }}</p>
-      <div class="timeline-content__description" v-html="$md.render(job.description)"/>
+      <div class="timeline-content__description" v-html="jobDescription"/>
     </div>
   </li>
 </template>
 
 <script>
+const md = require("markdown-it")({ breaks: true });
 import { dateFrShort } from "~/filters/date";
 
 export default {
@@ -45,6 +46,9 @@ export default {
         new Date(this.job.companyStart),
         this.job.companyEnd ? new Date(this.job.companyEnd) : new Date()
       );
+    },
+    jobDescription() {
+      return md.render(this.job.description);
     }
   },
   methods: {
