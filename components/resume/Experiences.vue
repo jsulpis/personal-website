@@ -2,39 +2,7 @@
   <!-- EXPERIENCES -->
   <j-section id="resume-experiences" title="Expériences">
     <ul class="timeline timeline-split">
-      <!-- Enedis -->
-      <experience
-        date="oct. 2018 - Aujourd'hui"
-        :duration="Math.floor((new Date() - new Date(2018, 9))/(1000*60*60*24*30)+1) + ' mois'"
-        jobTitle="Ingénieur études et développement"
-        company="SOLUTEC"
-        location="Région de Lyon, France"
-      >Consultant pour des missions orientées développement.</experience>
-
-      <!-- SOLUTEC -->
-      <experience
-        date="avr. 2018 - août 2018"
-        duration="5 mois"
-        jobTitle="Stagiaire développeur Android"
-        company="SOLUTEC"
-        location="Région de Lyon, France"
-        technos="Java, Android Architecture Components, Pattern MVVM, EasyAR, OpenGL|ES, OpenCV"
-        methodos="SCRUM"
-      >Pour un client de SOLUTEC, j'ai développé une application mobile pour automatiser et faciliter la maintenance de distributeurs automatiques bancaires en utilisant la réalité augmentée.</experience>
-
-      <!-- Polytechnique Montréal -->
-      <experience
-        date="juin 2017 - août 2017"
-        duration="3 mois"
-        jobTitle="Stagiaire de recherche en robotique mobile"
-        company="Polytechnique Montréal"
-        location="Région de Montréal, Canada"
-        technos="Python, Apache Spark, IBM Bluemix, Apache Kafka, Amazon Kinesis"
-      >
-        Pendant ce stage, j'ai implémenté un algorithme de localisation et cartographie simultanée (SLAM)
-        pour la robotique mobile. L'objectif était de distribuer les calculs sur un cluster pour gérer des gros volumes
-        de données.
-      </experience>
+      <experience v-for="(job, i) in jobs" :key="i" :job="job"/>
     </ul>
   </j-section>
 </template>
@@ -42,8 +10,13 @@
 <script>
 import Experience from "./Experience.vue";
 import JSection from "./JSection.vue";
+import concat from "lodash/concat";
+import groupBy from "lodash/groupBy";
 
 export default {
+  props: {
+    jobPositions: Array
+  },
   components: {
     Experience,
     JSection
@@ -51,6 +24,24 @@ export default {
   mounted() {
     // Send an event to the parent to display the page (hidden on load)
     this.$emit("experiences-loaded");
+  },
+  computed: {
+    jobs() {
+      let parsedJobs = [];
+      const jobsGroupedByCompany = groupBy(this.jobPositions, "companyName");
+      for (let i in jobsGroupedByCompany) {
+        let jobsInSameCompany = jobsGroupedByCompany[i];
+        jobsInSameCompany[0]["companyStart"] = jobsInSameCompany.slice(
+          -1
+        )[0].dateStart;
+        jobsInSameCompany[0]["companyEnd"] = jobsInSameCompany[0].dateEnd;
+        if (jobsInSameCompany.length === 1) {
+          jobsInSameCompany[0].uniqueJob = true;
+        }
+        parsedJobs = concat(parsedJobs, jobsInSameCompany);
+      }
+      return parsedJobs;
+    }
   }
 };
 </script>
@@ -67,6 +58,7 @@ export default {
 .timeline {
   line-height: 1.4em;
   list-style: none;
+  padding-left: 0;
   margin: 0;
 }
 
@@ -86,10 +78,21 @@ export default {
 .timeline-info {
   text-align: center;
   white-space: nowrap;
+  margin-bottom: 1rem;
 }
-.timeline-info__date {
+.timeline-info__company-name {
   margin: 0.25rem 0 0 0;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+.timeline-info__company-duration {
+  margin-bottom: 0;
+  font-size: 0.9em;
   font-weight: normal;
+}
+.timeline-info__company-location {
+  margin-bottom: 0.5rem;
+  font-size: 0.8em;
 }
 .timeline-info__logo {
   width: 100px;
@@ -104,18 +107,16 @@ export default {
   left: 0;
   width: 14px;
   &:before {
-    background: $mdc-theme-primary;
-    border: 3px solid transparent;
+    background: $material-color-grey-300;
     border-radius: 100%;
     content: "";
     display: block;
-    height: 15px;
+    height: 14px;
     position: absolute;
-    top: 4px;
-    left: 0;
-    width: 15px;
+    top: 6px;
+    left: 3px;
+    width: 14px;
     box-sizing: initial;
-    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   }
   &:after {
     content: "";
@@ -131,28 +132,28 @@ export default {
     content: none;
   }
 }
-.timeline-item:not(.period):hover .timeline-marker:before {
-  background: transparent;
-  border: 3px solid $mdc-theme-primary;
+.timeline-item--first .timeline-marker:before{
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  background: $mdc-theme-primary;
 }
 
 /*----- TIMELINE CONTENT -----*/
 .timeline-content {
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 
   .timeline-content__title {
     margin: 0;
-    line-height: 1.9rem;
+    font-weight: 500;
   }
 
-  .timeline-content__company {
-    margin: 0.25rem 0;
+  .timeline-content__duration {
+    margin: 0.1rem 0;
+    font-size: 0.9em;
   }
-  .timeline-content__location {
-    font-size: 13px;
-    font-weight: 400;
-    margin: 0.25rem 0 0.75rem 0;
-    line-height: 0.75rem;
+  .timeline-content__description {
+    margin-top: 0.35rem;
   }
   p:last-child {
     margin-bottom: 0;

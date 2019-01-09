@@ -7,7 +7,7 @@
       :description="resume.description"
     ></about>
     <j-tabs/>
-    <experiences @experiences-loaded="showHiddenSection"/>
+    <experiences :jobPositions="resume.jobPositions" @experiences-loaded="showHiddenSection"/>
     <education/>
     <skills/>
     <contact/>

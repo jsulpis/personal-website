@@ -20,11 +20,13 @@
     </p>
 
     <!-- Description -->
-    <p class="resume-profile__description">
-      <v-icon small>fas fa-quote-left</v-icon>
-      &nbsp;{{ description }}&nbsp;
-      <v-icon small>fas fa-quote-right</v-icon>
-    </p>
+    <cite>
+      <p class="resume-profile__description">
+        <v-icon small>fas fa-quote-left</v-icon>
+        &nbsp;{{ description }}&nbsp;
+        <v-icon small>fas fa-quote-right</v-icon>
+      </p>
+    </cite>
   </v-card>
 </template>
 

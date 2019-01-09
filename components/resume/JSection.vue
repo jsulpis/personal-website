@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss">
 .section-card {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .section-title {

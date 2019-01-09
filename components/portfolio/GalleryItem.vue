@@ -6,7 +6,7 @@
         <h3 class="gallery-item__title">{{ artwork.title }}</h3>
         <div class="gallery-item__date">
           <v-icon small>date_range</v-icon>
-          {{ this.artwork.creationDate | dateUsToEu }}
+          {{ this.artwork.creationDate | dateFrShort }}
         </div>
         <div class="gallery-item__likes">
           <v-icon small>favorite_border</v-icon>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { dateUsToEu } from "~/filters/date";
+import { dateFrShort } from "~/filters/date";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
@@ -50,7 +50,7 @@ export default {
       }
     }
   },
-  filters: { dateUsToEu }
+  filters: { dateFrShort }
 };
 </script>
 

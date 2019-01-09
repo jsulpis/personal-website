@@ -12,7 +12,7 @@
           <!-- date -->
           <div class="artwork__date">
             <v-icon>date_range</v-icon>
-            <span>{{ artwork.creationDate | dateUsToEu }}</span>
+            <span>{{ artwork.creationDate | dateFrShort }}</span>
           </div>
           <!-- Likes -->
           <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
@@ -46,7 +46,7 @@ import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 
-import { dateUsToEu } from "~/filters/date";
+import { dateFrShort } from "~/filters/date";
 import { INFOGRAPHIE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import ArtworksProvider from "~/services/ArtworksProvider";
@@ -88,7 +88,7 @@ export default {
       setTimeout(() => $(".hide-on-render").addClass("show"), 10);
     });
   },
-  filters: { dateUsToEu }
+  filters: { dateFrShort }
 };
 </script>
 
