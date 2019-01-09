@@ -9,7 +9,7 @@
     <j-tabs/>
     <experiences :jobPositions="resume.jobPositions" @experiences-loaded="showHiddenSection"/>
     <education/>
-    <skills/>
+    <skills :skills="resume.skills"/>
     <contact/>
   </div>
 </template>

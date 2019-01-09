@@ -5,20 +5,12 @@
       <h2 class="section-title">Compétences</h2>
       <v-expansion-panel expand>
         <!-- Loop on domains -->
-        <v-expansion-panel-content v-for="(domain, index) in skillSet" :key="index">
-          <div slot="header" class="domain__name">{{domain.name}}</div>
+        <v-expansion-panel-content v-for="(domain, index) in skills" :key="index">
+          <div slot="header" class="domain__name">{{ domain.name }}</div>
           <div class="skill-list">
-            <!-- Loop on subdomains -->
-            <div v-for="(subdomain, index) in domain.subdomains" :key="index">
-              <h4 v-if="subdomain.name != ''" class="domain__subtitle">{{ subdomain.name }}</h4>
-              <!-- Loop on skills -->
-              <div v-for="(skill, index) in subdomain.skills" :key="index" class="skill">
-                <img
-                  class="skill__icon"
-                  :src="skill.icon"
-                  :alt="'logo_' + skill.icon.split('.')[0]"
-                >
-              </div>
+            <!-- Loop on skills -->
+            <div v-for="(skill, index) in domain.items" :key="index" class="skill">
+              <img class="skill__icon" :src="skill.icon" :alt="'logo ' + skill.name" :title="skill.name">
             </div>
           </div>
         </v-expansion-panel-content>
@@ -30,17 +22,12 @@
 <script>
 import * as VExpansionPanel from "vuetify/es5/components/VExpansionPanel";
 import JSection from "./JSection.vue";
-import ResumeSkillsProvider from "~/services/resumeSkillsProvider";
 
 export default {
+  props: { skills: Array },
   components: {
     JSection,
     ...VExpansionPanel
-  },
-  data() {
-    return {
-      skillSet: ResumeSkillsProvider.provideSkills()
-    };
   }
 };
 </script>
@@ -48,7 +35,7 @@ export default {
 <style lang="scss">
 @import "~/assets/scss/variables.scss";
 
-$skill-item-size: 4rem;
+$skill-item-size: 64px;
 
 #resume-skills {
   .resume-skills__subtitle {
@@ -56,38 +43,6 @@ $skill-item-size: 4rem;
   }
   .domain__name {
     font-weight: 500;
-  }
-  .domain__subtitle {
-    position: relative;
-    margin: 1.5rem auto 0 auto;
-    font-weight: 500;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -3px;
-      left: -3px;
-      right: -3px;
-      height: 1px;
-      background-image: -webkit-linear-gradient(
-        left,
-        transparent,
-        $material-color-grey-400,
-        transparent
-      );
-      background-image: -moz-linear-gradient(
-        left,
-        transparent,
-        $material-color-grey-400,
-        transparent
-      );
-      background-image: -o-linear-gradient(
-        left,
-        transparent,
-        $material-color-grey-400,
-        transparent
-      );
-    }
   }
   .skill-list {
     border-top: 1px solid $material-color-grey-300;
