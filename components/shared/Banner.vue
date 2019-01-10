@@ -15,9 +15,7 @@ export default {
 </script>
 
 
-<style lang="scss">
-@import "~/assets/scss/variables.scss";
-
+<style>
 #banner {
   background-size: cover;
   background-position: center;

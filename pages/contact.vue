@@ -11,7 +11,7 @@
 <script>
 import ContactForm from "~/components/shared/ContactForm.vue";
 
-import { makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/utils/page";
 
 export default {
   components: {

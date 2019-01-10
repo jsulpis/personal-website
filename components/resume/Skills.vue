@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
+@import "~/assets/scss/theme.scss";
 
 $skill-item-size: 64px;
 

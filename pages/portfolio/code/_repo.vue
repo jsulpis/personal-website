@@ -28,7 +28,7 @@
 <script>
 const md = require("markdown-it")({ html: true });
 import { CODE_HEADER } from "./index";
-import { StringFormatter } from "~/assets/js/utils";
+import { formatWords } from "~/utils/string";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 import GithubService from "~/services/GithubService";
@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       repoName: this.$route.params.repo,
-      title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
+      title: formatWords(this.$route.params.repo),
       description: "README d'un de mes projets GitHub.",
       pageUrl: process.env.URL + this.$route.fullPath
     };

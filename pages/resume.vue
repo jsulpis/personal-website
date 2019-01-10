@@ -24,7 +24,7 @@ import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
 
 import ResumeService from "~/services/ResumeService";
-import { makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/utils/page";
 
 export default {
   components: {

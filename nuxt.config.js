@@ -45,8 +45,7 @@ module.exports = {
   generate: { fallback: true },
   // Modules specified above
   modules: modules,
-  // Include Vuetify components
-  plugins: ["~/plugins/vuetify.js"],
+  plugins: ["~/plugins/vuetify.js", "~/plugins/filters.js"],
   // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
   // Disable the default progress bar

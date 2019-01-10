@@ -57,8 +57,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
+@import "~/assets/scss/theme.scss";
 @import url("https://fonts.googleapis.com/css?family=Salsa");
+
+$banner-height: 161px;
 
 html {
   font-size: initial !important;

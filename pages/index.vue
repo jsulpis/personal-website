@@ -9,7 +9,7 @@
 import Home from "~/components/index/Home";
 import About from "~/components/index/About";
 
-import { makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/utils/page";
 
 export default {
   components: {

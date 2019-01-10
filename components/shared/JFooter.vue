@@ -28,7 +28,7 @@ import VFooter from "vuetify/es5/components/VFooter";
 import SocialNetworks from "./SocialNetworks";
 import ScrollTop from "./ScrollTop";
 
-import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
+import * as SOCIAL_NETWORKS from "~/assets/data/socialNetworks.json";
 
 export default {
   components: {

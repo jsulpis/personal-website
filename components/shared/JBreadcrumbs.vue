@@ -8,7 +8,7 @@
 
 <script>
 import * as VBreadcrumbs from "vuetify/es5/components/VBreadcrumbs";
-import { StringFormatter } from "~/assets/js/utils";
+import { formatWords } from "~/utils/string";
 
 export default {
   components: { ...VBreadcrumbs },
@@ -44,7 +44,7 @@ export default {
       return this.pathArray.slice(0, level + 1).join("/");
     },
     getNameOfLevel(level) {
-      return StringFormatter.beautifyWords(this.pathArray[level], "-");
+      return formatWords(this.pathArray[level]);
     }
   }
 };

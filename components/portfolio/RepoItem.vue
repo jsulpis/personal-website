@@ -8,7 +8,7 @@
 
     <v-card-title class="repo-item__card-title">
       <div>
-        <h3 class="repo-item__title headline mb-0">{{repo.name | beautify}}</h3>
+        <h3 class="repo-item__title headline mb-0">{{repo.name | formatWords}}</h3>
         <p class="repo-item__description body-2">{{repo.description}}</p>
       </div>
     </v-card-title>
@@ -50,16 +50,6 @@ export default {
         this.repo.default_branch +
         "/preview.png"
       );
-    }
-  },
-  filters: {
-    beautify(text) {
-      return text != ""
-        ? text
-            .split("-")
-            .map(word => word[0].toUpperCase() + word.slice(1))
-            .join(" ")
-        : "";
     }
   },
   methods: {

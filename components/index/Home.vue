@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { SCROLLING_OPTIONS } from "~/assets/js/globals";
+import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 import SocialNetworks from "~/components/shared/SocialNetworks";
 
 const BANNER_HEIGHT = 161;

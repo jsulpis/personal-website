@@ -25,7 +25,7 @@
 import MediaService from "~/services/MediaService";
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
 import ArtworkService from "~/services/ArtworkService";
-import { makePageTitle } from "~/assets/js/globals";
+import { makePageTitle } from "~/utils/page";
 
 export default {
   components: {

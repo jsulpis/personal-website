@@ -46,9 +46,8 @@ import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 
-import { dateFrShort } from "~/filters/date";
 import { INFOGRAPHIE_HEADER } from "./index";
-import { StringFormatter } from "~/assets/js/utils";
+import { formatWords } from "~/utils/string";
 import ArtworkService from "~/services/ArtworkService";
 
 export default {
@@ -73,28 +72,29 @@ export default {
   },
   data() {
     return {
-      title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
+      title: formatWords(this.$route.params.title),
       description: "Un élément de ma gallerie.",
-      pageUrl: process.env.URL + this.$route.fullPath,
-      artwork: null
+      pageUrl: process.env.URL + this.$route.fullPath
     };
+  },
+  asyncData({ params }) {
+    return ArtworkService.getArtwork(params.title).then(response => {
+      return { artwork: response };
+    });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    ArtworkService.getArtwork(this.$route.params.title).then(response => {
-      this.artwork = response;
-      setTimeout(() => $(".hide-on-render").addClass("show"), 10);
-    });
-  },
-  filters: { dateFrShort }
+    $(".hide-on-render").addClass("show");
+  }
 };
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
+@import "~/assets/scss/theme.scss";
 @import "~/assets/scss/mixins.scss";
+
 .artwork__ {
   &title {
     @include font-title;

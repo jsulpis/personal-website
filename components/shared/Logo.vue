@@ -5,8 +5,6 @@
 </template>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
-
 #personal-logo {
   height: 60px;
   -webkit-filter: drop-shadow(0 0 3px #fff);

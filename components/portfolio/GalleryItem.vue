@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import { dateFrShort } from "~/filters/date";
-
 export default {
   props: {
     artwork: Object
@@ -48,8 +46,7 @@ export default {
           return 250;
       }
     }
-  },
-  filters: { dateFrShort }
+  }
 };
 </script>
 

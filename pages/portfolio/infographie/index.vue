@@ -11,7 +11,7 @@
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
-import { makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/utils/page";
 import ArtworkService from "~/services/ArtworkService";
 
 export const INFOGRAPHIE_HEADER = {
