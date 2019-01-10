@@ -22,38 +22,13 @@
 </template>
 
 <script>
-import MediaService from "~/services/MediaService";
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
+import MediaService from "~/services/MediaService";
 import ArtworkService from "~/services/ArtworkService";
-import { makePageTitle } from "~/utils/page";
 
 export default {
   components: {
     ParallaxCard
-  },
-  head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: process.env.URL + this.$route.fullPath
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
-  },
-  data() {
-    return {
-      title: makePageTitle("Portfolio"),
-      description: "Quelques projets réalisés sur mon temps libre."
-    };
   },
   asyncData() {
     return MediaService.getPictureUrl("design-hero,code-hero").then(urls => {
@@ -61,12 +36,6 @@ export default {
         designHeroUrl: urls[0],
         codeHeroUrl: urls[1]
       };
-    });
-  },
-  beforeMount() {
-    this.$store.commit("setHeaderContent", {
-      title: "Portfolio",
-      description: this.description
     });
   },
   mounted() {

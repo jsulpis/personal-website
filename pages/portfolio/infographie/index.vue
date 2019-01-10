@@ -10,9 +10,9 @@
 <script>
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
-
-import { makePageTitle } from "~/utils/page";
 import ArtworkService from "~/services/ArtworkService";
+import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
 
 export const INFOGRAPHIE_HEADER = {
   title: "Infographie",
@@ -25,22 +25,7 @@ export default {
     GalleryItem
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: this.pageUrl
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {

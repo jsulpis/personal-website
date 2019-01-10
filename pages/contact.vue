@@ -10,34 +10,20 @@
 
 <script>
 import ContactForm from "~/components/shared/ContactForm.vue";
-
 import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: {
     ContactForm
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: process.env.URL + this.$route.fullPath
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
       title: makePageTitle("Contact"),
+      pageUrl: process.env.URL + this.$route.fullPath,
       description:
         "Vous pouvez utiliser ce formulaire pour m'envoyer vos remarques, questions, etc."
     };

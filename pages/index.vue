@@ -8,8 +8,8 @@
 <script>
 import Home from "~/components/index/Home";
 import About from "~/components/index/About";
-
 import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: {
@@ -17,22 +17,12 @@ export default {
     About
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: process.env.URL },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
       title: makePageTitle("Accueil"),
+      pageUrl: process.env.URL,
       description:
         "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
     };

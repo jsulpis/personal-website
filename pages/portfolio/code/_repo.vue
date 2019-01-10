@@ -27,27 +27,17 @@
 
 <script>
 const md = require("markdown-it")({ html: true });
-import { CODE_HEADER } from "./index";
-import { formatWords } from "~/utils/string";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 import GithubService from "~/services/GithubService";
+import { CODE_HEADER } from "./index";
+import { formatWords } from "~/utils/string";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: { JBreadcrumbs, DisqusPlugin },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: this.pageUrl },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {

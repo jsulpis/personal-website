@@ -22,9 +22,9 @@ import Experiences from "~/components/resume/Experiences.vue";
 import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
-
 import ResumeService from "~/services/ResumeService";
 import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: {
@@ -37,26 +37,12 @@ export default {
     Contact
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: process.env.URL + this.$route.fullPath
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
       title: makePageTitle("CV"),
+      pageUrl: process.env.URL + this.$route.fullPath,
       description:
         "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };

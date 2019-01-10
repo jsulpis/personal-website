@@ -3,9 +3,25 @@
 </template>
 
 <script>
+import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
+
 export default {
-  mounted() {
-    $(".hide-on-render").addClass("show");
+  head() {
+    return makePageMetadata(this.title, this.pageUrl, this.description);
+  },
+  data() {
+    return {
+      title: makePageTitle("Portfolio"),
+      pageUrl: process.env.URL + this.$route.fullPath,
+      description: "Quelques projets réalisés sur mon temps libre."
+    };
+  },
+  beforeMount() {
+    this.$store.commit("setHeaderContent", {
+      title: "Portfolio",
+      description: this.description
+    });
   }
 };
 </script>
