@@ -6,7 +6,6 @@ export default {
       axios
         .get(process.env.API_URL + "/resume")
         .then(response => resolve(response.data))
-        .catch(() => reject("erreur"));
     });
   },
 };

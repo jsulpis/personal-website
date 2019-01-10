@@ -12,7 +12,7 @@ import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 
 import { makePageTitle } from "~/assets/js/globals.js";
-import ArtworksProvider from "~/services/ArtworksProvider";
+import ArtworkService from "~/services/ArtworkService";
 
 export const INFOGRAPHIE_HEADER = {
   title: "Infographie",
@@ -54,7 +54,7 @@ export default {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    ArtworksProvider.provideArtworks().then(response => {
+    ArtworkService.getArtworks().then(response => {
       this.artworks = response;
 
       // Give a bit of time to fill the artworks array and then fade them in

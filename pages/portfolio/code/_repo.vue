@@ -31,7 +31,7 @@ import { CODE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
-import GitHubDataProvider from "~/services/GitHubDataProvider";
+import GithubService from "~/services/GithubService";
 
 export default {
   components: { JBreadcrumbs, DisqusPlugin },
@@ -58,10 +58,10 @@ export default {
     };
   },
   asyncData({ params }) {
-    return GitHubDataProvider.provideRepositoryData(params.repo).then(data => {
+    return GithubService.getRepositoryData(params.repo).then(data => {
       return {
         repoReadme: md.render(data),
-        repoUrl: GitHubDataProvider.provideRepositoryUrl(params.repo)
+        repoUrl: GithubService.getRepositoryUrl(params.repo)
       };
     });
   },

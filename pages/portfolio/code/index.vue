@@ -19,7 +19,7 @@ import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 
-import GitHubDataProvider from "~/services/GitHubDataProvider";
+import GithubService from "~/services/GithubService";
 
 export const CODE_HEADER = {
   title: "Code",
@@ -62,7 +62,7 @@ export default {
     this.$store.commit("setHeaderContent", CODE_HEADER);
   },
   mounted() {
-    GitHubDataProvider.provideRepositories().then(response => {
+    GithubService.getRepositories().then(response => {
       this.repos = response;
       this.showItemsWithDelay(10);
     });

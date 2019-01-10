@@ -1,20 +1,19 @@
 import axios from "axios";
 
 export default {
-  provideRepositories() {
+  getRepositories() {
     return new Promise((resolve, reject) => {
       axios
         .get("https://api.github.com/users/jsulpis/repos")
         .then(response => resolve(response.data.filter(repo => !repo.archived)))
-        .catch(() => reject());
     });
   },
 
-  provideRepositoryUrl(repoName) {
+  getRepositoryUrl(repoName) {
     return "https://github.com/jsulpis/" + repoName;
   },
 
-  provideDefaultBranch(repoName) {
+  getDefaultBranch(repoName) {
     return new Promise((resolve, reject) => {
       axios
         .get("https://api.github.com/repos/jsulpis/" + repoName)
@@ -22,9 +21,9 @@ export default {
     });
   },
 
-  provideRepositoryData(repoName) {
+  getRepositoryData(repoName) {
     return new Promise((resolve, reject) => {
-      this.provideDefaultBranch(repoName).then(defaultBranch =>
+      this.getDefaultBranch(repoName).then(defaultBranch =>
         axios
           .get(
             "https://raw.githubusercontent.com/jsulpis/" +

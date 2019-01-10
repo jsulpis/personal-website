@@ -24,7 +24,7 @@
 <script>
 import MediaService from "~/services/MediaService";
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
-import ArtworksProvider from "~/services/ArtworksProvider";
+import ArtworkService from "~/services/ArtworkService";
 import { makePageTitle } from "~/assets/js/globals";
 
 export default {
@@ -52,19 +52,18 @@ export default {
   data() {
     return {
       title: makePageTitle("Portfolio"),
-      designHeroUrl: "",
-      codeHeroUrl: "",
       description: "Quelques projets réalisés sur mon temps libre."
     };
   },
+  asyncData() {
+    return MediaService.getPictureUrl("design-hero,code-hero").then(urls => {
+      return {
+        designHeroUrl: urls[0],
+        codeHeroUrl: urls[1]
+      };
+    });
+  },
   beforeMount() {
-    MediaService.getPictureUrl("design-hero").then(
-      url => (this.designHeroUrl = url)
-    );
-    MediaService.getPictureUrl("code-hero").then(
-      url => (this.codeHeroUrl = url)
-    );
-
     this.$store.commit("setHeaderContent", {
       title: "Portfolio",
       description: this.description

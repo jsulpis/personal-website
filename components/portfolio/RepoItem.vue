@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import GitHubDataProvider from "~/services/GitHubDataProvider";
-
 export default {
   props: ["repo"],
   data() {

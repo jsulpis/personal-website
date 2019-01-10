@@ -49,7 +49,7 @@ import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 import { dateFrShort } from "~/filters/date";
 import { INFOGRAPHIE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
-import ArtworksProvider from "~/services/ArtworksProvider";
+import ArtworkService from "~/services/ArtworkService";
 
 export default {
   components: {
@@ -83,7 +83,7 @@ export default {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
+    ArtworkService.getArtwork(this.$route.params.title).then(response => {
       this.artwork = response;
       setTimeout(() => $(".hide-on-render").addClass("show"), 10);
     });

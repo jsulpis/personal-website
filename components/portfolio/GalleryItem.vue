@@ -19,7 +19,6 @@
 
 <script>
 import { dateFrShort } from "~/filters/date";
-import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
   props: {

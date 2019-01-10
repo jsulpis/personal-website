@@ -66,7 +66,6 @@ export default class EmailService {
         axios
           .post(process.env.API_URL + "/contact", emailObject)
           .then(() => resolve())
-          .catch(() => reject());
       });
     }
   }
