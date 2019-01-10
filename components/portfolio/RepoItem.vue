@@ -2,7 +2,7 @@
   <v-card class="repo-item">
     <div class="repo-item__media">
       <nuxt-link :to="$route.fullPath + '/' + repo.name">
-        <img :src="repoPictureUrl">
+        <img :src="pictureUrl" onerror="this.onerror=null;this.src='/img/github-octocat.png';">
       </nuxt-link>
     </div>
 
@@ -34,17 +34,24 @@
 import GitHubDataProvider from "~/services/GitHubDataProvider";
 
 export default {
-  props: ["repoProp"],
+  props: ["repo"],
   data() {
     return {
-      repo: { name: "" },
-      repoPictureUrl: "",
       showLicense: false
     };
   },
   computed: {
     license() {
       return this.repo.license != null ? this.repo.license.spdx_id : "";
+    },
+    pictureUrl() {
+      return (
+        "https://raw.githubusercontent.com/jsulpis/" +
+        this.repo.name +
+        "/" +
+        this.repo.default_branch +
+        "/preview.png"
+      );
     }
   },
   filters: {
@@ -67,21 +74,9 @@ export default {
     }
   },
   mounted() {
-    this.repo = this.repoProp;
     this.setLicenseDisplay();
     window.addEventListener("orientationchange", () =>
       setTimeout(() => this.setLicenseDisplay(), 100)
-    );
-
-    const defaultRepoPictureUrl =
-      "https://raw.githubusercontent.com/jsulpis/" +
-      this.repo.name +
-      "/" +
-      this.repo.default_branch +
-      "/preview.png";
-    this.repoPictureUrl = defaultRepoPictureUrl;
-    GitHubDataProvider.checkRepoPictureUrl(defaultRepoPictureUrl).then(
-      verifiedPictureUrl => (this.repoPictureUrl = verifiedPictureUrl)
     );
   }
 };

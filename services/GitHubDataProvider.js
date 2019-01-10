@@ -44,14 +44,4 @@ export default {
       );
     });
   },
-
-  checkRepoPictureUrl(pictureUrl) {
-    const defaultPictureUrl = "/img/github-octocat.png";
-    return new Promise((resolve, reject) => {
-      axios
-        .get(pictureUrl)
-        .then(() => resolve(pictureUrl))
-        .catch(() => resolve(defaultPictureUrl));
-    });
-  }
 };

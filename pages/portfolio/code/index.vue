@@ -3,7 +3,7 @@
     <j-breadcrumbs/>
     <v-layout wrap>
       <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
-        <repo-item class="portfolio-code__item" :repoProp="repo"/>
+        <repo-item class="portfolio-code__item" :repo="repo"/>
       </v-flex>
 
       <v-flex xs12 class="portfolio-code__progress">
