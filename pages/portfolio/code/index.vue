@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import GithubService from "~/services/GithubService";
@@ -29,7 +28,6 @@ export const CODE_HEADER = {
 export default {
   components: {
     RepoItem,
-    VProgressCircular,
     JBreadcrumbs
   },
   head() {

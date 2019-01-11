@@ -10,7 +10,12 @@
           <div class="skill-list">
             <!-- Loop on skills -->
             <div v-for="(skill, index) in domain.items" :key="index" class="skill">
-              <img class="skill__icon" :src="skill.icon" :alt="'logo ' + skill.name" :title="skill.name">
+              <img
+                class="skill__icon"
+                :src="skill.icon"
+                :alt="'logo ' + skill.name"
+                :title="skill.name"
+              >
             </div>
           </div>
         </v-expansion-panel-content>
@@ -20,15 +25,8 @@
 </template>
 
 <script>
-import * as VExpansionPanel from "vuetify/es5/components/VExpansionPanel";
-import JSection from "./JSection.vue";
-
 export default {
-  props: { skills: Array },
-  components: {
-    JSection,
-    ...VExpansionPanel
-  }
+  props: { skills: Array }
 };
 </script>
 

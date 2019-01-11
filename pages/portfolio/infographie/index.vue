@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
 import ArtworkService from "~/services/ArtworkService";
 import { makePageTitle } from "~/utils/page";
@@ -21,7 +20,6 @@ export const INFOGRAPHIE_HEADER = {
 
 export default {
   components: {
-    VProgressCircular,
     GalleryItem
   },
   head() {

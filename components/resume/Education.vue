@@ -86,7 +86,6 @@
 </template>
 
 <script>
-import JSection from "./JSection.vue";
 import EducationCourse from "./EducationCourse";
 
 const EMSE_COURSES = {
@@ -109,7 +108,6 @@ const CPS2_COURSES = {
 
 export default {
   components: {
-    JSection,
     EducationCourse
   },
   data() {

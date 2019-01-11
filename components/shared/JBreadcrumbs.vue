@@ -7,11 +7,9 @@
 </template>
 
 <script>
-import * as VBreadcrumbs from "vuetify/es5/components/VBreadcrumbs";
 import { formatWords } from "~/utils/string";
 
 export default {
-  components: { ...VBreadcrumbs },
   computed: {
     items() {
       const items = [];

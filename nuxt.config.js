@@ -1,6 +1,6 @@
-const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
+const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 
 let modules = ["@nuxtjs/dotenv"];
 if (process.env.CONTEXT === "production") {
@@ -53,22 +53,11 @@ module.exports = {
 
   // Build configuration
   build: {
-    plugins: [new webpack.ProvidePlugin({ $: "jquery" })],
-    // Include Vuetify components a-la-carte
-    babel: {
-      plugins: [
-        [
-          "transform-imports",
-          {
-            vuetify: {
-              transform: "vuetify/es5/components/${member}",
-              preventFullImport: true
-            }
-          }
-        ]
-      ]
-    },
-    vendor: ["jquery", "~/plugins/vuetify.js"],
+    transpile: [/^vuetify/],
+    plugins: [
+      new webpack.ProvidePlugin({ $: "jquery" }),
+      new VuetifyLoaderPlugin()
+    ],
     extractCSS: true,
     cssSourceMap: false,
     // Run ESLint on save
@@ -89,37 +78,9 @@ module.exports = {
         ];
       }
 
-      // Include node_modules in scss path
-      const vueLoader = config.module.rules.find(
-        rule => rule.loader === "vue-loader"
-      );
-      vueLoader.options.loaders.scss =
-        "vue-style-loader!css-loader!sass-loader?" +
-        JSON.stringify({
-          includePaths: [path.resolve(__dirname), "node_modules"]
-        });
-      for (const rule of config.module.rules) {
-        if (rule.use) {
-          for (const use of rule.use) {
-            if (use.loader === "sass-loader") {
-              use.options = use.options || {};
-              use.options.includePaths = ["node_modules"];
-            }
-          }
-        }
-      }
-
       config.node = {
         fs: "empty"
       };
-    },
-    // Fix some CSS issues (root font-size, gradients...)
-    postcss: {
-      plugins: {
-        "postcss-custom-properties": {
-          warnings: false
-        }
-      }
     }
   }
 };

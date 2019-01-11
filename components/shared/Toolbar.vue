@@ -11,13 +11,11 @@
 </template>
 
 <script>
-import VMenu from "vuetify/es5/components/VMenu";
-
 import ToolbarBtn from "./ToolbarBtn";
 
 export default {
   props: { items: Array },
-  components: { VMenu, ToolbarBtn }
+  components: { ToolbarBtn }
 };
 </script>
 
