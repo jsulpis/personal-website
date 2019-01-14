@@ -57,7 +57,6 @@ export default {
   position: relative;
   padding: 0 !important;
   line-height: 0;
-  display: none;
   text-shadow: 0 0 1px black;
 
   /* When you mouse over the container, fade in the overlay */

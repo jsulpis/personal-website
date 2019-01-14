@@ -1,8 +1,7 @@
 <template>
-  <v-container fluid grid-list-xs id="gallery">
+  <v-container fluid grid-list-xs id="gallery" class="hideable hideable--hidden">
     <v-layout row wrap id="gallery-layout">
       <gallery-item v-for="(artwork, i) in artworks" :key="i" :artwork="artwork"/>
-      <v-progress-circular indeterminate size="70" color="primary" id="gallery-progress"/>
     </v-layout>
   </v-container>
 </template>
@@ -39,24 +38,8 @@ export default {
   mounted() {
     ArtworkService.getArtworks().then(response => {
       this.artworks = response;
-
-      // Give a bit of time to fill the artworks array and then fade them in
-      // The call to the function setTimeout itself can be long enough to delay the execution...
-      this.showGalleryWithDelay(10);
     });
-  },
-  methods: {
-    showGalleryWithDelay(delay) {
-      // Fade in each gallery item one after another
-      setTimeout(() => {
-        $("#gallery-progress").hide();
-        $(".gallery-item").each(function(index) {
-          $(this)
-            .delay(20 * index)
-            .fadeIn();
-        });
-      }, delay);
-    }
+    $("#gallery").removeClass("hideable--hidden");
   }
 };
 </script>
@@ -70,12 +53,5 @@ export default {
 
 #gallery-layout {
   flex-grow: initial;
-}
-
-#gallery-progress {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 </style>
