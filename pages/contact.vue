@@ -31,9 +31,6 @@ export default {
       title: "Contact",
       description: this.description
     });
-  },
-  mounted() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

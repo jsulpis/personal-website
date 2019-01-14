@@ -31,7 +31,7 @@ export default {
       return this.$vuetify.breakpoint.xsOnly;
     },
     comingFromAnotherPage() {
-      return $("#footer")[0].classList.contains("show");
+      return this.$store.state.appLoaded;
     }
   },
   methods: {

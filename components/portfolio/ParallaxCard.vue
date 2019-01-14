@@ -2,7 +2,7 @@
 https://codepen.io/andymerskin/pen/XNMWvQ -->
 <template>
   <div
-    class="parallax-card-wrap hide-on-render"
+    class="parallax-card-wrap"
     @mousemove="handleMouseMove"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"

@@ -21,10 +21,6 @@ export default {
     Experience,
     JSection
   },
-  mounted() {
-    // Send an event to the parent to display the page (hidden on load)
-    this.$emit("experiences-loaded");
-  },
   computed: {
     jobs() {
       let parsedJobs = [];

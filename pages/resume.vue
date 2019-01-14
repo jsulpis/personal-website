@@ -1,5 +1,5 @@
 <template>
-  <div class="grey lighten-3 pa-0 hide-on-render">
+  <div class="pa-0">
     <about
       :title="resume.title"
       :jobTitle="resume.jobTitle"
@@ -7,7 +7,7 @@
       :description="resume.description"
     ></about>
     <j-tabs/>
-    <experiences :jobPositions="resume.jobPositions" @experiences-loaded="showHiddenSection"/>
+    <experiences :jobPositions="resume.jobPositions"/>
     <education/>
     <skills :skills="resume.skills"/>
     <contact/>
@@ -52,14 +52,6 @@ export default {
   },
   beforeMount() {
     this.$store.commit("resetHeaderContent");
-  },
-  methods: {
-    showHiddenSection() {
-      $(".hide-on-render").addClass("show");
-    }
-  },
-  mounted() {
-    setTimeout(() => $(".hide-on-render").addClass("show"), 1000);
   }
 };
 </script>

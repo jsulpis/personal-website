@@ -71,9 +71,6 @@ export default {
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
-  },
-  mounted() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

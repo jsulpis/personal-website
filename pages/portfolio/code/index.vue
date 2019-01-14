@@ -50,9 +50,6 @@ export default {
       this.showItemsWithDelay(10);
     });
   },
-  updated() {
-    $(".hide-on-render").addClass("show");
-  },
   methods: {
     showItemsWithDelay(delay) {
       // Fade in each gallery item one after another

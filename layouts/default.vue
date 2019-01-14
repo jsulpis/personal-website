@@ -1,15 +1,15 @@
 <template>
-  <v-app light>
-    <MenuWrapper class="hide-on-render"/>
+  <v-app light class="hideable hideable--hidden">
+    <MenuWrapper/>
     <v-content class="push-footer">
-      <banner class="hide-on-render"/>
+      <banner/>
       <logo/>
-      <page-header class="hide-on-render" :title="headerTitle" :description="headerDescription"></page-header>
-      <div class="page-content hide-on-render">
+      <page-header class="hideable" :title="headerTitle" :description="headerDescription"></page-header>
+      <div class="page-content">
         <nuxt/>
       </div>
     </v-content>
-    <j-footer class="hide-on-render"/>
+    <j-footer/>
     <cookies/>
   </v-app>
 </template>
@@ -51,9 +51,13 @@ export default {
   watch: {
     $route(to, from) {
       if (to.path === "/") {
-        $(".page-content, .page-header").removeClass("show");
+        $(".page-header").addClass("hideable--hidden");
       }
     }
+  },
+  mounted() {
+    $("#app").removeClass("hideable--hidden");
+    this.$store.commit("setApplicationLoaded");
   }
 };
 </script>
@@ -78,12 +82,12 @@ a {
   font-weight: 600;
 }
 
-.hide-on-render {
-  opacity: 0;
+.hideable {
+  opacity: 1;
   transition: opacity 0.2s ease-in-out;
 
-  &.show {
-    opacity: 1;
+  &--hidden {
+    opacity: 0;
   }
 }
 

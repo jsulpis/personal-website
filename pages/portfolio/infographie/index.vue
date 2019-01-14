@@ -45,9 +45,6 @@ export default {
       this.showGalleryWithDelay(10);
     });
   },
-  updated() {
-    $(".hide-on-render").addClass("show");
-  },
   methods: {
     showGalleryWithDelay(delay) {
       // Fade in each gallery item one after another

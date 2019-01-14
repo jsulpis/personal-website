@@ -57,9 +57,6 @@ export default {
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", CODE_HEADER);
-  },
-  mounted() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

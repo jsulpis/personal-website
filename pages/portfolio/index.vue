@@ -35,9 +35,6 @@ export default {
         codeHeroUrl: urls[1]
       };
     });
-  },
-  mounted() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

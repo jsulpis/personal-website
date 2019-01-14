@@ -2,7 +2,8 @@ export const state = () => ({
   header: {
     title: "",
     description: ""
-  }
+  },
+  appLoaded: false
 });
 
 export const mutations = {
@@ -13,5 +14,8 @@ export const mutations = {
   resetHeaderContent(state) {
     state.header.title = "";
     state.header.description = "";
+  },
+  setApplicationLoaded(state) {
+    state.appLoaded = true;
   }
 };

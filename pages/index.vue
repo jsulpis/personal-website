@@ -1,7 +1,7 @@
 <template>
   <div>
     <home v-on:home-screen-loaded="showHiddenSection"/>
-    <about class="hide-on-render"/>
+    <about class="hideable hideable--hidden"/>
   </div>
 </template>
 
@@ -32,11 +32,8 @@ export default {
   },
   methods: {
     showHiddenSection() {
-      $(".hide-on-render").addClass("show");
+      $(".hideable--hidden").removeClass("hideable--hidden");
     }
-  },
-  mounted() {
-    setTimeout(() => $(".hide-on-render").addClass("show"), 1000);
   }
 };
 </script>
