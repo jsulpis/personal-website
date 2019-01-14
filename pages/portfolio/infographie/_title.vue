@@ -1,44 +1,42 @@
 <template>
-  <div>
-    <v-container class="container--card hide-on-render" v-if="artwork">
-      <j-breadcrumbs/>
-      <section class="artwork__section">
-        <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
+  <v-container class="container--card" v-if="artwork">
+    <j-breadcrumbs/>
+    <section class="artwork__section">
+      <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
 
-        <!-- Image metadata -->
-        <div class="artwork__data">
-          <!-- description -->
-          <p class="artwork__description">{{ artwork.description }}</p>
-          <!-- date -->
-          <div class="artwork__date">
-            <v-icon>date_range</v-icon>
-            <span>{{ artwork.creationDate | dateFrShort }}</span>
-          </div>
-          <!-- Likes -->
-          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+      <!-- Image metadata -->
+      <div class="artwork__data">
+        <!-- description -->
+        <p class="artwork__description">{{ artwork.description }}</p>
+        <!-- date -->
+        <div class="artwork__date">
+          <v-icon>date_range</v-icon>
+          <span>{{ artwork.creationDate | dateFrShort }}</span>
         </div>
+        <!-- Likes -->
+        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+      </div>
 
-        <!-- Image -->
-        <a :href="artwork.picture" target="_blank">
-          <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+      <!-- Image -->
+      <a :href="artwork.picture" target="_blank">
+        <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+      </a>
+    </section>
+
+    <!-- Softwares -->
+    <section class="artwork__section">
+      <h3 class="artwork__softwares">Logiciels:</h3>
+      <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
+        <a :href="software.url">
+          <img :src="software.logo" :alt="software">
         </a>
-      </section>
+        <p>{{ software.name }}</p>
+      </div>
+    </section>
 
-      <!-- Softwares -->
-      <section class="artwork__section">
-        <h3 class="artwork__softwares">Logiciels:</h3>
-        <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
-          <a :href="software.url">
-            <img :src="software.logo" :alt="software">
-          </a>
-          <p>{{ software.name }}</p>
-        </div>
-      </section>
-
-      <!-- Disqus plugin -->
-      <disqus-plugin :identifier="artwork.id" :url="pageUrl" :title="title"/>
-    </v-container>
-  </div>
+    <!-- Disqus plugin -->
+    <disqus-plugin :identifier="artwork.id" :url="pageUrl" :title="title"/>
+  </v-container>
 </template>
 
 <script>

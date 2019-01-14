@@ -1,5 +1,5 @@
 <template>
-  <div class="grey lighten-3 hide-on-render pa-0">
+  <div class="grey lighten-3 pa-0 hide-on-render">
     <about
       :title="resume.title"
       :jobTitle="resume.jobTitle"
@@ -57,6 +57,9 @@ export default {
     showHiddenSection() {
       $(".hide-on-render").addClass("show");
     }
+  },
+  mounted() {
+    setTimeout(() => $(".hide-on-render").addClass("show"), 1000);
   }
 };
 </script>

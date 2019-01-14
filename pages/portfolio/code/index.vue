@@ -1,5 +1,5 @@
 <template>
-  <v-container class="portfolio-code container--card hide-on-render">
+  <v-container class="portfolio-code container--card">
     <j-breadcrumbs/>
     <v-layout wrap>
       <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">

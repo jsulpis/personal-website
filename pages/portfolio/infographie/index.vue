@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
+  <v-container fluid grid-list-xs id="gallery">
     <v-layout row wrap id="gallery-layout">
       <gallery-item v-for="(artwork, i) in artworks" :key="i" :artwork="artwork"/>
       <v-progress-circular indeterminate size="70" color="primary" id="gallery-progress"/>
@@ -66,7 +66,7 @@ export default {
 
 <style>
 #gallery {
-  padding: 0 !important;
+  padding: 0;
   margin-bottom: -3rem;
   background-color: #212121;
 }

@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <v-container class="portfolio-page">
-      <v-layout wrap justify-center>
-        <nuxt-link :to="$route.fullPath + '/infographie'">
-          <parallax-card
-            :img-url="designHeroUrl"
-            title="Infographie"
-            description="Voir mes réalisations 2D/3D."
-          />
-        </nuxt-link>
-        <nuxt-link :to="$route.fullPath + '/code'">
-          <parallax-card
-            :img-url="codeHeroUrl"
-            title="Code"
-            description="Voir mes projets informatiques open-source."
-          />
-        </nuxt-link>
-      </v-layout>
-    </v-container>
-  </div>
+  <v-container class="portfolio-page">
+    <v-layout wrap justify-center>
+      <nuxt-link :to="$route.fullPath + '/infographie'">
+        <parallax-card
+          :img-url="designHeroUrl"
+          title="Infographie"
+          description="Voir mes réalisations 2D/3D."
+        />
+      </nuxt-link>
+      <nuxt-link :to="$route.fullPath + '/code'">
+        <parallax-card
+          :img-url="codeHeroUrl"
+          title="Code"
+          description="Voir mes projets informatiques open-source."
+        />
+      </nuxt-link>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

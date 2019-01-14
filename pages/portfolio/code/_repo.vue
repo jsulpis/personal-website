@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container--card hide-on-render">
+  <v-container class="container--card">
     <j-breadcrumbs/>
     <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
     <div class="repo-iframe-container">

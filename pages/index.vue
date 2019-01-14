@@ -34,6 +34,9 @@ export default {
     showHiddenSection() {
       $(".hide-on-render").addClass("show");
     }
+  },
+  mounted() {
+    setTimeout(() => $(".hide-on-render").addClass("show"), 1000);
   }
 };
 </script>

@@ -1,11 +1,9 @@
 <template>
-  <div class="hide-on-render">
-    <v-container id="contact-page">
-      <v-card class="contact-page__card">
-        <contact-form/>
-      </v-card>
-    </v-container>
-  </div>
+  <v-container id="contact-page">
+    <v-card class="contact-page__card">
+      <contact-form/>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -41,12 +39,9 @@ export default {
 </script>
 
 <style>
-#contact-page {
-  flex-grow: initial;
-}
 .contact-page__card {
   width: inherit;
   max-width: 850px;
-  margin: 0 auto;
+  margin: auto;
 }
 </style>

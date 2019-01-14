@@ -1,14 +1,16 @@
 <template>
   <v-app light>
-    <v-content>
-      <MenuWrapper class="hide-on-render"/>
+    <MenuWrapper class="hide-on-render"/>
+    <v-content class="push-footer">
       <banner class="hide-on-render"/>
       <logo/>
       <page-header class="hide-on-render" :title="headerTitle" :description="headerDescription"></page-header>
-      <nuxt class="page-content"/>
-      <j-footer class="hide-on-render"/>
-      <cookies/>
+      <div class="page-content hide-on-render">
+        <nuxt/>
+      </div>
     </v-content>
+    <j-footer class="hide-on-render"/>
+    <cookies/>
   </v-app>
 </template>
 
@@ -109,11 +111,24 @@ a {
   transform: translateX(-50%);
 }
 
-.page-content {
+.v-content__wrap {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - #{$banner-height} - 153px);
+}
+
+.push-footer {
+  min-height: calc(100vh - 146px);
   padding-bottom: 3rem !important;
+}
+
+.page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    flex: 0 0 auto;
+  }
 }
 
 .below-banner {
