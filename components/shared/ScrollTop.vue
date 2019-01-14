@@ -10,7 +10,7 @@ import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 export default {
   methods: {
     scrollToTop() {
-      $vuetify.goTo(0, SCROLLING_OPTIONS);
+      this.$vuetify.goTo(0, SCROLLING_OPTIONS);
     }
   }
 };

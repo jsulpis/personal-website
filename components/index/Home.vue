@@ -36,17 +36,23 @@ export default {
   },
   methods: {
     scrollDown() {
-      $vuetify.goTo("#home-about", SCROLLING_OPTIONS);
+      this.$vuetify.goTo("#home-about", SCROLLING_OPTIONS);
     },
     animateBannerHeight(BANNER_HEIGHT, callback) {
       $("#banner").animate({ height: BANNER_HEIGHT }, 300, callback);
     },
-    animateLogo(posFromTop) {
-      $("#personal-logo").animate({ top: posFromTop }, 300);
+    animateLogo(posFromTop, callback) {
+      $("#personal-logo").animate({ top: posFromTop }, 300, callback);
     },
     displayHomeMessage() {
       $(".home-message").fadeIn();
       this.$emit("home-screen-loaded");
+    },
+    fixBannerBackground() {
+      $("#banner").css("background-attachment", "fixed");
+    },
+    unfixBannerBackground() {
+      $("#banner").css("background-attachment", "initial");
     }
   },
   mounted() {
@@ -55,16 +61,18 @@ export default {
 
     if (this.comingFromAnotherPage) {
       this.animateBannerHeight("100vh", this.displayHomeMessage);
-      this.animateLogo(logoPosFromTop);
+      this.animateLogo(logoPosFromTop, this.fixBannerBackground);
     } else {
       banner.css("height", "100vh");
       $("#personal-logo").css("top", logoPosFromTop);
       this.displayHomeMessage();
+      this.fixBannerBackground();
     }
     banner.show();
   },
   beforeDestroy() {
     $(".home-message").hide();
+    this.unfixBannerBackground();
     this.animateBannerHeight(BANNER_HEIGHT, () => {});
     const logoPosFromTop = BANNER_HEIGHT / 2 - LOGO_HEIGHT;
     this.animateLogo(logoPosFromTop);
