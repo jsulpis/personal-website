@@ -39,6 +39,8 @@ export default {
     ArtworkService.getArtworks().then(response => {
       this.artworks = response;
     });
+  },
+  updated() {
     $("#gallery").removeClass("hideable--hidden");
   }
 };

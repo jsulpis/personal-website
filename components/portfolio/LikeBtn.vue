@@ -13,19 +13,21 @@
 </template>
 
 <script>
-import ArtworkLikesService from "~/services/ArtworkLikesService";
+import ArtworkService from "~/services/ArtworkService";
 import throttle from "lodash/throttle";
 
 export default {
   props: { initialLikes: Number },
   data() {
     return {
-      ArtworkLikesService: new ArtworkLikesService(this.$route.params.title),
-      userLiked: false,
+      artworkService: new ArtworkService(this.$store),
       incr: 0
     };
   },
   computed: {
+    userLiked() {
+      return this.$store.state.currentArtwork.userLiked;
+    },
     likes() {
       return this.initialLikes + this.incr;
     },
@@ -37,14 +39,10 @@ export default {
     handleClick() {
       this.throttledClickHandler();
     },
-    toggleLike: function() {
-      this.ArtworkLikesService.toggleLike();
-      this.userLiked = !this.userLiked;
+    toggleLike() {
+      this.artworkService.toggleLike(this.$route.params.title);
       this.incr += this.userLiked ? 1 : -1;
     }
-  },
-  mounted() {
-    this.userLiked = this.ArtworkLikesService.checkCookie();
   }
 };
 </script>

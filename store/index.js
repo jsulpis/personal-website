@@ -3,7 +3,11 @@ export const state = () => ({
     title: "",
     description: ""
   },
-  appLoaded: false
+  appLoaded: false,
+  currentArtwork: {
+    title: "",
+    userLiked: false
+  }
 });
 
 export const mutations = {
@@ -17,5 +21,11 @@ export const mutations = {
   },
   setApplicationLoaded(state) {
     state.appLoaded = true;
+  },
+  setCurrentArtwork(state, payload) {
+    state.currentArtwork = payload;
+  },
+  toggleCurrentArtworkLike(state) {
+    state.currentArtwork.userLiked = !state.currentArtwork.userLiked;
   }
 };

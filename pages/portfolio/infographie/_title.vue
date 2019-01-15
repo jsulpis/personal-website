@@ -71,6 +71,7 @@ export default {
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
+    ArtworkService.initArtwork(this.$route.params.title, this.$store);
   }
 };
 </script>
