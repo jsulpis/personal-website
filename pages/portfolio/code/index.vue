@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import { SITE_ROOT_URL } from "~/assets/js/globals";
-
 import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 
 import RepoItem from "~/components/portfolio/RepoItem";
@@ -43,7 +41,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + this.$route.fullPath
+          content: process.env.URL + this.$route.fullPath
         },
         {
           name: "description",
@@ -55,7 +53,7 @@ export default {
   },
   data() {
     return {
-      title: "Portfolio - Code",
+      title: "Portfolio - " + CODE_HEADER.title,
       description: "Mes projets informatiques open-source.",
       repos: []
     };

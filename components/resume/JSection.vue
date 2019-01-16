@@ -17,11 +17,11 @@ export default {
 
 <style lang="scss">
 .section-card {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .section-title {
-  margin: 1rem auto 2rem auto;
+  margin: 2rem auto;
   font-weight: 500;
 
   &::after {

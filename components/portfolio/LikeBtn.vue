@@ -14,7 +14,7 @@
 
 <script>
 import ArtworkLikesService from "~/services/ArtworkLikesService";
-import { throttle } from "lodash";
+import throttle from "lodash/throttle";
 
 export default {
   props: { initialLikes: Number },

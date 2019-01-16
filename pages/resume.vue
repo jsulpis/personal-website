@@ -1,10 +1,15 @@
 <template>
   <div class="grey lighten-3 hide-on-render pa-0">
-    <about>{{ description }}</about>
+    <about
+      :title="resume.title"
+      :jobTitle="resume.jobTitle"
+      :location="resume.location"
+      :description="resume.description"
+    ></about>
     <j-tabs/>
-    <experiences @experiences-loaded="showHiddenSection"/>
+    <experiences :jobPositions="resume.jobPositions" @experiences-loaded="showHiddenSection"/>
     <education/>
-    <skills/>
+    <skills :skills="resume.skills"/>
     <contact/>
   </div>
 </template>
@@ -18,7 +23,8 @@ import Education from "~/components/resume/Education.vue";
 import Skills from "~/components/resume/Skills.vue";
 import Contact from "~/components/resume/Contact.vue";
 
-import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import ResumeService from "~/services/ResumeService";
+import { makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -38,7 +44,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + this.$route.fullPath
+          content: process.env.URL + this.$route.fullPath
         },
         {
           name: "description",
@@ -54,6 +60,11 @@ export default {
       description:
         "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
     };
+  },
+  asyncData() {
+    return ResumeService.getResumeDocument().then(res => {
+      return { resume: res };
+    });
   },
   beforeMount() {
     this.$store.commit("resetHeaderContent");

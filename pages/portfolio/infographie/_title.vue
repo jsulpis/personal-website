@@ -1,40 +1,44 @@
 <template>
-  <v-container class="container--card hide-on-render">
-    <j-breadcrumbs/>
-    <section class="artwork__section">
-      <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
+  <div>
+    <v-container class="container--card hide-on-render" v-if="artwork">
+      <j-breadcrumbs/>
+      <section class="artwork__section">
+        <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
 
-      <!-- Image metadata -->
-      <div class="artwork__data">
-        <!-- date -->
-        <div class="artwork__date">
-          <v-icon>date_range</v-icon>
-          <span>{{ artwork.date }}</span>
+        <!-- Image metadata -->
+        <div class="artwork__data">
+          <!-- description -->
+          <p class="artwork__description">{{ artwork.description }}</p>
+          <!-- date -->
+          <div class="artwork__date">
+            <v-icon>date_range</v-icon>
+            <span>{{ artwork.creationDate | dateFrShort }}</span>
+          </div>
+          <!-- Likes -->
+          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
         </div>
-        <!-- Likes -->
-        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
-      </div>
 
-      <!-- Image -->
-      <a :href="imageUrl" target="_blank">
-        <img class="artwork__img elevation-8" :src="imageUrl" :alt="artwork.title">
-      </a>
-    </section>
-
-    <!-- Softwares -->
-    <section class="artwork__section">
-      <h3 class="artwork__softwares">Logiciels:</h3>
-      <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
-        <a :href="softwares[software].url">
-          <img :src="softwares[software].icon" :alt="software">
+        <!-- Image -->
+        <a :href="artwork.picture" target="_blank">
+          <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
         </a>
-        <p>{{ software }}</p>
-      </div>
-    </section>
+      </section>
 
-    <!-- Disqus plugin -->
-    <disqus-plugin :identifier="artwork.uuid" :url="pageUrl" :title="title"/>
-  </v-container>
+      <!-- Softwares -->
+      <section class="artwork__section">
+        <h3 class="artwork__softwares">Logiciels:</h3>
+        <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
+          <a :href="software.url">
+            <img :src="software.logo" :alt="software">
+          </a>
+          <p>{{ software.name }}</p>
+        </div>
+      </section>
+
+      <!-- Disqus plugin -->
+      <disqus-plugin :identifier="artwork.id" :url="pageUrl" :title="title"/>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -42,10 +46,9 @@ import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
 
-import { SITE_ROOT_URL, DISQUS_ROOT_URL } from "~/assets/js/globals";
+import { dateFrShort } from "~/filters/date";
 import { INFOGRAPHIE_HEADER } from "./index";
 import { StringFormatter } from "~/assets/js/utils";
-import { CG_SOFTWARES } from "~/assets/data/cgSoftwares";
 import ArtworksProvider from "~/services/ArtworksProvider";
 
 export default {
@@ -72,15 +75,9 @@ export default {
     return {
       title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
       description: "Un élément de ma gallerie.",
-      pageUrl: SITE_ROOT_URL + this.$route.fullPath,
-      artwork: {},
-      softwares: CG_SOFTWARES
+      pageUrl: process.env.URL + this.$route.fullPath,
+      artwork: null
     };
-  },
-  computed: {
-    imageUrl() {
-      return ArtworksProvider.providePictureUrl(this.$route.params.title);
-    }
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
@@ -88,12 +85,10 @@ export default {
   mounted() {
     ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
       this.artwork = response;
-      $(".artwork").fadeIn();
+      setTimeout(() => $(".hide-on-render").addClass("show"), 10);
     });
   },
-  updated() {
-    $(".hide-on-render").addClass("show");
-  }
+  filters: { dateFrShort }
 };
 </script>
 
@@ -109,12 +104,16 @@ export default {
   }
 
   &data {
-    margin: 0.5rem;
+    margin: 0.5em 0 1.5em 0;
 
     .v-icon {
       height: 36px;
       width: 36px;
     }
+  }
+
+  &description {
+    margin-bottom: 0;
   }
 
   &img {

@@ -1,24 +1,13 @@
 import axios from "axios";
-import { S3_PORTFOLIO_URL, API_ROOT_URL } from "~/assets/js/globals";
+
+const artworksEndpoint = process.env.API_URL + "/artworks/";
 
 export default {
-  providePictureUrl(pictureName) {
-    return this.providePicture(pictureName, "/");
-  },
-
-  provideMiniatureUrl(pictureName) {
-    return this.providePicture(pictureName, "/min/");
-  },
-
-  providePicture(pictureName, separator) {
-    return S3_PORTFOLIO_URL + separator + pictureName + ".jpg";
-  },
-
   provideArtwork(artworkName) {
     return new Promise((resolve, reject) => {
       axios
-        .get(API_ROOT_URL + "/artworks/" + artworkName)
-        .then(response => resolve(response.data.Item))
+        .get(artworksEndpoint + artworkName)
+        .then(response => resolve(response.data))
         .catch(() => reject());
     });
   },
@@ -26,8 +15,8 @@ export default {
   provideArtworks() {
     return new Promise((resolve, reject) => {
       axios
-        .get(API_ROOT_URL + "/artworks")
-        .then(response => resolve(response.data.Items))
+        .get(artworksEndpoint)
+        .then(response => resolve(response.data))
         .catch(() => reject());
     });
   }

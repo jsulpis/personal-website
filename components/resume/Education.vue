@@ -143,7 +143,7 @@ export default {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // $mdc-animation-standard-curve-timing-function;
     display: inline-block;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1.5rem;
     width: 40%;
 
     @media only screen and(max-width: 959px) {

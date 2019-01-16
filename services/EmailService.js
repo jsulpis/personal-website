@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_ROOT_URL } from "~/assets/js/globals";
 
 export default class EmailService {
   constructor() {
@@ -65,7 +64,7 @@ export default class EmailService {
     if (this.validName && this.validEmail && this.validMessage) {
       return new Promise((resolve, reject) => {
         axios
-          .post(API_ROOT_URL + "/contact", emailObject)
+          .post(process.env.API_URL + "/contact", emailObject)
           .then(() => resolve())
           .catch(() => reject());
       });

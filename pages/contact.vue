@@ -11,7 +11,7 @@
 <script>
 import ContactForm from "~/components/shared/ContactForm.vue";
 
-import { SITE_ROOT_URL, makePageTitle } from "~/assets/js/globals.js";
+import { makePageTitle } from "~/assets/js/globals.js";
 
 export default {
   components: {
@@ -25,7 +25,7 @@ export default {
         {
           name: "url",
           property: "og:url",
-          content: SITE_ROOT_URL + this.$route.fullPath
+          content: process.env.URL + this.$route.fullPath
         },
         {
           name: "description",

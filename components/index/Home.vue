@@ -8,29 +8,21 @@
         <social-networks class="home-social-networks"/>
       </v-layout>
     </v-container>
-    <v-btn
-      icon
-      dark
-      large
-      id="fab-scroll-down"
-      @click="$vuetify.goTo('#home-about', scrollingOptions);"
-    >
+    <v-btn icon dark large id="fab-scroll-down" @click="scrollDown()">
       <v-icon size="32">fas fa-angle-down</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script>
-import { SCROLLING_OPTIONS, BANNER_HEIGHT } from "~/assets/js/globals";
+import { SCROLLING_OPTIONS } from "~/assets/js/globals";
 import SocialNetworks from "~/components/shared/SocialNetworks";
+
+const BANNER_HEIGHT = 161;
+const LOGO_HEIGHT = 30;
 
 export default {
   components: { SocialNetworks },
-  data() {
-    return {
-      scrollingOptions: SCROLLING_OPTIONS
-    };
-  },
   computed: {
     separation() {
       return this.smallScreen ? "<br>" : "&nbsp; | &nbsp;";
@@ -43,8 +35,11 @@ export default {
     }
   },
   methods: {
-    animateBannerHeight(bannerHeight, callback) {
-      $("#banner").animate({ height: bannerHeight }, 300, callback);
+    scrollDown() {
+      $vuetify.goTo("#home-about", SCROLLING_OPTIONS);
+    },
+    animateBannerHeight(BANNER_HEIGHT, callback) {
+      $("#banner").animate({ height: BANNER_HEIGHT }, 300, callback);
     },
     animateLogo(posFromTop) {
       $("#personal-logo").animate({ top: posFromTop }, 300);
@@ -71,8 +66,7 @@ export default {
   beforeDestroy() {
     $(".home-message").hide();
     this.animateBannerHeight(BANNER_HEIGHT, () => {});
-    const logoHeight = 30;
-    const logoPosFromTop = BANNER_HEIGHT / 2 - logoHeight;
+    const logoPosFromTop = BANNER_HEIGHT / 2 - LOGO_HEIGHT;
     this.animateLogo(logoPosFromTop);
   }
 };

@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import { DISQUS_SCRIPT_URL } from "~/assets/js/globals";
-
 export default {
   props: {
     identifier: String,
@@ -53,7 +51,7 @@ export default {
         s.setAttribute("data-timestamp", +new Date());
         s.type = "text/javascript";
         s.async = true;
-        s.src = `${DISQUS_SCRIPT_URL}/embed.js`;
+        s.src = `${process.env.DISQUS_URL}/embed.js`;
         (d.head || d.body).appendChild(s);
       }, 0);
     },
