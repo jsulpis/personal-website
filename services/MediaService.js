@@ -6,7 +6,6 @@ export default {
       axios
         .get(`${process.env.API_URL}/medias/${pictureName}`)
         .then(response => resolve(response.data))
-        .catch(() => reject());
     });
   }
 };

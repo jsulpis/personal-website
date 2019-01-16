@@ -15,13 +15,13 @@ export default {
 </script>
 
 
-<style lang="scss">
-@import "~/assets/scss/variables.scss";
-
+<style>
 #banner {
   background-size: cover;
   background-position: center;
   box-shadow: 0px 0px 40px 15px rgba(0, 0, 0, 0.3) inset;
+
+  flex-shrink: 0;
 
   filter: none;
   -webkit-filter: grayscale(20%);

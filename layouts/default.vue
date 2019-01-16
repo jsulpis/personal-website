@@ -1,14 +1,16 @@
 <template>
-  <v-app light>
-    <v-content>
-      <MenuWrapper class="hide-on-render"/>
-      <banner class="hide-on-render"/>
+  <v-app light class="hideable hideable--hidden">
+    <MenuWrapper/>
+    <v-content class="push-footer">
+      <banner/>
       <logo/>
-      <page-header class="hide-on-render" :title="headerTitle" :description="headerDescription"></page-header>
-      <nuxt class="page-content"/>
-      <j-footer class="hide-on-render"/>
-      <cookies/>
+      <page-header class="hideable" :title="headerTitle" :description="headerDescription"></page-header>
+      <div class="page-content">
+        <nuxt/>
+      </div>
     </v-content>
+    <j-footer/>
+    <cookies/>
   </v-app>
 </template>
 
@@ -49,16 +51,22 @@ export default {
   watch: {
     $route(to, from) {
       if (to.path === "/") {
-        $(".page-content, .page-header").removeClass("show");
+        $(".page-header").addClass("hideable--hidden");
       }
     }
+  },
+  mounted() {
+    $("#app").removeClass("hideable--hidden");
+    this.$store.commit("setApplicationLoaded");
   }
 };
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
+@import "~/assets/scss/theme.scss";
 @import url("https://fonts.googleapis.com/css?family=Salsa");
+
+$banner-height: 161px;
 
 html {
   font-size: initial !important;
@@ -74,12 +82,12 @@ a {
   font-weight: 600;
 }
 
-.hide-on-render {
-  opacity: 0;
+.hideable {
+  opacity: 1;
   transition: opacity 0.2s ease-in-out;
 
-  &.show {
-    opacity: 1;
+  &--hidden {
+    opacity: 0;
   }
 }
 
@@ -107,11 +115,24 @@ a {
   transform: translateX(-50%);
 }
 
-.page-content {
+.v-content__wrap {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - #{$banner-height} - 153px);
+}
+
+.push-footer {
+  min-height: calc(100vh - 146px);
   padding-bottom: 3rem !important;
+}
+
+.page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    flex: 0 0 auto;
+  }
 }
 
 .below-banner {

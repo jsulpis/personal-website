@@ -1,9 +1,9 @@
 <template>
-  <v-container class="portfolio-code container--card hide-on-render">
+  <v-container class="portfolio-code container--card">
     <j-breadcrumbs/>
     <v-layout wrap>
       <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
-        <repo-item class="portfolio-code__item" :repoProp="repo"/>
+        <repo-item class="portfolio-code__item" :repo="repo"/>
       </v-flex>
 
       <v-flex xs12 class="portfolio-code__progress">
@@ -14,12 +14,10 @@
 </template>
 
 <script>
-import VProgressCircular from "vuetify/es5/components/VProgressCircular";
-
 import RepoItem from "~/components/portfolio/RepoItem";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
-
-import GitHubDataProvider from "~/services/GitHubDataProvider";
+import GithubService from "~/services/GithubService";
+import { makePageMetadata } from "~/utils/page";
 
 export const CODE_HEADER = {
   title: "Code",
@@ -30,30 +28,15 @@ export const CODE_HEADER = {
 export default {
   components: {
     RepoItem,
-    VProgressCircular,
     JBreadcrumbs
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: process.env.URL + this.$route.fullPath
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
       title: "Portfolio - " + CODE_HEADER.title,
+      pageUrl: process.env.URL + this.$route.fullPath,
       description: "Mes projets informatiques open-source.",
       repos: []
     };
@@ -62,13 +45,10 @@ export default {
     this.$store.commit("setHeaderContent", CODE_HEADER);
   },
   mounted() {
-    GitHubDataProvider.provideRepositories().then(response => {
+    GithubService.getRepositories().then(response => {
       this.repos = response;
       this.showItemsWithDelay(10);
     });
-  },
-  updated() {
-    $(".hide-on-render").addClass("show");
   },
   methods: {
     showItemsWithDelay(delay) {

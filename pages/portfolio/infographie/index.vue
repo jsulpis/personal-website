@@ -1,18 +1,16 @@
 <template>
-  <v-container fluid grid-list-xs id="gallery" class="hide-on-render">
+  <v-container fluid grid-list-xs id="gallery" class="hideable hideable--hidden">
     <v-layout row wrap id="gallery-layout">
       <gallery-item v-for="(artwork, i) in artworks" :key="i" :artwork="artwork"/>
-      <v-progress-circular indeterminate size="70" color="primary" id="gallery-progress"/>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import VProgressCircular from "vuetify/es5/components/VProgressCircular";
 import GalleryItem from "~/components/portfolio/GalleryItem.vue";
-
-import { makePageTitle } from "~/assets/js/globals.js";
-import ArtworksProvider from "~/services/ArtworksProvider";
+import ArtworkService from "~/services/ArtworkService";
+import { makePageTitle } from "~/utils/page";
+import { makePageMetadata } from "~/utils/page";
 
 export const INFOGRAPHIE_HEADER = {
   title: "Infographie",
@@ -21,26 +19,10 @@ export const INFOGRAPHIE_HEADER = {
 
 export default {
   components: {
-    VProgressCircular,
     GalleryItem
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        {
-          name: "url",
-          property: "og:url",
-          content: this.pageUrl
-        },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
@@ -54,48 +36,22 @@ export default {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    ArtworksProvider.provideArtworks().then(response => {
+    ArtworkService.getArtworks().then(response => {
       this.artworks = response;
-
-      // Give a bit of time to fill the artworks array and then fade them in
-      // The call to the function setTimeout itself can be long enough to delay the execution...
-      this.showGalleryWithDelay(10);
     });
-  },
-  updated() {
-    $(".hide-on-render").addClass("show");
-  },
-  methods: {
-    showGalleryWithDelay(delay) {
-      // Fade in each gallery item one after another
-      setTimeout(() => {
-        $("#gallery-progress").hide();
-        $(".gallery-item").each(function(index) {
-          $(this)
-            .delay(20 * index)
-            .fadeIn();
-        });
-      }, delay);
-    }
+    $("#gallery").removeClass("hideable--hidden");
   }
 };
 </script>
 
 <style>
 #gallery {
-  padding: 0 !important;
+  padding: 0;
   margin-bottom: -3rem;
   background-color: #212121;
 }
 
 #gallery-layout {
   flex-grow: initial;
-}
-
-#gallery-progress {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 </style>

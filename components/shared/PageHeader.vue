@@ -17,9 +17,6 @@ export default {
     validHeader() {
       return this.title != "" || this.description != "";
     }
-  },
-  updated() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

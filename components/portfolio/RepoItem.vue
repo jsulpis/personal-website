@@ -2,13 +2,13 @@
   <v-card class="repo-item">
     <div class="repo-item__media">
       <nuxt-link :to="$route.fullPath + '/' + repo.name">
-        <img :src="repoPictureUrl">
+        <img :src="pictureUrl" onerror="this.onerror=null;this.src='/img/github-octocat.png';">
       </nuxt-link>
     </div>
 
     <v-card-title class="repo-item__card-title">
       <div>
-        <h3 class="repo-item__title headline mb-0">{{repo.name | beautify}}</h3>
+        <h3 class="repo-item__title headline mb-0">{{repo.name | formatWords}}</h3>
         <p class="repo-item__description body-2">{{repo.description}}</p>
       </div>
     </v-card-title>
@@ -31,30 +31,25 @@
 </template>
 
 <script>
-import GitHubDataProvider from "~/services/GitHubDataProvider";
-
 export default {
-  props: ["repoProp"],
+  props: ["repo"],
   data() {
     return {
-      repo: { name: "" },
-      repoPictureUrl: "",
       showLicense: false
     };
   },
   computed: {
     license() {
       return this.repo.license != null ? this.repo.license.spdx_id : "";
-    }
-  },
-  filters: {
-    beautify(text) {
-      return text != ""
-        ? text
-            .split("-")
-            .map(word => word[0].toUpperCase() + word.slice(1))
-            .join(" ")
-        : "";
+    },
+    pictureUrl() {
+      return (
+        "https://raw.githubusercontent.com/jsulpis/" +
+        this.repo.name +
+        "/" +
+        this.repo.default_branch +
+        "/preview.png"
+      );
     }
   },
   methods: {
@@ -67,21 +62,9 @@ export default {
     }
   },
   mounted() {
-    this.repo = this.repoProp;
     this.setLicenseDisplay();
     window.addEventListener("orientationchange", () =>
       setTimeout(() => this.setLicenseDisplay(), 100)
-    );
-
-    const defaultRepoPictureUrl =
-      "https://raw.githubusercontent.com/jsulpis/" +
-      this.repo.name +
-      "/" +
-      this.repo.default_branch +
-      "/preview.png";
-    this.repoPictureUrl = defaultRepoPictureUrl;
-    GitHubDataProvider.checkRepoPictureUrl(defaultRepoPictureUrl).then(
-      verifiedPictureUrl => (this.repoPictureUrl = verifiedPictureUrl)
     );
   }
 };

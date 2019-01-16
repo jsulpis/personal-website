@@ -50,20 +50,9 @@
 </template>
 
 <script>
-import VForm from "vuetify/es5/components/VForm";
-import VTextField from "vuetify/es5/components/VTextField";
-import * as VTextArea from "vuetify/es5/components/VTextarea";
-import VSnackbar from "vuetify/es5/components/VSnackbar";
-
 import EmailService from "~/services/EmailService";
 
 export default {
-  components: {
-    VForm,
-    VTextField,
-    ...VTextArea,
-    VSnackbar
-  },
   data() {
     return {
       controller: new EmailService(),

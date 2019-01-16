@@ -18,9 +18,6 @@
 </template>
 
 <script>
-import { dateFrShort } from "~/filters/date";
-import ArtworksProvider from "~/services/ArtworksProvider";
-
 export default {
   props: {
     artwork: Object
@@ -49,8 +46,7 @@ export default {
           return 250;
       }
     }
-  },
-  filters: { dateFrShort }
+  }
 };
 </script>
 
@@ -61,7 +57,6 @@ export default {
   position: relative;
   padding: 0 !important;
   line-height: 0;
-  display: none;
   text-shadow: 0 0 1px black;
 
   /* When you mouse over the container, fade in the overlay */

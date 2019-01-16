@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container--card hide-on-render">
+  <v-container class="container--card">
     <j-breadcrumbs/>
     <v-btn :href="repoUrl" color="primary" round class="repo-btn">See on GitHub</v-btn>
     <div class="repo-iframe-container">
@@ -27,49 +27,36 @@
 
 <script>
 const md = require("markdown-it")({ html: true });
-import { CODE_HEADER } from "./index";
-import { StringFormatter } from "~/assets/js/utils";
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
-import GitHubDataProvider from "~/services/GitHubDataProvider";
+import GithubService from "~/services/GithubService";
+import { CODE_HEADER } from "./index";
+import { formatWords } from "~/utils/string";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: { JBreadcrumbs, DisqusPlugin },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: this.pageUrl },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
       repoName: this.$route.params.repo,
-      title: StringFormatter.beautifyWords(this.$route.params.repo, "-"),
+      title: formatWords(this.$route.params.repo),
       description: "README d'un de mes projets GitHub.",
       pageUrl: process.env.URL + this.$route.fullPath
     };
   },
   asyncData({ params }) {
-    return GitHubDataProvider.provideRepositoryData(params.repo).then(data => {
+    return GithubService.getRepositoryData(params.repo).then(data => {
       return {
         repoReadme: md.render(data),
-        repoUrl: GitHubDataProvider.provideRepositoryUrl(params.repo)
+        repoUrl: GithubService.getRepositoryUrl(params.repo)
       };
     });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", CODE_HEADER);
-  },
-  mounted() {
-    $(".hide-on-render").addClass("show");
   }
 };
 </script>

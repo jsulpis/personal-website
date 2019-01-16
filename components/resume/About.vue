@@ -32,7 +32,7 @@
 
 <script>
 import Avatar from "../shared/Avatar";
-import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
+import SOCIAL_NETWORKS from "~/assets/data/socialNetworks.json";
 
 export default {
   props: {
@@ -53,8 +53,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
-
 // PROFILE
 #resume-profile {
   text-align: center;

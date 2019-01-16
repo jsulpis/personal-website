@@ -1,28 +1,17 @@
 import Vue from "vue";
 
-import {
-  Vuetify,
-  VApp,
-  VCard,
-  VBtn,
+import Vuetify, {
+  VApp, // required
   VNavigationDrawer,
-  VList,
-  VIcon,
-  VDivider,
-  VGrid,
+  VFooter,
   VToolbar
-} from "vuetify";
+} from "vuetify/lib";
 
 Vue.use(Vuetify, {
   components: {
     VApp,
-    VCard,
-    VBtn,
     VNavigationDrawer,
-    VList,
-    VIcon,
-    VDivider,
-    VGrid,
+    VFooter,
     VToolbar
   },
   theme: {

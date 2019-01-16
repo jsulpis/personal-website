@@ -1,55 +1,52 @@
 <template>
-  <div>
-    <v-container class="container--card hide-on-render" v-if="artwork">
-      <j-breadcrumbs/>
-      <section class="artwork__section">
-        <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
+  <v-container class="container--card" v-if="artwork">
+    <j-breadcrumbs/>
+    <section class="artwork__section">
+      <h1 class="artwork__title mt-3 mb-2">{{ artwork.title }}</h1>
 
-        <!-- Image metadata -->
-        <div class="artwork__data">
-          <!-- description -->
-          <p class="artwork__description">{{ artwork.description }}</p>
-          <!-- date -->
-          <div class="artwork__date">
-            <v-icon>date_range</v-icon>
-            <span>{{ artwork.creationDate | dateFrShort }}</span>
-          </div>
-          <!-- Likes -->
-          <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+      <!-- Image metadata -->
+      <div class="artwork__data">
+        <!-- description -->
+        <p class="artwork__description">{{ artwork.description }}</p>
+        <!-- date -->
+        <div class="artwork__date">
+          <v-icon>date_range</v-icon>
+          <span>{{ artwork.creationDate | dateFrShort }}</span>
         </div>
+        <!-- Likes -->
+        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+      </div>
 
-        <!-- Image -->
-        <a :href="artwork.picture" target="_blank">
-          <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+      <!-- Image -->
+      <a :href="artwork.picture" target="_blank">
+        <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+      </a>
+    </section>
+
+    <!-- Softwares -->
+    <section class="artwork__section">
+      <h3 class="artwork__softwares">Logiciels:</h3>
+      <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
+        <a :href="software.url">
+          <img :src="software.logo" :alt="software">
         </a>
-      </section>
+        <p>{{ software.name }}</p>
+      </div>
+    </section>
 
-      <!-- Softwares -->
-      <section class="artwork__section">
-        <h3 class="artwork__softwares">Logiciels:</h3>
-        <div class="artwork__softwares__item" v-for="(software, i) in artwork.softwares" :key="i">
-          <a :href="software.url">
-            <img :src="software.logo" :alt="software">
-          </a>
-          <p>{{ software.name }}</p>
-        </div>
-      </section>
-
-      <!-- Disqus plugin -->
-      <disqus-plugin :identifier="artwork.id" :url="pageUrl" :title="title"/>
-    </v-container>
-  </div>
+    <!-- Disqus plugin -->
+    <disqus-plugin :identifier="artwork.id" :url="pageUrl" :title="title"/>
+  </v-container>
 </template>
 
 <script>
 import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
 import LikeBtn from "~/components/portfolio/LikeBtn.vue";
 import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
-
-import { dateFrShort } from "~/filters/date";
+import ArtworkService from "~/services/ArtworkService";
 import { INFOGRAPHIE_HEADER } from "./index";
-import { StringFormatter } from "~/assets/js/utils";
-import ArtworksProvider from "~/services/ArtworksProvider";
+import { formatWords } from "~/utils/string";
+import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: {
@@ -58,43 +55,30 @@ export default {
     DisqusPlugin
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        { name: "title", property: "og:title", content: this.title },
-        { name: "url", property: "og:url", content: this.pageUrl },
-        {
-          name: "description",
-          property: "og:description",
-          content: this.description
-        }
-      ]
-    };
+    return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
-      title: StringFormatter.beautifyWords(this.$route.params.title, "-"),
+      title: formatWords(this.$route.params.title),
       description: "Un élément de ma gallerie.",
-      pageUrl: process.env.URL + this.$route.fullPath,
-      artwork: null
+      pageUrl: process.env.URL + this.$route.fullPath
     };
+  },
+  asyncData({ params }) {
+    return ArtworkService.getArtwork(params.title).then(response => {
+      return { artwork: response };
+    });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
-  },
-  mounted() {
-    ArtworksProvider.provideArtwork(this.$route.params.title).then(response => {
-      this.artwork = response;
-      setTimeout(() => $(".hide-on-render").addClass("show"), 10);
-    });
-  },
-  filters: { dateFrShort }
+  }
 };
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/variables.scss";
+@import "~/assets/scss/theme.scss";
 @import "~/assets/scss/mixins.scss";
+
 .artwork__ {
   &title {
     @include font-title;

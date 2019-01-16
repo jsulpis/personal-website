@@ -51,16 +51,9 @@
 </template>
 
 <script>
-import VSnackbar from "vuetify/es5/components/VSnackbar";
-import VDialog from "vuetify/es5/components/VDialog";
-
 import CookiesService from "~/services/CookiesService";
 
 export default {
-  components: {
-    VSnackbar,
-    VDialog
-  },
   data() {
     return {
       snackbar: false,

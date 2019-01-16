@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { SOCIAL_NETWORKS } from "~/assets/data/socialNetworks";
+import SOCIAL_NETWORKS from "~/assets/data/socialNetworks.json";
 
 export default {
   data() {

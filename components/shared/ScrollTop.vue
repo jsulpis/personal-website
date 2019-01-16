@@ -1,17 +1,17 @@
 <template>
-  <v-btn fab small color="primary" @click="$vuetify.goTo(0, scrollingOptions)">
+  <v-btn fab small color="primary" @click="scrollToTop()">
     <v-icon dark>fas fa-angle-up</v-icon>
   </v-btn>
 </template>
 
 <script>
-import { SCROLLING_OPTIONS } from "~/assets/js/globals";
+import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 
 export default {
-  data() {
-    return {
-      scrollingOptions: SCROLLING_OPTIONS
-    };
+  methods: {
+    scrollToTop() {
+      this.$vuetify.goTo(0, SCROLLING_OPTIONS);
+    }
   }
 };
 </script>

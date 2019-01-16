@@ -20,16 +20,11 @@
 </template>
 
 <script>
-import * as VTabs from "vuetify/es5/components/VTabs";
-
-import { SCROLLING_OPTIONS } from "~/assets/js/globals.js";
+import SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 
 const TABS_HEIGHT = 48;
 
 export default {
-  components: {
-    ...VTabs
-  },
   data() {
     return {
       activeTab: 0,
