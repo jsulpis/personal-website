@@ -23,6 +23,7 @@
 import ParallaxCard from "~/components/portfolio/ParallaxCard";
 import MediaService from "~/services/MediaService";
 import ArtworkService from "~/services/ArtworkService";
+import { PORTFOLIO_HEADER } from "~/pages/portfolio";
 
 export default {
   components: {
@@ -35,6 +36,9 @@ export default {
         codeHeroUrl: urls[1]
       };
     });
+  },
+  beforeMount() {
+    this.$store.commit("setHeaderContent", PORTFOLIO_HEADER);
   }
 };
 </script>

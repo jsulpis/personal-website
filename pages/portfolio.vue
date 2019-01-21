@@ -6,22 +6,21 @@
 import { makePageTitle } from "~/utils/page";
 import { makePageMetadata } from "~/utils/page";
 
+export const PORTFOLIO_HEADER = {
+  title: "Portfolio",
+  description: "Quelques projets réalisés sur mon temps libre."
+};
+
 export default {
   head() {
     return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
-      title: makePageTitle("Portfolio"),
+      title: makePageTitle(PORTFOLIO_HEADER.title),
       pageUrl: process.env.URL + this.$route.fullPath,
-      description: "Quelques projets réalisés sur mon temps libre."
+      description: PORTFOLIO_HEADER.description
     };
-  },
-  beforeMount() {
-    this.$store.commit("setHeaderContent", {
-      title: "Portfolio",
-      description: this.description
-    });
   }
 };
 </script>
