@@ -19,7 +19,11 @@
 
       <!-- Image -->
       <a :href="artwork.picture" target="_blank">
-        <img class="artwork__img elevation-8" :src="responsivePictureUrl" :alt="artwork.title">
+        <img
+          class="artwork__img elevation-8"
+          :src="artwork.picture + '?fl=progressive&w=1024'"
+          :alt="artwork.title"
+        >
       </a>
     </section>
 
@@ -64,20 +68,12 @@ export default {
       pageUrl: process.env.URL + this.$route.fullPath,
       artwork: require(`~/static/data/artworks/${
         this.$route.params.title
-      }.json`),
-      responsivePictureUrl:
-        "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+      }.json`)
     };
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
     ArtworkService.initArtwork(this.$route.params.title, this.$store);
-
-    this.$nextTick(() => {
-      this.responsivePictureUrl = `${this.artwork.picture}&w=${
-        window.innerWidth
-      }`;
-    });
   }
 };
 </script>

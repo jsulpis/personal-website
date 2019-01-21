@@ -1,5 +1,5 @@
 <template>
-  <div id="banner" :style="'background-image: url(' + bannerUrl+ ')'"></div>
+  <div id="banner" :style="'background-image: url(' + bannerUrl + ')'"></div>
 </template>
 
 <script>
