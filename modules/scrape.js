@@ -4,7 +4,7 @@ const axios = require("axios");
 const fs = require("fs-extra");
 
 const API_URL = process.env.API_URL;
-const ENDPOINTS = require("./dataEndpoints.json");
+const ENDPOINTS = require("./scrapeEndpoints.json");
 const DATA_FOLDER = "static/data/";
 
 module.exports = async function scraper() {

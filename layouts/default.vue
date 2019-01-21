@@ -137,7 +137,7 @@ a {
 
 .below-banner {
   box-shadow: 0px 4px 10px -5px rgba(255, 255, 255, 0.2) inset,
-    0px -3px 10px -5px rgba(255, 255, 255, 0.3);
+    0px -3px 10px -5px rgba(255, 255, 255, 0.3) !important;
 }
 
 ::-webkit-scrollbar-track {
