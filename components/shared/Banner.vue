@@ -1,15 +1,15 @@
 <template>
-  <div id="banner"></div>
+  <div id="banner" :style="'background-image: url(' + bannerUrl+ ')'"></div>
 </template>
 
 <script>
-import MediaService from "~/services/MediaService";
+const BANNER_URL = require("~/static/data/medias/banner.json");
 
 export default {
-  beforeMount() {
-    MediaService.getPictureUrl("home-background").then(backgroundImg =>
-      $("#banner").css("background-image", " url(" + backgroundImg + ")")
-    );
+  data() {
+    return {
+      bannerUrl: BANNER_URL + "?fl=progressive"
+    };
   }
 };
 </script>

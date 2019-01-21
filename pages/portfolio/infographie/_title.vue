@@ -19,7 +19,7 @@
 
       <!-- Image -->
       <a :href="artwork.picture" target="_blank">
-        <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+        <img class="artwork__img elevation-8" :src="responsivePictureUrl" :alt="artwork.title">
       </a>
     </section>
 
@@ -61,17 +61,23 @@ export default {
     return {
       title: formatWords(this.$route.params.title),
       description: "Un élément de ma gallerie.",
-      pageUrl: process.env.URL + this.$route.fullPath
+      pageUrl: process.env.URL + this.$route.fullPath,
+      artwork: require(`~/static/data/artworks/${
+        this.$route.params.title
+      }.json`),
+      responsivePictureUrl:
+        "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
     };
-  },
-  asyncData({ params }) {
-    return ArtworkService.getArtwork(params.title).then(response => {
-      return { artwork: response };
-    });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
     ArtworkService.initArtwork(this.$route.params.title, this.$store);
+
+    this.$nextTick(() => {
+      this.responsivePictureUrl = `${this.artwork.picture}&w=${
+        window.innerWidth
+      }`;
+    });
   }
 };
 </script>

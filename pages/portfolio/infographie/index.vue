@@ -1,7 +1,13 @@
 <template>
   <v-container fluid grid-list-xs id="gallery" class="hideable hideable--hidden">
     <v-layout row wrap id="gallery-layout">
-      <gallery-item v-for="(artwork, i) in artworks" :key="i" :artwork="artwork"/>
+      <gallery-item
+        v-for="(artwork, i) in artworks"
+        :key="i"
+        :artwork="artwork"
+        :displayMetadata="!smallViewport"
+        :pictureSize="responsivePictureSize"
+      />
     </v-layout>
   </v-container>
 </template>
@@ -29,19 +35,35 @@ export default {
       title: "Portfolio - " + INFOGRAPHIE_HEADER.title,
       pageUrl: process.env.URL + this.$route.fullPath,
       description: INFOGRAPHIE_HEADER.description,
-      artworks: []
+      artworks: require("~/static/data/artworks.json")
     };
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
   },
   mounted() {
-    ArtworkService.getArtworks().then(response => {
-      this.artworks = response;
-    });
+    setTimeout(() => $("#gallery").removeClass("hideable--hidden"), 100);
   },
-  updated() {
-    $("#gallery").removeClass("hideable--hidden");
+  computed: {
+    smallViewport() {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
+    responsivePictureSize() {
+      if (!process.browser) return;
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return parseInt(window.innerWidth / 3);
+          break;
+        case "sm" || "md":
+          return parseInt(window.innerWidth / 4);
+          break;
+        case "lg" || "xl":
+          return parseInt(window.innerWidth / 6);
+          break;
+        default:
+          return 250;
+      }
+    }
   }
 };
 </script>

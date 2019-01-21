@@ -1,8 +1,9 @@
+require("dotenv").config();
 const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 
-let modules = ["@nuxtjs/dotenv"];
+let modules = ["@nuxtjs/dotenv", "~/modules/scrape.js"];
 if (process.env.CONTEXT === "production") {
   modules.push(["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]);
 }

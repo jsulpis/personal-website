@@ -42,13 +42,9 @@ export default {
       title: makePageTitle("CV"),
       pageUrl: process.env.URL + this.$route.fullPath,
       description:
-        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship."
+        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship.",
+      resume: require("~/static/data/resume.json")
     };
-  },
-  asyncData() {
-    return ResumeService.getResumeDocument().then(res => {
-      return { resume: res };
-    });
   },
   beforeMount() {
     this.$store.commit("resetHeaderContent");
