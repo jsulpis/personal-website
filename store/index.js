@@ -27,5 +27,8 @@ export const mutations = {
   },
   toggleCurrentArtworkLike(state) {
     state.currentArtwork.userLiked = !state.currentArtwork.userLiked;
+  },
+  setArtworks(state, payload) {
+    state.artworks = payload;
   }
 };

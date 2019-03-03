@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list-xs id="gallery" class="hideable hideable--hidden">
+  <v-container fluid grid-list-xs id="gallery">
     <v-layout row wrap id="gallery-layout">
       <gallery-item
         v-for="(artwork, i) in artworks"
@@ -35,14 +35,16 @@ export default {
       title: "Portfolio - " + INFOGRAPHIE_HEADER.title,
       pageUrl: process.env.URL + this.$route.fullPath,
       description: INFOGRAPHIE_HEADER.description,
-      artworks: require("~/static/data/artworks.json")
+      artworks:
+        this.$store.state.artworks || require("~/static/data/artworks.json")
     };
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
-  },
-  mounted() {
-    setTimeout(() => $("#gallery").removeClass("hideable--hidden"), 100);
+    ArtworkService.getArtworks().then(artworks => {
+      this.$store.commit("setArtworks", artworks);
+      this.artworks = this.$store.state.artworks;
+    });
   },
   computed: {
     smallViewport() {
@@ -70,6 +72,7 @@ export default {
 
 <style>
 #gallery {
+  flex-grow: 1;
   padding: 0;
   margin-bottom: -3rem;
   background-color: #212121;

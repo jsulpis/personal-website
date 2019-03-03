@@ -14,7 +14,7 @@
           <span>{{ artwork.creationDate | dateFrShort }}</span>
         </div>
         <!-- Likes -->
-        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+        <LikeBtn class="artwork__likes" :initialLikes="artworkLikes"/>
       </div>
 
       <!-- Image -->
@@ -59,7 +59,7 @@ export default {
     DisqusPlugin
   },
   head() {
-    return makePageMetadata(this.title, this.pageUrl, this.description);
+    return makePageMetadata(this.artwork.title, this.pageUrl, this.description);
   },
   data() {
     return {
@@ -74,6 +74,19 @@ export default {
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
     ArtworkService.initArtwork(this.$route.params.title, this.$store);
+    ArtworkService.getArtwork(this.$route.params.title).then(
+      res => (this.artwork = res)
+    );
+  },
+  computed: {
+    artworkLikes() {
+      const artworksInStore = this.$store.state.artworks;
+      if (!!artworksInStore && artworksInStore != []) {
+        const artworkInStore = artworksInStore.filter(artwork => artwork.urlTitle == this.$route.params.title)[0];
+        return artworkInStore.likes;
+      }
+      return this.artwork.likes || 0;
+    }
   }
 };
 </script>

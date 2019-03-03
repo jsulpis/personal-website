@@ -8,7 +8,7 @@
     >
       <v-icon>favorite_border</v-icon>
     </v-btn>
-    <span>{{ likes }}</span>
+    <span v-show="likes != 0">{{ likes }}</span>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
       return this.$store.state.currentArtwork.userLiked;
     },
     likes() {
-      return this.initialLikes + this.incr;
+      return (this.initialLikes || 0) + this.incr;
     },
     throttledClickHandler() {
       return throttle(this.toggleLike, 1500);

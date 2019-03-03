@@ -13,7 +13,7 @@ module.exports = async function scraper() {
   let promiseList = scrapeEndpointsAndWriteData();
 
   let artworks = await axios.get(`${API_URL}/artworks`).then(res => {
-    const artworks = res.data;
+    const artworks = removeDynamicDataFromArtworks(res.data);
     writeData("artworks.json", artworks);
     return artworks;
   });
@@ -49,6 +49,15 @@ function scrapeEndpointsAndWriteData() {
   });
 }
 
+function removeDynamicDataFromArtworks(artworks) {
+  return artworks.map(removeDynamicDataFromArtwork);
+}
+
+function removeDynamicDataFromArtwork(artwork) {
+  delete artwork.likes;
+  return artwork;
+}
+
 function scrapeArtworksAndWriteData(artworks) {
   return artworks.map(async artwork => {
     const artworkName = artwork.urlTitle;
@@ -56,7 +65,7 @@ function scrapeArtworksAndWriteData(artworks) {
       `artworks/${artworkName}.json`,
       await axios
         .get(`${API_URL}/artworks/${artworkName}`)
-        .then(res => res.data)
+        .then(res => removeDynamicDataFromArtwork(res.data))
     );
   });
 }
