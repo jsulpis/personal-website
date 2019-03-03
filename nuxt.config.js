@@ -4,25 +4,30 @@ const webpack = require("webpack");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 
 let modules = ["@nuxtjs/dotenv", "~/modules/scrape.js"];
+
+let headMeta = [
+  { charset: "utf-8" },
+  { name: "viewport", content: "width=device-width, initial-scale=1" },
+  { name: "site_name", property: "og:site_name", content: "Julien Sulpis" },
+  { name: "locale", property: "og:locale", content: "fr_FR" },
+  { name: "type", property: "og:type", content: "website" },
+  {
+    name: "google-site-verification",
+    content: "flYBOh35oN6AkHLEDfD-fCx0VKRSWEi1F37r4fwrjoo"
+  }
+];
+
 if (process.env.CONTEXT === "production") {
   modules.push(["@nuxtjs/google-analytics", { id: "UA-124217907-2" }]);
+} else {
+  headMeta.push({ name: "robots", content: "noindex, nofollow" });
 }
 
 module.exports = {
   // Headers of the page
   head: {
     htmlAttrs: { prefix: "og: http://ogp.me/ns#" },
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "site_name", property: "og:site_name", content: "Julien Sulpis" },
-      { name: "locale", property: "og:locale", content: "fr_FR" },
-      { name: "type", property: "og:type", content: "website" },
-      {
-        name: "google-site-verification",
-        content: "flYBOh35oN6AkHLEDfD-fCx0VKRSWEi1F37r4fwrjoo"
-      }
-    ],
+    meta: headMeta,
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
