@@ -53,7 +53,7 @@ export default {
       this.$emit("home-screen-loaded");
     },
     activateParallax() {
-      $("#banner").parallax("center", 0.2, false);
+      $("#banner_img").parallax("center", -0.3, false);
     }
   },
   mounted() {
@@ -76,7 +76,7 @@ export default {
     this.animateBannerHeight(BANNER_HEIGHT, () => {});
     const logoPosFromTop = BANNER_HEIGHT / 2 - LOGO_HEIGHT;
     this.animateLogo(logoPosFromTop);
-    $("#banner").cancelParallax();
+    $("#banner_img").cancelParallax();
   }
 };
 </script>

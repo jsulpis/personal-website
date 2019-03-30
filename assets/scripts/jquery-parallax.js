@@ -42,23 +42,23 @@ http://www.gnu.org/licenses/gpl.html
 
     // function to be called whenever the window is scrolled or resized
     function update() {
-        var pos = $window.scrollTop();
+      var pos = $window.scrollTop();
 
-        $this.each(function() {
-          var $element = $(this);
-          var top = $element.offset().top;
-          var height = $element.height();
+      $this.each(function() {
+        var $element = $(this);
+        var top = $element.offset().top;
+        var height = $element.height();
 
-          // Check if totally above or totally below viewport
-          if (top + height < pos || top > pos + windowHeight) {
-            return;
-          }
+        // Check if totally above or totally below viewport
+        if (top + height < pos || top > pos + windowHeight) {
+          return;
+        }
 
-          $this.css(
-            "backgroundPosition",
-            xpos + " " + (50 + Math.round((firstTop - pos) * speedFactor)) + "%"
-          );
-        });
+        $this.css(
+          "transform",
+          "translateY(" + Math.round((firstTop - pos) * speedFactor) + "px)"
+        );
+      });
     }
 
     $window.bind("scroll", update).resize(update);
@@ -67,5 +67,5 @@ http://www.gnu.org/licenses/gpl.html
 
   $.fn.cancelParallax = function() {
     $window.unbind("scroll");
-  }
+  };
 })($);
