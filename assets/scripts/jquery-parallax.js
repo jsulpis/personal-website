@@ -67,5 +67,6 @@ http://www.gnu.org/licenses/gpl.html
 
   $.fn.cancelParallax = function() {
     $window.unbind("scroll");
+    $(this).css("transform", "translateY(0px)");
   };
 })($);

@@ -1,16 +1,16 @@
-<!-- Adapted from a CodePen by Jeff Glenn:
-https://codepen.io/jeffglenn/pen/KNYoKa -->
 <template>
-  <div class="tl-item">
-    <div class="tl-bg" :style="`background-image: url(${imgUrl})`"></div>
-
-    <div class="tl-year">
-      <p>{{ title }}</p>
-    </div>
-
-    <div class="tl-content">
-      <slot></slot>
-    </div>
+  <div
+    wrap
+    class="panel"
+    :style="`background-image: linear-gradient(rgba(0,0,0,0), rgba(0, 0, 0, 0.6)), url(${imgUrl})`"
+  >
+    <v-layout class="panel_layout" column justify-center align-center>
+      <h2 class="panel_title">{{ title }}</h2>
+      <div class="panel_description">
+        <slot></slot>
+      </div>
+      <v-btn large dark round outline :to="btnLink">{{btnText}}</v-btn>
+    </v-layout>
   </div>
 </template>
 
@@ -19,134 +19,54 @@ export default {
   props: {
     imgUrl: String,
     title: String,
-    subtitle: String,
-    content: String
+    icon: String,
+    btnText: String,
+    btnLink: String
   }
 };
 </script>
 
 <style lang="scss">
-$transition-short: 0.25s;
-$transition-medium: 0.4s;
-$transition-long: 0.6s;
+@import "~/assets/scss/theme.scss";
 
-.tl-item {
-  transform: translate3d(0, 0, 0);
-  position: relative;
-  width: 100%;
+.panel {
+  color: $material-color-grey-50;
   height: 100vh;
-  color: #fff;
-  overflow: hidden;
-  transition: width $transition-medium ease;
-
-  @media only screen and (min-width: 600px) {
-    max-height: 500px;
-  }
-  @media only screen and (min-width: 960px) {
-    width: 33.333%;
-  }
-
-  &:before,
-  &:after {
-    transform: translate3d(0, 0, 0);
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  &:after {
-    background-color: rgb(21, 25, 29);
-    opacity: 0.8;
-    transition: opacity $transition-medium ease;
-  }
-
-  &:before {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 75%
-    );
-    z-index: 1;
-    opacity: 0;
-    transform: translate3d(0, 0, 0) translateY(50%);
-    transition: opacity $transition-medium ease,
-      transform $transition-medium ease;
-  }
-
-  &:hover,
-  &.mobile-display {
-    @media only screen and (min-width: 960px) {
-      width: 40% !important;
-    }
-
-    &:after {
-      opacity: 0;
-    }
-
-    &:before {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) translateY(0);
-      transition: opacity $transition-long ease,
-        transform $transition-long ease $transition-short;
-    }
-
-    .tl-content {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all $transition-long ease 0.25s;
-    }
-
-    .tl-bg {
-      filter: grayscale(0);
-    }
-  }
-}
-
-.tl-content {
-  transform: translate3d(0, 0, 0) translateY(25px);
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin: 0 1.618em;
-  top: 55%;
-  opacity: 0;
-
-  h1 {
-    text-transform: uppercase;
-    color: #1779cf;
-    font-size: 1.44rem;
-    font-weight: normal;
-  }
-}
-
-.tl-year {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 1;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-
-  p {
-    font-size: 1.728rem;
-    margin-bottom: 0;
-  }
-}
-
-.tl-bg {
-  transform: translate3d(0, 0, 0);
-  position: absolute;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  max-height: 500px;
   background-size: cover;
-  background-position: center center;
-  transition: filter $transition-medium ease;
-  filter: grayscale(100%);
+}
+
+.panel_layout {
+  height: 100%;
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.panel_icon {
+  border-radius: 50%;
+  border: 4px solid;
+  padding: 20px;
+  transform: scale(1.2);
+  margin: auto;
+
+  .v-icon {
+    height: 50px;
+    width: 50px;
+    font-size: 50px;
+    opacity: 0.8;
+  }
+}
+
+.panel_title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+}
+
+.panel_description {
+  max-width: 600px;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  padding: 1em;
 }
 </style>
