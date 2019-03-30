@@ -18,6 +18,10 @@
 import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 import SocialNetworks from "~/components/shared/SocialNetworks";
 
+if (process.browser) {
+  require("~/assets/scripts/jquery-parallax.js");
+}
+
 const BANNER_HEIGHT = 161;
 const LOGO_HEIGHT = 30;
 
@@ -48,11 +52,8 @@ export default {
       $(".home-message").fadeIn();
       this.$emit("home-screen-loaded");
     },
-    fixBannerBackground() {
-      $("#banner").css("background-attachment", "fixed");
-    },
-    unfixBannerBackground() {
-      $("#banner").css("background-attachment", "initial");
+    activateParallax() {
+      $("#banner").parallax("center", 0.2, false);
     }
   },
   mounted() {
@@ -61,21 +62,21 @@ export default {
 
     if (this.comingFromAnotherPage) {
       this.animateBannerHeight("100vh", this.displayHomeMessage);
-      this.animateLogo(logoPosFromTop, this.fixBannerBackground);
+      this.animateLogo(logoPosFromTop, this.activateParallax);
     } else {
       banner.css("height", "100vh");
       $("#personal-logo").css("top", logoPosFromTop);
       this.displayHomeMessage();
-      this.fixBannerBackground();
+      this.activateParallax();
     }
     banner.show();
   },
   beforeDestroy() {
     $(".home-message").hide();
-    this.unfixBannerBackground();
     this.animateBannerHeight(BANNER_HEIGHT, () => {});
     const logoPosFromTop = BANNER_HEIGHT / 2 - LOGO_HEIGHT;
     this.animateLogo(logoPosFromTop);
+    $("#banner").cancelParallax();
   }
 };
 </script>
