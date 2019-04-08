@@ -3,8 +3,8 @@
     <v-container app fluid class="home-message">
       <v-layout align-center justify-center column fill-height>
         <h1 class="home-name">Julien Sulpis</h1>
-        <h2 class="home-subtitle">Développeur Web & Mobile</h2>
-        <h3 class="home-subsubtitle">Avec quelques hobbies...</h3>
+        <h2 class="home-subtitle">{{ pageContent.nameSubtitle }}</h2>
+        <h3 class="home-subsubtitle">{{ pageContent.nameSubsubtitle }}</h3>
         <social-networks class="home-social-networks"/>
       </v-layout>
     </v-container>
@@ -26,6 +26,7 @@ const BANNER_HEIGHT = 161;
 const LOGO_HEIGHT = 30;
 
 export default {
+  props: { pageContent: Object },
   components: { SocialNetworks },
   computed: {
     separation() {
@@ -40,7 +41,7 @@ export default {
   },
   methods: {
     scrollDown() {
-      this.$vuetify.goTo("#home-about", SCROLLING_OPTIONS);
+      this.$vuetify.goTo(".home-about", SCROLLING_OPTIONS);
     },
     animateBannerHeight(BANNER_HEIGHT, callback) {
       $("#banner").animate({ height: BANNER_HEIGHT }, 300, callback);

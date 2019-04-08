@@ -1,7 +1,11 @@
 [
   {
-    "url": "/resume",
-    "path": "resume.json"
+    "url": "/pages/home",
+    "path": "/pages/home.json"
+  },
+  {
+    "url": "/pages/resume",
+    "path": "/pages/resume.json"
   },
   {
     "url": "/medias/home-background",
