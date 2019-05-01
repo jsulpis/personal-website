@@ -14,12 +14,16 @@
           <span>{{ artwork.creationDate | dateFrShort }}</span>
         </div>
         <!-- Likes -->
-        <LikeBtn class="artwork__likes" :initialLikes="artwork.likes"/>
+        <LikeBtn class="artwork__likes" :initialLikes="artworkLikes"/>
       </div>
 
       <!-- Image -->
       <a :href="artwork.picture" target="_blank">
-        <img class="artwork__img elevation-8" :src="artwork.picture" :alt="artwork.title">
+        <img
+          class="artwork__img elevation-8"
+          :src="artwork.picture + '?fl=progressive&w=1024'"
+          :alt="artwork.title"
+        >
       </a>
     </section>
 
@@ -55,23 +59,34 @@ export default {
     DisqusPlugin
   },
   head() {
-    return makePageMetadata(this.title, this.pageUrl, this.description);
+    return makePageMetadata(this.artwork.title, this.pageUrl, this.description);
   },
   data() {
     return {
       title: formatWords(this.$route.params.title),
       description: "Un élément de ma gallerie.",
-      pageUrl: process.env.URL + this.$route.fullPath
+      pageUrl: process.env.URL + this.$route.fullPath,
+      artwork: require(`~/static/data/artworks/${
+        this.$route.params.title
+      }.json`)
     };
-  },
-  asyncData({ params }) {
-    return ArtworkService.getArtwork(params.title).then(response => {
-      return { artwork: response };
-    });
   },
   beforeMount() {
     this.$store.commit("setHeaderContent", INFOGRAPHIE_HEADER);
     ArtworkService.initArtwork(this.$route.params.title, this.$store);
+    ArtworkService.getArtwork(this.$route.params.title).then(
+      res => (this.artwork = res)
+    );
+  },
+  computed: {
+    artworkLikes() {
+      const artworksInStore = this.$store.state.artworks;
+      if (!!artworksInStore && artworksInStore != []) {
+        const artworkInStore = artworksInStore.filter(artwork => artwork.urlTitle == this.$route.params.title)[0];
+        return artworkInStore.likes;
+      }
+      return this.artwork.likes || 0;
+    }
   }
 };
 </script>

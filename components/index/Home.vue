@@ -3,8 +3,8 @@
     <v-container app fluid class="home-message">
       <v-layout align-center justify-center column fill-height>
         <h1 class="home-name">Julien Sulpis</h1>
-        <h2 class="home-subtitle">Développeur Web & Mobile</h2>
-        <h3 class="home-subsubtitle">Avec quelques hobbies...</h3>
+        <h2 class="home-subtitle">{{ pageContent.nameSubtitle }}</h2>
+        <h3 class="home-subsubtitle">{{ pageContent.nameSubsubtitle }}</h3>
         <social-networks class="home-social-networks"/>
       </v-layout>
     </v-container>
@@ -18,10 +18,15 @@
 import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
 import SocialNetworks from "~/components/shared/SocialNetworks";
 
+if (process.browser) {
+  require("~/assets/scripts/jquery-parallax.js");
+}
+
 const BANNER_HEIGHT = 161;
 const LOGO_HEIGHT = 30;
 
 export default {
+  props: { pageContent: Object },
   components: { SocialNetworks },
   computed: {
     separation() {
@@ -36,7 +41,7 @@ export default {
   },
   methods: {
     scrollDown() {
-      this.$vuetify.goTo("#home-about", SCROLLING_OPTIONS);
+      this.$vuetify.goTo(".home-about", SCROLLING_OPTIONS);
     },
     animateBannerHeight(BANNER_HEIGHT, callback) {
       $("#banner").animate({ height: BANNER_HEIGHT }, 300, callback);
@@ -48,11 +53,8 @@ export default {
       $(".home-message").fadeIn();
       this.$emit("home-screen-loaded");
     },
-    fixBannerBackground() {
-      $("#banner").css("background-attachment", "fixed");
-    },
-    unfixBannerBackground() {
-      $("#banner").css("background-attachment", "initial");
+    activateParallax() {
+      $("#banner_img").parallax("center", -0.3, false);
     }
   },
   mounted() {
@@ -61,21 +63,21 @@ export default {
 
     if (this.comingFromAnotherPage) {
       this.animateBannerHeight("100vh", this.displayHomeMessage);
-      this.animateLogo(logoPosFromTop, this.fixBannerBackground);
+      this.animateLogo(logoPosFromTop, this.activateParallax);
     } else {
       banner.css("height", "100vh");
       $("#personal-logo").css("top", logoPosFromTop);
       this.displayHomeMessage();
-      this.fixBannerBackground();
+      this.activateParallax();
     }
     banner.show();
   },
   beforeDestroy() {
     $(".home-message").hide();
-    this.unfixBannerBackground();
     this.animateBannerHeight(BANNER_HEIGHT, () => {});
     const logoPosFromTop = BANNER_HEIGHT / 2 - LOGO_HEIGHT;
     this.animateLogo(logoPosFromTop);
+    $("#banner_img").cancelParallax();
   }
 };
 </script>

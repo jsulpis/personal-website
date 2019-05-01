@@ -2,10 +2,10 @@
   <v-layout>
     <!-- Information about the cookies -->
     <v-dialog v-model="dialog" persistent>
-      <v-card class="text-xs-left">
+      <v-card dark class="text-xs-left">
         <v-card-title class="headline">Informations sur les cookies</v-card-title>
         <v-card-text>
-          <h3>Qu'est-ce que c'est ?</h3>Un cookie est un petit fichier texte que les sites web sauvegardent sur votre appareil lorsque vous les consultez. Il permet à ces sites de mémoriser des informations pendant un temps donné, et sont supprimés au bout de 13 mois maximum.
+          <h3>Qu'est-ce que c'est ?</h3>Un cookie est un petit fichier texte que les sites web sauvegardent sur votre appareil lorsque vous les consultez. Il permet à ces sites de mémoriser des informations pendant un temps donné, et sont obligatoirement supprimés au bout de 13 mois maximum.
           <h3 class="mt-3">Quels sont les cookies utilisés par ce site ?</h3>Les services suivants utilisent des cookies:
           <ul>
             <li>le service Google Analytics pour analyser le traffic sur ce site. Cela me permet par exemple de voir quelles pages sont les plus consultées et quel appareil vous utilisez, afin d'adapter le contenu de mon site.</li>

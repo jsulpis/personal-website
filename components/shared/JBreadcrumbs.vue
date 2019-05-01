@@ -1,8 +1,9 @@
 <template>
-  <v-breadcrumbs class="j-breadcrumbs">
+  <v-breadcrumbs class="j-breadcrumbs" :items="items">
+    <template slot="item" slot-scope="props">
+      <nuxt-link :to="props.item.to">{{ props.item.text }}</nuxt-link>
+    </template>
     <v-icon slot="divider">chevron_right</v-icon>
-
-    <v-breadcrumbs-item v-for="(item, i) in items" :key="i" :to="item.to" exact>{{ item.name }}</v-breadcrumbs-item>
   </v-breadcrumbs>
 </template>
 
@@ -13,10 +14,11 @@ export default {
   computed: {
     items() {
       const items = [];
-      for (let i = 1; i < this.pathArray.length; i++) {
+      const numberOfLinks = this.pathArray.length;
+      for (let i = 1; i < numberOfLinks; i++) {
         items.push({
           to: this.getRouteForLevel(i),
-          name: this.getNameOfLevel(i)
+          text: this.getNameOfLevel(i)
         });
       }
       return items;
@@ -48,8 +50,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "~/assets/scss/theme.scss";
+
 .j-breadcrumbs {
   padding-left: 0 !important;
+
+  .nuxt-link-exact-active {
+    color: $material-color-grey-500;
+    pointer-events: none;
+  }
 }
 </style>

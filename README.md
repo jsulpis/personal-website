@@ -1,6 +1,9 @@
-# personnal-website
+#Personal Website
 
-> My personnal website built with Nuxt.js and other awesome tools
+> This repo hosts the source code of my personal website.
+
+## Warning
+The code is public so that I can benefit from free code analysis, CI and deployment tools, and to allow you to see its internal structure. But **you cannot run this website locally**. This is to keep my dev environment clean ! :)
 
 ## Build Setup
 
@@ -18,5 +21,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).

@@ -1,22 +1,24 @@
 <template>
   <div>
-    <img class="avatar__img elevation-8" :src="avatarUrl" height="175" width="175" alt="profile_picture">
+    <img
+      class="avatar__img elevation-8"
+      :src="avatarUrl + '?w=175&h=175'"
+      height="175"
+      width="175"
+      alt="profile_picture"
+    >
   </div>
 </template>
 
 <script>
-import MediaService from "~/services/MediaService";
-
 export default {
   props: { pro: Boolean },
   data() {
     return {
-      avatarUrl: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+      avatarUrl: this.pro
+        ? require("~/static/data/medias/portrait-pro.json")
+        : require("~/static/data/medias/portrait.json")
     };
-  },
-  beforeMount() {
-    const pictureName = "portrait" + (this.pro ? "-pro" : "");
-    MediaService.getPictureUrl(pictureName).then(url => (this.avatarUrl = url));
   }
 };
 </script>

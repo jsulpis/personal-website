@@ -1,12 +1,12 @@
 <template>
   <v-flex xs4 sm3 lg2 class="gallery-item">
     <nuxt-link :to="$route.fullPath + '/' + artwork.urlTitle">
-      <img :src="responsivePictureUrl" :alt="artwork.title" class="gallery-item__img">
-      <div class="gallery-item-overlay" v-show="!smallViewport">
+      <img :src="responsivePicture" :alt="artwork.title" class="gallery-item__img">
+      <div class="gallery-item-overlay" v-show="displayMetadata">
         <h3 class="gallery-item__title">{{ artwork.title }}</h3>
         <div class="gallery-item__date">
           <v-icon small>date_range</v-icon>
-          {{ this.artwork.creationDate | dateFrShort }}
+          {{ artwork.creationDate | dateFrShort }}
         </div>
         <div class="gallery-item__likes">
           <v-icon small>favorite_border</v-icon>
@@ -20,32 +20,20 @@
 <script>
 export default {
   props: {
-    artwork: Object
+    artwork: Object,
+    displayMetadata: Boolean,
+    pictureSize: Number
   },
-  computed: {
-    smallViewport() {
-      return this.$vuetify.breakpoint.smAndDown;
-    },
-    responsivePictureUrl() {
-      return `${this.artwork.picture}?w=${this.responsivePictureSize}&h=${
-        this.responsivePictureSize
-      }&fit=thumb`;
-    },
-    responsivePictureSize() {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs":
-          return parseInt(window.innerWidth / 3);
-          break;
-        case "sm" || "md":
-          return parseInt(window.innerWidth / 4);
-          break;
-        case "lg" || "xl":
-          return parseInt(window.innerWidth / 6);
-          break;
-        default:
-          return 250;
-      }
-    }
+  data() {
+    return {
+      responsivePicture:
+        "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+    };
+  },
+  mounted() {
+    this.responsivePicture = `${this.artwork.picture}?w=${this.pictureSize}&h=${
+      this.pictureSize
+    }&fit=thumb`;
   }
 };
 </script>

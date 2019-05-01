@@ -1,20 +1,23 @@
 <template>
   <div>
-    <home v-on:home-screen-loaded="showHiddenSection"/>
-    <about class="hideable hideable--hidden"/>
+    <home v-on:home-screen-loaded="showHiddenSection" :pageContent="pageContent"/>
+    <about class="hideable hideable--hidden" :pageContent="pageContent"/>
+    <panels :panels="pageContent.panels"/>
   </div>
 </template>
 
 <script>
 import Home from "~/components/index/Home";
 import About from "~/components/index/About";
+import Panels from "~/components/index/Panels";
 import { makePageTitle } from "~/utils/page";
 import { makePageMetadata } from "~/utils/page";
 
 export default {
   components: {
     Home,
-    About
+    About,
+    Panels
   },
   head() {
     return makePageMetadata(this.title, this.pageUrl, this.description);
@@ -24,7 +27,8 @@ export default {
       title: makePageTitle("Accueil"),
       pageUrl: process.env.URL,
       description:
-        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design."
+        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design.",
+      pageContent: require("~/static/data/pages/home.json")
     };
   },
   beforeMount() {

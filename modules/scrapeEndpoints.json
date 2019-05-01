@@ -1,0 +1,22 @@
+[
+  {
+    "url": "/pages/home",
+    "path": "/pages/home.json"
+  },
+  {
+    "url": "/pages/resume",
+    "path": "/pages/resume.json"
+  },
+  {
+    "url": "/medias/home-background",
+    "path": "/medias/banner.json"
+  },
+  {
+    "url": "/medias/portrait-pro",
+    "path": "medias/portrait-pro.json"
+  },
+  {
+    "url": "/medias/portrait",
+    "path": "medias/portrait.json"
+  }
+]
