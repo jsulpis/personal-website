@@ -3,7 +3,9 @@
 const axios = require("axios");
 const fs = require("fs-extra");
 
-const API_URL = process.env.API_URL;
+const isProd = process.env.CONTEXT === "production";
+const API_URL = isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL;
+
 const ENDPOINTS = require("./scrapeEndpoints.json");
 const DATA_FOLDER = "static/data/";
 
