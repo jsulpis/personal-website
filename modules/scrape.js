@@ -5,6 +5,8 @@ const fs = require("fs-extra");
 
 const isProd = process.env.CONTEXT === "production";
 const API_URL = isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL;
+axios.defaults.baseURL = API_URL;
+axios.defaults.headers.common["Authorization"] = "Bearer " + process.env.BUILD_TOKEN;
 
 const ENDPOINTS = require("./scrapeEndpoints.json");
 const DATA_FOLDER = "static/data/";
@@ -14,7 +16,7 @@ module.exports = async function scraper() {
 
   let promiseList = scrapeEndpointsAndWriteData();
 
-  let artworks = await axios.get(`${API_URL}/artworks`).then(res => {
+  let artworks = await axios.get("/artworks").then(res => {
     const artworks = removeDynamicDataFromArtworks(res.data);
     writeData("artworks.json", artworks);
     return artworks;
@@ -46,7 +48,7 @@ function scrapeEndpointsAndWriteData() {
   return ENDPOINTS.map(async endpoint => {
     writeData(
       endpoint.path,
-      await axios.get(API_URL + endpoint.url).then(res => res.data)
+      await axios.get(endpoint.url).then(res => res.data)
     );
   });
 }
@@ -66,7 +68,7 @@ function scrapeArtworksAndWriteData(artworks) {
     writeData(
       `artworks/${artworkName}.json`,
       await axios
-        .get(`${API_URL}/artworks/${artworkName}`)
+        .get(`/artworks/${artworkName}`)
         .then(res => removeDynamicDataFromArtwork(res.data))
     );
   });
