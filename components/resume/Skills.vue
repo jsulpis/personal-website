@@ -12,9 +12,9 @@
             <div v-for="(skill, index) in domain.items" :key="index" class="skill">
               <img
                 class="skill__icon"
-                :src="skill.icon"
-                :alt="'logo ' + skill.name"
-                :title="skill.name"
+                :src="skill"
+                :alt="`Logo ${getFormattedName(skill)}`"
+                :title="getFormattedName(skill)"
               >
             </div>
           </div>
@@ -25,8 +25,20 @@
 </template>
 
 <script>
+import { formatWords } from "~/utils/string";
+
 export default {
-  props: { skills: Array }
+  props: { skills: Array },
+  methods: {
+    extractName(url) {
+      const urlArray = url.split("/");
+      const fileName = urlArray[urlArray.length - 1];
+      return fileName.split(".")[0];
+    },
+    getFormattedName(url) {
+      return formatWords(this.extractName(url));
+    }
+  }
 };
 </script>
 
