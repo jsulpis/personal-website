@@ -36,7 +36,7 @@ export default {
       pageUrl: process.env.URL + this.$route.fullPath,
       description: INFOGRAPHIE_HEADER.description,
       artworks:
-        this.$store.state.artworks || require("~/static/data/artworks.json")
+        this.$store.state.artworks || require("~/static/data/remote/artworks.json")
     };
   },
   beforeMount() {

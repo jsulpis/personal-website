@@ -14,9 +14,5 @@
   {
     "url": "/medias/portrait-pro",
     "path": "medias/portrait-pro.json"
-  },
-  {
-    "url": "/medias/portrait",
-    "path": "medias/portrait.json"
   }
 ]

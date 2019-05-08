@@ -1,21 +1,17 @@
 <template>
   <div id="banner">
-    <div id="banner_img"  :style="'background-image: url(' + bannerUrl + ')'"></div>
+    <div id="banner_img" :style="`background-image: url('${bannerUrl}')`"></div>
   </div>
 </template>
 
 <script>
-const BANNER_URL = require("~/static/data/medias/banner.json");
-
 export default {
-  data() {
-    return {
-      bannerUrl: BANNER_URL + "?fl=progressive"
-    };
-  }
+  data: () => ({
+    bannerUrl:
+      require("~/static/data/remote/medias/banner.json") + "?fl=progressive"
+  })
 };
 </script>
-
 
 <style>
 #banner {

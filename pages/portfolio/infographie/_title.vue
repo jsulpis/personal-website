@@ -66,7 +66,7 @@ export default {
       title: formatWords(this.$route.params.title),
       description: "Un élément de ma gallerie.",
       pageUrl: process.env.URL + this.$route.fullPath,
-      artwork: require(`~/static/data/artworks/${
+      artwork: require(`~/static/data/remote/artworks/${
         this.$route.params.title
       }.json`)
     };

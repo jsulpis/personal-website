@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
+import SCROLLING_OPTIONS from "~/static/data/scrollingOptions";
 
 const TABS_HEIGHT = 48;
 

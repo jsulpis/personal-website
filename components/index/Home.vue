@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import * as SCROLLING_OPTIONS from "~/assets/data/scrollingOptions";
+import * as SCROLLING_OPTIONS from "~/static/data/scrollingOptions";
 import SocialNetworks from "~/components/shared/SocialNetworks";
 
 if (process.browser) {

@@ -9,7 +9,7 @@ axios.defaults.baseURL = API_URL;
 axios.defaults.headers.common["Authorization"] = "Bearer " + process.env.BUILD_TOKEN;
 
 const ENDPOINTS = require("./scrapeEndpoints.json");
-const DATA_FOLDER = "static/data/";
+const DATA_FOLDER = "static/data/remote/";
 
 module.exports = async function scraper() {
   clearDataFolder();

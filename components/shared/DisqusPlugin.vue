@@ -66,18 +66,6 @@ export default {
       if (this.language) {
         disqusConfig.language = this.language;
       }
-
-      disqusConfig.callbacks.onReady = [
-        () => {
-          this.$emit("ready");
-        }
-      ];
-
-      disqusConfig.callbacks.onNewComment = [
-        comment => {
-          this.$emit("new-comment", comment);
-        }
-      ];
     }
   }
 };

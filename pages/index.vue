@@ -28,7 +28,7 @@ export default {
       pageUrl: process.env.URL,
       description:
         "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design.",
-      pageContent: require("~/static/data/pages/home.json")
+      pageContent: require("~/static/data/remote/pages/home.json")
     };
   },
   beforeMount() {

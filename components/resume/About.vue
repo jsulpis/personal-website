@@ -8,11 +8,11 @@
     <p class="resume-profile__location">{{ location }}</p>
     <!-- Social links -->
     <p class="resume-profile__networks">
-      <a :href="socialNetworks['LinkedIn'].url">
-        <v-icon>fab fa-linkedin-in</v-icon>
-      </a>
       <a class="ma-3" :href="socialNetworks['GitHub'].url">
-        <v-icon>fab fa-github</v-icon>
+        <v-icon>{{ socialNetworks['GitHub'].icon }}</v-icon>
+      </a>
+      <a :href="socialNetworks['LinkedIn'].url">
+        <v-icon>{{ socialNetworks['LinkedIn'] }}</v-icon>
       </a>
       <a :href="socialNetworks['Twitter'].url">
         <v-icon>fab fa-twitter</v-icon>
@@ -32,7 +32,6 @@
 
 <script>
 import Avatar from "../shared/Avatar";
-import SOCIAL_NETWORKS from "~/assets/data/socialNetworks.json";
 
 export default {
   props: {
@@ -44,11 +43,7 @@ export default {
   components: {
     Avatar
   },
-  data() {
-    return {
-      socialNetworks: SOCIAL_NETWORKS
-    };
-  }
+  data: () => ({ socialNetworks: require("~/static/data/socialNetworks.json") })
 };
 </script>
 
