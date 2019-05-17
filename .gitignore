@@ -13,5 +13,5 @@ dist
 # Environment variables for local development
 .env
 
-# Data generated before build
-static/data
+# Data generated during the build
+src/static/data/remote

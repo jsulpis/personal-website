@@ -46,7 +46,8 @@ module.exports = {
   css: ["~/assets/vuetify-style/app.styl"],
   // Disable the default progress bar
   loading: false,
-
+  // Source directory
+  srcDir: "src/",
   // Build configuration
   build: {
     transpile: [/^vuetify/],
