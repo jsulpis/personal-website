@@ -14,4 +14,4 @@ dist
 .env
 
 # Data generated during the build
-static/data/remote
+src/static/data/remote
