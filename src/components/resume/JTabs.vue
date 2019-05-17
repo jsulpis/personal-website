@@ -46,10 +46,6 @@ export default {
         {
           title: "Compétences",
           to: "resume-skills"
-        },
-        {
-          title: "Contact",
-          to: "resume-contact"
         }
       ]
     };
