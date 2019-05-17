@@ -111,7 +111,7 @@ a {
 
 #personal-logo {
   position: absolute;
-  top: calc(#{$banner-height} / 2 - 30px);
+  top: calc(#{$banner-height} / 2 - 23px);
   transform: translateX(-50%);
 }
 
