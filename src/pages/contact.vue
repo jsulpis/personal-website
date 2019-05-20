@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ContactForm from "~/components/shared/ContactForm.vue";
+import ContactForm from "~/components/contact/ContactForm.vue";
 import { makePageTitle } from "~/utils/page";
 import { makePageMetadata } from "~/utils/page";
 

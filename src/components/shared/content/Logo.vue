@@ -6,12 +6,12 @@
 
 <style lang="scss">
 #personal-logo {
-  height: 60px;
+  height: 55px;
   -webkit-filter: drop-shadow(0 0 3px #fff);
   filter: drop-shadow(0 0 3px #fff);
 
   @media only screen and (min-width: 600px) {
-    height: 80px;
+    height: 70px;
   }
 }
 </style>

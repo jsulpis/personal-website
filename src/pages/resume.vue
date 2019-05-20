@@ -10,17 +10,15 @@
     <experiences :jobPositions="resume.jobPositions"/>
     <education/>
     <skills :skills="resume.skills"/>
-    <contact/>
   </div>
 </template>
 
 <script>
-import About from "~/components/resume/About.vue";
-import JTabs from "~/components/resume/JTabs.vue";
-import Experiences from "~/components/resume/Experiences.vue";
-import Education from "~/components/resume/Education.vue";
-import Skills from "~/components/resume/Skills.vue";
-import Contact from "~/components/resume/Contact.vue";
+import About from "~/components/resume/about/About.vue";
+import JTabs from "~/components/resume/shared/JTabs.vue";
+import Experiences from "~/components/resume/experience/Experiences.vue";
+import Education from "~/components/resume/education/Education.vue";
+import Skills from "~/components/resume/skills/Skills.vue";
 import ResumeService from "~/services/ResumeService";
 import { makePageTitle } from "~/utils/page";
 import { makePageMetadata } from "~/utils/page";
@@ -31,8 +29,7 @@ export default {
     JTabs,
     Experiences,
     Education,
-    Skills,
-    Contact
+    Skills
   },
   head() {
     return makePageMetadata(this.title, this.pageUrl, this.description);

@@ -16,14 +16,14 @@
 
 <script>
 import * as SCROLLING_OPTIONS from "~/static/data/scrollingOptions";
-import SocialNetworks from "~/components/shared/SocialNetworks";
+import SocialNetworks from "~/components/shared/content/SocialNetworks";
 
 if (process.browser) {
   require("~/assets/scripts/jquery-parallax.js");
 }
 
 const BANNER_HEIGHT = 161;
-const LOGO_HEIGHT = 30;
+const LOGO_HEIGHT = 23;
 
 export default {
   props: { pageContent: Object },
@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
     const banner = $("#banner");
-    const logoPosFromTop = this.smallScreen ? "25vh" : "27vh";
+    const logoPosFromTop = this.smallScreen ? "26vh" : "28vh";
 
     if (this.comingFromAnotherPage) {
       this.animateBannerHeight("100vh", this.displayHomeMessage);

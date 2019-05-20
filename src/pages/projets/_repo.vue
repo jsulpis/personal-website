@@ -20,15 +20,14 @@
     </div>
     <div class="repo-readme" v-html="repoReadme"/>
 
-    <!-- Disqus plugin -->
     <disqus-plugin class="disqus" :url="pageUrl" :identifier="repoName" :title="repoName"/>
   </v-container>
 </template>
 
 <script>
 const md = require("markdown-it")({ html: true });
-import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
-import DisqusPlugin from "~/components/shared/DisqusPlugin.vue";
+import JBreadcrumbs from "~/components/projets/JBreadcrumbs.vue";
+import DisqusPlugin from "~/components/projets/DisqusPlugin.vue";
 import GithubService from "~/services/GithubService";
 import { CODE_HEADER } from "./index";
 import { formatWords } from "~/utils/string";
@@ -110,7 +109,6 @@ export default {
 }
 
 code {
-  height: 24px;
   line-height: 24px;
   padding: 0 5px;
   background-color: rgba(128, 128, 128, 0.1);

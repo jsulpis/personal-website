@@ -44,9 +44,6 @@ export default {
     border-bottom: 3px solid;
   }
 }
-.drawer-portfolio {
-  position: absolute;
-}
 
 .v-list__group:before,
 .v-list__group:after {

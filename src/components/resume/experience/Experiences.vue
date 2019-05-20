@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Experience from "./Experience.vue";
-import JSection from "./JSection.vue";
+import Experience from "~/components/resume/experience/Experience.vue";
+import JSection from "~/components/resume/shared/JSection.vue";
 import concat from "lodash/concat";
 import groupBy from "lodash/groupBy";
 

@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import MenuWrapper from "~/components/shared/MenuWrapper.vue";
-import Banner from "~/components/shared/Banner.vue";
-import Logo from "~/components/shared/Logo.vue";
-import PageHeader from "~/components/shared/PageHeader.vue";
-import JFooter from "~/components/shared/JFooter.vue";
-import Cookies from "~/components/shared/Cookies.vue";
+import MenuWrapper from "~/components/shared/menu/MenuWrapper.vue";
+import Banner from "~/components/shared/content/Banner.vue";
+import Logo from "~/components/shared/content/Logo.vue";
+import PageHeader from "~/components/shared/layout/PageHeader.vue";
+import JFooter from "~/components/shared/layout/JFooter.vue";
+import Cookies from "~/components/shared/content/Cookies.vue";
 
 export default {
   components: {
@@ -111,7 +111,7 @@ a {
 
 #personal-logo {
   position: absolute;
-  top: calc(#{$banner-height} / 2 - 30px);
+  top: calc(#{$banner-height} / 2 - 23px);
   transform: translateX(-50%);
 }
 

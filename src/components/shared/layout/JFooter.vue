@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import SocialNetworks from "./SocialNetworks";
-import ScrollTop from "./ScrollTop";
+import SocialNetworks from "~/components/shared/content/SocialNetworks";
+import ScrollTop from "~/components/shared/layout/ScrollTop";
 import SOCIAL_NETWORKS from "~/static/data/socialNetworks.json";
 
 
