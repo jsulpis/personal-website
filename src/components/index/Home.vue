@@ -16,7 +16,7 @@
 
 <script>
 import * as SCROLLING_OPTIONS from "~/static/data/scrollingOptions";
-import SocialNetworks from "~/components/shared/SocialNetworks";
+import SocialNetworks from "~/components/shared/content/SocialNetworks";
 
 if (process.browser) {
   require("~/assets/scripts/jquery-parallax.js");

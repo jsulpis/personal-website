@@ -16,20 +16,6 @@ module.exports = async function scraper() {
 
   let promiseList = scrapeEndpointsAndWriteData();
 
-  let artworks = await axios.get("/artworks").then(res => {
-    const artworks = removeDynamicDataFromArtworks(res.data);
-    writeData("artworks.json", artworks);
-    return artworks;
-  });
-
-  artworks.forEach(artwork =>
-    this.options.generate.routes.push(
-      `/portfolio/infographie/${artwork.urlTitle}`
-    )
-  );
-
-  promiseList = promiseList.concat(scrapeArtworksAndWriteData(artworks));
-
   // Finish when all of them are done
   return Promise.all(promiseList)
     .then(() => {
@@ -49,27 +35,6 @@ function scrapeEndpointsAndWriteData() {
     writeData(
       endpoint.path,
       await axios.get(endpoint.url).then(res => res.data)
-    );
-  });
-}
-
-function removeDynamicDataFromArtworks(artworks) {
-  return artworks.map(removeDynamicDataFromArtwork);
-}
-
-function removeDynamicDataFromArtwork(artwork) {
-  delete artwork.likes;
-  return artwork;
-}
-
-function scrapeArtworksAndWriteData(artworks) {
-  return artworks.map(async artwork => {
-    const artworkName = artwork.urlTitle;
-    writeData(
-      `artworks/${artworkName}.json`,
-      await axios
-        .get(`/artworks/${artworkName}`)
-        .then(res => removeDynamicDataFromArtwork(res.data))
     );
   });
 }

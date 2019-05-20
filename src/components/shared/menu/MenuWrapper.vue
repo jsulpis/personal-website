@@ -19,8 +19,8 @@ export default {
           to: "/"
         },
         {
-          name: "Portfolio",
-          to: "/portfolio"
+          name: "Projets",
+          to: "/projets"
         },
         {
           name: "CV",

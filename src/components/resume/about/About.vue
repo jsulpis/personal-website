@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Avatar from "../shared/Avatar";
+import Avatar from "~/components/resume/about/Avatar";
 
 export default {
   props: {

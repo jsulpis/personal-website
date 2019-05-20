@@ -9,8 +9,7 @@
           <h3 class="mt-3">Quels sont les cookies utilisés par ce site ?</h3>Les services suivants utilisent des cookies:
           <ul>
             <li>le service Google Analytics pour analyser le traffic sur ce site. Cela me permet par exemple de voir quelles pages sont les plus consultées et quel appareil vous utilisez, afin d'adapter le contenu de mon site.</li>
-            <li>la plateforme Disqus pour que vous puissiez laisser des commentaires sur mon portfolio.</li>
-            <li>le module de votes dans mon portfolio qui mémorise les éléments que vous avez aimé.</li>
+            <li>la plateforme Disqus pour que vous puissiez laisser des commentaires sur mes projets.</li>
           </ul>
 
           <h3 class="mt-3">Comment contrôler l'utilisation des cookies ?</h3>Vous pouvez autoriser ou interdire l'utilisation des cookies dans les préférences de votre navigateur internet. Voici des instructions pour les principaux navigateurs:

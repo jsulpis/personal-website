@@ -1,12 +1,11 @@
 <template>
-  <v-container class="portfolio-code container--card">
-    <j-breadcrumbs/>
+  <v-container class="projects container--card">
     <v-layout wrap>
       <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
-        <repo-item class="portfolio-code__item" :repo="repo"/>
+        <repo-item class="projects__item" :repo="repo"/>
       </v-flex>
 
-      <v-flex xs12 class="portfolio-code__progress">
+      <v-flex xs12 class="projects__progress">
         <v-progress-circular indeterminate size="70" color="primary"/>
       </v-flex>
     </v-layout>
@@ -14,28 +13,26 @@
 </template>
 
 <script>
-import RepoItem from "~/components/portfolio/RepoItem";
-import JBreadcrumbs from "~/components/shared/JBreadcrumbs.vue";
+import RepoItem from "~/components/projets/RepoItem";
 import GithubService from "~/services/GithubService";
-import { makePageMetadata } from "~/utils/page";
+import { makePageMetadata, makePageTitle } from "~/utils/page";
 
 export const CODE_HEADER = {
-  title: "Code",
+  title: "Projets",
   description:
-    "Mes projets informatiques open-source.<br> Ce contenu est extrait de mon profil GitHub, c'est pourquoi il est en anglais !"
+    "Mes projets informatiques open-source.<br>Ce contenu est extrait de mon profil GitHub, qui est en anglais !"
 };
 
 export default {
   components: {
-    RepoItem,
-    JBreadcrumbs
+    RepoItem
   },
   head() {
     return makePageMetadata(this.title, this.pageUrl, this.description);
   },
   data() {
     return {
-      title: "Portfolio - " + CODE_HEADER.title,
+      title: makePageTitle("Projets"),
       pageUrl: process.env.URL + this.$route.fullPath,
       description: "Mes projets informatiques open-source.",
       repos: []
@@ -54,8 +51,8 @@ export default {
     showItemsWithDelay(delay) {
       // Fade in each gallery item one after another
       setTimeout(() => {
-        $(".portfolio-code__progress").hide();
-        $(".portfolio-code__item").each(function(index) {
+        $(".projects__progress").hide();
+        $(".projects__item").each(function(index) {
           $(this)
             .delay(40 * index)
             .fadeIn();
@@ -66,16 +63,32 @@ export default {
 };
 </script>
 
-<style>
-.portfolio-code {
+<style lang="scss">
+.container--card {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 8px 8px;
+  padding: 1.5rem;
+
+  @media only screen and (min-width: 600px) {
+    padding: 3rem;
+    padding-top: 1rem;
+  }
+
+  @media only screen and (min-width: 1904px) {
+    max-width: 1185px !important;
+  }
+}
+
+.projects {
   min-height: 350px;
 }
 
-.portfolio-code__item {
+.projects__item {
   display: none;
 }
 
-.portfolio-code__progress {
+.projects__progress {
   margin-top: 2.5rem;
 }
 </style>
