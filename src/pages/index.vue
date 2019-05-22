@@ -31,9 +31,6 @@ export default {
       pageContent: require("~/static/data/remote/pages/home.json")
     };
   },
-  beforeMount() {
-    this.$store.commit("resetHeaderContent");
-  },
   methods: {
     showHiddenSection() {
       $(".hideable--hidden").removeClass("hideable--hidden");

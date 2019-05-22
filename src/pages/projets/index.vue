@@ -17,12 +17,6 @@ import RepoItem from "~/components/projets/RepoItem";
 import GithubService from "~/services/GithubService";
 import { makePageMetadata, makePageTitle } from "~/utils/page";
 
-export const CODE_HEADER = {
-  title: "Projets",
-  description:
-    "Mes projets informatiques open-source.<br>Ce contenu est extrait de mon profil GitHub, qui est en anglais !"
-};
-
 export default {
   components: {
     RepoItem
@@ -37,9 +31,6 @@ export default {
       description: "Mes projets informatiques open-source.",
       repos: []
     };
-  },
-  beforeMount() {
-    this.$store.commit("setHeaderContent", CODE_HEADER);
   },
   mounted() {
     GithubService.getRepositories().then(response => {

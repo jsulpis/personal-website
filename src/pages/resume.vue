@@ -42,9 +42,6 @@ export default {
         "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship.",
       resume: require("~/static/data/remote/pages/resume.json")
     };
-  },
-  beforeMount() {
-    this.$store.commit("resetHeaderContent");
   }
 };
 </script>

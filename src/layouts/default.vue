@@ -4,7 +4,6 @@
     <v-content class="push-footer">
       <banner/>
       <logo/>
-      <page-header class="hideable" :title="headerTitle" :description="headerDescription"></page-header>
       <div class="page-content">
         <nuxt/>
       </div>
@@ -18,7 +17,6 @@
 import MenuWrapper from "~/components/shared/menu/MenuWrapper.vue";
 import Banner from "~/components/shared/content/Banner.vue";
 import Logo from "~/components/shared/content/Logo.vue";
-import PageHeader from "~/components/shared/layout/PageHeader.vue";
 import JFooter from "~/components/shared/layout/JFooter.vue";
 import Cookies from "~/components/shared/content/Cookies.vue";
 
@@ -27,7 +25,6 @@ export default {
     MenuWrapper,
     Banner,
     Logo,
-    PageHeader,
     JFooter,
     Cookies
   },
@@ -40,12 +37,6 @@ export default {
   computed: {
     smallViewport() {
       return this.$vuetify.breakpoint.smAndDown;
-    },
-    headerTitle() {
-      return this.$store.state.header.title;
-    },
-    headerDescription() {
-      return this.$store.state.header.description;
     }
   },
   watch: {

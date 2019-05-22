@@ -29,7 +29,6 @@ const md = require("markdown-it")({ html: true });
 import JBreadcrumbs from "~/components/projets/JBreadcrumbs.vue";
 import DisqusPlugin from "~/components/projets/DisqusPlugin.vue";
 import GithubService from "~/services/GithubService";
-import { CODE_HEADER } from "./index";
 import { formatWords } from "~/utils/string";
 import { makePageMetadata } from "~/utils/page";
 
@@ -53,9 +52,6 @@ export default {
         repoUrl: GithubService.getRepositoryUrl(params.repo)
       };
     });
-  },
-  beforeMount() {
-    this.$store.commit("setHeaderContent", CODE_HEADER);
   }
 };
 </script>

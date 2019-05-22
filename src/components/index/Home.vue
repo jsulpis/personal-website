@@ -4,7 +4,6 @@
       <v-layout align-center justify-center column fill-height>
         <h1 class="home-name">Julien Sulpis</h1>
         <h2 class="home-subtitle">{{ pageContent.nameSubtitle }}</h2>
-        <h3 class="home-subsubtitle">{{ pageContent.nameSubsubtitle }}</h3>
         <social-networks class="home-social-networks"/>
       </v-layout>
     </v-container>
@@ -29,9 +28,6 @@ export default {
   props: { pageContent: Object },
   components: { SocialNetworks },
   computed: {
-    separation() {
-      return this.smallScreen ? "<br>" : "&nbsp; | &nbsp;";
-    },
     smallScreen() {
       return this.$vuetify.breakpoint.xsOnly;
     },
@@ -113,17 +109,6 @@ export default {
 
     @media only screen and (min-width: 600px) {
       font-size: 1.5rem;
-    }
-  }
-
-  &subsubtitle {
-    margin-top: 0.2rem;
-    font-size: 0.8rem;
-    font-weight: 300;
-    opacity: 0.8;
-
-    @media only screen and (min-width: 600px) {
-      font-size: 1.2rem;
     }
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <v-card dark class="page-header below-banner" v-if="validHeader">
+  <v-card dark class="page-header below-banner">
     <v-card-text>
       <h1>{{ title }}</h1>
       <p v-html="description"></p>
@@ -12,11 +12,6 @@ export default {
   props: {
     title: String,
     description: String
-  },
-  computed: {
-    validHeader() {
-      return this.title != "" || this.description != "";
-    }
   }
 };
 </script>
