@@ -23,7 +23,7 @@ export default {
           to: "/projets"
         },
         {
-          name: "CV",
+          name: "A Propos",
           to: "/resume"
         },
         {

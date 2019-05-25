@@ -130,6 +130,10 @@ a {
 .below-banner {
   box-shadow: 0px 4px 10px -5px rgba(255, 255, 255, 0.2) inset,
     0px -3px 10px -5px rgba(255, 255, 255, 0.3) !important;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.3)
+  );
 }
 
 ::-webkit-scrollbar-track {

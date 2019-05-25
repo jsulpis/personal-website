@@ -1,7 +1,7 @@
 <template>
   <div
     class="panel"
-    :id="panel.title"
+    :id="panel.buttonLink.slice(1)"
     :style="`background-image: linear-gradient(rgba(0,0,0,0), rgba(0, 0, 0, 0.6)), url(${panel.backgroundImage})`"
   >
     <v-layout class="panel_layout" column justify-center align-center>
