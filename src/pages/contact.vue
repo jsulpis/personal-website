@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="contact-page">
     <page-header class="hideable" title="Contact" :description="description"></page-header>
-    <v-container id="contact-page">
+    <v-container>
       <v-card class="contact-page__card">
         <contact-form/>
       </v-card>
@@ -35,6 +35,11 @@ export default {
 </script>
 
 <style>
+.contact-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .contact-page__card {
   width: inherit;
   max-width: 850px;

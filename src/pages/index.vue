@@ -1,8 +1,10 @@
 <template>
   <div>
     <home v-on:home-screen-loaded="showHiddenSection" :pageContent="pageContent"/>
-    <about class="hideable hideable--hidden" :pageContent="pageContent"/>
-    <panels :panels="pageContent.panels"/>
+    <div class="hideable hideable--hidden">
+      <about :pageContent="pageContent"/>
+      <panels :panels="pageContent.panels"/>
+    </div>
   </div>
 </template>
 

@@ -8,14 +8,11 @@
     <p class="resume-profile__location">{{ location }}</p>
     <!-- Social links -->
     <p class="resume-profile__networks">
-      <a class="ma-3" :href="socialNetworks['GitHub'].url">
-        <v-icon>{{ socialNetworks['GitHub'].icon }}</v-icon>
-      </a>
       <a :href="socialNetworks['LinkedIn'].url">
-        <v-icon>{{ socialNetworks['LinkedIn'] }}</v-icon>
+        <v-icon>{{ socialNetworks['LinkedIn'].icon }}</v-icon>
       </a>
-      <a :href="socialNetworks['Twitter'].url">
-        <v-icon>fab fa-twitter</v-icon>
+      <a :href="socialNetworks['GitHub'].url">
+        <v-icon>{{ socialNetworks['GitHub'].icon }}</v-icon>
       </a>
     </p>
 
@@ -61,8 +58,9 @@ export default {
   }
 
   &networks {
-    margin: 0.5rem 1rem;
-    padding: 0.5rem;
+    a {
+      margin: 0 0.5rem;
+    }
 
     a:hover .v-icon {
       opacity: 0.5;

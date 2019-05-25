@@ -58,6 +58,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Salsa");
 
 $banner-height: 161px;
+$footer-height: 150px;
 
 html {
   font-size: initial !important;
@@ -112,7 +113,7 @@ a {
 }
 
 .push-footer {
-  min-height: calc(100vh - 146px);
+  min-height: calc(100vh - #{$footer-height});
   padding-bottom: 3rem !important;
 }
 
