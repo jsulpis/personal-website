@@ -37,6 +37,13 @@ export default {
     showHiddenSection() {
       $(".hideable--hidden").removeClass("hideable--hidden");
     }
+  },
+  beforeMount() {
+    sr.reveal(".home-panel__layout", {
+      distance: "20%",
+      scale: 1,
+      viewFactor: 0.5
+    });
   }
 };
 </script>
