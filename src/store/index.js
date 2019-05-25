@@ -1,12 +1,13 @@
 export const state = () => ({
-  appLoaded: false
+  appLoaded: false,
+  projects: []
 });
 
 export const mutations = {
   setApplicationLoaded(state) {
     state.appLoaded = true;
   },
-  setArtworks(state, payload) {
-    state.artworks = payload;
+  setProjects(state, payload) {
+    state.projects = payload;
   }
 };
