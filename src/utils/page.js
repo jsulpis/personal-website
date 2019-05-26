@@ -12,6 +12,11 @@ export function makePageMetadata(pageTitle, pageUrl, pageDescription) {
         name: "description",
         property: "og:description",
         content: pageDescription
+      },
+      {
+        name: "image",
+        property: "og:image",
+        content: require("~/static/data/remote/medias/home-screenshot.json")
       }
     ]
   };

@@ -86,7 +86,7 @@ export default {
   &description {
     padding: 1rem 3rem 1.5rem 3rem;
     margin: auto;
-    max-width: 800px;
+    max-width: 850px;
     opacity: 0.75;
   }
 }
