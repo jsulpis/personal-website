@@ -62,19 +62,12 @@ $skill-item-size: 64px;
   }
   .skill {
     display: inline-block;
-    position: relative;
-    width: $skill-item-size;
     height: $skill-item-size;
     margin: 0.75rem;
     vertical-align: top;
   }
   .skill__icon {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
     max-height: $skill-item-size;
-    max-width: $skill-item-size;
   }
 }
 </style>

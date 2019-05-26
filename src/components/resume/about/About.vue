@@ -4,7 +4,7 @@
     <avatar :pro="true" class="resume-profile__avatar"/>
     <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
     <h2 class="resume-profile__title headline">{{ title }}</h2>
-    <h3 class="resume-profile__jobTitle subheading">{{ jobTitle }}</h3>
+    <h3 class="resume-profile__jobTitle">{{ jobTitle }}</h3>
     <p class="resume-profile__location">{{ location }}</p>
     <!-- Social links -->
     <p class="resume-profile__networks">
@@ -73,11 +73,13 @@ export default {
   }
 
   &title {
-    margin: 0;
+    margin: 0 auto 0.25rem auto;
   }
 
   &jobTitle {
     line-height: 1.5rem;
+    font-weight: normal;
+    font-size: 1.1em;
     margin: 0;
   }
 

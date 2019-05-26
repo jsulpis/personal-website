@@ -28,22 +28,19 @@ export default {
     return {
       title: makePageTitle("Accueil"),
       pageUrl: process.env.URL,
-      description:
-        "Bienvenue sur mon site web. J'y partage régulièrement du contenu à propos d'informatique et de design.",
+      description: "Site personnel dédié à l'informatique.",
       pageContent: require("~/static/data/remote/pages/home.json")
     };
   },
   methods: {
     showHiddenSection() {
       $(".hideable--hidden").removeClass("hideable--hidden");
+      sr.reveal(".home-panel__layout", {
+        distance: "20%",
+        scale: 1,
+        viewFactor: 0.7
+      });
     }
-  },
-  beforeMount() {
-    sr.reveal(".home-panel__layout", {
-      distance: "20%",
-      scale: 1,
-      viewFactor: 0.5
-    });
   }
 };
 </script>

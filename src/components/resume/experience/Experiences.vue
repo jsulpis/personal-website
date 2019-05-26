@@ -75,6 +75,10 @@ export default {
   text-align: center;
   white-space: nowrap;
   margin-bottom: 1rem;
+
+  > div {
+    margin-bottom: 2rem;
+  }
 }
 .timeline-info__company-name {
   margin: 0.25rem 0 0 0;
@@ -84,14 +88,14 @@ export default {
 .timeline-info__company-duration {
   margin-bottom: 0;
   font-size: 0.9em;
-  font-weight: normal;
 }
 .timeline-info__company-location {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   font-size: 0.8em;
 }
 .timeline-info__logo {
-  width: 100px;
+  max-width: 110px;
+  max-height: 80px;
 }
 
 /*----- TIMELINE MARKER -----*/
@@ -128,7 +132,7 @@ export default {
     content: none;
   }
 }
-.timeline-item--first .timeline-marker:before{
+.timeline-item--first .timeline-marker:before {
   width: 16px;
   height: 16px;
   left: 2px;

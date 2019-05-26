@@ -2,12 +2,11 @@
   <li :class="'timeline-item' + (firstJobOfCompany ? ' timeline-item--first' : '')">
     <div class="timeline-info">
       <div v-if="firstJobOfCompany">
-        <p class="timeline-info__company-name">{{ job.companyName }}</p>
+        <img class="timeline-info__logo" :src="job.companyLogo" :alt="'logo_' + job.companyName">
+        <p class="timeline-info__company-location">{{ job.location }}</p>
         <p
           class="timeline-info__company-duration"
         >{{ job.companyStart | dateFrShort }} - {{ job.companyEnd | dateFrShort }} &bull; {{ companyDuration }}</p>
-        <p class="timeline-info__company-location">{{ job.location }}</p>
-        <img class="timeline-info__logo" :src="job.companyLogo" :alt="'logo_' + job.companyName">
       </div>
     </div>
     <div class="timeline-marker"></div>
@@ -38,23 +37,35 @@ export default {
       const dateEnd = this.job.dateEnd
         ? new Date(this.job.dateEnd)
         : new Date();
-      return this.getMonthsBetweenDates(dateStart, dateEnd);
+      return this.getDurationBetweenDates(dateStart, dateEnd);
     },
     companyDuration() {
-      return this.getMonthsBetweenDates(
+      return this.getDurationBetweenDates(
         new Date(this.job.companyStart),
         this.job.companyEnd ? new Date(this.job.companyEnd) : new Date()
       );
     },
     jobDescription() {
-      return md.render(this.job.description);
+      return md.render(this.job.description || "");
     }
   },
   methods: {
-    getMonthsBetweenDates(dateStart, dateEnd) {
-      return (
-        Math.floor((dateEnd - dateStart) / (1000 * 60 * 60 * 24 * 30)) + " mois"
+    getDurationBetweenDates(dateStart, dateEnd) {
+      const durationMonths = Math.max(
+        0,
+        Math.floor((dateEnd - dateStart) / (1000 * 60 * 60 * 24 * 30))
       );
+      const residueMonths = durationMonths % 12;
+      const durationYears = (durationMonths - residueMonths) / 12;
+      let output = "";
+      if (durationYears) {
+        const yearString = durationYears > 1 ? " ans " : " an ";
+        output += durationYears + yearString;
+      }
+      if (residueMonths || output == "") {
+        output += residueMonths + " mois";
+      }
+      return output;
     }
   }
 };
