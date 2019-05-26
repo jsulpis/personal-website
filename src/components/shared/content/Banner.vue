@@ -8,7 +8,7 @@
 export default {
   data: () => ({
     bannerUrl:
-      require("~/static/data/remote/medias/banner.json") + "?fl=progressive"
+      require("~/static/data/remote/medias/home-background.json") + "?fl=progressive"
   })
 };
 </script>

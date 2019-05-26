@@ -41,7 +41,11 @@ module.exports = {
   generate: { fallback: true },
   // Modules specified above
   modules: ["@nuxtjs/dotenv", "~/modules/scrape.js"],
-  plugins: ["~/plugins/vuetify.js", "~/plugins/filters.js"],
+  plugins: [
+    "~/plugins/vuetify.js",
+    "~/plugins/filters.js",
+    { src: "~/plugins/scrollreveal.js", ssr: false }
+  ],
   // Include Vuetify style
   css: ["~/assets/vuetify-style/app.styl"],
   // Disable the default progress bar

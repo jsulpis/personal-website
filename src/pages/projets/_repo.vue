@@ -105,11 +105,14 @@ export default {
 }
 
 code {
-  line-height: 24px;
-  padding: 0 5px;
+  padding: 5px 10px;
   background-color: rgba(128, 128, 128, 0.1);
   box-shadow: none;
   color: inherit;
+
+  &::before, &::after {
+    content: "";
+  }
 }
 
 .disqus {

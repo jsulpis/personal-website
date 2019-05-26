@@ -4,18 +4,15 @@
     <avatar :pro="true" class="resume-profile__avatar"/>
     <h1 class="resume-profile__name display-1">Julien Sulpis</h1>
     <h2 class="resume-profile__title headline">{{ title }}</h2>
-    <h3 class="resume-profile__jobTitle subheading">{{ jobTitle }}</h3>
+    <h3 class="resume-profile__jobTitle">{{ jobTitle }}</h3>
     <p class="resume-profile__location">{{ location }}</p>
     <!-- Social links -->
     <p class="resume-profile__networks">
-      <a class="ma-3" :href="socialNetworks['GitHub'].url">
-        <v-icon>{{ socialNetworks['GitHub'].icon }}</v-icon>
-      </a>
       <a :href="socialNetworks['LinkedIn'].url">
-        <v-icon>{{ socialNetworks['LinkedIn'] }}</v-icon>
+        <v-icon>{{ socialNetworks['LinkedIn'].icon }}</v-icon>
       </a>
-      <a :href="socialNetworks['Twitter'].url">
-        <v-icon>fab fa-twitter</v-icon>
+      <a :href="socialNetworks['GitHub'].url">
+        <v-icon>{{ socialNetworks['GitHub'].icon }}</v-icon>
       </a>
     </p>
 
@@ -61,8 +58,9 @@ export default {
   }
 
   &networks {
-    margin: 0.5rem 1rem;
-    padding: 0.5rem;
+    a {
+      margin: 0 0.5rem;
+    }
 
     a:hover .v-icon {
       opacity: 0.5;
@@ -75,18 +73,20 @@ export default {
   }
 
   &title {
-    margin: 0;
+    margin: 0 auto 0.25rem auto;
   }
 
   &jobTitle {
     line-height: 1.5rem;
+    font-weight: normal;
+    font-size: 1.1em;
     margin: 0;
   }
 
   &description {
     padding: 1rem 3rem 1.5rem 3rem;
     margin: auto;
-    max-width: 800px;
+    max-width: 850px;
     opacity: 0.75;
   }
 }

@@ -24,13 +24,13 @@
       <!-- Redirect the user to relevant pages -->
       <div v-if="Math.trunc(error.statusCode / 100) === 4">
         <p class="title mt-3">Vous pouvez plutôt aller sur une de ces pages:</p>
-        <v-btn href="/" round outline color="white">Accueil</v-btn>
-        <v-btn href="/projets" round outline color="white">Projets</v-btn>
-        <v-btn href="/contact" round outline color="white">Contact</v-btn>
+        <v-btn to="/" round outline color="white">Accueil</v-btn>
+        <v-btn to="/projets" round outline color="white">Projets</v-btn>
+        <v-btn to="/contact" round outline color="white">Contact</v-btn>
       </div>
       <div v-else>
         <p class="title mt-3">Si l'erreur persiste, merci de m'en informer.</p>
-        <v-btn href="/contact" round outline color="white">Contact</v-btn>
+        <v-btn to="/contact" round outline color="white">Contact</v-btn>
       </div>
     </div>
   </div>

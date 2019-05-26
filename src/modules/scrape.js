@@ -6,7 +6,8 @@ const fs = require("fs-extra");
 const isProd = process.env.CONTEXT === "production";
 const API_URL = isProd ? process.env.PROD_API_URL : process.env.DEV_API_URL;
 axios.defaults.baseURL = API_URL;
-axios.defaults.headers.common["Authorization"] = "Bearer " + process.env.BUILD_TOKEN;
+axios.defaults.headers.common["Authorization"] =
+  "Bearer " + process.env.BUILD_TOKEN;
 
 const ENDPOINTS = require("./scrapeEndpoints.json");
 const DATA_FOLDER = "src/static/data/remote/";
@@ -32,10 +33,8 @@ const clearDataFolder = () => fs.emptyDir(DATA_FOLDER);
 
 function scrapeEndpointsAndWriteData() {
   return ENDPOINTS.map(async endpoint => {
-    writeData(
-      endpoint.path,
-      await axios.get(endpoint.url).then(res => res.data)
-    );
+    const path = `/${endpoint}.json`;
+    writeData(path, await axios.get(endpoint).then(res => res.data));
   });
 }
 

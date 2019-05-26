@@ -1,11 +1,11 @@
 <template>
   <v-container class="projects container--card">
     <v-layout wrap>
-      <v-flex xs12 sm6 md4 v-for="(repo, i) in repos" :key="i">
-        <repo-item class="projects__item" :repo="repo"/>
+      <v-flex class="projects__item" xs12 sm6 md4 v-for="(repo, i) in projects" :key="i">
+        <repo-item :repo="repo"/>
       </v-flex>
 
-      <v-flex xs12 class="projects__progress">
+      <v-flex v-show="noProjectInStore" xs12 class="projects__progress">
         <v-progress-circular indeterminate size="70" color="primary"/>
       </v-flex>
     </v-layout>
@@ -29,26 +29,28 @@ export default {
       title: makePageTitle("Projets"),
       pageUrl: process.env.URL + this.$route.fullPath,
       description: "Mes projets informatiques open-source.",
-      repos: []
+      projects: []
     };
   },
+  computed: {
+    noProjectInStore() {
+      return this.$store.state.projects.length === 0;
+    }
+  },
   mounted() {
-    GithubService.getRepositories().then(response => {
-      this.repos = response;
-      this.showItemsWithDelay(10);
-    });
+    if (this.noProjectInStore) {
+      GithubService.getRepositories().then(response => {
+        this.$store.commit("setProjects", response);
+        this.setAndDisplayProjects();
+      });
+    } else {
+      this.setAndDisplayProjects();
+    }
   },
   methods: {
-    showItemsWithDelay(delay) {
-      // Fade in each gallery item one after another
-      setTimeout(() => {
-        $(".projects__progress").hide();
-        $(".projects__item").each(function(index) {
-          $(this)
-            .delay(40 * index)
-            .fadeIn();
-        });
-      }, delay);
+    setAndDisplayProjects() {
+      this.projects = this.$store.state.projects;
+      setTimeout(() => sr.reveal(".projects__item", { scale: 1 }, 50), 10);
     }
   }
 };
@@ -76,7 +78,7 @@ export default {
 }
 
 .projects__item {
-  display: none;
+  visibility: hidden;
 }
 
 .projects__progress {

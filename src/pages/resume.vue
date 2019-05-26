@@ -19,7 +19,6 @@ import JTabs from "~/components/resume/shared/JTabs.vue";
 import Experiences from "~/components/resume/experience/Experiences.vue";
 import Education from "~/components/resume/education/Education.vue";
 import Skills from "~/components/resume/skills/Skills.vue";
-import ResumeService from "~/services/ResumeService";
 import { makePageTitle } from "~/utils/page";
 import { makePageMetadata } from "~/utils/page";
 
@@ -38,8 +37,7 @@ export default {
     return {
       title: makePageTitle("CV"),
       pageUrl: process.env.URL + this.$route.fullPath,
-      description:
-        "Je suis un développeur passionné, orienté vers les technologies web et mobiles et soucieux de la qualité de mes réalisations. Je me forme en continu sur les technologies actuelles et les pratiques du Software Craftsmanship.",
+      description: "Mon CV en ligne",
       resume: require("~/static/data/remote/pages/resume.json")
     };
   }

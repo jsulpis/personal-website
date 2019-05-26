@@ -100,6 +100,10 @@ export default {
   top: 0;
   z-index: 2;
 
+  .v-tabs__container {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
   .v-tabs__item {
     font-weight: 400;
   }

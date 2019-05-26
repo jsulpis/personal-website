@@ -19,7 +19,7 @@ export default {
   props: { pageContent: Object },
   methods: {
     scrollTo(panel) {
-      this.$vuetify.goTo("#" + panel.title, SCROLLING_OPTIONS);
+      this.$vuetify.goTo("#" + panel.buttonLink.slice(1), SCROLLING_OPTIONS);
     }
   }
 };
@@ -36,6 +36,7 @@ export default {
   @media screen and (min-width: 600px) {
     max-height: 300px;
   }
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.6);
 }
 .home-about__welcome {
   font-size: 20px;
@@ -59,7 +60,7 @@ export default {
     background-image: linear-gradient(
       to left,
       transparent,
-      $material-color-grey-300,
+      $material-color-grey-400,
       transparent
     );
   }
@@ -68,7 +69,7 @@ export default {
 .home-about__icons {
   width: 100%;
   max-width: 600px;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .home-about__icon {
@@ -76,13 +77,7 @@ export default {
   border: 4px solid;
   padding: 20px;
   transform: scale(1.2);
-  margin: auto;
-
-  .v-icon {
-    height: 50px;
-    width: 50px;
-    font-size: 50px;
-    opacity: 0.8;
-  }
+  height: 70px;
+  width: 70px;
 }
 </style>

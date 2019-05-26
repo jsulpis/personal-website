@@ -13,9 +13,9 @@
 
       <!-- Footer note -->
       <v-card-text class="pa-3">
-        <p>&copy; {{ new Date().getFullYear() }} - code &amp; design par Julien Sulpis</p>
+        <p>&copy; {{ new Date().getFullYear() }} - Site conçu et réalisé par Julien Sulpis</p>
         <p>
-          Site hébergé sur
+          Code disponible sur
           <a :href="gitHubUrl + '/personal-website'">GitHub</a>
         </p>
       </v-card-text>
@@ -27,7 +27,6 @@
 import SocialNetworks from "~/components/shared/content/SocialNetworks";
 import ScrollTop from "~/components/shared/layout/ScrollTop";
 import SOCIAL_NETWORKS from "~/static/data/socialNetworks.json";
-
 
 export default {
   components: {
@@ -41,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-$footer-padding-top: 0.75rem;
+$footer-padding-top: 1rem;
 
 #footer {
   box-shadow: 0px -3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -54,6 +53,7 @@ $footer-padding-top: 0.75rem;
 
   .v-card__text p {
     margin: 0;
+    opacity: 0.8;
 
     &:nth-child(2) {
       font-size: 0.9em;
