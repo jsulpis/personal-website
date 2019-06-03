@@ -38,7 +38,8 @@ export default {
       sr.reveal(".home-panel__layout", {
         distance: "20%",
         scale: 1,
-        viewFactor: 0.7
+        viewFactor: 0.6,
+        duration: 800
       });
     }
   }
