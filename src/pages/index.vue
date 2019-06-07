@@ -22,12 +22,11 @@ export default {
     Panels
   },
   head() {
-    return makePageMetadata(this.title, this.pageUrl, this.description);
+    return makePageMetadata(this.title, process.env.BASE_URL, this.description);
   },
   data() {
     return {
       title: makePageTitle("Accueil"),
-      pageUrl: process.env.URL,
       description: "Site personnel dédié à l'informatique.",
       pageContent: require("~/static/data/remote/pages/home.json")
     };

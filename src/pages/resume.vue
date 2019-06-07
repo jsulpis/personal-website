@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       title: makePageTitle("CV"),
-      pageUrl: process.env.URL + this.$route.fullPath,
+      pageUrl: `${process.env.BASE_URL}${this.$route.fullPath}`,
       description: "Mon CV en ligne",
       resume: require("~/static/data/remote/pages/resume.json")
     };

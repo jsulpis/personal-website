@@ -41,8 +41,8 @@ export default {
     return {
       repoName: this.$route.params.repo,
       title: formatWords(this.$route.params.repo),
-      description: "README d'un de mes projets GitHub.",
-      pageUrl: process.env.URL + this.$route.fullPath
+      pageUrl: `${process.env.BASE_URL}${this.$route.fullPath}`,
+      description: "README d'un de mes projets GitHub."
     };
   },
   asyncData({ params }) {
@@ -110,7 +110,8 @@ code {
   box-shadow: none;
   color: inherit;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
   }
 }

@@ -4,6 +4,9 @@ const webpack = require("webpack");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 
 module.exports = {
+  env: {
+    BASE_URL: process.env.URL,
+  },
   // Headers of the page
   head: {
     htmlAttrs: { prefix: "og: http://ogp.me/ns#" },
