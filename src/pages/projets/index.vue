@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       title: makePageTitle("Projets"),
-      pageUrl: process.env.URL + this.$route.fullPath,
+      pageUrl: `${process.env.BASE_URL}${this.$route.fullPath}`,
       description: "Mes projets informatiques open-source.",
       projects: []
     };

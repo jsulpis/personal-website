@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       title: makePageTitle("Contact"),
-      pageUrl: process.env.URL + this.$route.fullPath,
+      pageUrl: `${process.env.BASE_URL}${this.$route.fullPath}`,
       description:
         "Vous pouvez utiliser ce formulaire pour m'envoyer vos remarques, questions, etc."
     };
