@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.juliensulpis.fr"><img class="repo-preview" src="https://raw.githubusercontent.com/jsulpis/personal-website/master/preview.png" alt="Screenshot image"/></a>
+  <a href="https://www.juliensulpis.fr"><img class="repo-preview" src="./preview.png" alt="Screenshot image"/></a>
 </p>
 
 ## Warning
