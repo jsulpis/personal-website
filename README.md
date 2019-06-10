@@ -1,23 +1,21 @@
-#Personal Website
+<h1 align="center">Personal Website</h1>
 
-> This repo hosts the source code of my personal website.
+<h3 align="center">The source code of my personal website.</h3>
+
+<p align="center">
+	<a href="https://app.netlify.com/sites/affectionate-saha-3f9dd6/deploys">
+		<img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/a22f47f8-d0f2-4d20-b2e7-d911309016c9/deploy-status" />
+	</a>
+</p>
+
+<p align="center">
+  <a href="https://www.juliensulpis.fr"><img class="repo-preview" src="https://raw.githubusercontent.com/jsulpis/personal-website/master/preview.png" alt="Screenshot image"/></a>
+</p>
 
 ## Warning
-The code is public so that I can benefit from free code analysis, CI and deployment tools, and to allow you to see its internal structure. But **you cannot run this website locally**. This is to keep my dev environment clean ! :)
 
-## Build Setup
+This repository is public to allow you to see the code, and to benefit from free code analysis, CI and deployment tools. But **you cannot run this website locally**. This is to keep my dev environment private :)
 
-``` bash
-# install dependencies
-$ npm install # Or yarn install
+## License
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
-```
+Released under the [GPL-3.0](https://github.com/jsulpis/personal-website/blob/master/LICENSE) license.
